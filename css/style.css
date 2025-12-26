@@ -80,14 +80,3 @@ footer {
   margin-top: 2rem;
   font-size: 0.9rem;
 }
-
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo img {
-  display: block;
-  height: 36px;
-  width: auto;
-}
