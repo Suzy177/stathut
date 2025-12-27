@@ -257,44 +257,49 @@ footer {
 ========================= */
 
 .requirements {
+  margin-top: 4rem;
+  padding: 2.5rem;
   max-width: 900px;
-  margin: 5rem auto 3rem;
-  padding: 2.5rem 2rem;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 18px;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
 }
 
 .requirements h2 {
   text-align: center;
-  font-size: 2rem;
   margin-bottom: 1.5rem;
 }
 
-.requirements-list {
+.requirements ul {
   list-style: none;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1rem 2rem;
 }
 
-.requirements-list li {
-  font-size: 1rem;
-  color: #d7e0f1;
-  padding: 0.8rem 1rem;
-  background: rgba(255,255,255,0.03);
-  border-radius: 10px;
+.requirements li {
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #d2eaf1;
 }
+
+.requirements li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #22c55e;
+}
+
 /* =========================
    CLAN BADGES
 ========================= */
 
 .clan-badge {
-  width: 72px;
+  width: 80px;
   height: auto;
   margin-bottom: 1rem;
-  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
 }
 
 .clan-card {
@@ -304,6 +309,11 @@ footer {
 .clan-card h3 {
   margin-top: 0.5rem;
 }
+.clan-card:hover .clan-badge {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+
 
 
 
