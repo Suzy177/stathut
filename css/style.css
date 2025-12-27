@@ -286,4 +286,23 @@ footer {
   background: rgba(255,255,255,0.03);
   border-radius: 10px;
 }
+/* =========================
+   CLAN BADGES
+========================= */
+
+.clan-badge {
+  width: 72px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.5));
+}
+
+.clan-card {
+  text-align: center;
+}
+
+.clan-card h3 {
+  margin-top: 0.5rem;
+}
+
 
