@@ -1,5 +1,5 @@
 /* ==============================
-   GLOBAL RESET & BASE
+   RESET & BASE
    ============================== */
 
 * {
@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: radial-gradient(circle at top, #0b132b, #020617 70%);
   color: #e5e7eb;
   line-height: 1.6;
@@ -60,13 +60,13 @@ nav a.cta {
 
 .hero {
   text-align: center;
-  padding: 5rem 2rem 4rem;
+  padding: 4.5rem 2rem 3.5rem;
 }
 
 .hero h1,
 .hero h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.8rem;
+  margin-bottom: 0.6rem;
 }
 
 .hero p {
@@ -82,24 +82,24 @@ nav a.cta {
 .clans {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 3.5rem 2rem 4.5rem;
 }
 
 .clans h2 {
   text-align: center;
   font-size: 2.4rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
 }
 
 .clans-intro {
   text-align: center;
   color: #9ca3af;
-  max-width: 750px;
-  margin: 0 auto 2.5rem;
+  max-width: 760px;
+  margin: 0 auto 2.6rem;
 }
 
 /* ==============================
-   TOWN HALL PROGRESSION (FIXED)
+   TOWN HALL PROGRESSION STRIP
    ============================== */
 
 .th-progression {
@@ -107,14 +107,14 @@ nav a.cta {
   justify-content: center;
   align-items: flex-end;
   gap: 14px;
-  margin: 2.5rem 0 3.5rem;
+  margin: 2.2rem 0 3.2rem;
   flex-wrap: wrap;
 }
 
 .th-progression img {
   height: 90px;
   width: auto;
-  opacity: 0.85;
+  opacity: 0.7;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -130,7 +130,7 @@ nav a.cta {
 .clan-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 2.2rem;
 }
 
 /* ==============================
@@ -138,17 +138,22 @@ nav a.cta {
    ============================== */
 
 .clan-card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.015)
+  );
   border-radius: 18px;
-  padding: 2rem;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+  padding: 2.2rem 2rem 2.4rem;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
   text-align: center;
-  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .clan-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1.2rem;
+  font-size: 1.55rem;
+  margin-bottom: 0.9rem;
 }
 
 /* Clan badge */
@@ -157,7 +162,28 @@ nav a.cta {
   margin: 0 auto 1rem;
 }
 
-/* Clan details */
+/* ==============================
+   TOWN HALL ICONS IN CARD
+   ============================== */
+
+.th-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 1rem 0 1.3rem;
+  flex-wrap: wrap;
+}
+
+.th-icons img {
+  height: 58px;
+  width: auto;
+  opacity: 0.9;
+}
+
+/* ==============================
+   CLAN DETAILS
+   ============================== */
+
 .clan-card ul {
   list-style: none;
   margin-bottom: 1.6rem;
@@ -169,7 +195,7 @@ nav a.cta {
 }
 
 /* ==============================
-   CLAN STATUS COLORS
+   STATUS COLORS
    ============================== */
 
 .clan-card.open {
@@ -182,6 +208,7 @@ nav a.cta {
 
 .clan-card.closed {
   border-left: 4px solid #ef4444;
+  opacity: 0.9;
 }
 
 /* ==============================
@@ -190,12 +217,17 @@ nav a.cta {
 
 .clan-cta {
   display: inline-block;
-  padding: 0.55rem 1.4rem;
+  padding: 0.55rem 1.5rem;
   border-radius: 10px;
   background: #22d4ff;
   color: #020617;
   font-weight: 600;
   text-decoration: none;
+  margin-top: auto;
+}
+
+.clan-cta:hover {
+  background: #38e0ff;
 }
 
 .clan-cta.disabled {
@@ -209,26 +241,26 @@ nav a.cta {
    ============================== */
 
 .requirements {
-  margin-top: 4rem;
-  background: rgba(255,255,255,0.03);
+  margin-top: 4.5rem;
+  background: rgba(255, 255, 255, 0.04);
   border-radius: 18px;
-  padding: 2.5rem;
+  padding: 2.6rem 2.2rem;
 }
 
 .requirements h3 {
   text-align: center;
-  font-size: 1.6rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.7rem;
+  margin-bottom: 1.6rem;
 }
 
 .requirements ul {
   list-style: none;
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
 .requirements li {
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.85rem;
   color: #d1d5db;
 }
 
@@ -242,12 +274,16 @@ nav a.cta {
     font-size: 2.2rem;
   }
 
+  .navbar {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
   .th-progression img {
     height: 64px;
   }
 
-  .navbar {
-    flex-direction: column;
-    gap: 0.8rem;
+  .th-icons img {
+    height: 48px;
   }
 }
