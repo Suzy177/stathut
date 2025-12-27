@@ -305,10 +305,6 @@ footer {
   gap: 0.6rem;
 }
 
-<p class="requirements-note">
-  These rules ensure fair farming, smooth wars, and long-term clan stability.
-</p>
-
 .requirements-note {
   margin-top: 1.2rem;
   text-align: center;
@@ -369,6 +365,7 @@ footer {
   height: auto !important;
   display: block;
 }
+
 
 
 
