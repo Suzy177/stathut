@@ -2,19 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GJLXJW3G7H');
-  </script>
-  
-  <title>Our Clans | StatHut FWA Community</title>
-  <meta name="description" content="Explore StatHut’s active Farm War Alliance (FWA) clans focused on loot farming, upgrades, teamwork, and fair play in Clash of Clans.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Our Clans | StatHut FWA Community</title>
+  <meta name="description" content="Explore StatHut’s active Farm War Alliance (FWA) clans. Find a Clash of Clans clan that fits your Town Hall level and playstyle." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,64 +13,95 @@
 
   <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
-<header class="navbar">
-  <div class="logo">
-    <img src="./assets/logo.svg" alt="StatHut logo" height="36">
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About FWA</a>
-    <a href="clans.html">Our Clans</a>
-    <a href="join.html" class="cta">Join</a>
-    <a href="fwa-guide.html">Learn how FWA works →</a>
-    <a href="rules.html">Rules</a>
-  </nav>
-</header>
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="index.html">StatHut</a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About FWA</a>
+      <a href="clans.html" class="active">Our Clans</a>
+      <a href="join.html" class="cta">Join</a>
+    </nav>
+  </header>
 
-
-<section class="hero">
-  <h2>Our Clans</h2>
-  <p>FWA clans under the StatHut network. Farm smart, grow fast.</p>
-</section>
-
-<section class="features">
-
-  <div class="card">
-    <h3>#THE SHIELD#</h3>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <h2>Our Clans</h2>
     <p>
-      <strong>Clan Tag:</strong> #ABC123XYZ<br>
-      <strong>Town Hall:</strong> TH13 – TH16<br>
-      <strong>War Type:</strong> FWA (Farm Wars)<br>
-      <strong>Status:</strong> Open
+      StatHut hosts multiple Farm War Alliance (FWA) clans focused on stress-free
+      farming, upgrades, and consistent loot.
     </p>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3>InvidiaBandit</h3>
-    <p>
-      <strong>Clan Tag:</strong> #DEF456XYZ<br>
-      <strong>Town Hall:</strong> TH11 – TH14<br>
-      <strong>War Type:</strong> FWA (Farm Wars)<br>
-      <strong>Status:</strong> Invite Only
+  <!-- ===== CLANS SECTION ===== -->
+  <section class="clans">
+    <h2>Active StatHut Clans</h2>
+    <p class="clans-intro">
+      Choose a clan that matches your Town Hall level and preferred playstyle.
+      All StatHut clans follow official FWA rules.
     </p>
-  </div>
 
-  <div class="card">
-    <h3>Vi11ageWarriors</h3>
-    <p>
-      <strong>Clan Tag:</strong> #GHI789XYZ<br>
-      <strong>Town Hall:</strong> TH11 – TH14<br>
-      <strong>War Type:</strong> FWA (Farm Wars)<br>
-      <strong>Status:</strong> Invite Only
-    </p>
-  </div>
+    <div class="clan-grid">
 
-  <div style="border:2px solid red" class="logo">
-    <img src="./assets/logo.svg" height="36">
-  </div>
+      <!-- Clan 1 -->
+      <div class="clan-card open">
+        <h3>THE SHIELD</h3>
+        <ul>
+          <li><strong>Town Hall:</strong> TH13 – TH16</li>
+          <li><strong>War Type:</strong> FWA (Farm Wars)</li>
+          <li><strong>Playstyle:</strong> Relaxed • Upgrade Focused</li>
+          <li><strong>Status:</strong> 🟢 Recruiting</li>
+        </ul>
+        <a href="join.html" class="clan-cta">Apply via Discord</a>
+      </div>
 
+      <!-- Clan 2 -->
+      <div class="clan-card limited">
+        <h3>InvidiaBandit</h3>
+        <ul>
+          <li><strong>Town Hall:</strong> TH11 – TH14</li>
+          <li><strong>War Type:</strong> FWA (Farm Wars)</li>
+          <li><strong>Playstyle:</strong> Casual • Farming</li>
+          <li><strong>Status:</strong> 🟡 Invite Only</li>
+        </ul>
+        <a href="join.html" class="clan-cta">Apply via Discord</a>
+      </div>
 
+      <!-- Clan 3 -->
+      <div class="clan-card closed">
+        <h3>VillageWarriors</h3>
+        <ul>
+          <li><strong>Town Hall:</strong> TH10 – TH13</li>
+          <li><strong>War Type:</strong> FWA (Farm Wars)</li>
+          <li><strong>Playstyle:</strong> Semi-Active</li>
+          <li><strong>Status:</strong> 🔴 Full</li>
+        </ul>
+        <span class="clan-cta disabled">Recruitment Closed</span>
+      </div>
 
+    </div>
+  </section>
 
+  <!-- ===== REQUIREMENTS ===== -->
+  <section class="requirements">
+    <h2>General Requirements</h2>
+    <ul>
+      <li>Follow official FWA rules and assignments</li>
+      <li>Complete both war attacks</li>
+      <li>Discord participation required</li>
+      <li>Respect clan leadership and structure</li>
+    </ul>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>© 2025 StatHut • Farm Smart. War Easy.</p>
+  </footer>
+
+</body>
+</html>
