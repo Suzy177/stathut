@@ -194,6 +194,7 @@ footer {
   margin: 0 auto 3rem;
 }
 
+/* THIS WAS THE MISSING PIECE */
 .clan-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
