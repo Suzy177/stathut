@@ -257,6 +257,10 @@ footer {
 ========================= */
 
 .requirements {
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.requirements {
   margin-top: 4rem;
   padding: 2.5rem;
   max-width: 900px;
@@ -291,6 +295,23 @@ footer {
   color: #22c55e;
 }
 
+.requirements li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+<p class="requirements-note">
+  These rules ensure fair farming, smooth wars, and long-term clan stability.
+</p>
+
+.requirements-note {
+  margin-top: 1.2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #9fbac4;
+}
+
 /* =========================
    CLAN BADGES
 ========================= */
@@ -313,6 +334,7 @@ footer {
   transform: scale(1.05);
   transition: 0.3s ease;
 }
+
 
 
 
