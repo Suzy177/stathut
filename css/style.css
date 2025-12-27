@@ -335,20 +335,17 @@ footer {
   transition: 0.3s ease;
 }
 
-/* Clan visual (Town Hall image) */
 .clan-visual {
   display: flex;
   justify-content: center;
-  margin: 3rem 0 4rem;
+  margin: 2rem 0 2.5rem;
+  pointer-events: none;
 }
 
 .clan-visual img {
-  max-width: 900px;
+  max-width: 520px;   /* KEY FIX */
   width: 100%;
   height: auto;
-  opacity: 0.9;
+  opacity: 0.35;      /* softer */
+  filter: blur(0.3px);
 }
-
-
-
-
