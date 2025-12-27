@@ -355,6 +355,21 @@ footer {
   filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
 }
 
+/* FORCE clan image sizing */
+.clan-visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.clan-visual img {
+  max-width: 700px !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
 
 
 
