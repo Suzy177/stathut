@@ -1,0 +1,16 @@
+/* FORCE Town Hall image sizing */
+
+.clan-visual {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.clan-visual img {
+  width: 100% !important;
+  max-width: 600px !important;
+  height: auto !important;
+  display: block !important;
+  opacity: 0.9;
+}
