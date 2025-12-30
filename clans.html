@@ -169,32 +169,9 @@
 
   </section>
 
-</main>
-<script>
-  const thFilter = document.getElementById("thFilter");
-  const statusFilter = document.getElementById("statusFilter");
-  const clanCards = document.querySelectorAll(".clan-card");
-
-  function applyFilters() {
-    const thValue = thFilter.value;
-    const statusValue = statusFilter.value;
-
-    clanCards.forEach(card => {
-      const thMatch =
-        thValue === "all" || card.dataset.th.includes(thValue);
-      const statusMatch =
-        statusValue === "all" || card.classList.contains(statusValue);
-
-      card.style.display = thMatch && statusMatch ? "block" : "none";
-    });
-  }
-
-  thFilter.addEventListener("change", applyFilters);
-  statusFilter.addEventListener("change", applyFilters);
-</script>
-
 </body>
 </html>
+
 
 
 
