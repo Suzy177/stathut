@@ -79,7 +79,7 @@
     <div class="clan-grid">
 
       <!-- THE SHIELD -->
-      <div class="clan-card open">
+      <div class="clan-card open" data-th="th12 th13 th14 th15 th16 th17 th18">
         <img src="assets/badges/shield.png" alt="THE SHIELD badge" class="clan-badge">
         <h3>THE SHIELD</h3>
 
@@ -102,7 +102,7 @@
       </div>
 
       <!-- InvidiaBandit -->
-      <div class="clan-card limited">
+      <div class="clan-card limited" data-th="th12 th13 th14 th15 th16 th17 th18">
         <img src="assets/badges/nvidiabandit.png" alt="NvidiaBandit badge" class="clan-badge">
         <h3>InvidiaBandit</h3>
 
@@ -127,7 +127,7 @@
       </div>
 
       <!-- VillageWarriors -->
-      <div class="clan-card closed">
+      <div class="clan-card closed" data-th="th12 th13 th14 th15 th16 th17 th18">
         <img src="assets/badges/villagewarriors.png" alt="VillageWarriors badge" class="clan-badge">
         <h3>VillageWarriors</h3>
 
@@ -168,7 +168,30 @@
   </section>
 
 </main>
+<script>
+  const thFilter = document.getElementById("thFilter");
+  const statusFilter = document.getElementById("statusFilter");
+  const clanCards = document.querySelectorAll(".clan-card");
+
+  function applyFilters() {
+    const thValue = thFilter.value;
+    const statusValue = statusFilter.value;
+
+    clanCards.forEach(card => {
+      const thMatch =
+        thValue === "all" || card.dataset.th.includes(thValue);
+      const statusMatch =
+        statusValue === "all" || card.classList.contains(statusValue);
+
+      card.style.display = thMatch && statusMatch ? "block" : "none";
+    });
+  }
+
+  thFilter.addEventListener("change", applyFilters);
+  statusFilter.addEventListener("change", applyFilters);
+</script>
 
 </body>
 </html>
+
 
