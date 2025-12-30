@@ -1,27 +1,23 @@
-const thFilter = document.getElementById("filter-th");
-const statusFilter = document.getElementById("filter-status");
-const clanCards = document.querySelectorAll(".clan-card");
-
 function applyFilters() {
   const selectedTH = thFilter.value;
   const selectedStatus = statusFilter.value;
+  let visibleCount = 0;
 
   clanCards.forEach(card => {
     const cardTHs = card.dataset.th.split(",");
     const cardStatus = card.dataset.status;
 
-    let thMatch = selectedTH === "all" || cardTHs.includes(selectedTH);
-    let statusMatch = selectedStatus === "all" || cardStatus === selectedStatus;
+    const thMatch = selectedTH === "all" || cardTHs.includes(selectedTH);
+    const statusMatch = selectedStatus === "all" || cardStatus === selectedStatus;
 
     if (thMatch && statusMatch) {
       card.style.display = "block";
-      card.style.opacity = "1";
-      card.style.transform = "scale(1)";
+      visibleCount++;
     } else {
       card.style.display = "none";
     }
   });
-}
 
-thFilter.addEventListener("change", applyFilters);
-statusFilter.addEventListener("change", applyFilters);
+  document.getElementById("no-results").style.display =
+    visibleCount === 0 ? "block" : "none";
+}
