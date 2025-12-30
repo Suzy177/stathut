@@ -287,3 +287,25 @@ nav a.cta {
     height: 48px;
   }
 }
+
+.clan-filters {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0 3rem;
+  flex-wrap: wrap;
+}
+
+.clan-filters select {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #e6f6ff;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.clan-filters select option {
+  color: #000;
+}
