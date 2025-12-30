@@ -119,6 +119,12 @@ nav a.cta {
   color: #000;
 }
 
+.filter-label {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
 
 /* ==============================
    TOWN HALL PROGRESSION STRIP
@@ -309,3 +315,4 @@ nav a.cta {
     height: 48px;
   }
 }
+
