@@ -37,27 +37,23 @@
 }
 
 /* =========================
-   RULES PAGE BOX STYLE
+   RULES PAGE FIX (SAFE)
 ========================= */
 
+/* Reduce hero spacing on rules page */
+.hero {
+  padding-bottom: 2rem;
+}
+
+/* Box container */
 .rules-box {
-  background: rgba(15, 23, 42, 0.75);
-  border-radius: 18px;
+  max-width: 900px;
+  margin: -4rem auto 4rem; /* pulls box up */
   padding: 3rem 3rem;
-  margin-top: -6rem; /* pulls box closer to hero */
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(8px);
-  max-width: 800px;
+
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 20px;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
 }
-
-.rules-box h2 {
-  margin-top: 2.5rem;
-}
-
-/* Reduce hero height ONLY for rules page */
-body:has(.rules-box) .hero {
-  min-height: 60vh;
-  padding-bottom: 3rem;
-}
-
-
