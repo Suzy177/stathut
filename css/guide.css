@@ -36,3 +36,22 @@
   margin-bottom: 0.6rem;
 }
 
+/* =========================
+   RULES PAGE BOX STYLE
+========================= */
+
+.rules-box {
+  background: rgba(15, 23, 42, 0.75);
+  border-radius: 18px;
+  padding: 3rem 3rem;
+  margin-top: -6rem; /* pulls box closer to hero */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+}
+
+/* Reduce hero height ONLY for rules page */
+body:has(.rules-box) .hero {
+  min-height: 60vh;
+  padding-bottom: 3rem;
+}
+
