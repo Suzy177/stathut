@@ -173,10 +173,52 @@
 
   </section>
 	
-<script src="js/filters.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const thFilter = document.getElementById("thFilter");
+  const statusFilter = document.getElementById("statusFilter");
+  const clanCards = document.querySelectorAll(".clan-card");
+
+  if (!thFilter || !statusFilter || clanCards.length === 0) {
+    console.error("Filter elements not found");
+    return;
+  }
+
+  function applyFilters() {
+    const selectedTH = thFilter.value;
+    const selectedStatus = statusFilter.value;
+
+    clanCards.forEach(card => {
+      const cardTHs = card.dataset.th.split(",");
+      const cardStatus = card.dataset.status;
+
+      let thMatch = false;
+
+      // TH13–TH18 → all clans
+      if (selectedTH === "all") {
+        thMatch = true;
+      } else if (parseInt(selectedTH) >= 13 && parseInt(selectedTH) <= 18) {
+        thMatch = true;
+      } else {
+        thMatch = cardTHs.includes(selectedTH);
+      }
+
+      const statusMatch =
+        selectedStatus === "all" || cardStatus === selectedStatus;
+
+      card.style.display = (thMatch && statusMatch) ? "block" : "none";
+    });
+  }
+
+  thFilter.addEventListener("change", applyFilters);
+  statusFilter.addEventListener("change", applyFilters);
+});
+</script>
+
 
 </body>
 </html>
+
 
 
 
