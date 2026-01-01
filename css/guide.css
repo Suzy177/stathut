@@ -47,9 +47,22 @@
   justify-items: center;
 }
 
+.rule-card {
+  width: 100%;
+  max-width: 720px;             /* 👈 THIS creates the card look */
+  
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 18px;
+  padding: 2.5rem 3rem;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+}
+
 .hero {
   padding-bottom: 2rem;
 }
+
 
 
 
