@@ -1,29 +1,29 @@
 const data = {
   updated: "1 Jan 2026, 9:30 PM IST",
   clans: [
-    { rank: 1, name: "Vi11ageWarriors", league: "Champions", points: 2450 },
-    { rank: 2, name: "InvidiaBandit", league: "Masters", points: 2380 },
-    { rank: 3, name: "THE SHIELD", league: "Masters", points: 2295 }
+    { name: "Vi11ageWarriors", league: "Champions", points: 2450 },
+    { name: "InvidiaBandit", league: "Masters", points: 2380 },
+    { name: "THE SHIELD", league: "Masters", points: 2295 }
   ]
 };
 
 const tbody = document.getElementById("clanTable");
 const lastUpdated = document.getElementById("lastUpdated");
 
-if (tbody) {
-  data.clans.forEach(c => {
-    tbody.insertAdjacentHTML(
-      "beforeend",
-      `<tr>
-        <td>${c.rank}</td>
-        <td>${c.name}</td>
-        <td>${c.league}</td>
-        <td>${c.points}</td>
-      </tr>`
-    );
-  });
-}
+// sort by points (desc)
+data.clans.sort((a, b) => b.points - a.points);
 
-if (lastUpdated) {
-  lastUpdated.textContent = `Last updated: ${data.updated}`;
-}
+// render
+data.clans.forEach((c, i) => {
+  tbody.insertAdjacentHTML(
+    "beforeend",
+    `<tr>
+      <td>${i + 1}</td>
+      <td>${c.name}</td>
+      <td><span class="league ${c.league.toLowerCase()}">${c.league}</span></td>
+      <td>${c.points}</td>
+    </tr>`
+  );
+});
+
+lastUpdated.textContent = `Last updated: ${data.updated}`;
