@@ -1,3 +1,13 @@
+/* =========================
+   CLANS PAGE HERO FIX
+========================= */
+
+.hero {
+  min-height: auto;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
 /* CLANS ONLY */
 .clans-section {
   padding: 5rem 2rem;
@@ -17,3 +27,4 @@
   border-radius: 16px;
   text-align: center;
 }
+
