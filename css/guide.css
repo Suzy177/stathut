@@ -41,7 +41,7 @@
 ========================= */
 
 .rules-container {
-  max-width: 900px;
+  max-width: 720px;
   margin: -4rem auto 4rem; /* pulls content closer to hero */
   padding: 0 2rem;
 
@@ -53,7 +53,7 @@
 .rule-card {
   background: rgba(15, 23, 42, 0.85);
   border-radius: 18px;
-  padding: 2.5rem 3rem;
+  padding: 2rem 2.5rem;
 
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(10px);
@@ -79,4 +79,5 @@
 .hero {
   padding-bottom: 2rem;
 }
+
 
