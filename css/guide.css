@@ -63,7 +63,23 @@
   padding-bottom: 2rem;
 }
 
+/* Rules cards should feel stricter */
+.rules-page .rule-card {
+  border-left: 4px solid #38bdf8;   /* cyan accent */
+}
 
+.rules-page .rule-card h2 {
+  font-size: 1.6rem;
+  letter-spacing: 0.2px;
+}
+
+.rules-page .rule-card ul {
+  margin-top: 1rem;
+}
+
+.guide-section .card {
+  opacity: 0.95;
+}
 
 
 
