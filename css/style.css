@@ -147,6 +147,52 @@ footer {
   opacity: 0.25;
   margin-bottom: 0.5rem;
 }
+/* =========================
+   JOIN PAGE
+========================= */
+
+.join-section {
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.join-box {
+  background: rgba(255,255,255,0.04);
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+.join-box label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.join-box select {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 1.5rem;
+}
+
+.recommendation {
+  background: rgba(34,211,238,0.12);
+  border: 1px solid rgba(34,211,238,0.35);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  color: #e5faff;
+}
+
+.hidden {
+  display: none;
+}
 
 /* =========================
    MOBILE
@@ -161,3 +207,4 @@ footer {
     font-size: 2.2rem;
   }
 }
+
