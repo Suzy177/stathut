@@ -27,3 +27,16 @@ data.clans.forEach((c, i) => {
 });
 
 lastUpdated.textContent = `Last updated: ${data.updated}`;
+
+const search = document.getElementById("clanSearch");
+
+search.addEventListener("input", () => {
+  const value = search.value.toLowerCase();
+  const rows = tbody.querySelectorAll("tr");
+
+  rows.forEach(row => {
+    row.style.display = row.innerText.toLowerCase().includes(value)
+      ? ""
+      : "none";
+  });
+});
