@@ -5,19 +5,23 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!thFilter || clanCards.length === 0) return;
 
   thFilter.addEventListener("change", () => {
-    const selectedTH = thFilter.value;
+    const selected = thFilter.value;
 
     clanCards.forEach(card => {
-      const allowedTHs = card.dataset.th.split(",");
+      const minTH = parseInt(card.dataset.minTh, 10);
 
-      if (
-        selectedTH === "all" ||
-        (selectedTH === "13" && allowedTHs.includes("13")) ||
-        allowedTHs.includes(selectedTH)
-      ) {
+      if (selected === "all") {
         card.style.display = "block";
-      } else {
-        card.style.display = "none";
+        return;
+      }
+
+      if (selected === "10") {
+        card.style.display = minTH === 10 ? "block" : "none";
+        return;
+      }
+
+      if (selected === "13") {
+        card.style.display = minTH >= 13 ? "block" : "none";
       }
     });
   });
