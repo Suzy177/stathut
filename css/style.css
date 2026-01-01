@@ -291,6 +291,26 @@ nav a.cta {
   margin-bottom: 0.85rem;
   color: #d1d5db;
 }
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.filter-bar select {
+  min-width: 180px;
+}
+
+.filter-note {
+  font-size: 0.9rem;
+  color: #9fb4d9;
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.4;
+  opacity: 0.9;
+}
 
 /* ==============================
    MOBILE
@@ -315,4 +335,5 @@ nav a.cta {
     height: 48px;
   }
 }
+
 
