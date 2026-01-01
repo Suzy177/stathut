@@ -18,7 +18,6 @@
 
 <body>
 
-<!-- NAVBAR -->
 <header class="navbar">
   <div class="logo">
     <img src="./assets/logo.svg" alt="StatHut logo" height="36">
@@ -46,7 +45,7 @@
     <label for="thFilter">Filter by Town Hall</label>
     <select id="thFilter">
       <option value="all">All Town Halls</option>
-      <option value="10">TH10+</option>
+      <option value="10">TH10–12</option>
       <option value="13">TH13+</option>
     </select>
   </div>
@@ -55,10 +54,10 @@
   <div class="clan-grid">
 
     <!-- THE SHIELD -->
-    <div class="clan-card" data-th="10">
+    <div class="clan-card" data-min-th="10">
       <img src="./assets/badges/shield.png" alt="THE SHIELD badge" class="clan-badge">
       <h3>THE SHIELD</h3>
-      <p class="clan-meta">TH10+ • FWA • Relaxed</p>
+      <p class="clan-meta">TH10–12 • FWA • Relaxed</p>
       <p>
         Ideal for upgrading heroes and relaxed farming.
         Accepts lower Town Halls.
@@ -67,7 +66,7 @@
     </div>
 
     <!-- INVIDIA BANDIT -->
-    <div class="clan-card" data-th="13">
+    <div class="clan-card" data-min-th="13">
       <img src="./assets/badges/nvidiabandit.png" alt="InvidiaBandit badge" class="clan-badge">
       <h3>InvidiaBandit</h3>
       <p class="clan-meta">TH13+ • FWA • Farming</p>
@@ -78,7 +77,7 @@
     </div>
 
     <!-- VILLAGE WARRIORS -->
-    <div class="clan-card" data-th="13">
+    <div class="clan-card" data-min-th="13">
       <img src="./assets/badges/villagewarriors.png" alt="VillageWarriors badge" class="clan-badge">
       <h3>VillageWarriors</h3>
       <p class="clan-meta">TH13+ • FWA • Semi-Active</p>
@@ -92,11 +91,13 @@
 
 </section>
 
-<!-- FOOTER -->
 <footer>
   <img src="./assets/stathut-emblem.png" alt="StatHut emblem" class="footer-logo">
   <p>© 2025 StatHut | Unofficial Clash of Clans community</p>
 </footer>
+
+<!-- FILTER SCRIPT -->
+<script src="./js/filters.js"></script>
 
 </body>
 </html>
