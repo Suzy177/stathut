@@ -97,3 +97,42 @@ nav a {
   color: #94a3b8;
   line-height: 1.4;
 }
+
+/* ===== FWA Clan Points Table ===== */
+.clan-points {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.clan-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.clan-table th,
+.clan-table td {
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.clan-table thead th {
+  font-weight: 600;
+  border-bottom: 2px solid rgba(255,255,255,0.15);
+}
+
+.clan-table tbody td {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.subtext {
+  opacity: 0.75;
+  font-size: 14px;
+}
+
+#lastUpdated {
+  margin-top: 12px;
+  font-size: 13px;
+  opacity: 0.6;
+}
