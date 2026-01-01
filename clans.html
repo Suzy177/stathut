@@ -173,25 +173,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const clanCards = document.querySelectorAll(".clan-card");
 
   function applyFilters() {
-    const selectedTH = thFilter.value;
-    const selectedStatus = statusFilter.value;
+  const selectedTH = thFilter.value;
 
-    clanCards.forEach(card => {
-      const cardTHs = card.dataset.th.split(" ");
-      const cardStatus = card.dataset.status;
+  clanCards.forEach(card => {
+    const cardTHs = card.dataset.th.split(" ");
 
-      // TH13–TH18 rule: show all clans
-      const thMatch =
-        selectedTH === "all" ||
-        ["th11","th12","th13","th14","th15","th16","th17","th18"].includes(selectedTH);
+    // TH13–TH18 rule: always show all clans
+    const thMatch =
+      selectedTH === "all" ||
+      ["th13","th14","th15","th16","th17","th18"].includes(selectedTH);
 
-      const statusMatch =
-        selectedStatus === "all" || cardStatus === selectedStatus;
-
-      card.style.display = (thMatch && statusMatch) ? "" : "none";
-    });
-  }
-
+    card.style.display = thMatch ? "" : "none";
+  });
+}
   thFilter.addEventListener("change", applyFilters);
   statusFilter.addEventListener("change", applyFilters);
 });
@@ -200,6 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
+
 
 
 
