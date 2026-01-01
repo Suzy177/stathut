@@ -1,5 +1,5 @@
 /* =========================
-   GLOBAL RESET
+   RESET & BASE
 ========================= */
 * {
   margin: 0;
@@ -8,9 +8,6 @@
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-/* =========================
-   BASE
-========================= */
 body {
   background: linear-gradient(180deg, #020617, #0f172a);
   color: #e5e7eb;
@@ -54,7 +51,7 @@ nav a:hover {
 }
 
 /* =========================
-   HERO (LOCKED)
+   HERO (GLOBAL)
 ========================= */
 .hero {
   min-height: calc(100vh - 80px);
@@ -64,6 +61,12 @@ nav a:hover {
   align-items: center;
   padding: 0 2rem;
   text-align: center;
+}
+
+.hero-logo {
+  max-width: 180px;
+  width: 100%;
+  margin-bottom: 1.2rem;
 }
 
 .hero h1 {
@@ -76,6 +79,27 @@ nav a:hover {
   max-width: 520px;
   font-size: 1.1rem;
   color: #cbd5f5;
+}
+
+/* =========================
+   HOME PAGE OVERRIDE 🔥
+========================= */
+body.home .hero-logo {
+  max-width: 140px; /* smaller only on home */
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.8rem;
+  background: #22d3ee;
+  color: #020617;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
 }
 
 /* =========================
@@ -98,14 +122,6 @@ nav a:hover {
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
-}
-
-.about-block h3 {
-  margin-bottom: 0.6rem;
-}
-
-.about-block p {
-  color: #cbd5f5;
 }
 
 /* =========================
@@ -138,5 +154,9 @@ footer {
 
   .hero h1 {
     font-size: 2.2rem;
+  }
+
+  body.home .hero-logo {
+    max-width: 120px;
   }
 }
