@@ -37,47 +37,32 @@
 }
 
 /* =========================
-   RULES PAGE – MULTI BOX
+   HARD OVERRIDE: RULES PAGE
 ========================= */
 
-.rules-container {
-  max-width: 720px;
-  margin: -4rem auto 4rem; /* pulls content closer to hero */
-  padding: 0 2rem;
+.rules-page {
+  display: block !important;
+}
 
-  display: flex;
-  flex-direction: column;
+.rules-page .rules-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+
+  max-width: 720px;
+  margin: -4rem auto 4rem;
+  padding: 0 1.5rem;
   gap: 2rem;
 }
 
-.rule-card {
-  background: rgba(15, 23, 42, 0.85);
-  border-radius: 18px;
-  padding: 2rem 2.5rem;
-
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(10px);
+.rules-page .rule-card {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-.rule-card h2 {
-  margin-bottom: 1.2rem;
-  font-size: 1.8rem;
-}
-
-.rule-card ul {
-  margin-left: 1.2rem;
-}
-
-.rule-card li {
-  margin-bottom: 0.6rem;
-  line-height: 1.6;
-}
-
-.rule-card p {
-  line-height: 1.7;
-}
 .hero {
   padding-bottom: 2rem;
 }
+
 
 
