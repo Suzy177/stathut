@@ -6,6 +6,7 @@
   padding: 5rem 2rem;
   max-width: 900px;
   margin: 0 auto;
+  font-size: 1.05rem; 
 }
 
 .guide-section h2 {
@@ -17,6 +18,7 @@
 .guide-section h3 {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
+  color: #e5faff; 
 }
 
 .guide-section p {
@@ -33,3 +35,4 @@
 .guide-section li {
   margin-bottom: 0.6rem;
 }
+
