@@ -144,3 +144,20 @@ nav a {
 .clan-table tbody tr:hover {
   background: rgba(255, 255, 255, 0.04);
 }
+
+.league {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.league.champions {
+  background: rgba(255, 215, 0, 0.15);
+  color: #ffd700;
+}
+
+.league.masters {
+  background: rgba(0, 170, 255, 0.15);
+  color: #4fc3ff;
+}
