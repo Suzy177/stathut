@@ -133,8 +133,9 @@ nav a {
 
 #lastUpdated {
   margin-top: 12px;
-  font-size: 13px;
+  font-size: 12px;
   opacity: 0.6;
+  text-align: right;
 }
 
 .clan-table tbody tr {
@@ -172,3 +173,4 @@ nav a {
   background: transparent;
   color: #fff;
 }
+
