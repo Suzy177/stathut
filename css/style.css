@@ -327,6 +327,39 @@ nav a.cta {
   margin-right: auto;
   line-height: 1.4;
 }
+/* =========================
+   HERO FIX (CRITICAL)
+========================= */
+
+.hero {
+  min-height: calc(100vh - 80px); /* account for navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Balance logo size */
+.hero-logo {
+  max-width: 220px;
+  width: 100%;
+  margin: 0 auto 1rem;
+}
+
+/* Improve text presence */
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0.8rem auto 0;
+}
+
+/* Footer logo softer */
+.footer-logo {
+  opacity: 0.35;
+}
 
 /* ==============================
    MOBILE
@@ -351,6 +384,7 @@ nav a.cta {
     height: 48px;
   }
 }
+
 
 
 
