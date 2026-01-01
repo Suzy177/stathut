@@ -36,33 +36,21 @@
   margin-bottom: 0.6rem;
 }
 
-/* =========================
-   HARD OVERRIDE: RULES PAGE
-========================= */
-
-.rules-page {
-  display: block !important;
-}
-
-.rules-page .rules-container {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: stretch !important;
-
-  max-width: 720px;
+.rules-container {
+  max-width: 1100px;
   margin: -4rem auto 4rem;
-  padding: 0 1.5rem;
-  gap: 2rem;
-}
+  padding: 0 2rem;
 
-.rules-page .rule-card {
-  width: 100% !important;
-  max-width: 100% !important;
+  display: grid;
+  grid-template-columns: 1fr;   /* 👈 ONE COLUMN ONLY */
+  row-gap: 2.5rem;
+  justify-items: center;
 }
 
 .hero {
   padding-bottom: 2rem;
 }
+
 
 
 
