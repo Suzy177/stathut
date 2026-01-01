@@ -5,213 +5,113 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Our Clans | StatHut FWA Community</title>
-  <meta name="description" content="Explore active StatHut Farm War Alliance (FWA) clans. Find the perfect clan based on your Town Hall level and playstyle." />
+  <meta name="description" content="Explore StatHut’s active Farm War Alliance (FWA) clans. Find a Clash of Clans clan that fits your Town Hall level and playstyle." />
 
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/clan-visual.css">
 </head>
 
 <body>
 
 <header class="navbar">
-  <div class="logo">StatHut</div>
+  <div class="logo">
+    <a href="index.html">StatHut</a>
+  </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About FWA</a>
-    <a href="clans.html">Our Clans</a>
+    <a href="clans.html" class="active">Our Clans</a>
     <a href="join.html" class="cta">Join</a>
   </nav>
 </header>
 
-<main>
+<section class="hero">
+  <h2>Our Clans</h2>
+  <p>FWA clans under the StatHut network. Farm smart, grow fast.</p>
+</section>
 
-  <!-- PAGE HERO -->
-  <section class="hero">
-    <h2>Our Clans</h2>
-    <p>FWA clans under the StatHut network. Farm smart, grow fast.</p>
-  </section>
+<section class="clans">
 
-  <!-- CLANS SECTION -->
-  <section class="clans">
+  <div class="clan-visual">
+    <img src="assets/images/th-clans.png" alt="Town Hall progression">
+  </div>
 
-    <h2>Active StatHut Clans</h2>
-    <p class="clans-intro">
-      Choose a clan that matches your Town Hall level and preferred playstyle.
-      All StatHut clans follow official FWA rules.
-    </p>
+  <h2>Active StatHut Clans</h2>
+  <p class="clans-intro">
+    All StatHut clans are recruiting. Placement depends on your Town Hall level.
+  </p>
 
-    <!-- Town Hall progression strip -->
-    <div class="th-progression">
-      <img src="assets/th/th10.png" alt="TH10">
-      <img src="assets/th/th11.png" alt="TH11">
-      <img src="assets/th/th12.png" alt="TH12">
-      <img src="assets/th/th13.png" alt="TH13">
-      <img src="assets/th/th14.png" alt="TH14">
-      <img src="assets/th/th15.png" alt="TH15">
-      <img src="assets/th/th16.png" alt="TH16">
-	  <img src="assets/th/th17.png" alt="TH17">
-	  <img src="assets/th/th18.png" alt="TH18">	
-    </div>
-  
-	  <!-- Clan Filters -->
-	<div class="clan-filters">
-	  <label for="thFilter">Filter clans by:</label>
-		
-  	  <select id="thFilter">
-    	<option value="all">All Town Halls</option>
-    	<option value="th13">TH13</option>
-    	<option value="th14">TH14</option>
-    	<option value="th15">TH15</option>
-    	<option value="th16">TH16</option>
-    	<option value="th17">TH17</option>
-    	<option value="th18">TH18</option>
-  	  </select>
+  <!-- FILTER -->
+  <div class="filters" style="text-align:center; margin-bottom:2rem;">
+    <select id="thFilter">
+      <option value="all">All Town Halls</option>
+      <option value="12">TH12</option>
+      <option value="13">TH13+</option>
+    </select>
+  </div>
 
-	  <select id="statusFilter">
-    	<option value="all">All Status</option>
-    	<option value="Vi11ageWarriors">Vi11ageWarriors</option>
-        <option value="InvidiaBandit">InvidiaBandit</option>
-        <option value="TheShield">TheShield</option>
-  	  </select>
+  <div class="clan-grid">
 
-	  <div id="clansContainer"></div>
-	  
-	  <p class="filter-note">
-  	    TH13–TH18 players are welcome in all StatHut clans.  
-        Below TH13 applicants will be placed in suitable clans based on availability.
-      </p> 
-	</div>
-	  
-    <!-- CLAN CARDS -->
-    <div class="clan-grid">
-
-      <!-- THE SHIELD -->
-      <div class="clan-card open" data-th="th13 th14 th15 th16 th17 th18" data-status="open">
-        <img src="assets/badges/shield.png" alt="THE SHIELD badge" class="clan-badge">
-        <h3>THE SHIELD</h3>
-
-        <div class="th-icons">
-          <img src="assets/th/th13.png" alt="TH13">
-          <img src="assets/th/th14.png" alt="TH14">
-          <img src="assets/th/th15.png" alt="TH15">
-          <img src="assets/th/th16.png" alt="TH16">
-		  <img src="assets/th/th17.png" alt="TH17">
-		  <img src="assets/th/th18.png" alt="TH18">
-        </div>
-
-        <ul>
-          <li><strong>War Type:</strong> FWA (Farm Wars)</li>
-          <li><strong>Playstyle:</strong> Relaxed • Upgrade Focused</li>
-          <li><strong>Status:</strong> 🟢 Recruiting</li>
-        </ul>
-
-        <a href="join.html" class="clan-cta">Apply via Discord</a>
-      </div>
-
-      <!-- InvidiaBandit -->
-      <div class="clan-card open" data-th="th13 th14 th15 th16 th17 th18" data-status="open">
-        <img src="assets/badges/nvidiabandit.png" alt="NvidiaBandit badge" class="clan-badge">
-        <h3>InvidiaBandit</h3>
-
-        <div class="th-icons">
-          <img src="assets/th/th13.png" alt="TH13">
-          <img src="assets/th/th14.png" alt="TH14">
-		  <img src="assets/th/th15.png" alt="TH15">
-          <img src="assets/th/th16.png" alt="TH16">
-		  <img src="assets/th/th17.png" alt="TH17">
-		  <img src="assets/th/th18.png" alt="TH18">
-        </div>
-
-        <ul>
-          <li><strong>War Type:</strong> FWA (Farm Wars)</li>
-          <li><strong>Playstyle:</strong> Casual • Farming</li>
-          <li><strong>Status:</strong> 🟢 Recruiting</li>
-        </ul>
-
-        <a href="join.html" class="clan-cta">Apply via Discord</a>
-      </div>
-
-      <!-- VillageWarriors -->
-      <div class="clan-card open" data-th="th13 th14 th15 th16 th17 th18" data-status="open">
-        <img src="assets/badges/villagewarriors.png" alt="VillageWarriors badge" class="clan-badge">
-        <h3>VillageWarriors</h3>
-
-        <div class="th-icons">	
-          <img src="assets/th/th13.png" alt="TH13">
-		  <img src="assets/th/th14.png" alt="TH14">
-		  <img src="assets/th/th15.png" alt="TH15">
-          <img src="assets/th/th16.png" alt="TH16">
-		  <img src="assets/th/th17.png" alt="TH17">
-		  <img src="assets/th/th18.png" alt="TH18">
-        </div>
-
-        <ul>
-          <li><strong>War Type:</strong> FWA (Farm Wars)</li>
-          <li><strong>Playstyle:</strong> Casual • Farming</li>
-          <li><strong>Status:</strong> 🟢 Recruiting</li>
-        </ul>
-
-        <a href="join.html" class="clan-cta">Apply via Discord</a>
-      </div>
-
-    </div>
-
-    <!-- GENERAL REQUIREMENTS -->
-    <div class="requirements">
-      <h3>General Requirements</h3>
+    <!-- THE SHIELD (accepts low TH) -->
+    <div class="clan-card open" data-th="10,11,12,13,14,15,16,17,18">
+      <img src="assets/badges/shield.png" alt="THE SHIELD badge" class="clan-badge">
+      <h3>THE SHIELD</h3>
       <ul>
-        <li>✔ Follow official FWA rules and assignments</li>
-        <li>✔ Complete both war attacks</li>
-        <li>✔ Discord participation required</li>
-        <li>✔ Respect clan leadership and structure</li>
+        <li><strong>Town Hall:</strong> TH10+</li>
+        <li><strong>War Type:</strong> FWA (Farm Wars)</li>
+        <li><strong>Playstyle:</strong> Relaxed • Upgrade Focused</li>
+        <li><strong>Status:</strong> 🟢 Recruiting</li>
       </ul>
+      <a href="join.html" class="clan-cta">Apply via Discord</a>
     </div>
 
-  </section>
-	
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const thFilter = document.getElementById("thFilter");
-  const statusFilter = document.getElementById("statusFilter");
-  const clanCards = document.querySelectorAll(".clan-card");
+    <!-- InvidiaBandit -->
+    <div class="clan-card open" data-th="13,14,15,16,17,18">
+      <img src="assets/badges/nvidiabandit.png" alt="InvidiaBandit badge" class="clan-badge">
+      <h3>InvidiaBandit</h3>
+      <ul>
+        <li><strong>Town Hall:</strong> TH13+</li>
+        <li><strong>War Type:</strong> FWA (Farm Wars)</li>
+        <li><strong>Playstyle:</strong> Casual • Farming</li>
+        <li><strong>Status:</strong> 🟢 Recruiting</li>
+      </ul>
+      <a href="join.html" class="clan-cta">Apply via Discord</a>
+    </div>
 
-  function applyFilters() {
-  const selectedTH = thFilter.value;
+    <!-- VillageWarriors -->
+    <div class="clan-card open" data-th="13,14,15,16,17,18">
+      <img src="assets/badges/villagewarriors.png" alt="VillageWarriors badge" class="clan-badge">
+      <h3>VillageWarriors</h3>
+      <ul>
+        <li><strong>Town Hall:</strong> TH13+</li>
+        <li><strong>War Type:</strong> FWA (Farm Wars)</li>
+        <li><strong>Playstyle:</strong> Semi-Active</li>
+        <li><strong>Status:</strong> 🟢 Recruiting</li>
+      </ul>
+      <a href="join.html" class="clan-cta">Apply via Discord</a>
+    </div>
 
-  clanCards.forEach(card => {
-    const cardTHs = card.dataset.th.split(" ");
+  </div>
+</section>
 
-    // TH13–TH18 rule: always show all clans
-    const thMatch =
-      selectedTH === "all" ||
-      ["th13","th14","th15","th16","th17","th18"].includes(selectedTH);
+<section class="requirements">
+  <h2>General Requirements</h2>
+  <ul class="requirements-list">
+    <li>Follow official FWA rules</li>
+    <li>Use both war attacks</li>
+    <li>Discord participation required</li>
+    <li>Inactive members are rotated</li>
+  </ul>
+</section>
 
-    card.style.display = thMatch ? "" : "none";
-  });
-}
-  thFilter.addEventListener("change", applyFilters);
-  statusFilter.addEventListener("change", applyFilters);
-});
-</script>
+<footer class="footer">
+  <p>© 2025 StatHut • Farm Smart. War Easy.</p>
+</footer>
 
-
+<script src="filters.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
