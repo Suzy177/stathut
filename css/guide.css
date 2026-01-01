@@ -48,8 +48,9 @@
 }
 
 .rule-card {
-  width: 100%;
-  max-width: 720px;
+  max-width: 720px; 
+  width: auto;
+  margin: 0 auto; 
 
   background: rgba(15, 23, 42, 0.85);
   border-radius: 18px;
@@ -59,8 +60,8 @@
   backdrop-filter: blur(10px);
 }
 
-.hero {
-  padding-bottom: 2rem;
+.rule-card {
+  width: 100%;
 }
 
 /* Rules cards should feel stricter */
@@ -81,6 +82,9 @@
   opacity: 0.95;
 }
 
+.hero {
+  padding-bottom: 2rem;
+}
 
 
 
