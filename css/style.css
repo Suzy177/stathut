@@ -328,47 +328,101 @@ nav a.cta {
   line-height: 1.4;
 }
 /* =========================
-   HERO FIX (CRITICAL)
+   HERO – FINAL FIX (LOCKED)
 ========================= */
 
 .hero {
-  min-height: calc(100vh - 80px); /* account for navbar */
+  min-height: calc(100vh - 80px); /* adjust if navbar height changes */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+  /* IMPORTANT: remove vertical padding that breaks centering */
+  padding: 0 2rem;
+
   text-align: center;
 }
 
-/* Balance logo size */
+/* =========================
+   HERO LOGO
+========================= */
+
 .hero-logo {
-  max-width: 220px;
+  max-width: 180px;
   width: 100%;
-  margin: 0 auto 1rem;
+  margin-bottom: 1.2rem;
 }
 
-/* Improve text presence */
+/* =========================
+   HERO TEXT
+========================= */
+
 .hero h1 {
   font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
 }
 
 .hero p {
-  max-width: 600px;
-  margin: 0.8rem auto 0;
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: #cbd5f5;
 }
 
-/* Footer logo softer */
-.footer-logo {
-  opacity: 0.35;
+/* =========================
+   CTA BUTTON (OPTIONAL)
+========================= */
+
+.hero .btn {
+  margin-top: 1.5rem;
 }
+
+/* =========================
+   FOOTER LOGO (DEMOTED)
+========================= */
+
+.footer-logo {
+  width: 72px;
+  opacity: 0.25;
+  margin-bottom: 0.5rem;
+}
+
+/* =========================
+   MOBILE TWEAK
+========================= */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: calc(100vh - 64px);
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-logo {
+    max-width: 150px;
+  }
+}
+
 
 /* ==============================
    MOBILE
    ============================== */
 
 @media (max-width: 768px) {
-  .hero h1,
-  .hero h2 {
+  .hero {
+    min-height: calc(100vh - 64px);
+  }
+
+  .hero h1 {
     font-size: 2.2rem;
+  }
+
+  .hero-logo {
+    max-width: 150px;
   }
 
   .navbar {
@@ -384,6 +438,7 @@ nav a.cta {
     height: 48px;
   }
 }
+
 
 
 
