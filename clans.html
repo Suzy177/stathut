@@ -4,114 +4,99 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Our Clans | StatHut FWA Community</title>
-  <meta name="description" content="Explore StatHut’s active Farm War Alliance (FWA) clans. Find a Clash of Clans clan that fits your Town Hall level and playstyle." />
+  <title>Our Clans | StatHut</title>
+  <meta name="description" content="Explore StatHut’s active Farm War Alliance clans. Placement depends on your Town Hall level.">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="./css/style.css">
-  <link rel="stylesheet" href="./css/clan-visual.css">
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <header class="navbar">
   <div class="logo">
-    <a href="index.html">StatHut</a>
+    <img src="./assets/logo.svg" alt="StatHut logo" height="36">
   </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About FWA</a>
     <a href="clans.html" class="active">Our Clans</a>
     <a href="join.html" class="cta">Join</a>
+    <a href="rules.html">Rules</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-  <h2>Our Clans</h2>
-  <p>FWA clans under the StatHut network. Farm smart, grow fast.</p>
+  <h1>Active StatHut Clans</h1>
+  <p>All clans are recruiting. Placement depends on your Town Hall level.</p>
 </section>
 
-<section class="clans">
+<!-- CLANS SECTION -->
+<section class="clans-section">
 
-  <div class="clan-visual">
-    <img src="assets/images/th-clans.png" alt="Town Hall progression">
-  </div>
-
-  <h2>Active StatHut Clans</h2>
-  <p class="clans-intro">
-    All StatHut clans are recruiting. Placement depends on your Town Hall level.
-  </p>
-
-  <!-- FILTER -->
-  <div class="filters" style="text-align:center; margin-bottom:2rem;">
+  <!-- FILTER BAR -->
+  <div class="clans-filter">
+    <label for="thFilter">Filter by Town Hall</label>
     <select id="thFilter">
       <option value="all">All Town Halls</option>
-      <option value="12">TH12</option>
+      <option value="10">TH10+</option>
       <option value="13">TH13+</option>
     </select>
   </div>
 
+  <!-- CLAN GRID -->
   <div class="clan-grid">
 
-    <!-- THE SHIELD (accepts low TH) -->
-    <div class="clan-card open" data-th="10,11,12,13,14,15,16,17,18">
-      <img src="assets/badges/shield.png" alt="THE SHIELD badge" class="clan-badge">
+    <!-- THE SHIELD -->
+    <div class="clan-card" data-th="10">
+      <img src="./assets/badges/shield.png" alt="THE SHIELD badge" class="clan-badge">
       <h3>THE SHIELD</h3>
-      <ul>
-        <li><strong>Town Hall:</strong> TH10+</li>
-        <li><strong>War Type:</strong> FWA (Farm Wars)</li>
-        <li><strong>Playstyle:</strong> Relaxed • Upgrade Focused</li>
-        <li><strong>Status:</strong> 🟢 Recruiting</li>
-      </ul>
-      <a href="join.html" class="clan-cta">Apply via Discord</a>
+      <p class="clan-meta">TH10+ • FWA • Relaxed</p>
+      <p>
+        Ideal for upgrading heroes and relaxed farming.
+        Accepts lower Town Halls.
+      </p>
+      <a href="join.html" class="btn">Apply</a>
     </div>
 
-    <!-- InvidiaBandit -->
-    <div class="clan-card open" data-th="13,14,15,16,17,18">
-      <img src="assets/badges/nvidiabandit.png" alt="InvidiaBandit badge" class="clan-badge">
+    <!-- INVIDIA BANDIT -->
+    <div class="clan-card" data-th="13">
+      <img src="./assets/badges/nvidiabandit.png" alt="InvidiaBandit badge" class="clan-badge">
       <h3>InvidiaBandit</h3>
-      <ul>
-        <li><strong>Town Hall:</strong> TH13+</li>
-        <li><strong>War Type:</strong> FWA (Farm Wars)</li>
-        <li><strong>Playstyle:</strong> Casual • Farming</li>
-        <li><strong>Status:</strong> 🟢 Recruiting</li>
-      </ul>
-      <a href="join.html" class="clan-cta">Apply via Discord</a>
+      <p class="clan-meta">TH13+ • FWA • Farming</p>
+      <p>
+        Designed for higher Town Halls focused on efficient farming.
+      </p>
+      <a href="join.html" class="btn">Apply</a>
     </div>
 
-    <!-- VillageWarriors -->
-    <div class="clan-card open" data-th="13,14,15,16,17,18">
-      <img src="assets/badges/villagewarriors.png" alt="VillageWarriors badge" class="clan-badge">
+    <!-- VILLAGE WARRIORS -->
+    <div class="clan-card" data-th="13">
+      <img src="./assets/badges/villagewarriors.png" alt="VillageWarriors badge" class="clan-badge">
       <h3>VillageWarriors</h3>
-      <ul>
-        <li><strong>Town Hall:</strong> TH13+</li>
-        <li><strong>War Type:</strong> FWA (Farm Wars)</li>
-        <li><strong>Playstyle:</strong> Semi-Active</li>
-        <li><strong>Status:</strong> 🟢 Recruiting</li>
-      </ul>
-      <a href="join.html" class="clan-cta">Apply via Discord</a>
+      <p class="clan-meta">TH13+ • FWA • Semi-Active</p>
+      <p>
+        Balanced environment for steady progression and farming.
+      </p>
+      <a href="join.html" class="btn">Apply</a>
     </div>
 
   </div>
+
 </section>
 
-<section class="requirements">
-  <h2>General Requirements</h2>
-  <ul class="requirements-list">
-    <li>Follow official FWA rules</li>
-    <li>Use both war attacks</li>
-    <li>Discord participation required</li>
-    <li>Inactive members are rotated</li>
-  </ul>
-</section>
-
-<footer class="footer">
-  <p>© 2025 StatHut • Farm Smart. War Easy.</p>
+<!-- FOOTER -->
+<footer>
+  <img src="./assets/stathut-emblem.png" alt="StatHut emblem" class="footer-logo">
+  <p>© 2025 StatHut | Unofficial Clash of Clans community</p>
 </footer>
 
-<script src="filters.js"></script>
 </body>
 </html>
