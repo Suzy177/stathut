@@ -1,27 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const thFilter = document.getElementById("thFilter");
-  const clanCards = document.querySelectorAll(".clan-card");
+  const filter = document.getElementById("thFilter");
+  const cards = document.querySelectorAll(".clan-card");
 
-  if (!thFilter || clanCards.length === 0) return;
+  if (!filter || cards.length === 0) return;
 
-  thFilter.addEventListener("change", () => {
-    const selected = thFilter.value;
+  filter.addEventListener("change", () => {
+    const value = filter.value;
 
-    clanCards.forEach(card => {
+    cards.forEach(card => {
       const minTH = parseInt(card.dataset.minTh, 10);
 
-      if (selected === "all") {
-        card.style.display = "block";
+      // Show all
+      if (value === "all") {
+        card.style.display = "flex";
         return;
       }
 
-      if (selected === "10") {
-        card.style.display = minTH === 10 ? "block" : "none";
+      // TH10–12
+      if (value === "10") {
+        card.style.display =
+          minTH === 10 ? "flex" : "none";
         return;
       }
 
-      if (selected === "13") {
-        card.style.display = minTH >= 13 ? "block" : "none";
+      // TH13+
+      if (value === "13") {
+        card.style.display =
+          minTH >= 13 ? "flex" : "none";
       }
     });
   });
