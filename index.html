@@ -2,46 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>StatHut – Clan Recruitment</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="google-site-verification" content="SPTZOcJ0_AM8UaOo3j23wiJaIxTsjjcxR9e6qD14DMw" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GJLXJW3G7H');
+  </script>
+
+  <title>StatHut – Farm Smart. War Easy.</title>
+
+  <!-- SEO -->
+  <meta name="description" content="StatHut is an FWA-focused Clash of Clans community helping players farm smarter with stress-free wars, loot optimization, and active clans.">
+  <meta name="keywords" content="StatHut, FWA, Farm War Alliance, Clash of Clans FWA, farming clans, loot farming">
+  <meta name="author" content="StatHut">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="StatHut – Farm Smart. War Easy.">
+  <meta property="og:description" content="A home for FWA clans focused on loot, XP, and stress-free wars.">
+  <meta property="og:image" content="https://stathut.in/assets/stathut-emblem.png">
+  <meta property="og:url" content="https://stathut.in">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="StatHut – Farm Smart. War Easy.">
+  <meta name="twitter:description" content="A home for FWA clans focused on loot, XP, and stress-free wars.">
+  <meta name="twitter:image" content="https://stathut.in/assets/stathut-emblem.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
-  <h1>StatHut – Clan Recruitment</h1>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="./assets/logo.svg" alt="StatHut logo" height="36">
+    </div>
 
-  <!-- Filters -->
-  <div class="filters">
-    <select id="thFilter">
-      <option value="all">All Town Halls</option>
-      <option value="12">TH12</option>
-      <option value="13">TH13</option>
-      <option value="14">TH14</option>
-      <option value="15">TH15</option>
-      <option value="16">TH16</option>
-      <option value="17">TH17</option>
-      <option value="18">TH18</option>
-    </select>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About FWA</a>
+      <a href="clans.html">Our Clans</a>
+      <a href="join.html" class="cta">Join</a>
+      <a href="fwa-guide.html">Learn how FWA works →</a>
+      <a href="rules.html">Rules</a>
+    </nav>
+  </header>
 
-    <select id="clanFilter">
-      <option value="all">All Clans</option>
-      <option value="Vi11ageWarriors">Vi11ageWarriors</option>
-      <option value="InvidiaBandit">InvidiaBandit</option>
-      <option value="TheShield">TheShield</option>
-    </select>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
 
-  <!-- Recruitment Info -->
-  <div class="policy">
-    <strong>Recruitment Policy</strong><br />
-    • TH13–TH18: All clans recruiting<br />
-    • Below TH13: Accepted in one designated clan only<br />
-    • Inactive members (3 wars) are rotated<br />
-    • Multiple accounts allowed
-  </div>
+    <img
+      src="./assets/stathut-emblem.png"
+      alt="StatHut FWA Clash of Clans community emblem"
+      class="hero-logo"
+    >
 
-  <!-- Output -->
-  <div id="clansContainer"></div>
+    <h1>Farm Smart. War Easy.</h1>
 
-  <script src="script.js"></script>
+    <p>
+      A home for FWA clans focused on loot, XP, and stress-free wars.
+    </p>
+
+    <a href="join.html" class="btn">Join StatHut Discord</a>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="card">
+      <h3>What is FWA?</h3>
+      <p>
+        Farm War Alliance allows clans to arrange wars for maximum loot with minimal effort.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Why StatHut?</h3>
+      <p>
+        Clear rules, active clans, and a relaxed environment for serious farming.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Who Can Join?</h3>
+      <p>
+        Active players focused on upgrades, teamwork, and fair play.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img src="./assets/stathut-emblem.png" alt="StatHut emblem" class="footer-logo">
+    <p>© 2025 StatHut | Unofficial Clash of Clans community</p>
+  </footer>
+
 </body>
 </html>
