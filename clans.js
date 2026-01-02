@@ -1,40 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ===============================
-     DATA SOURCE (Option A - Manual)
-     =============================== */
-  const data = {
-    updated: "1 Jan 2026, 9:30 PM IST",
-    clans: [
-      { name: "Vi11ageWarriors", league: "Champions", points: 2450 },
-      { name: "InvidiaBandit", league: "Masters", points: 2380 },
-      { name: "THE SHIELD", league: "Masters", points: 2295 }
-    ]
-  };
+  const DATA_SOURCE = getClanData();
 
-  /* ===============================
-     ELEMENT REFERENCES
-     =============================== */
-  const tbody = document.getElementById("clanTable");
-  const lastUpdated = document.getElementById("lastUpdated");
-  const searchInput = document.getElementById("clanSearch");
+  renderTable(DATA_SOURCE);
 
-  if (!tbody) return; // safety guard
+  function getClanData() {
+    // 🔁 FUTURE: replace this with fetch("/api/clans")
+    return {
+      updated: "1 Jan 2026, 9:30 PM IST",
+      clans: [
+        { name: "Vi11ageWarriors", league: "Champions", points: 2450 },
+        { name: "InvidiaBandit", league: "Masters", points: 2380 },
+        { name: "THE SHIELD", league: "Masters", points: 2295 }
+      ]
+    };
+  }
 
-  /* ===============================
-     HELPERS
-     =============================== */
   function slugify(name) {
     return name.toLowerCase().replace(/\s+/g, "");
   }
 
-  /* ===============================
-     RENDER TABLE
-     =============================== */
-  function renderTable(clans) {
-    tbody.innerHTML = "";
+  function renderTable(data) {
+    const tbody = document.getElementById("clanTable");
+    const lastUpdated = document.getElementById("lastUpdated");
+    if (!tbody) return;
 
-    clans
+    data.clans
       .sort((a, b) => b.points - a.points)
       .forEach((c, i) => {
         const slug = slugify(c.name);
@@ -48,40 +39,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 ${c.name}
               </a>
             </td>
-            <td>
-              <span class="league ${c.league.toLowerCase()}">
-                ${c.league}
-              </span>
-            </td>
+            <td><span class="league ${c.league.toLowerCase()}">${c.league}</span></td>
             <td>${c.points}</td>
           </tr>`
         );
       });
-  }
 
-  /* ===============================
-     INITIAL RENDER
-     =============================== */
-  renderTable(data.clans);
-
-  if (lastUpdated) {
-    lastUpdated.textContent = `Last updated: ${data.updated}`;
-  }
-
-  /* ===============================
-     SEARCH FILTER
-     =============================== */
-  if (searchInput) {
-    searchInput.addEventListener("input", () => {
-      const value = searchInput.value.toLowerCase();
-
-      const filtered = data.clans.filter(clan =>
-        clan.name.toLowerCase().includes(value) ||
-        clan.league.toLowerCase().includes(value)
-      );
-
-      renderTable(filtered);
-    });
+    if (lastUpdated) {
+      lastUpdated.textContent = `Last updated: ${data.updated}`;
+    }
   }
 
 });
