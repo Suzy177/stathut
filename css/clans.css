@@ -115,6 +115,7 @@
   color: #8ab4ff;
   border: none;
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .points-info-btn:hover {
@@ -170,3 +171,4 @@
   color: #fff;
   cursor: pointer;
 }
+
