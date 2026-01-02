@@ -82,7 +82,12 @@
   
 <!-- FWA CLAN POINTS START -->
 <section class="clan-points">
-  <h2>FWA Clan Points</h2>
+  <h2>
+    FWA Clan Points
+    <button class="points-info-btn" id="openPointsInfo">
+      How points work?
+    </button>  
+  </h2>
   <p class="subtext">Source: FWA • Manual update</p>
 
   <table class="clan-table">
@@ -118,12 +123,43 @@
     </p>
   </div>
 </footer>
+  
+<!-- HOW POINTS WORK MODAL -->
+<div class="modal-overlay" id="pointsModal">
+  <div class="modal">
+    <button class="modal-close" id="closePointsInfo">×</button>
 
+    <h3>How FWA Clan Points Work</h3>
+
+    <p>
+      FWA Clan Points are an <strong>internal performance metric</strong> used
+      within the Farm War Alliance (FWA) ecosystem.
+    </p>
+
+    <ul>
+      <li><strong>War stars & results</strong> – Consistent high-star wars earn more points</li>
+      <li><strong>Rule compliance</strong> – Correct mirror attacks and zero violations</li>
+      <li><strong>Activity consistency</strong> – No missed attacks across wars</li>
+      <li><strong>Penalties</strong> – Missed attacks or rule breaks reduce points</li>
+    </ul>
+
+    <p>
+      These points determine a clan’s <strong>league placement</strong>
+      (Champions, Masters, etc.) and are <em>not</em> related to in-game trophies or CWL medals.
+    </p>
+
+    <p class="modal-note">
+      Source: FWA tracking systems
+    </p>
+  </div>
+</div>
+  
 <script src="./js/filters.js"></script>
 <script src="clans.js"></script>  
 
 </body>
 </html>
+
 
 
 
