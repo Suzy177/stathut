@@ -140,17 +140,23 @@ nav a {
 
 .clan-table tbody tr {
   transition: background 0.2s ease;
+  animation: fadeIn 0.3s ease;
 }
 
 .clan-table tbody tr:hover {
   background: rgba(255, 255, 255, 0.04);
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 .league {
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 500;
+  cursor: default;
 }
 
 .league.champions {
@@ -173,4 +179,5 @@ nav a {
   background: transparent;
   color: #fff;
 }
+
 
