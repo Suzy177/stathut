@@ -6,19 +6,15 @@
 
   <title>StatHut | FWA Clans & Lazy CWL</title>
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Existing CSS -->
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/home.css">
 
-  <!-- FINAL HOME FIX (DO NOT TOUCH AGAIN) -->
   <style>
     body.home {
       min-height: 100vh;
@@ -40,6 +36,41 @@
       text-align: center;
     }
 
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-actions a {
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #00d4ff;
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      border-color: #00d4ff;
+      color: #00d4ff;
+    }
+
     .lazy-cwl-mini {
       margin-top: 18px;
       font-size: 14px;
@@ -50,10 +81,8 @@
 
 <body class="home">
 
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">StatHut</div>
-
     <nav>
       <a href="index.html" class="active">Home</a>
       <a href="clans.html">Our Clans</a>
@@ -63,7 +92,6 @@
     </nav>
   </header>
 
-  <!-- HERO -->
   <main class="home-wrapper">
     <div class="home-hero">
 
@@ -75,15 +103,18 @@
 
       <div id="lazyCWLHome" class="lazy-cwl-mini"></div>
 
+      <div class="hero-actions">
+        <a href="clans.html" class="btn-primary">View Our Clans</a>
+        <a href="lazy-cwl.html" class="btn-secondary">Lazy CWL Info</a>
+      </div>
+
     </div>
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <p>© 2025 StatHut · Unofficial Clash of Clans community</p>
   </footer>
 
-  <!-- MINI COUNTDOWN + NAV LOGIC -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const mini = document.getElementById("lazyCWLHome");
@@ -122,14 +153,9 @@
           label = "Lazy CWL opens in ";
         }
 
-        if (mini) {
-          mini.textContent = label + format(target - now);
-        }
-
-        if (nav) {
-          nav.style.display =
-            day >= START_DAY && day <= END_DAY ? "inline-block" : "none";
-        }
+        if (mini) mini.textContent = label + format(target - now);
+        if (nav) nav.style.display =
+          day >= START_DAY && day <= END_DAY ? "inline-block" : "none";
       }
 
       update();
