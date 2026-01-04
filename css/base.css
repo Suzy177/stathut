@@ -180,4 +180,18 @@ nav a {
   color: #fff;
 }
 
+.lazy-cwl {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 16px;
+}
+
+.lazy-cwl .warning {
+  margin: 16px 0;
+  padding: 12px;
+  background: rgba(255, 193, 7, 0.12);
+  border-left: 4px solid #ffc107;
+  font-size: 14px;
+}
+
 
