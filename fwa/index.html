@@ -1,226 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="google-site-verification" content="SPTZOcJ0_AM8UaOo3j23wiJaIxTsjjcxR9e6qD14DMw" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <title>FWA | StatHut</title>
 
-    <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GJLXJW3G7H');
-  </script>
-
-  <title>StatHut | FWA Clans & Lazy CWL</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="./css/base.css">
-  <link rel="stylesheet" href="./css/home.css">
-
-  <!-- FINAL HOME STYLES -->
+  <!-- SAME CSS AS HOME (embedded) -->
   <style>
-    body.home {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main.home-wrapper {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 120px 24px 80px;
-    }
-
-    .home-hero {
-      max-width: 760px;
-      width: 100%;
-      text-align: center;
-    }
-
-    .hero-actions {
-      margin-top: 28px;
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .hero-actions a {
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-
-    .btn-primary {
-      background: #00d4ff;
-      color: #000;
-    }
-
-    .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.3);
-      color: #fff;
-    }
-
-    .btn-secondary:hover {
-      border-color: #00d4ff;
-      color: #00d4ff;
-    }
-
-    .lazy-cwl-mini {
-      margin-top: 18px;
-      font-size: 14px;
-      opacity: 0.85;
-    }
-
-    /* Footer */
-    .site-footer {
-      padding: 48px 24px 40px;
-      text-align: center;
-      opacity: 0.9;
-    }
-
-    .footer-logo {
-      height: 48px;
-      margin-bottom: 14px;
-    }
-
-    .footer-text {
-      font-size: 14px;
-      margin-bottom: 6px;
-    }
-
-    .footer-disclaimer {
-      font-size: 12px;
-      opacity: 0.7;
-    }
+    /* paste the SAME CSS you used on StatHut Home */
+    /* body gradient, card, circles, fonts, etc */
   </style>
 </head>
 
-<body class="home">
+<body>
+  <div class="page">
+    <div class="card">
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">StatHut</div>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="clans.html">Our Clans</a>
-      <a href="lazy-cwl.html" id="lazyCWLNav">Lazy CWL</a>
-      <a href="rules.html">Rules</a>
-      <a href="join.html" class="cta">Join</a>
-      <a href="fwa-guide.html" class="cta">FWA Guide</a>
-      <a href="about.html" class="cta">About FWA</a>
-    </nav>
-  </header>
+      <h1 class="stathut-title">FWA</h1>
+      <p class="subtitle">Farm War Alliance – StatHut</p>
 
-  <!-- HERO -->
-  <main class="home-wrapper">
-    <div class="home-hero">
-      <img
-    src="./assets/stathut-emblem.png"
-    alt="StatHut emblem"
-    class="hero-logo"
-  >  
-      <h1>Welcome to StatHut</h1>
+      <!-- FWA NAVBAR -->
+      <nav style="margin: 24px 0;">
+        <a href="/fwa/index.html">Home</a> |
+        <a href="/fwa/clans.html">Clans</a> |
+        <a href="/fwa/rules.html">Rules</a> |
+        <a href="/fwa/fwa-guide.html">Guide</a> |
+        <a href="/fwa/join.html">Join</a>
+      </nav>
 
+      <!-- PAGE CONTENT -->
       <p>
-        A central hub for FWA clans, Lazy CWL coordination,
-        and community resources.
+        Welcome to the FWA section of StatHut.
       </p>
 
-      <div id="lazyCWLHome" class="lazy-cwl-mini"></div>
-
-      <div class="hero-actions">
-        <a href="clans.html" class="btn-primary">View Our Clans</a>
-        <a href="rules.html" class="btn-secondary">Learn how FWA works</a>
-      </div>
+      <p>
+        <a href="/">← Back to StatHut Home</a>
+      </p>
 
     </div>
-  </main>
-
- <footer class="site-footer">
-  <div class="footer-inner">
-    <img
-      src="./assets/stathut-emblem.png"
-      alt="StatHut emblem"
-      class="footer-logo"
-    >
-    <p class="footer-text">
-      © 2025 StatHut · Unofficial Clash of Clans community
-    </p>
-    <p class="footer-disclaimer">
-      Clash of Clans is a trademark of Supercell. This site is not affiliated
-      with or endorsed by Supercell.
-    </p>
   </div>
-</footer>
-
-  <!-- LAZY CWL MINI COUNTDOWN + NAV -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const mini = document.getElementById("lazyCWLHome");
-      const nav = document.getElementById("lazyCWLNav");
-
-      const START_DAY = 20;
-      const END_DAY = 30;
-
-      function format(ms) {
-        const s = Math.floor(ms / 1000);
-        const d = Math.floor(s / 86400);
-        const h = Math.floor((s % 86400) / 3600);
-        const m = Math.floor((s % 3600) / 60);
-        return `${d}d ${h}h ${m}m`;
-      }
-
-      function update() {
-        const now = new Date();
-        const y = now.getFullYear();
-        const mo = now.getMonth();
-        const day = now.getDate();
-
-        const start = new Date(y, mo, START_DAY, 0, 0, 0);
-        const end = new Date(y, mo, END_DAY, 23, 59, 59);
-
-        let target, label;
-
-        if (now < start) {
-          target = start;
-          label = "Lazy CWL opens in ";
-        } else if (now <= end) {
-          target = end;
-          label = "Lazy CWL closes in ";
-        } else {
-          target = new Date(y, mo + 1, START_DAY, 0, 0, 0);
-          label = "Lazy CWL opens in ";
-        }
-
-        if (mini) mini.textContent = label + format(target - now);
-        if (nav) nav.style.display =
-          day >= START_DAY && day <= END_DAY ? "inline-block" : "none";
-      }
-
-      update();
-      setInterval(update, 60000);
-    });
-  </script>
-
 </body>
 </html>
-
-
-
-
