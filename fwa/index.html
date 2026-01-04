@@ -119,7 +119,30 @@
   100% {
     background-position: 0% 50%;
   }
-}    
+}
+    /* FWA Navigation */
+.fwa-nav {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 28px 0 34px;
+  flex-wrap: wrap;
+}
+
+.fwa-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #374151;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.fwa-nav a:hover {
+  background: rgba(197, 106, 0, 0.12);
+  color: #c56a00;
+}
+
   </style>
 </head>
 
@@ -131,11 +154,11 @@
       <p class="subtitle">Farm War Alliance – StatHut</p>
 
       <!-- FWA NAVBAR -->
-      <nav style="margin: 24px 0;">
-        <a href="/fwa/index.html">Home</a> |
-        <a href="/fwa/clans.html">Clans</a> |
-        <a href="/fwa/rules.html">Rules</a> |
-        <a href="/fwa/fwa-guide.html">Guide</a> |
+      <nav class="fwa-nav">
+        <a href="/fwa/">Home</a>
+        <a href="/fwa/clans.html">Clans</a>
+        <a href="/fwa/rules.html">Rules</a>
+        <a href="/fwa/fwa-guide.html">Guide</a>
         <a href="/fwa/join.html">Join</a>
       </nav>
 
@@ -152,4 +175,5 @@
   </div>
 </body>
 </html>
+
 
