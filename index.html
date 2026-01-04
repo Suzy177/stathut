@@ -6,15 +6,19 @@
 
   <title>StatHut | FWA Clans & Lazy CWL</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/home.css">
 
+  <!-- FINAL HOME STYLES -->
   <style>
     body.home {
       min-height: 100vh;
@@ -57,10 +61,6 @@
       color: #000;
     }
 
-    .btn-primary:hover {
-      opacity: 0.9;
-    }
-
     .btn-secondary {
       border: 1px solid rgba(255,255,255,0.3);
       color: #fff;
@@ -76,11 +76,34 @@
       font-size: 14px;
       opacity: 0.85;
     }
+
+    /* Footer */
+    .site-footer {
+      padding: 48px 24px 40px;
+      text-align: center;
+      opacity: 0.9;
+    }
+
+    .footer-logo {
+      height: 48px;
+      margin-bottom: 14px;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .footer-disclaimer {
+      font-size: 12px;
+      opacity: 0.7;
+    }
   </style>
 </head>
 
 <body class="home">
 
+  <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">StatHut</div>
     <nav>
@@ -92,29 +115,42 @@
     </nav>
   </header>
 
+  <!-- HERO -->
   <main class="home-wrapper">
     <div class="home-hero">
 
       <h1>Welcome to StatHut</h1>
 
       <p>
-        A central hub for FWA clans, Lazy CWL coordination, and community resources.
+        A central hub for FWA clans, Lazy CWL coordination,
+        and community resources.
       </p>
 
       <div id="lazyCWLHome" class="lazy-cwl-mini"></div>
 
       <div class="hero-actions">
         <a href="clans.html" class="btn-primary">View Our Clans</a>
-        <a href="lazy-cwl.html" class="btn-secondary">Lazy CWL Info</a>
+        <a href="rules.html" class="btn-secondary">Learn how FWA works</a>
       </div>
 
     </div>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <p>© 2025 StatHut · Unofficial Clash of Clans community</p>
+    <img src="assets/stathut-logo.png" alt="StatHut logo" class="footer-logo">
+
+    <p class="footer-text">
+      © 2025 StatHut · Unofficial Clash of Clans community
+    </p>
+
+    <p class="footer-disclaimer">
+      Clash of Clans is a trademark of Supercell.
+      This site is not affiliated with or endorsed by Supercell.
+    </p>
   </footer>
 
+  <!-- LAZY CWL MINI COUNTDOWN + NAV -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const mini = document.getElementById("lazyCWLHome");
