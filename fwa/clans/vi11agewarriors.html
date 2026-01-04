@@ -2,28 +2,220 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vi11ageWarriors | StatHut</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vi11ageWarriors | FWA | StatHut</title>
 
-  <link rel="icon" href="../assets/favicon.svg">
-  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(
+        120deg,
+        #c7d2fe,
+        #bae6fd,
+        #e9d5ff,
+        #bfdbfe
+      );
+      background-size: 400% 400%;
+      animation: gradientShift 14s ease infinite;
+      color: #111827;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #f8fbff, #ffffff);
+      border-radius: 22px;
+      padding: 42px 48px;
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+      box-shadow:
+        0 20px 40px rgba(0,0,0,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .stathut-title {
+      font-size: 44px;
+      font-weight: 800;
+      color: #1f3c88;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #6b7280;
+      margin-bottom: 28px;
+    }
+
+    /* FWA NAV */
+    .fwa-nav {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .fwa-nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #374151;
+      padding: 8px 14px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .fwa-nav a:hover,
+    .fwa-nav a.active {
+      background: rgba(197, 106, 0, 0.18);
+      color: #c56a00;
+    }
+
+    /* CLANS SECTION */
+    .section-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-desc {
+      color: #6b7280;
+      margin-bottom: 28px;
+    }
+
+    .clans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 10px;
+    }
+
+    .clan-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 20px 18px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-align: left;
+    }
+
+    .clan-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.14);
+    }
+
+    .clan-card h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      color: #1f3c88;
+    }
+
+    .clan-card p {
+      margin: 0;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+    }
+
+    .badge.active {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+    }
+
+    .badge.recruiting {
+      background: rgba(245, 158, 11, 0.18);
+      color: #b45309;
+    }
+
+    .badge.closed {
+      background: rgba(239, 68, 68, 0.18);
+      color: #b91c1c;
+    }
+    
+    .back-link {
+      display: inline-block;
+      margin-top: 36px;
+      text-decoration: none;
+      color: #1f3c88;
+      font-weight: 600;
+      opacity: 0.85;
+    }
+
+    .back-link:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .clan-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 32px 24px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="page">
+    <div class="card">
 
-<header class="navbar">
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="../clans.html">← Back to Clans</a>
-  </nav>
-</header>
+      <h1 class="stathut-title">Vi11ageWarriors</h1>
+      <p class="subtitle">FWA Clan • TH13–TH18</p>
 
-<main class="page">
-  <h1>Vi11ageWarriors</h1>
-  <p><strong>League:</strong> Champions</p>
-  <p><strong>Townhall:</strong> TH13 – TH18</p>
-  <p><strong>Status:</strong> Recruiting</p>
-</main>
+      <nav class="fwa-nav">
+        <a href="/fwa/">Home</a>
+        <a href="/fwa/clans.html" class="active">Clans</a>
+        <a href="/fwa/rules.html">Rules</a>
+        <a href="/fwa/fwa-guide.html">Guide</a>
+        <a href="/fwa/join.html">Join</a>
+      </nav>
 
+      <h2 class="section-title">Clan Overview</h2>
+      <p class="section-desc">
+        Vi11ageWarriors is an active FWA clan focused on structured wars,
+        disciplined farming, Lazy CWL and friendly coordination.
+      </p>
+
+      <ul style="text-align:left; max-width:500px; margin:20px auto;">
+        <li><strong>Town Hall:</strong> 13–18</li>
+        <li><strong>Status:</strong> Active</li>
+        <li><strong>War Style:</strong> FWA / Lazy CWL</li>
+      </ul>
+
+      <a href="/fwa/clans.html" class="back-link">← Back to Clans</a>
+
+    </div>
+  </div>
 </body>
 </html>
