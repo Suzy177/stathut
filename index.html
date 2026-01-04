@@ -17,6 +17,36 @@
   <!-- CSS -->
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/home.css">
+
+  <!-- 🔒 FORCE FIX FOR BROKEN HOME LAYOUT -->
+  <style>
+    /* hard override – do not remove */
+    body.home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main.home-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+    }
+
+    main.home-wrapper .container {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .lazy-cwl-mini {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+  </style>
 </head>
 
 <body class="home">
@@ -44,11 +74,10 @@
 
       <h1>Welcome to StatHut</h1>
 
-      <p class="hero-text">
+      <p>
         A central hub for FWA clans, Lazy CWL coordination, and community resources.
       </p>
 
-      <!-- MINI LAZY CWL COUNTDOWN -->
       <div id="lazyCWLHome" class="lazy-cwl-mini"></div>
 
     </div>
@@ -57,13 +86,11 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <p class="footer-text">
-        © 2025 StatHut · Unofficial Clash of Clans community
-      </p>
+      <p>© 2025 StatHut · Unofficial Clash of Clans community</p>
     </div>
   </footer>
 
-  <!-- LAZY CWL MINI COUNTDOWN + NAV LOGIC -->
+  <!-- MINI COUNTDOWN + NAV VISIBILITY -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const mini = document.getElementById("lazyCWLHome");
@@ -80,30 +107,30 @@
         return `${d}d ${h}h ${m}m`;
       }
 
-      function updateLazyCWL() {
+      function update() {
         const now = new Date();
         const y = now.getFullYear();
-        const m = now.getMonth();
+        const mo = now.getMonth();
         const day = now.getDate();
 
-        const start = new Date(y, m, START_DAY, 0, 0, 0);
-        const end = new Date(y, m, END_DAY, 23, 59, 59);
+        const start = new Date(y, mo, START_DAY, 0, 0, 0);
+        const end = new Date(y, mo, END_DAY, 23, 59, 59);
 
-        let target, text;
+        let target, label;
 
         if (now < start) {
           target = start;
-          text = "Lazy CWL opens in ";
+          label = "Lazy CWL opens in ";
         } else if (now <= end) {
           target = end;
-          text = "Lazy CWL closes in ";
+          label = "Lazy CWL closes in ";
         } else {
-          target = new Date(y, m + 1, START_DAY, 0, 0, 0);
-          text = "Lazy CWL opens in ";
+          target = new Date(y, mo + 1, START_DAY, 0, 0, 0);
+          label = "Lazy CWL opens in ";
         }
 
         if (mini) {
-          mini.textContent = text + format(target - now);
+          mini.textContent = label + format(target - now);
         }
 
         if (nav) {
@@ -112,8 +139,8 @@
         }
       }
 
-      updateLazyCWL();
-      setInterval(updateLazyCWL, 60000);
+      update();
+      setInterval(update, 60000);
     });
   </script>
 
