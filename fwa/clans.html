@@ -133,6 +133,21 @@
       color: #6b7280;
     }
 
+    .badge {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+    }
+
+    .badge.active {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+    }
+    
     .back-link {
       display: inline-block;
       margin-top: 36px;
@@ -178,17 +193,20 @@
       <div class="clans-grid">
         <div class="clan-card">
           <h3>The Shield</h3>
-          <p>TH13–TH18 • Active</p>
+          <p>TH13–TH18</p>
+          <span class="badge active">Active • Recruiting</span>
         </div>
 
         <div class="clan-card">
           <h3>InvidiaBandit</h3>
-          <p>TH14–TH18 • Active</p>
+          <p>TH13–TH18</p>
+          <span class="badge active">Active • Recruiting</span>
         </div>
 
         <div class="clan-card">
           <h3>VillageWarriors</h3>
-          <p>TH12–TH16 • Active</p>
+          <p>TH13–TH18</p>
+          <span class="badge active">Active • Recruiting</span>
         </div>
       </div>
 
@@ -198,3 +216,4 @@
   </div>
 </body>
 </html>
+
