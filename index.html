@@ -70,9 +70,54 @@
     </p>
   </div>
 </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const el = document.getElementById("lazyCWLHome");
+    if (!el) return;
+
+    const START_DAY = 20;
+    const END_DAY = 30;
+
+    function formatTime(ms) {
+      const s = Math.floor(ms / 1000);
+      const d = Math.floor(s / 86400);
+      const h = Math.floor((s % 86400) / 3600);
+      const m = Math.floor((s % 3600) / 60);
+      return `${d}d ${h}h ${m}m`;
+    }
+
+    function update() {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = now.getMonth();
+
+      const start = new Date(y, m, START_DAY);
+      const end = new Date(y, m, END_DAY, 23, 59, 59);
+
+      let target, text;
+
+      if (now < start) {
+        target = start;
+        text = "Lazy CWL opens in ";
+      } else if (now <= end) {
+        target = end;
+        text = "Lazy CWL closes in ";
+      } else {
+        target = new Date(y, m + 1, START_DAY);
+        text = "Lazy CWL opens in ";
+      }
+
+      el.textContent = text + formatTime(target - now);
+    }
+
+    update();
+    setInterval(update, 60000); // update every minute
+  });
+</script>
   
 </body>
 </html>
+
 
 
 
