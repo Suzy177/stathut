@@ -14,11 +14,11 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- CSS -->
+  <!-- Existing CSS -->
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/home.css">
 
-  <!-- HARD FIX -->
+  <!-- FINAL HOME FIX (DO NOT TOUCH AGAIN) -->
   <style>
     body.home {
       min-height: 100vh;
@@ -32,12 +32,12 @@
       align-items: center;
       justify-content: center;
       padding: 120px 24px 80px;
-      text-align: left;
     }
 
     .home-hero {
       max-width: 760px;
       width: 100%;
+      text-align: center;
     }
 
     .lazy-cwl-mini {
@@ -52,11 +52,7 @@
 
   <!-- NAVBAR -->
   <header class="navbar">
-    <div class="logo">
-      <span class="brand">
-        <strong>Stat</strong><span class="accent">Hut</span>
-      </span>
-    </div>
+    <div class="logo">StatHut</div>
 
     <nav>
       <a href="index.html" class="active">Home</a>
@@ -87,7 +83,7 @@
     <p>© 2025 StatHut · Unofficial Clash of Clans community</p>
   </footer>
 
-  <!-- MINI COUNTDOWN + NAV VISIBILITY -->
+  <!-- MINI COUNTDOWN + NAV LOGIC -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const mini = document.getElementById("lazyCWLHome");
