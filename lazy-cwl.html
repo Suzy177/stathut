@@ -182,6 +182,9 @@
           "Lazy CWL registration opens from the 20th to the 30th of every month.";
         countdown.textContent =
           `Next Lazy CWL opens in ${formatTime(diff)}.`;
+        countdown.classList.remove("countdown-animate");
+        void countdown.offsetWidth; // force reflow
+        countdown.classList.add("countdown-animate");
       }
     }
 
@@ -192,6 +195,7 @@
 
 </body>
 </html>
+
 
 
 
