@@ -37,4 +37,30 @@
   </iframe>
 </section>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const today = new Date();
+    const day = today.getDate(); // 1–31
+
+    const content = document.getElementById("lazyCWLContent");
+    const message = document.getElementById("lazyCWLMessage");
+
+    // Lazy CWL window: 20th to 30th (inclusive)
+    const START_DAY = 20;
+    const END_DAY = 30;
+
+    if (day >= START_DAY && day <= END_DAY) {
+      // SHOW Lazy CWL
+      content.style.display = "block";
+      message.textContent =
+        "Lazy CWL registration is currently open.";
+    } else {
+      // HIDE Lazy CWL
+      content.style.display = "none";
+      message.textContent =
+        "Lazy CWL registration opens on the 20th of every month.";
+    }
+  });
+</script>
+
 
