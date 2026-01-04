@@ -178,6 +178,36 @@
       display: block;
     }
 
+    /* TH Filter */
+.th-filter {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 30px;
+}
+
+.th-btn {
+  border: none;
+  background: #f3f4f6;
+  color: #374151;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.th-btn:hover {
+  background: #e5e7eb;
+}
+
+.th-btn.active {
+  background: rgba(197, 106, 0, 0.18);
+  color: #c56a00;
+}
+
     @media (max-width: 768px) {
       .card {
         padding: 32px 24px;
@@ -205,9 +235,9 @@
       <p class="section-desc">
         Active Farm War Alliance clans under StatHut.
       </p>
-    <a href="/fwa/clans/the-shield.html" class="clan-link">
+
       <!-- TH FILTER -->
-       <div class="th-filter">
+      <div class="th-filter">
         <button class="th-btn active">All</button>
         <button class="th-btn">TH12</button>
         <button class="th-btn">TH13</button>
@@ -218,6 +248,7 @@
         <button class="th-btn">TH18</button>
       </div>
 
+    <a href="/fwa/clans/the-shield.html" class="clan-link">
       <div class="clans-grid">
         <div class="clan-card">
           <h3>The Shield</h3>
@@ -249,6 +280,7 @@
   </div>
 </body>
 </html>
+
 
 
 
