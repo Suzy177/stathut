@@ -120,30 +120,66 @@
 
   <!-- DATE LOGIC -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const today = new Date();
-      const day = today.getDate(); // 1–31
+  document.addEventListener("DOMContentLoaded", () => {
+    const today = new Date();
+    const day = today.getDate();
+    const month = today.getMonth();
+    const year = today.getFullYear();
 
-      const content = document.getElementById("lazyCWLContent");
-      const message = document.getElementById("lazyCWLMessage");
+    const content = document.getElementById("lazyCWLContent");
+    const message = document.getElementById("lazyCWLMessage");
+    const countdown = document.getElementById("lazyCWLCountdown");
 
-      const START_DAY = 20;
-      const END_DAY = 30;
+    const START_DAY = 20;
+    const END_DAY = 30;
 
-      if (day >= START_DAY && day <= END_DAY) {
-        // SHOW Lazy CWL
-        content.style.display = "block";
-        message.textContent =
-          "Lazy CWL registration is currently open.";
-      } else {
-        // HIDE Lazy CWL
-        content.style.display = "none";
-        message.textContent =
-          "Lazy CWL registration opens from the 20th to the 30th of every month.";
+    function daysBetween(date1, date2) {
+      const oneDay = 24 * 60 * 60 * 1000;
+      return Math.ceil((date2 - date1) / oneDay);
+    }
+
+    const todayDate = new Date(year, month, day);
+
+    const startDate = new Date(year, month, START_DAY);
+    const endDate = new Date(year, month, END_DAY);
+
+    // Case 1: Registration OPEN (20–30)
+    if (day >= START_DAY && day <= END_DAY) {
+      content.style.display = "block";
+      message.textContent = "Lazy CWL registration is currently open.";
+
+      const daysLeft = daysBetween(todayDate, endDate);
+      countdown.textContent =
+        daysLeft === 0
+          ? "Registration closes today."
+          : `Registration closes in ${daysLeft} day${daysLeft > 1 ? "s" : ""}.`;
+
+    } else {
+      content.style.display = "none";
+
+      let nextStartDate;
+
+      // Before 20th → opens this month
+      if (day < START_DAY) {
+        nextStartDate = startDate;
+      } 
+      // After 30th → opens next month
+      else {
+        nextStartDate = new Date(year, month + 1, START_DAY);
       }
-    });
-  </script>
+
+      const daysToOpen = daysBetween(todayDate, nextStartDate);
+
+      message.textContent =
+        "Lazy CWL registration opens from the 20th to the 30th of every month.";
+
+      countdown.textContent =
+        `Next Lazy CWL opens in ${daysToOpen} day${daysToOpen > 1 ? "s" : ""}.`;
+    }
+  });
+</script>
 
 </body>
 </html>
+
 
