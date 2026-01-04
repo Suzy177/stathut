@@ -18,9 +18,8 @@
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/home.css">
 
-  <!-- 🔒 FORCE FIX FOR BROKEN HOME LAYOUT -->
+  <!-- HARD FIX -->
   <style>
-    /* hard override – do not remove */
     body.home {
       min-height: 100vh;
       display: flex;
@@ -31,18 +30,18 @@
       flex: 1;
       display: flex;
       align-items: center;
-      padding: 120px 0 80px;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      text-align: left;
     }
 
-    main.home-wrapper .container {
-      max-width: 1100px;
+    .home-hero {
+      max-width: 760px;
       width: 100%;
-      margin: 0 auto;
-      padding: 0 24px;
     }
 
     .lazy-cwl-mini {
-      margin-top: 20px;
+      margin-top: 18px;
       font-size: 14px;
       opacity: 0.85;
     }
@@ -70,7 +69,7 @@
 
   <!-- HERO -->
   <main class="home-wrapper">
-    <div class="container">
+    <div class="home-hero">
 
       <h1>Welcome to StatHut</h1>
 
@@ -85,9 +84,7 @@
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="container">
-      <p>© 2025 StatHut · Unofficial Clash of Clans community</p>
-    </div>
+    <p>© 2025 StatHut · Unofficial Clash of Clans community</p>
   </footer>
 
   <!-- MINI COUNTDOWN + NAV VISIBILITY -->
