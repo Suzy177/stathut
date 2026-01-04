@@ -1,66 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Lazy CWL Registration | StatHut</title>
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- StatHut CSS -->
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/home.css">
+
+  <style>
+    /* Page-specific helpers */
+    .lazy-cwl-wrapper {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 16px;
+    }
+
+    .warning {
+      margin: 20px 0;
+      padding: 14px 16px;
+      background: rgba(255, 193, 7, 0.12);
+      border-left: 4px solid #ffc107;
+      font-size: 14px;
+    }
+
+    .info-message {
+      margin: 16px 0;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    iframe {
+      margin-top: 24px;
+      border-radius: 12px;
+    }
+  </style>
 </head>
 
-<section class="lazy-cwl">
-  <h1>Lazy CWL Registration</h1>
+<body class="home">
 
-  <p>
-    Lazy CWL allows FWA players to earn CWL medals while continuing
-    farming wars in their FWA home clans.
-  </p>
+  <!-- NAVBAR (same pattern as other pages) -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="./assets/logo.svg" alt="StatHut logo" height="36">
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="clans.html">Our Clans</a>
+      <a href="lazy-cwl.html" class="active">Lazy CWL</a>
+      <a href="rules.html">Rules</a>
+      <a href="join.html" class="cta">Join</a>
+    </nav>
+  </header>
 
-  <p class="warning">
-    ⚠️ Do not leave your FWA home clan until war has ended and leaders
-    confirm it is safe to hop.
-  </p>
+  <!-- CONTENT -->
+  <main class="lazy-cwl-wrapper">
 
-  <iframe
-    src="https://docs.google.com/forms/d/e/1FAIpQLSfince0B7SS_fijOtEyqYUVdXvdZc0J89n35SQhXP8xq8JjlA/viewform?embedded=true"
-    width="640"
-    height="1790"
-    frameborder="0"
-    marginheight="0"
-    marginwidth="0"
-    loading="lazy">
-  </iframe>
-</section>
+    <h1>Lazy CWL Registration</h1>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const today = new Date();
-    const day = today.getDate(); // 1–31
+    <p>
+      Lazy CWL allows FWA players to earn CWL medals while continuing
+      farming wars in their FWA home clans.
+    </p>
 
-    const content = document.getElementById("lazyCWLContent");
-    const message = document.getElementById("lazyCWLMessage");
+    <!-- Message when hidden / visible -->
+    <p id="lazyCWLMessage" class="info-message"></p>
 
-    // Lazy CWL window: 20th to 30th (inclusive)
-    const START_DAY = 20;
-    const END_DAY = 30;
+    <!-- CONTENT THAT APPEARS / DISAPPEARS -->
+    <div id="lazyCWLContent">
 
-    if (day >= START_DAY && day <= END_DAY) {
-      // SHOW Lazy CWL
-      content.style.display = "block";
-      message.textContent =
-        "Lazy CWL registration is currently open.";
-    } else {
-      // HIDE Lazy CWL
-      content.style.display = "none";
-      message.textContent =
-        "Lazy CWL registration opens on the 20th of every month.";
-    }
-  });
-</script>
+      <div class="warning">
+        ⚠️ <strong>Important:</strong> Do not leave your FWA home clan until
+        war has ended and leaders confirm it is safe to hop.
+      </div>
 
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfince0B7SS_fijOtEyqYUVdXvdZc0J89n35SQhXP8xq8JjlA/viewform?embedded=true"
+        width="100%"
+        height="2000"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        loading="lazy">
+        Loading…
+      </iframe>
 
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img
+        src="./assets/stathut-emblem.png"
+        alt="StatHut emblem"
+        class="footer-logo"
+      >
+      <p class="footer-text">
+        © 2025 StatHut · Unofficial Clash of Clans community
+      </p>
+      <p class="footer-disclaimer">
+        Clash of Clans is a trademark of Supercell. This site is not affiliated
+        with or endorsed by Supercell.
+      </p>
+    </div>
+  </footer>
+
+  <!-- DATE LOGIC -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const today = new Date();
+      const day = today.getDate(); // 1–31
+
+      const content = document.getElementById("lazyCWLContent");
+      const message = document.getElementById("lazyCWLMessage");
+
+      const START_DAY = 20;
+      const END_DAY = 30;
+
+      if (day >= START_DAY && day <= END_DAY) {
+        // SHOW Lazy CWL
+        content.style.display = "block";
+        message.textContent =
+          "Lazy CWL registration is currently open.";
+      } else {
+        // HIDE Lazy CWL
+        content.style.display = "none";
+        message.textContent =
+          "Lazy CWL registration opens from the 20th to the 30th of every month.";
+      }
+    });
+  </script>
+
+</body>
+</html>
