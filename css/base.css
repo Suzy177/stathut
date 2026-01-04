@@ -209,3 +209,9 @@ nav a {
   overflow: hidden;
 }
 
+.countdown-text {
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
