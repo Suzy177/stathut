@@ -14,7 +14,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Main CSS -->
+  <!-- CSS -->
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/home.css">
 </head>
@@ -24,7 +24,9 @@
   <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">
-      <img src="./assets/logo.svg" alt="StatHut logo" height="36">
+      <span class="brand">
+        <strong>Stat</strong><span class="accent">Hut</span>
+      </span>
     </div>
 
     <nav>
@@ -36,24 +38,29 @@
     </nav>
   </header>
 
-  <!-- HERO / MAIN -->
+  <!-- HERO -->
   <main class="home-wrapper">
+    <div class="container">
 
-    <h1>Welcome to StatHut</h1>
-    <p>
-      A central hub for FWA clans, Lazy CWL coordination, and community resources.
-    </p>
+      <h1>Welcome to StatHut</h1>
 
-    <!-- MINI LAZY CWL COUNTDOWN -->
-    <div id="lazyCWLHome" class="lazy-cwl-mini"></div>
+      <p class="hero-text">
+        A central hub for FWA clans, Lazy CWL coordination, and community resources.
+      </p>
 
+      <!-- MINI LAZY CWL COUNTDOWN -->
+      <div id="lazyCWLHome" class="lazy-cwl-mini"></div>
+
+    </div>
   </main>
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <p class="footer-text">
-      © 2025 StatHut · Unofficial Clash of Clans community
-    </p>
+    <div class="container">
+      <p class="footer-text">
+        © 2025 StatHut · Unofficial Clash of Clans community
+      </p>
+    </div>
   </footer>
 
   <!-- LAZY CWL MINI COUNTDOWN + NAV LOGIC -->
@@ -99,18 +106,14 @@
           mini.textContent = text + format(target - now);
         }
 
-        // NAV visibility (only 20–30)
         if (nav) {
-          if (day < START_DAY || day > END_DAY) {
-            nav.style.display = "none";
-          } else {
-            nav.style.display = "inline-block";
-          }
+          nav.style.display =
+            day >= START_DAY && day <= END_DAY ? "inline-block" : "none";
         }
       }
 
       updateLazyCWL();
-      setInterval(updateLazyCWL, 60000); // update every minute
+      setInterval(updateLazyCWL, 60000);
     });
   </script>
 
