@@ -39,6 +39,7 @@
     <a href="fwa-guide.html">Learn how FWA works →</a>
     <a href="rules.html">Rules</a>
     <a href="lazy-cwl.html" class="cta">Lazy CWL</a>
+    <a href="lazy-cwl.html" id="lazyCWLNav">Lazy CWL</a>
   </nav>
 </header>
 
@@ -114,9 +115,24 @@
     setInterval(update, 60000); // update every minute
   });
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.getElementById("lazyCWLNav");
+    if (!nav) return;
+
+    const day = new Date().getDate();
+
+    if (day < 20 || day > 30) {
+      nav.style.display = "none";
+    }
+  });
+</script>
+  
   
 </body>
 </html>
+
 
 
 
