@@ -160,6 +160,13 @@
       margin: 0;
     }
 
+    .clan-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
     .badge {
       display: inline-block;
       margin-top: 10px;
@@ -203,6 +210,22 @@
       text-decoration: none;
       color: inherit;
       display: block;
+    }
+
+    .clan-avatar.shield {
+      background: linear-gradient(135deg, #c56a00, #e28b28);
+    }
+
+    .clan-avatar.bandit {
+      background: linear-gradient(135deg, #0ea5a5, #22d3ee);
+    }
+
+    .clan-avatar.warriors {
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    }
+
+    .clan-card {
+      height: 100%;
     }
 
     /* TH Filter */
@@ -278,7 +301,8 @@
     <a href="/fwa/clans/the-shield.html" class="clan-link">
       <div class="clans-grid">
         <div class="clan-card">
-          <div class="clan-avatar">TS</div>
+          <div class="clan-header">
+            <div class="clan-avatar shield">TS</div>
 
           <div class="clan-info">
           <h3>The Shield</h3>
@@ -290,7 +314,8 @@
     <a href="/fwa/clans/invidia-bandit.html" class="clan-link">  
         <div class="clan-grid">
           <div class="clan-card">
-            <div class="clan-avatar">IB</div>
+            <div class="clan-header">
+              <div class="clan-avatar bandit">IB</div>
             
           <div class="clan-info">  
           <h3>InvidiaBandit</h3>
@@ -302,7 +327,8 @@
     <a href="/fwa/clans/village-warriors.html" class="clan-link">  
         <div class="clan-grid">
           <div class="clan-card">
-            <div class="clan-avatar">VW</div>
+            <div class="clan-header">
+              <div class="clan-avatar warriors">VW</div>
             
           <div class="clan-info">  
           <h3>VillageWarriors</h3>
@@ -318,6 +344,7 @@
   </div>
 </body>
 </html>
+
 
 
 
