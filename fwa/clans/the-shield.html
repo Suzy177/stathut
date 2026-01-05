@@ -149,6 +149,44 @@
     .back-link:hover {
       text-decoration: underline;
     }
+    
+    .status-badges {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+/* Reusable badge base */
+    .badge {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+    }
+
+/* Badge variants */
+    .badge.active {
+      background: rgba(16, 185, 129, 0.15);
+      color: #059669;
+    }
+
+    .badge.recruiting {
+      background: rgba(245, 158, 11, 0.18);
+      color: #b45309;
+    }
+
+    .badge.cwl {
+      background: rgba(59, 130, 246, 0.18);
+      color: #1d4ed8;
+    }
+
+    .badge.fwa {
+      background: rgba(139, 92, 246, 0.18);
+      color: #6d28d9;
+    }
 
     @media (max-width: 600px) {
       .clan-header-large {
@@ -168,6 +206,11 @@
         <div>
           <h1 class="stathut-title">The Shield</h1>
           <p class="subtitle">Farm War Alliance • TH13–TH18</p>
+          <div class="status-badges">
+            <span class="badge active">Active</span>
+            <span class="badge recruiting">Recruiting</span>
+            <span class="badge cwl">Lazy CWL</span>
+          </div>
           <div class="status-badges">
             <span class="badge active">Active</span>
             <span class="badge recruiting">Recruiting</span>
