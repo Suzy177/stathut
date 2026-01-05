@@ -1,186 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Vi11ageWarriors | FWA | StatHut</title>
+  <meta charset="UTF-8" />
+  <title>The Shield • StatHut</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
+    /* ---------- Base ---------- */
     * {
       box-sizing: border-box;
-      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(
-        120deg,
-        #c7d2fe,
-        #bae6fd,
-        #e9d5ff,
-        #bfdbfe
-      );
-      background-size: 400% 400%;
-      animation: gradientShift 14s ease infinite;
-      color: #111827;
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      background: linear-gradient(135deg, #ede9fe, #e0f2fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .page {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
+      width: 100%;
+      padding: 24px;
     }
 
     .card {
-      background: linear-gradient(145deg, #f8fbff, #ffffff);
-      border-radius: 22px;
-      padding: 42px 48px;
-      max-width: 900px;
-      width: 100%;
+      max-width: 760px;
+      margin: auto;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 36px 32px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.12);
       text-align: center;
-      box-shadow:
-        0 20px 40px rgba(0,0,0,0.08),
-        inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    /* ---------- Header ---------- */
+    .clan-header-large {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .clan-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c56a00, #e28b28);
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
 
     .stathut-title {
-      font-size: 44px;
-      font-weight: 800;
-      color: #1f3c88;
-      margin-bottom: 8px;
+      margin: 0;
+      font-size: 36px;
+      font-weight: 900;
+      color: #1e3a8a;
     }
 
     .subtitle {
-      font-size: 16px;
+      margin-top: 6px;
+      font-size: 14px;
       color: #6b7280;
-      margin-bottom: 28px;
     }
 
-    /* FWA NAV */
+    /* ---------- Nav ---------- */
     .fwa-nav {
+      margin: 28px 0;
       display: flex;
       justify-content: center;
-      gap: 18px;
-      margin-bottom: 36px;
+      gap: 22px;
       flex-wrap: wrap;
     }
 
     .fwa-nav a {
       text-decoration: none;
-      font-weight: 600;
-      color: #374151;
-      padding: 8px 14px;
-      border-radius: 999px;
-      transition: background 0.2s ease, color 0.2s ease;
+      font-weight: 700;
+      color: #1f2937;
     }
 
-    .fwa-nav a:hover,
     .fwa-nav a.active {
       background: rgba(197, 106, 0, 0.18);
       color: #c56a00;
-    }
-
-    /* CLANS SECTION */
-    .section-title {
-      font-size: 26px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .section-desc {
-      color: #6b7280;
-      margin-bottom: 28px;
-    }
-
-    .clans-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
-      margin-top: 10px;
-    }
-
-    .clan-card {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 20px 18px;
-      box-shadow: 0 10px 22px rgba(0,0,0,0.08);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      text-align: left;
-    }
-
-    .clan-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 34px rgba(0,0,0,0.14);
-    }
-
-    .clan-card h3 {
-      margin: 0 0 6px;
-      font-size: 18px;
-      color: #1f3c88;
-    }
-
-    .clan-card p {
-      margin: 0;
-      font-size: 14px;
-      color: #6b7280;
-    }
-
-    .badge {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 6px 12px;
-      font-size: 12px;
-      font-weight: 700;
+      padding: 6px 14px;
       border-radius: 999px;
-      letter-spacing: 0.3px;
     }
 
-    .badge.active {
-      background: rgba(16, 185, 129, 0.15);
-      color: #059669;
+    /* ---------- Sections ---------- */
+    .clan-section {
+      text-align: left;
+      max-width: 560px;
+      margin: 0 auto 28px;
     }
 
-    .badge.recruiting {
-      background: rgba(245, 158, 11, 0.18);
-      color: #b45309;
+    .clan-section h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+      color: #111827;
     }
 
-    .badge.closed {
-      background: rgba(239, 68, 68, 0.18);
-      color: #b91c1c;
+    .clan-section p,
+    .clan-section li {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #4b5563;
     }
-    
+
+    .clan-section ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    /* ---------- Discord CTA ---------- */
+    .discord-btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 12px 22px;
+      background: #5865f2;
+      color: #ffffff;
+      font-weight: 800;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .discord-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(88,101,242,0.35);
+    }
+
+    /* ---------- Back ---------- */
     .back-link {
       display: inline-block;
-      margin-top: 36px;
+      margin-top: 24px;
       text-decoration: none;
-      color: #1f3c88;
-      font-weight: 600;
-      opacity: 0.85;
+      font-weight: 700;
+      color: #1e40af;
     }
 
     .back-link:hover {
-      opacity: 1;
       text-decoration: underline;
     }
 
-    .clan-link {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    @media (max-width: 768px) {
-      .card {
-        padding: 32px 24px;
+    @media (max-width: 600px) {
+      .clan-header-large {
+        flex-direction: column;
       }
     }
   </style>
@@ -190,9 +162,16 @@
   <div class="page">
     <div class="card">
 
-      <h1 class="stathut-title">Vi11ageWarriors</h1>
-      <p class="subtitle">FWA Clan • TH13–TH18</p>
+      <!-- HEADER -->
+      <div class="clan-header-large">
+        <div class="clan-avatar">VW</div>
+        <div>
+          <h1 class="stathut-title">Vi11ageWarriors</h1>
+          <p class="subtitle">Farm War Alliance • TH13–TH18</p>
+        </div>
+      </div>
 
+      <!-- NAV -->
       <nav class="fwa-nav">
         <a href="/fwa/">Home</a>
         <a href="/fwa/clans.html" class="active">Clans</a>
@@ -201,19 +180,47 @@
         <a href="/fwa/join.html">Join</a>
       </nav>
 
-      <h2 class="section-title">Clan Overview</h2>
-      <p class="section-desc">
-        Vi11ageWarriors is an active FWA clan focused on structured wars,
-        disciplined farming, Lazy CWL and friendly coordination.
-      </p>
+      <!-- WHO -->
+      <div class="clan-section">
+        <h3>Who should join?</h3>
+        <p>
+          Players from TH13 to TH18 who enjoy relaxed but organised farm wars,
+          consistent activity, and friendly coordination without pressure.
+        </p>
+      </div>
 
-      <ul style="text-align:left; max-width:500px; margin:20px auto;">
-        <li><strong>Town Hall:</strong> 13–18</li>
-        <li><strong>Status:</strong> Active</li>
-        <li><strong>War Style:</strong> FWA / Lazy CWL</li>
-      </ul>
+      <!-- WAR STYLE -->
+      <div class="clan-section">
+        <h3>War style</h3>
+        <ul>
+          <li>Farm War Alliance (FWA)</li>
+          <li>Lazy CWL participation</li>
+          <li>Planned hits only</li>
+          <li>Discord-based coordination</li>
+        </ul>
+      </div>
 
-      <a href="/fwa/clans.html" class="back-link">← Back to Clans</a>
+      <!-- RECRUITMENT -->
+      <div class="clan-section">
+        <h3>Recruitment</h3>
+        <p>
+          Recruitment is handled through the FWA Discord welcome chat.
+          Our team will guide you to the right clan.
+        </p>
+
+        <a
+          href="https://discord.gg/Svp5BxT"
+          target="_blank"
+          class="discord-btn"
+        >
+          Join FWA Discord
+        </a>
+      </div>
+
+      <!-- BACK -->
+      <a href="/fwa/clans.html" class="back-link">
+        ← Back to FWA Clans
+      </a>
 
     </div>
   </div>
