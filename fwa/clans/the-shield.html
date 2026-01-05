@@ -187,7 +187,32 @@
       background: rgba(139, 92, 246, 0.18);
       color: #6d28d9;
     }
+    /* ---------- Breadcrumb ---------- */
+    .breadcrumb {
+      font-size: 13px;
+      margin-bottom: 18px;
+      color: #6b7280;
+      text-align: left;
+    }
 
+    .breadcrumb a {
+      text-decoration: none;
+      color: #4b5563;
+      font-weight: 600;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb span {
+      margin: 0 6px;
+    }
+
+    .breadcrumb .current {
+      color: #111827;
+      font-weight: 700;
+    }
     @media (max-width: 600px) {
       .clan-header-large {
         flex-direction: column;
@@ -199,6 +224,16 @@
 <body>
   <div class="page">
     <div class="card">
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb">
+        <a href="/">StatHut</a>
+        <span>›</span>
+        <a href="/fwa/">FWA</a>
+        <span>›</span>
+        <a href="/fwa/clans.html">Clans</a>
+        <span>›</span>
+        <span class="current">The Shield</span>
+      </nav>
 
       <!-- HEADER -->
       <div class="clan-header-large">
