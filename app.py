@@ -15,6 +15,14 @@ HEADERS = {
     "Authorization": f"Bearer {API_TOKEN}"
 }
 
+@app.route("/")
+def home():
+    return "StatHut backend running"
+
+@app.route("/fwa-war-status")
+def fwa_war_status_page():
+    return render_template("fwa-war-status.html")
+
 @app.route("/api/fwa/wars")
 def fwa_wars():
     results = []
@@ -64,10 +72,6 @@ def fwa_wars():
         })
 
     return jsonify(results)
-
-@app.route("/fwa-war-status")
-def fwa_war_status_page():
-    return render_template("fwa-war-status.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
