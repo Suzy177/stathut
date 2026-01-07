@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import requests
 
 app = Flask(__name__)
@@ -23,7 +23,6 @@ def fwa_wars():
         url = f"https://api.clashofclans.com/v1/clans/%23{tag}/currentwar"
         war = requests.get(url, headers=HEADERS).json()
 
-        # Not in war or private log
         if war.get("state") == "notInWar":
             clan = war.get("clan", {})
             results.append({
@@ -38,7 +37,6 @@ def fwa_wars():
         clan = war["clan"]
         opp = war["opponent"]
 
-        # Decide result
         if war["state"] == "warEnded":
             if clan["stars"] > opp["stars"]:
                 status = "victory"
@@ -66,6 +64,10 @@ def fwa_wars():
         })
 
     return jsonify(results)
+
+@app.route("/fwa-war-status")
+def fwa_war_status_page():
+    return render_template("fwa-war-status.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
