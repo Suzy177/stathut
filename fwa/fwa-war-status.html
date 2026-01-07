@@ -55,6 +55,7 @@
 
     .war-title {
       font-size: 15px;
+      line-height: 1.3;
     }
 
     .war-tag {
@@ -107,79 +108,64 @@
   <h1 class="page-title">FWA WAR STATUS</h1>
   <p class="page-subtitle">Live & recent wars for StatHut FWA clans</p>
 
-  <!-- Cards will be injected here -->
-  <div class="war-list" id="war-list"></div>
+  <div class="war-list" id="war-list">
+    <p style="color:#aaa">Loading war data…</p>
+  </div>
 </div>
 
 <script>
-/* ===== MOCK DATA ===== */
-const wars = [
-  {
-    clan: "THE SHIELD",
-    tag: "#PGPPQRLY",
-    opponent: "Fight For Honor",
-    result: "victory",
-    resultText: "🟢 War Ended – Victory 🎉",
-    stars: "50 – 50",
-    destruction: "88.2% – 86.85%",
-    footer: "20v20 | War ended: 3 days ago",
-    badge: "https://via.placeholder.com/56"
-  },
-  {
-    clan: "Jacked&Shredded",
-    tag: "#82RP2CJR",
-    opponent: "OODOROBOU",
-    result: "defeat",
-    resultText: "🔴 War Ended – Defeat",
-    stars: "21 – 22",
-    destruction: "82.7% – 77.2%",
-    footer: "10v10 | War ended: 2 days ago",
-    badge: "https://via.placeholder.com/56"
-  },
-  {
-    clan: "JUST BLEED",
-    tag: "#PP9Q2LU8",
-    result: "neutral",
-    resultText: "Not in war or private log",
-    badge: "https://via.placeholder.com/56"
-  }
-];
-
-/* ===== RENDER ===== */
 const container = document.getElementById("war-list");
 
-wars.forEach(war => {
-  const card = document.createElement("div");
-  card.className = `war-card ${war.result}`;
+fetch("/api/fwa/wars")
+  .then(response => response.json())
+  .then(wars => {
+    container.innerHTML = "";
 
-  card.innerHTML = `
-    <div class="war-left">
-      <div class="war-title">
-        <strong>${war.clan}</strong>
-        ${war.opponent ? " vs " + war.opponent : ""}
-      </div>
-      <div class="war-tag">${war.tag}</div>
+    if (!wars.length) {
+      container.innerHTML = "<p style='color:#aaa'>No war data available</p>";
+      return;
+    }
 
-      <div class="war-result ${war.result === "neutral" ? "muted" : ""}">
-        ${war.resultText}
-      </div>
+    wars.forEach(war => {
+      const card = document.createElement("div");
+      card.className = `war-card ${war.status}`;
 
-      ${war.stars ? `
-      <div class="war-stats">
-        <span>⭐ ${war.stars}</span>
-        <span>💥 ${war.destruction}</span>
-      </div>` : ""}
+      card.innerHTML = `
+        <div class="war-left">
+          <div class="war-title">
+            <strong>${war.clan}</strong>
+            ${war.opponent ? " vs " + war.opponent : ""}
+          </div>
 
-      ${war.footer ? `<div class="war-footer">${war.footer}</div>` : ""}
-    </div>
+          <div class="war-tag">${war.tag}</div>
 
-    <div class="war-badge">
-      <img src="${war.badge}" alt="Clan Badge">
-    </div>
-  `;
+          <div class="war-result ${war.status === "neutral" ? "muted" : ""}">
+            ${war.resultText}
+          </div>
 
-  container.appendChild(card);
-});
+          ${war.stars ? `
+          <div class="war-stats">
+            <span>⭐ ${war.stars}</span>
+            <span>💥 ${war.destruction}</span>
+          </div>` : ""}
+
+          ${war.footer ? `
+          <div class="war-footer">${war.footer}</div>` : ""}
+        </div>
+
+        <div class="war-badge">
+          <img src="${war.badge}" alt="Clan Badge">
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    console.error(err);
+    container.innerHTML =
+      "<p style='color:#aaa'>Failed to load war data</p>";
+  });
 </script>
 
 </body>
