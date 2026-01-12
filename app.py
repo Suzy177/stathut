@@ -4,7 +4,6 @@ import os
 
 app = Flask(__name__)
 
-# ===== CONFIG =====
 API_TOKEN = os.getenv("API_TOKEN")
 
 CLANS = [
@@ -17,12 +16,6 @@ HEADERS = {
     "Authorization": f"Bearer {API_TOKEN}"
 }
 
-# ===== ROUTES =====
-
-@app.route("/")
-def home():
-    return "StatHut API running"
-
 @app.route("/fwa-war-status")
 def fwa_page():
     return render_template("fwa-war-status.html")
@@ -34,29 +27,36 @@ def fwa_wars():
     for tag in CLANS:
         try:
             url = f"https://api.clashofclans.com/v1/clans/%23{tag}/currentwar"
-            response = requests.get(url, headers=HEADERS, timeout=10)
+            res = requests.get(url, headers=HEADERS, timeout=10)
 
-            if response.status_code != 200:
-                raise Exception("API access denied")
-
-            war = response.json()
-
-            # Not in war
-            if war.get("state") == "notInWar":
-                clan = war.get("clan", {})
+            # HARD FAIL (token, IP, rate-limit)
+            if res.status_code != 200:
                 results.append({
-                    "clan": clan.get("name", "Unknown"),
+                    "clan": "Unknown",
+                    "tag": f"#{tag}",
+                    "status": "neutral",
+                    "resultText": "Unable to fetch war data",
+                    "badge": ""
+                })
+                continue
+
+            war = res.json()
+
+            # PRIVATE WAR LOG OR NOT IN WAR
+            if "clan" not in war:
+                results.append({
+                    "clan": "Unknown",
                     "tag": f"#{tag}",
                     "status": "neutral",
                     "resultText": "Not in war or private log",
-                    "badge": clan.get("badgeUrls", {}).get("medium", "")
+                    "badge": ""
                 })
                 continue
 
             clan = war["clan"]
             opp = war["opponent"]
 
-            # Result logic
+            # WAR STATE LOGIC
             if war["state"] == "warEnded":
                 if clan["stars"] > opp["stars"]:
                     status = "victory"
@@ -94,7 +94,5 @@ def fwa_wars():
 
     return jsonify(results)
 
-
-# ===== LOCAL RUN ONLY =====
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
