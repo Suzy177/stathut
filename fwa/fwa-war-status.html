@@ -1,192 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>StatHut – FWA War Status</title>
+<meta charset="UTF-8">
+<title>FWA War Status – Coming Soon</title>
 
-  <style>
-    /* ===== GLOBAL ===== */
+<style>
     body {
-      margin: 0;
-      background: #1e2124;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      color: #eaeaea;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        color: #ffffff;
+        text-align: center;
     }
 
-    .page {
-      max-width: 900px;
-      margin: auto;
-      padding: 16px;
+    .container {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 60px 50px;
+        border-radius: 18px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        max-width: 520px;
+        width: 90%;
     }
 
-    .page-title {
-      font-size: 20px;
-      margin-bottom: 4px;
+    h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
     }
 
-    .page-subtitle {
-      font-size: 13px;
-      color: #aaa;
-      margin-bottom: 16px;
+    p {
+        font-size: 18px;
+        opacity: 0.9;
+        margin-bottom: 35px;
     }
 
-    /* ===== WAR LIST ===== */
-    .war-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .badge {
+        display: inline-block;
+        padding: 12px 26px;
+        border-radius: 999px;
+        background: #ffd166;
+        color: #1b1b1b;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 1px;
     }
 
-    /* ===== WAR CARD ===== */
-    .war-card {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #2b2f33;
-      border-radius: 10px;
-      padding: 14px;
+    .hint {
+        margin-top: 30px;
+        font-size: 14px;
+        opacity: 0.7;
     }
 
-    /* Status colors */
-    .victory { border-left: 4px solid #2ecc71; }
-    .defeat  { border-left: 4px solid #e74c3c; }
-    .tie     { border-left: 4px solid #95a5a6; }
-    .neutral { border-left: 4px solid #555; }
-
-    /* ===== LEFT CONTENT ===== */
-    .war-left {
-      flex: 1;
+    a {
+        color: #ffd166;
+        text-decoration: none;
+        font-weight: 600;
     }
 
-    .war-title {
-      font-size: 15px;
-      line-height: 1.3;
+    a:hover {
+        text-decoration: underline;
     }
-
-    .war-tag {
-      font-size: 12px;
-      color: #8aa4ff;
-      margin-bottom: 6px;
-    }
-
-    .war-result {
-      font-weight: 600;
-      margin: 6px 0;
-    }
-
-    .war-result.muted {
-      font-weight: 400;
-      color: #aaa;
-    }
-
-    .war-stats {
-      font-size: 14px;
-    }
-
-    .war-stats span {
-      margin-right: 14px;
-    }
-
-    .war-footer {
-      font-size: 12px;
-      color: #aaa;
-      margin-top: 6px;
-    }
-
-    /* ===== BADGE ===== */
-    .war-badge img {
-      width: 56px;
-      height: 56px;
-    }
-
-    /* ===== MOBILE ===== */
-    @media (max-width: 600px) {
-      .war-badge img {
-        width: 48px;
-        height: 48px;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
+    <div class="container">
+        <h1>FWA WAR STATUS</h1>
+        <p>Live war tracking for StatHut FWA clans is under development.</p>
 
-<div class="page">
-  <h1 class="page-title">FWA WAR STATUS</h1>
-  <p class="page-subtitle">Live & recent wars for StatHut FWA clans</p>
+        <div class="badge">COMING SOON 🚧</div>
 
-  <div class="war-list">
-
-    <!-- ===== WAR CARD : VICTORY ===== -->
-    <div class="war-card victory">
-      <div class="war-left">
-        <div class="war-title">
-          <strong>THE SHIELD</strong> vs Fight For Honor
+        <div class="hint">
+            We’re building something solid.<br>
+            Check back soon or return to <a href="/">StatHut Home</a>.
         </div>
-        <div class="war-tag">#PGPPQRLY</div>
-
-        <div class="war-result">🟢 War Ended – Victory 🎉</div>
-
-        <div class="war-stats">
-          <span>⭐ 50 – 50</span>
-          <span>💥 88.2% – 86.85%</span>
-        </div>
-
-        <div class="war-footer">
-          20v20 | War ended: 3 days ago
-        </div>
-      </div>
-
-      <div class="war-badge">
-        <img src="CLAN_BADGE_URL" alt="Clan Badge">
-      </div>
     </div>
-
-    <!-- ===== WAR CARD : DEFEAT ===== -->
-    <div class="war-card defeat">
-      <div class="war-left">
-        <div class="war-title">
-          <strong>Jacked&amp;Shredded</strong> vs OODOROBOU
-        </div>
-        <div class="war-tag">#82RP2CJR</div>
-
-        <div class="war-result">🔴 War Ended – Defeat</div>
-
-        <div class="war-stats">
-          <span>⭐ 21 – 22</span>
-          <span>💥 82.7% – 77.2%</span>
-        </div>
-
-        <div class="war-footer">
-          10v10 | War ended: 2 days ago
-        </div>
-      </div>
-
-      <div class="war-badge">
-        <img src="CLAN_BADGE_URL" alt="Clan Badge">
-      </div>
-    </div>
-
-    <!-- ===== WAR CARD : NOT IN WAR ===== -->
-    <div class="war-card neutral">
-      <div class="war-left">
-        <div class="war-title">
-          <strong>JUST BLEED</strong>
-        </div>
-        <div class="war-tag">#PP9Q2LU8</div>
-
-        <div class="war-result muted">
-          Not in war or private log
-        </div>
-      </div>
-
-      <div class="war-badge">
-        <img src="CLAN_BADGE_URL" alt="Clan Badge">
-      </div>
-    </div>
-
-  </div>
-</div>
-
 </body>
 </html>
