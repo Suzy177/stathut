@@ -16,6 +16,10 @@ HEADERS = {
     "Authorization": f"Bearer {API_TOKEN}"
 }
 
+@app.route("/api/fwa/wars")
+def fwa_wars():
+    print("API_TOKEN:", API_TOKEN)
+    
 @app.route("/fwa-war-status")
 def fwa_page():
     return render_template("fwa-war-status.html")
@@ -85,3 +89,4 @@ def fwa_wars():
 @app.route("/")
 def home():
     return "StatHut API running"
+
