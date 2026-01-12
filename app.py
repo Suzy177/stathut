@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, render_template
 import requests
+import os
 
 app = Flask(__name__)
 
-API_TOKEN = "PASTE_YOUR_CLASH_API_TOKEN_HERE"
+API_TOKEN = os.getenv("API_TOKEN")
 
 CLANS = [
     "PGPPQRLY",
@@ -74,4 +75,4 @@ def fwa_wars():
     return jsonify(results)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
