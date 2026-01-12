@@ -7,9 +7,9 @@ app = Flask(__name__)
 API_TOKEN = os.getenv("API_TOKEN")
 
 CLANS = [
-    "PGPPQRLY",
-    "9VG8P90Q",
-    "LL2C8L8V"
+    "PGPPQRLY", # THE SHIELD
+    "9VG8P90Q", # InvidiaBandit
+    "LL2C8L8V"  # Vi11ageWarriors
 ]
 
 HEADERS = {
@@ -76,3 +76,4 @@ def fwa_wars():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
