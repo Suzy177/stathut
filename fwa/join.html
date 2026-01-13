@@ -5,120 +5,242 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Join StatHut | Clash of Clans FWA</title>
-  <meta name="description" content="Join StatHut’s Clash of Clans FWA community. Apply to our active clans and farm smarter with stress-free wars.">
+  <meta name="description" content="Join StatHut’s Clash of Clans FWA community. Get placed into the right clan based on your Town Hall.">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  <!-- ================= CSS ================= -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-  <link rel="stylesheet" href="./css/style.css">
+    body {
+      background: #ffffff;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    header.navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    header nav a {
+      margin-left: 16px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    header nav a.active {
+      color: #00bcd4;
+      font-weight: 600;
+    }
+
+    header nav a.cta {
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid #00bcd4;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #555;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    /* ---------- JOIN BOX ---------- */
+    .join-section {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .join-box {
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .join-box label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .join-box select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .recommendation {
+      margin: 15px 0;
+      padding: 12px;
+      background: #f4f8ff;
+      border-left: 4px solid #00bcd4;
+      font-weight: 500;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: #00bcd4;
+      color: #fff;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer.site-footer {
+      border-top: 1px solid #ddd;
+      margin-top: 60px;
+      padding: 30px 20px;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .footer-text {
+      margin-top: 10px;
+    }
+
+    .footer-disclaimer {
+      font-size: 12px;
+      margin-top: 6px;
+      color: #999;
+    }
+  </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="navbar">
   <div class="logo">
-    <img src="./assets/logo.svg" alt="StatHut logo" height="36">
+    <strong>Stat<span style="color:#00bcd4">Hut</span></strong>
   </div>
 
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About FWA</a>
     <a href="clans.html">Our Clans</a>
-    <a href="join.html" class="cta">Join</a>
-    <a href="fwa-guide.html">Learn how FWA works →</a>
+    <a href="join.html" class="active cta">Join</a>
     <a href="rules.html">Rules</a>
   </nav>
 </header>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="hero">
   <h1>Join StatHut</h1>
-  <p>
-    A stress-free Farm War Alliance (FWA) community for players who want
-    loot, upgrades, and organized wars without pressure.
+  <p>Select your Town Hall and we’ll recommend the best clan for you.</p>
+</section>
+
+<!-- ================= JOIN ================= -->
+<section class="join-section">
+  <div class="join-box">
+
+    <label for="thSelect">Your Town Hall Level</label>
+
+    <select id="thSelect">
+      <option value="">Select Town Hall</option>
+      <option value="10">TH10</option>
+      <option value="11">TH11</option>
+      <option value="12">TH12</option>
+      <option value="13">TH13</option>
+      <option value="14">TH14</option>
+      <option value="15">TH15</option>
+      <option value="16">TH16</option>
+      <option value="17">TH17</option>
+      <option value="18">TH18</option>
+    </select>
+
+    <div id="recommendation" class="recommendation hidden"></div>
+
+    <a
+      href="https://discord.gg/YOURINVITELINK"
+      target="_blank"
+      class="btn"
+      id="joinBtn"
+      style="display:none;"
+    >
+      Join via Discord
+    </a>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <p class="footer-text">
+    © 2026 StatHut · Unofficial Clash of Clans community
   </p>
-
-  <a href="https://discord.gg/YOURINVITELINK" class="btn" target="_blank">
-    Join Our Discord
-  </a>
-</section>
-
-<!-- WHO IS THIS FOR -->
-<section class="features">
-
-  <div class="card">
-    <h3>✅ Who Should Join?</h3>
-    <p>
-      • Players focused on farming & upgrades<br>
-      • Active Clash of Clans players<br>
-      • Members willing to follow FWA rules<br>
-      • Town Hall levels supported by our clans
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>🚫 Who This Is NOT For</h3>
-    <p>
-      • Competitive war-only players<br>
-      • Inactive or rushed accounts<br>
-      • Players ignoring war instructions
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>📋 How to Join (Simple)</h3>
-    <p>
-      1. Join our Discord server<br>
-      2. Read the rules & guidelines<br>
-      3. Share your Town Hall & player tag<br>
-      4. Get placed into a suitable clan
-    </p>
-  </div>
-
-</section>
-
-<!-- TRUST -->
-<section class="features">
-
-  <div class="card">
-    <h3>🤝 Why StatHut?</h3>
-    <p>
-      • Organized FWA system<br>
-      • Clear communication<br>
-      • Multiple clans under one network<br>
-      • Friendly and helpful community
-    </p>
-  </div>
-
-  <div class="card">
-    <h3>⏱ What Happens After Joining?</h3>
-    <p>
-      Our staff will guide you through placement, explain FWA basics,
-      and help you settle into the right clan quickly.
-    </p>
-  </div>
-
-</section>
-
-<!-- FINAL CTA -->
-<section class="hero">
-  <h2>Ready to Farm Smarter?</h2>
-  <p>Join StatHut today and enjoy stress-free wars with guaranteed loot.</p>
-
-  <a href="https://discord.gg/YOURINVITELINK" class="btn" target="_blank">
-    Join StatHut on Discord
-  </a>
-</section>
-
-<footer>
-  <p>© 2025 StatHut | Unofficial Clash of Clans community</p>
+  <p class="footer-disclaimer">
+    Clash of Clans is a trademark of Supercell. This site is not affiliated with or endorsed by Supercell.
+  </p>
 </footer>
+
+<!-- ================= JS ================= -->
+<script>
+  const thSelect = document.getElementById("thSelect");
+  const recommendation = document.getElementById("recommendation");
+  const joinBtn = document.getElementById("joinBtn");
+
+  thSelect.addEventListener("change", () => {
+    const th = thSelect.value;
+
+    if (!th) {
+      recommendation.classList.add("hidden");
+      joinBtn.style.display = "none";
+      return;
+    }
+
+    let clanText = "";
+
+    if (th <= 11) clanText = "Recommended: StatHut Alpha (Beginner FWA)";
+    else if (th <= 13) clanText = "Recommended: StatHut Prime (Core FWA)";
+    else if (th <= 15) clanText = "Recommended: StatHut Elite (Advanced FWA)";
+    else clanText = "Recommended: StatHut Legends (Maxed Accounts)";
+
+    recommendation.textContent = clanText;
+    recommendation.classList.remove("hidden");
+    joinBtn.style.display = "inline-block";
+  });
+</script>
 
 </body>
 </html>
