@@ -206,7 +206,6 @@
 
   thSelect.addEventListener("change", () => {
     const th = parseInt(thSelect.value, 10);
-
     clanList.innerHTML = "";
 
     if (!th) {
@@ -219,29 +218,20 @@
 
     if (th >= 10 && th <= 11) {
       clans = ["#THE SHIELD"];
-    }
-    else if (th === 12) {
+    } else if (th === 12) {
       clans = ["InvidiaBandit"];
-    }
-    else if (th >= 13 && th <= 18) {
+    } else if (th >= 13 && th <= 18) {
       clans = ["Vi11ageWarriors"];
-    }
-    else {
+    } else {
       clans = ["#THE SHIELD", "InvidiaBandit", "Vi11ageWarriors"];
     }
 
     const DISCORD_LINK = "https://discord.gg/YOUR_COMMON_INVITE";
 
-    const clanAssets = {
-      "#THE SHIELD": {
-        logo: "assets/babges/shield.png"
-      },
-      "InvidiaBandit": {
-        logo: "assets/babges/nvidiabandit.png"
-      },
-      "Vi11ageWarriors": {
-        logo: "assets/babges/villagewarriors.png"
-      }
+    const clanLogos = {
+      "#THE SHIELD": "assests/babges/shield.png",
+      "InvidiaBandit": "assests/babges/nvidiabandit.png",
+      "Vi11ageWarriors": "assests/babges/villagewarriors.png"
     };
 
     clans.forEach(clan => {
@@ -251,21 +241,23 @@
       li.style.marginBottom = "8px";
 
       const img = document.createElement("img");
-      img.src = clanAssets[clan].logo;
+      img.src = clanLogos[clan];
       img.alt = clan + " logo";
       img.style.width = "28px";
       img.style.height = "28px";
       img.style.marginRight = "10px";
-      img.style.borderRadius = "4px";
+
+      img.onerror = () => {
+        console.error("Logo not found:", img.src);
+        img.style.display = "none";
+      };
 
       const a = document.createElement("a");
       a.textContent = clan;
       a.href = DISCORD_LINK;
       a.target = "_blank";
-      a.style.color = "#5a2ea6";
       a.style.fontWeight = "600";
-
-      img.onerror = () => img.style.display = "none";
+      a.style.color = "#5a2ea6";
 
       li.appendChild(img);
       li.appendChild(a);
@@ -276,9 +268,10 @@
     joinBtn.style.display = "inline-block";
   });
 </script>
-
+  
 </body>
 </html>
+
 
 
 
