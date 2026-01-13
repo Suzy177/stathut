@@ -2,109 +2,107 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>StatHut | Join</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Join StatHut | Clash of Clans FWA</title>
-  <meta name="description" content="Join StatHut’s Clash of Clans FWA community. Get placed into the right clan based on your Town Hall.">
-
-  <!-- ================= CSS ================= -->
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
     }
 
     body {
-      background: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #ffffff;
       color: #222;
       line-height: 1.6;
     }
 
     a {
       text-decoration: none;
-      color: inherit;
+      color: #5a2ea6;
     }
 
-    /* ---------- NAVBAR ---------- */
-    header.navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 24px;
+    /* ---------- HEADER ---------- */
+    header {
+      padding: 20px;
       border-bottom: 1px solid #ddd;
     }
 
-    header nav a {
-      margin-left: 16px;
-      font-weight: 500;
-      color: #444;
-    }
-
-    header nav a.active {
-      color: #00bcd4;
-      font-weight: 600;
-    }
-
-    header nav a.cta {
-      padding: 6px 12px;
-      border-radius: 4px;
-      border: 1px solid #00bcd4;
-    }
-
-    /* ---------- HERO ---------- */
-    .hero {
-      text-align: center;
-      padding: 60px 20px 30px;
-    }
-
-    .hero h1 {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      color: #555;
-      max-width: 600px;
+    .nav-container {
+      max-width: 1000px;
       margin: auto;
     }
 
-    /* ---------- JOIN BOX ---------- */
-    .join-section {
-      display: flex;
-      justify-content: center;
-      padding: 40px 20px;
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00bcd4;
     }
 
-    .join-box {
-      width: 100%;
-      max-width: 420px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 30px;
-      text-align: center;
+    .logo span {
+      color: #bbb;
     }
 
-    .join-box label {
-      display: block;
-      font-weight: 600;
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    nav a.active {
+      text-decoration: underline;
+    }
+
+    /* ---------- PAGE ---------- */
+    .page-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .page-header {
+      margin-bottom: 30px;
+    }
+
+    .page-header h2 {
+      font-size: 34px;
       margin-bottom: 10px;
     }
 
-    .join-box select {
+    .page-header p {
+      color: #555;
+      max-width: 700px;
+    }
+
+    /* ---------- JOIN ---------- */
+    .join-box {
+      max-width: 400px;
+      margin-top: 30px;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    select {
       width: 100%;
-      padding: 10px;
+      padding: 8px;
       font-size: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .recommendation {
-      margin: 15px 0;
-      padding: 12px;
-      background: #f4f8ff;
-      border-left: 4px solid #00bcd4;
-      font-weight: 500;
+      margin: 10px 0;
+      padding: 10px;
+      border-left: 3px solid #00bcd4;
+      background: #f7f7f7;
     }
 
     .hidden {
@@ -113,67 +111,56 @@
 
     .btn {
       display: inline-block;
-      margin-top: 15px;
-      padding: 12px 20px;
-      background: #00bcd4;
-      color: #fff;
-      border-radius: 4px;
+      margin-top: 10px;
+      padding: 10px 16px;
+      border: 1px solid #00bcd4;
+      color: #00bcd4;
       font-weight: 600;
     }
 
     .btn:hover {
-      opacity: 0.9;
+      background: #00bcd4;
+      color: #fff;
     }
 
     /* ---------- FOOTER ---------- */
-    footer.site-footer {
-      border-top: 1px solid #ddd;
+    footer {
       margin-top: 60px;
-      padding: 30px 20px;
+      padding: 20px;
+      border-top: 1px solid #ddd;
       text-align: center;
       color: #777;
       font-size: 14px;
-    }
-
-    .footer-text {
-      margin-top: 10px;
-    }
-
-    .footer-disclaimer {
-      font-size: 12px;
-      margin-top: 6px;
-      color: #999;
     }
   </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="navbar">
-  <div class="logo">
-    <strong>Stat<span style="color:#00bcd4">Hut</span></strong>
+<header>
+  <div class="nav-container">
+    <div class="logo">Stat<span>Hut</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about-fwa.html">About FWA</a>
+      <a href="fwa-guide.html">Learn FWA</a>
+      <a href="rules.html">Rules</a>
+      <a href="our-clans.html">Our Clans</a>
+      <a href="join.html" class="active">Join</a>
+    </nav>
   </div>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About FWA</a>
-    <a href="clans.html">Our Clans</a>
-    <a href="join.html" class="active cta">Join</a>
-    <a href="rules.html">Rules</a>
-  </nav>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <h1>Join StatHut</h1>
-  <p>Select your Town Hall and we’ll recommend the best clan for you.</p>
-</section>
+<main class="page-container">
 
-<!-- ================= JOIN ================= -->
-<section class="join-section">
-  <div class="join-box">
+  <section class="page-header">
+    <h2>Join StatHut</h2>
+    <p>
+      Select your Town Hall level and we’ll guide you to the right StatHut FWA clan.
+    </p>
+  </section>
 
+  <section class="join-box">
     <label for="thSelect">Your Town Hall Level</label>
 
     <select id="thSelect">
@@ -200,21 +187,14 @@
     >
       Join via Discord
     </a>
+  </section>
 
-  </div>
-</section>
+</main>
 
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer">
-  <p class="footer-text">
-    © 2026 StatHut · Unofficial Clash of Clans community
-  </p>
-  <p class="footer-disclaimer">
-    Clash of Clans is a trademark of Supercell. This site is not affiliated with or endorsed by Supercell.
-  </p>
+<footer>
+  © 2026 StatHut • Farm War Alliance Community
 </footer>
 
-<!-- ================= JS ================= -->
 <script>
   const thSelect = document.getElementById("thSelect");
   const recommendation = document.getElementById("recommendation");
@@ -229,14 +209,13 @@
       return;
     }
 
-    let clanText = "";
+    let text = "";
+    if (th <= 11) text = "Recommended: StatHut Alpha";
+    else if (th <= 13) text = "Recommended: StatHut Prime";
+    else if (th <= 15) text = "Recommended: StatHut Elite";
+    else text = "Recommended: StatHut Legends";
 
-    if (th <= 11) clanText = "Recommended: StatHut Alpha (Beginner FWA)";
-    else if (th <= 13) clanText = "Recommended: StatHut Prime (Core FWA)";
-    else if (th <= 15) clanText = "Recommended: StatHut Elite (Advanced FWA)";
-    else clanText = "Recommended: StatHut Legends (Maxed Accounts)";
-
-    recommendation.textContent = clanText;
+    recommendation.textContent = text;
     recommendation.classList.remove("hidden");
     joinBtn.style.display = "inline-block";
   });
