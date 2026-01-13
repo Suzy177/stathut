@@ -199,59 +199,87 @@
 </footer>
 
 <script>
-const thSelect = document.getElementById("thSelect");
-const recommendation = document.getElementById("recommendation");
-const clanList = document.getElementById("clanList");
-const joinBtn = document.getElementById("joinBtn");
+  const thSelect = document.getElementById("thSelect");
+  const recommendation = document.getElementById("recommendation");
+  const clanList = document.getElementById("clanList");
+  const joinBtn = document.getElementById("joinBtn");
 
-thSelect.addEventListener("change", () => {
-  const th = parseInt(thSelect.value, 10);
+  thSelect.addEventListener("change", () => {
+    const th = parseInt(thSelect.value, 10);
 
-  clanList.innerHTML = "";
+    clanList.innerHTML = "";
 
-  if (!th) {
-    recommendation.classList.add("hidden");
-    joinBtn.style.display = "none";
-    return;
-  }
+    if (!th) {
+      recommendation.classList.add("hidden");
+      joinBtn.style.display = "none";
+      return;
+    }
 
-  let clans = [];
+    let clans = [];
 
-  if (th >= 10 && th <= 11) {
-    clans = ["#THE SHIELD"];
-  }
-  else if (th === 12) {
-    clans = ["InvidiaBandit"];
-  }
-  else if (th >= 13 && th <= 18) {
-    clans = ["Vi11ageWarriors"];
-  }
-  else {
-    clans = ["#THE SHIELD", "InvidiaBandit", "Vi11ageWarriors"];
-  }
-  
-  const DISCORD_LINK = "https://discord.gg/YOUR_COMMON_INVITE";
-  
-  clans.forEach(clan => {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.textContent = clan;
-    a.href = DISCORD_LINK;
-    a.target = "_blank";
-    a.style.color = "#5a2ea6";
-    a.style.fontWeight = "600";
+    if (th >= 10 && th <= 11) {
+      clans = ["#THE SHIELD"];
+    }
+    else if (th === 12) {
+      clans = ["InvidiaBandit"];
+    }
+    else if (th >= 13 && th <= 18) {
+      clans = ["Vi11ageWarriors"];
+    }
+    else {
+      clans = ["#THE SHIELD", "InvidiaBandit", "Vi11ageWarriors"];
+    }
 
-    li.appendChild(a);
-    clanList.appendChild(li);
+    const DISCORD_LINK = "https://discord.gg/YOUR_COMMON_INVITE";
+
+    const clanAssets = {
+      "#THE SHIELD": {
+        logo: "assets/babges/shield.png"
+      },
+      "InvidiaBandit": {
+        logo: "assets/babges/nvidiabandit.png"
+      },
+      "Vi11ageWarriors": {
+        logo: "assets/babges/villagewarriors.png"
+      }
+    };
+
+    clans.forEach(clan => {
+      const li = document.createElement("li");
+      li.style.display = "flex";
+      li.style.alignItems = "center";
+      li.style.marginBottom = "8px";
+
+      const img = document.createElement("img");
+      img.src = clanAssets[clan].logo;
+      img.alt = clan + " logo";
+      img.style.width = "28px";
+      img.style.height = "28px";
+      img.style.marginRight = "10px";
+      img.style.borderRadius = "4px";
+
+      const a = document.createElement("a");
+      a.textContent = clan;
+      a.href = DISCORD_LINK;
+      a.target = "_blank";
+      a.style.color = "#5a2ea6";
+      a.style.fontWeight = "600";
+
+      img.onerror = () => img.style.display = "none";
+
+      li.appendChild(img);
+      li.appendChild(a);
+      clanList.appendChild(li);
+    });
+
+    recommendation.classList.remove("hidden");
+    joinBtn.style.display = "inline-block";
   });
-
-  recommendation.classList.remove("hidden");
-  joinBtn.style.display = "inline-block";
-});
 </script>
 
 </body>
 </html>
+
 
 
 
