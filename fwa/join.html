@@ -229,10 +229,19 @@ thSelect.addEventListener("change", () => {
   else {
     clans = ["#THE SHIELD", "InvidiaBandit", "Vi11ageWarriors"];
   }
-
+  
+  const DISCORD_LINK = "https://discord.gg/YOUR_COMMON_INVITE";
+  
   clans.forEach(clan => {
     const li = document.createElement("li");
-    li.textContent = clan;
+    const a = document.createElement("a");
+    a.textContent = clan;
+    a.href = DISCORD_LINK;
+    a.target = "_blank";
+    a.style.color = "#5a2ea6";
+    a.style.fontWeight = "600";
+
+    li.appendChild(a);
     clanList.appendChild(li);
   });
 
@@ -243,6 +252,7 @@ thSelect.addEventListener("change", () => {
 
 </body>
 </html>
+
 
 
 
