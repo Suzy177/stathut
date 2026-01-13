@@ -154,7 +154,7 @@
 <main class="page-container">
 
   <section class="page-header">
-    <h2>Join StatHut</h2>
+    <h2>Join Farm War Alliance</h2>
     <p>
       Select your Town Hall level and we’ll guide you to the right StatHut FWA clan.
     </p>
@@ -210,10 +210,17 @@
     }
 
     let text = "";
-    if (th <= 11) text = "Recommended: StatHut Alpha";
-    else if (th <= 13) text = "Recommended: StatHut Prime";
-    else if (th <= 15) text = "Recommended: StatHut Elite";
-    else text = "Recommended: StatHut Legends";
+
+    if (th >= 10 && th <= 11) {
+      text = "Recommended: #THE SHIELD";
+    }
+    else if (th === 12) {
+      text = "Recommended: InvidiaBandit";
+    }
+    else if (th >= 13 && th <= 18) {
+      text = "Recommended: all 3 clans (#THE SHIELD, InvidiaBandit, Vi11ageWarriors)";
+    }
+
 
     recommendation.textContent = text;
     recommendation.classList.remove("hidden");
@@ -223,3 +230,4 @@
 
 </body>
 </html>
+
