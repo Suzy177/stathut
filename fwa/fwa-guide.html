@@ -2,201 +2,261 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>StatHut | FWA Guide</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>How FWA Works | StatHut</title>
-  <meta name="description" content="Learn how Farm War Alliance (FWA) works in Clash of Clans. Understand farming wars, base layouts, rules, and why StatHut FWA clans help you progress faster.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #222;
+      line-height: 1.6;
+    }
 
-  <!-- FAQ Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Is FWA allowed in Clash of Clans?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Farm War Alliance (FWA) operates within normal Clash of Clans mechanics and has been used by thousands of clans by following structured rules."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can rushed accounts join FWA?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "It depends on the clan. Some StatHut clans accept slightly rushed bases, while others require balanced progression. Placement is handled through Discord."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need to attack in every war?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Completing assigned war attacks is mandatory in FWA clans to keep the system fair and beneficial for all members."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does clan placement take?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Placement is usually quick once you join Discord, share your player tag, and confirm your Town Hall level."
-        }
-      }
-    ]
-  }
-  </script>
+    a {
+      color: #5a2ea6;
+      text-decoration: none;
+    }
 
-  <link rel="stylesheet" href="./css/style.css">
+    /* ---------- HEADER ---------- */
+    header {
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .nav-container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #00bcd4;
+    }
+
+    .logo span {
+      color: #bbb;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      margin-right: 15px;
+      font-weight: 500;
+    }
+
+    nav a.active {
+      text-decoration: underline;
+    }
+
+    /* ---------- PAGE ---------- */
+    .page-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .page-header {
+      margin-bottom: 40px;
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .page-header p {
+      color: #555;
+      max-width: 750px;
+    }
+
+    /* ---------- SECTIONS ---------- */
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      max-width: 800px;
+      margin-bottom: 10px;
+    }
+
+    .section ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    .section li {
+      margin-bottom: 8px;
+    }
+
+    .note {
+      background: #f7f7f7;
+      border-left: 4px solid #00bcd4;
+      padding: 12px;
+      margin-top: 15px;
+      color: #444;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="navbar">
-  <div class="logo">
-    <img src="./assets/logo.svg" alt="StatHut logo" height="36">
+<header>
+  <div class="nav-container">
+    <div class="logo">Stat<span>Hut</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="guide.html" class="active">Guide</a>
+      <a href="base-guide.html">Base Guide</a>
+      <a href="rules.html">Rules</a>
+      <a href="our-clans.html">Our Clans</a>
+      <a href="join.html">Join</a>
+    </nav>
   </div>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About FWA</a>
-    <a href="fwa-guide.html">FWA Guide</a>
-    <a href="clans.html">Our Clans</a>
-    <a href="join.html" class="cta">Join</a>
-    <a href="rules.html">Rules</a>
-  </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>How Farm War Alliance (FWA) Works</h1>
-  <p>
-    A beginner-friendly guide to understanding FWA wars in Clash of Clans
-    and how StatHut helps players farm smarter.
-  </p>
-</section>
+<main class="page-container">
 
-<!-- CONTENT -->
-<section class="features">
-
-  <div class="card">
-    <h3>What is FWA?</h3>
+  <!-- HEADER -->
+  <section class="page-header">
+    <h1>How Farm War Alliance (FWA) Works</h1>
     <p>
-      Farm War Alliance (FWA) is a system where clans coordinate wars to maximize
-      loot and upgrades instead of competitive war performance. Wins are planned,
-      attacks are controlled, and players benefit from guaranteed resources.
+      This guide explains what Farm War Alliance (FWA) is, how FWA wars work,
+      and how StatHut helps players farm efficiently without pressure.
     </p>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3>How Do FWA Wars Work?</h3>
+  <!-- WHAT IS FWA -->
+  <section class="section">
+    <h2>What is Farm War Alliance (FWA)?</h2>
     <p>
-      FWA clans are matched against other FWA clans. Both sides agree on base layouts
-      and attack rules. One clan wins, the other loses, and the result alternates
-      in future wars to keep things fair.
+      Farm War Alliance (FWA) is a war system where clans coordinate wars
+      to maximize loot and upgrades instead of competitive results.
+      Wars are planned, attacks are controlled, and both clans benefit
+      from predictable outcomes.
     </p>
-  </div>
-
-  <div class="card">
-    <h3>Why Do FWA Bases Look Strange?</h3>
     <p>
-      Bases are intentionally designed to allow easy attacks. This ensures everyone
-      completes their attacks and gains maximum loot without unnecessary stress
-      or failed attempts.
+      Unlike normal wars, FWA focuses on resource farming, hero upgrades,
+      and stress-free progression.
     </p>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3>What Are the Rules?</h3>
+  <!-- HOW WARS WORK -->
+  <section class="section">
+    <h2>How Do FWA Wars Work?</h2>
+    <ul>
+      <li>FWA clans are matched against other FWA clans</li>
+      <li>Both sides agree on base layouts and attack rules</li>
+      <li>One clan wins, the other loses</li>
+      <li>Results rotate in future wars to keep things fair</li>
+    </ul>
+
+    <div class="note">
+      Every player is expected to complete their attacks and follow
+      instructions to keep the system working smoothly.
+    </div>
+  </section>
+
+  <!-- BASE DESIGN -->
+  <section class="section">
+    <h2>Why Do FWA Bases Look Strange?</h2>
     <p>
-      • Follow assigned targets<br>
-      • Use approved base layouts<br>
-      • Complete all war attacks<br>
-      • No freestyle or trophy pushing in war<br>
-      • Respect clan coordination
+      FWA bases are intentionally designed to allow easy attacks.
+      This ensures:
     </p>
-  </div>
-
-  <div class="card">
-    <h3>Is FWA Safe?</h3>
+    <ul>
+      <li>All players can complete attacks successfully</li>
+      <li>Maximum loot is gained</li>
+      <li>No time is wasted on failed attempts</li>
+    </ul>
     <p>
-      Yes. FWA operates within Clash of Clans mechanics and has been used safely
-      by organized clans for years when rules are followed correctly.
+      These bases are approved and must not be modified during war.
     </p>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3>Why Join an FWA Clan?</h3>
+  <!-- RULES -->
+  <section class="section">
+    <h2>What Rules Do Players Follow?</h2>
+    <ul>
+      <li>Attack only assigned targets</li>
+      <li>Use approved FWA base layouts</li>
+      <li>Complete both war attacks</li>
+      <li>No freestyle or trophy-focused attacks</li>
+      <li>Follow leadership instructions</li>
+    </ul>
+
     <p>
-      FWA is ideal for players upgrading heroes, walls, and defenses. You get
-      consistent loot, predictable wars, and a relaxed environment focused
-      on long-term progression.
+      Full details are available on the
+      <a href="rules.html">Rules page</a>.
     </p>
-  </div>
+  </section>
 
-</section>
-
-<!-- FAQ (VISIBLE) -->
-<section class="features">
-  <h2 style="text-align:center; margin-bottom:1.5rem;">Frequently Asked Questions</h2>
-
-  <div class="card">
-    <h3>Is FWA allowed in Clash of Clans?</h3>
+  <!-- IS FWA SAFE -->
+  <section class="section">
+    <h2>Is FWA Safe?</h2>
     <p>
-      Yes. Farm War Alliance (FWA) operates within normal Clash of Clans mechanics
-      and has been used by thousands of clans for years.
+      Yes. FWA has existed for many years and operates through structured,
+      community-managed coordination. When rules are followed, players
+      benefit from consistent loot and smooth progression.
     </p>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3>Can rushed accounts join FWA?</h3>
+  <!-- WHY STATHUT -->
+  <section class="section">
+    <h2>How StatHut Helps</h2>
+    <ul>
+      <li>Clear clan placement based on Town Hall</li>
+      <li>Verified entry through a single Discord system</li>
+      <li>Approved FWA bases and guidance</li>
+      <li>Organized, stress-free war environment</li>
+    </ul>
+
+    <div class="note">
+      New members are verified before clan placement to maintain
+      fairness and system integrity.
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <h2>Ready to Join?</h2>
     <p>
-      It depends on the clan. Some StatHut clans accept slightly rushed bases,
-      while others require balanced progression.
+      If you’re looking for organized wars, consistent loot, and
+      relaxed progression, StatHut’s FWA clans are the right place.
     </p>
-  </div>
-
-  <div class="card">
-    <h3>Do I need to attack in every war?</h3>
     <p>
-      Yes. Completing assigned war attacks is mandatory to keep FWA wars fair
-      and beneficial for everyone.
+      <a href="join.html"><strong>Proceed to Join →</strong></a>
     </p>
-  </div>
+  </section>
 
-  <div class="card">
-    <h3>How long does clan placement take?</h3>
-    <p>
-      Placement is usually quick after joining Discord and sharing your
-      Town Hall level and player tag.
-    </p>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="hero">
-  <h2>Ready to Try FWA?</h2>
-  <p>
-    Join StatHut today and experience stress-free wars with guaranteed loot
-    and organized farming.
-  </p>
-
-  <a href="join.html" class="btn">Join StatHut</a>
-</section>
+</main>
 
 <footer>
-  <p>© 2025 StatHut | Unofficial Clash of Clans community</p>
+  © 2026 StatHut • Farm War Alliance Community
 </footer>
 
 </body>
