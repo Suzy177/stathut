@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Vi11ageWarriors | FWA | StatHut</title>
-
-  <style>
+  <title> Vi11ageWarriors | FWA | StatHut</title>
+  <p class="subtitle">
+  #LL2C8L8V
+  </p>
+  
+ <style>
     * {
       box-sizing: border-box;
       font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -132,6 +135,40 @@
       font-size: 14px;
       color: #6b7280;
     }
+    .clan-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .clan-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #c56a00, #e28b28);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .clan-info h3 {
+      margin: 0 0 4px;
+    }
+
+    .clan-info p {
+      margin: 0;
+    }
+
+    .clan-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
 
     .badge {
       display: inline-block;
@@ -178,6 +215,91 @@
       display: block;
     }
 
+    .clan-avatar.shield {
+      background: linear-gradient(135deg, #c56a00, #e28b28);
+    }
+
+    .clan-avatar.bandit {
+      background: linear-gradient(135deg, #0ea5a5, #22d3ee);
+    }
+
+    .clan-avatar.warriors {
+      background: linear-gradient(135deg, #7c3aed, #a78bfa);
+    }
+
+    .clan-card {
+      height: 100%;
+    }
+
+    /* TH Filter */
+    .th-filter {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0 30px;
+    }
+
+    .th-btn {
+      border: none;
+      background: #f3f4f6;
+      color: #374151;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .th-btn:hover {
+      background: #e5e7eb;
+    }
+
+    .th-btn.active {
+      background: rgba(197, 106, 0, 0.18);
+      color: #c56a00;
+    }
+    .discord-cta {
+      margin: 48px auto 32px;
+      padding: 28px 24px;
+      max-width: 520px;
+      text-align: center;
+      background: linear-gradient(135deg, #5865f2, #7289da);
+      border-radius: 20px;
+      color: #ffffff;
+      box-shadow: 0 20px 40px rgba(88, 101, 242, 0.25);
+    }
+
+    .discord-cta h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .discord-cta p {
+      margin: 0 0 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+
+    .discord-btn {
+      display: inline-block;
+      padding: 12px 22px;
+      background: #ffffff;
+      color: #5865f2;
+      font-weight: 800;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .discord-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
     @media (max-width: 768px) {
       .card {
         padding: 32px 24px;
@@ -191,7 +313,7 @@
     <div class="card">
 
       <h1 class="stathut-title">Vi11ageWarriors</h1>
-      <p class="subtitle">FWA Clan • TH13–TH18</p>
+      <p class="subtitle">FWA Clan • TH10–TH18</p>
 
       <nav class="fwa-nav">
         <a href="/fwa/">Home</a>
@@ -201,18 +323,73 @@
         <a href="/fwa/join.html">Join</a>
       </nav>
 
-      <h2 class="section-title">Clan Overview</h2>
+      <h2 class="section-title">Welcome to Vi11ageWarriors</h2>
       <p class="section-desc">
-        Vi11ageWarriors is an active FWA clan focused on structured wars,
-        disciplined farming, Lazy CWL and friendly coordination.
+        Vi11ageWarriors is one of the flagship clans of the FWA EVO family,
+        focused on efficient farming, teamwork, growth and long-term
+        player development.
       </p>
+      
+      <div class="clans-grid">
+        
+        <div class="clan-card">
+          <div class="clan-info">
+            <h3>👥 Members</h3>
+            <p>50 / 50</p>
+          </div>
+        </div>
 
-      <ul style="text-align:left; max-width:500px; margin:20px auto;">
-        <li><strong>Town Hall:</strong> 13–18</li>
-        <li><strong>Status:</strong> Active</li>
-        <li><strong>War Style:</strong> FWA / Lazy CWL</li>
-      </ul>
+        <div class="clan-card">
+          <div class="clan-info">
+            <h3>🏰 Recruiting</h3>
+            <p>TH10 - TH18</p>
+          </div>
+        </div>
 
+        <div class="clan-card">
+          <div class="clan-info">
+            <h3>⚔ War Style</h3>
+            <p>FWA & Lazy CWL</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="clan-card">
+          <div class="clan-info">
+            <h3>🏆 Alliance</h3>
+            <p>FWA EVOLUTION FAMILY</p>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title" style="margin-top:50px;">
+        📖 About Vi11ageWarriors
+      </h2>
+
+      <p class="section-desc">
+        Vi11ageWarriors is a competitive Farm War Alliance clan built around
+        activity, teamwork and continuous growth. Members are encouraged
+        to contribute, improve and help the clan progress together.
+      </p>
+      
+      <div class="discord-cta">
+        
+        <h3>🚀 Ready to Join?</h3>
+
+        <p>
+          Interested in joining Vi11ageWarriors?
+          Visit our Discord and speak with a recruiter.
+        </p>
+
+        <a
+          href="https://discord.gg/Svp5BxT"
+          target="_blank"
+          class="discord-btn"
+        >
+          Join FWA Discord
+        </a>
+
+</div>
       <a href="/fwa/clans.html" class="back-link">← Back to Clans</a>
 
     </div>
