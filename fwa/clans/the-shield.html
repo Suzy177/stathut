@@ -320,10 +320,12 @@
   <div class="page">
     <div class="card">
 
-      <h1 class="stathut-title">#THE SHIELD#</h1>
-      <p class="subtitle">FWA Clan • TH13–TH18</p>
-      <div class="tag-badge">
-        #PGPPQRLY
+      <h1 class="stathut-title" id="clan-name">Loading...</h1>
+      <p class="subtitle">
+        FWA Clan • <span id="townhall-range">Loading...</span>
+      </p>
+      <div class="tag-badge" id="clan-tag">
+        Loading...
       </div>
 
       <nav class="fwa-nav">
@@ -367,7 +369,7 @@
         <div class="clan-card">
           <div class="clan-info">
             <h3>🏆 Alliance</h3>
-            <p>FWA EVOLUTION FAMILY</p>
+            <p id="alliance-name">Loading...</p>
           </div>
         </div>
         
@@ -418,6 +420,18 @@
   
       document.getElementById("member-count").textContent =
         `${clan.members} / 50`;
+
+      document.getElementById("clan-name").textContent =
+        clan.name;
+
+      document.getElementById("clan-tag").textContent =
+        clan.tag;
+  
+      document.getElementById("townhall-range").textContent =
+        clan.townhall;
+  
+      document.getElementById("alliance-name").textContent =
+        clan.alliance;
 
   } catch (error) {
     console.error(error);
