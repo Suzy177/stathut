@@ -346,7 +346,7 @@
         <div class="clan-card">
           <div class="clan-info">
             <h3>👥 Members</h3>
-            <p>50 / 50</p>
+            <p id="member-count">Loading...</p>
           </div>
         </div>
 
@@ -407,5 +407,27 @@
 
     </div>
   </div>
+  <script>
+  async function loadClanData() {
+    try {
+      const response = await fetch(
+        "https://api.stathut.in/api/clan/the-shield"
+      );
+  
+      const clan = await response.json();
+  
+      document.getElementById("member-count").textContent =
+        `${clan.members} / 50`;
+
+  } catch (error) {
+    console.error(error);
+
+    document.getElementById("member-count").textContent =
+      "Unavailable";
+  }
+}
+
+loadClanData();
+</script>
 </body>
 </html>
