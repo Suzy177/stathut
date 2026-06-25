@@ -347,6 +347,44 @@
       transform:scale(1.06);
   
     }
+   
+  .hero-stats{
+
+      display:flex;
+  
+      justify-content:center;
+  
+      gap:18px;
+  
+      margin:18px 0 18px;
+  
+      flex-wrap:wrap;
+
+    }
+
+  .hero-stats span{
+
+      background:#eef4ff;
+
+      color:#1f3c88;
+
+      padding:10px 18px;
+
+      border-radius:999px;
+
+      font-weight:700;
+
+      box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+      transition:.25s ease;
+
+    }
+
+.hero-stats span:hover{
+
+    transform:translateY(-2px);
+
+}
 
     @media (max-width: 768px) {
       .card {
@@ -370,6 +408,20 @@
     </div>  
 
       <h1 class="stathut-title" id="clan-name">Loading...</h1>
+      <div class="tag-badge" id="clan-tag">
+        Loading...
+      </div>
+      <div class="hero-stats">
+        
+        <span id="clan-level">
+          ⭐ Level --
+        </span>
+  
+        <span id="war-league">
+            🏆 Loading...
+        </span>
+  
+      </div>
       <p class="subtitle">
         FWA Clan • <span id="townhall-range">Loading...</span>
       </p>
@@ -483,6 +535,12 @@
       
       document.getElementById("clan-badge").src =
         clan.badge;
+
+      document.getElementById("clan-level").textContent =
+        `⭐ Level ${clan.clanLevel}`;
+
+      document.getElementById("war-league").textContent =
+        `🏆 ${clan.warLeague}`;
 
       document.getElementById("clan-tag").textContent =
         clan.tag;
