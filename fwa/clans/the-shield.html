@@ -307,6 +307,29 @@
       font-weight: 700;
       font-size: 14px;
     }
+   
+   .hero{
+    text-align:center;
+    margin-bottom:25px;
+    }
+
+  .clan-badge{
+  
+      width:140px;
+      height:140px;
+  
+      object-fit:contain;
+  
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,.20));
+  
+      transition:.35s;
+    }
+
+  .clan-badge:hover{
+  
+      transform:scale(1.06);
+  
+    }
 
     @media (max-width: 768px) {
       .card {
@@ -318,6 +341,16 @@
 
 <body>
   <div class="page">
+    <div class="hero">
+         <img
+             id="clan-badge"
+             class="clan-badge"
+             src=""
+             alt="Clan Badge"
+         >
+      
+  </div>
+    
     <div class="card">
 
       <h1 class="stathut-title" id="clan-name">Loading...</h1>
@@ -423,6 +456,9 @@
 
       document.getElementById("clan-name").textContent =
         clan.name;
+      
+      document.getElementById("clan-badge").src =
+        clan.badge;
 
       document.getElementById("clan-tag").textContent =
         clan.tag;
