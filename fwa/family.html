@@ -483,6 +483,26 @@
 
     </div>
   </div>
+  <script>
+  async function loadFamily(){
+    
+      const response =
+          await fetch("https://api.stathut.in/api/family");
+
+      const family =
+          await response.json();
+
+      document.getElementById("family-members").textContent =
+          `${family.members} / ${family.capacity} Members`;
+  
+      document.getElementById("family-points").textContent =
+          `${family.familyPoints} Points`;
+  
+  }
+
+  loadFamily();
+
+  </script>
 </body>
 </html>
 
