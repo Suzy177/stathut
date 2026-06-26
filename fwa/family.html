@@ -202,6 +202,16 @@
       background: rgba(239, 68, 68, 0.18);
       color: #b91c1c;
     }
+
+    .badge.almost-full{
+        background:#FFF4CC;
+        color:#A16207;
+    }
+
+    .badge.full{
+        background:#FEE2E2;
+        color:#B91C1C;
+    }
     
     .back-link {
       display: inline-block;
@@ -379,7 +389,11 @@
                 <p id="shield-league">Loading...</p>
               </div>
             </div>
-            <span class="badge recruiting">Active • Recruiting</span>
+            <span
+                id="shield-status"
+                class="badge recruiting">
+                Loading...
+            </span>
           </div>
         </a>
 
@@ -398,7 +412,11 @@
                 <p id="bandit-league">Loading...</p>
               </div>
             </div>
-            <span class="badge recruiting">Active • Recruiting</span>
+            <span
+                id="bandit-status"
+                class="badge recruiting">
+                Loading...
+            </span>
           </div>
         </a>
         
@@ -417,7 +435,11 @@
                 <p id="warriors-league">Loading...</p>
               </div>
             </div>
-            <span class="badge recruiting">Active • Recruiting</span>
+            <span
+                id="warriors-status"
+                class="badge recruiting">
+                Loading...
+            </span>
           </div>
         </a>
       </div>
@@ -572,6 +594,41 @@
 
       document.getElementById("warriors-badge").src =
         family.clans[2].badge;
+
+      document.getElementById("shield-status").textContent =
+        family.clans[0].status;
+  
+      document.getElementById("bandit-status").textContent =
+        family.clans[1].status;
+      
+      document.getElementById("warriors-status").textContent =
+        family.clans[2].status;
+
+    function updateStatus(id, status) {
+
+    const badge = document.getElementById(id);
+
+    badge.textContent = status;
+
+    badge.classList.remove(
+        "recruiting",
+        "almost-full",
+        "full"
+    );
+
+    if (status === "Recruiting") {
+        badge.classList.add("recruiting");
+    }
+    else if (status === "Almost Full") {
+        badge.classList.add("almost-full");
+    }
+    else {
+        badge.classList.add("full");
+    }
+}
+    updateStatus("shield-status", family.clans[0].status);
+    updateStatus("bandit-status", family.clans[1].status);
+    updateStatus("warriors-status", family.clans[2].status);
   
   }
 
