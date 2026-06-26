@@ -117,11 +117,12 @@
       min-height:120px;
       display:flex;
       align-items:center;
+      min-height:120px;
     }
 
     .clan-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 34px rgba(0,0,0,0.14);
+      transform: translateY(-6px);
+      box-shadow: 0 22px 44px rgba(0,0,0,0.14);
     }
 
     .clan-card h3 {
@@ -247,6 +248,30 @@
       overflow:hidden;
       margin:12px 0 8px;
     }
+
+    .card{
+
+      animation:fadeUp .7s ease;
+
+    }
+
+     @keyframes fadeUp{
+  
+      from{
+  
+          opacity:0;
+          transform:translateY(18px);
+  
+      }
+  
+      to{
+  
+          opacity:1;
+          transform:translateY(0);
+  
+      }
+
+}
 
     .member-fill{
       width:0%;
@@ -454,7 +479,7 @@
         <a href="/fwa/join.html">Join</a>
       </nav>
 
-      <h2 class="section-title">Welcome to #THE SHIELD#</h2>
+      <h2 class="section-title">📊 Clan Overview</h2>
       <p id="clan-description">
         Loading description...
       </p>
@@ -497,7 +522,7 @@
 
 
       <h2 class="section-title" style="margin-top:50px;">
-        📖 About #THE SHIELD#
+        📖 Clan Description
       </h2>
 
       <p class="section-desc">
