@@ -384,7 +384,11 @@
         <a href="/fwa/clans/invidia-bandit.html" class="clan-link">
           <div class="clan-card">
             <div class="clan-header">
-              <div class="clan-avatar bandit">IB</div>
+            <img
+                id="bandit-badge"
+                class="clan-badge"
+                alt="InvidiaBandit Badge"
+            >
               <div class="clan-info">
                 <h3>InvidiaBandit</h3>
                 <p>TH13–TH18</p>
@@ -397,7 +401,11 @@
         <a href="/fwa/clans/village-warriors.html" class="clan-link">
           <div class="clan-card">
             <div class="clan-header">
-              <div class="clan-avatar warriors">VW</div>
+            <img
+                id="warriors-badge"
+                class="clan-badge"
+                alt="Vi11ageWarriors Badge"
+            >
               <div class="clan-info">
                 <h3>VillageWarriors</h3>
                 <p>TH13–TH18</p>
@@ -515,6 +523,12 @@
     
       document.getElementById("shield-badge").src =
         family.clans[0].badge;
+
+      document.getElementById("bandit-badge").src =
+        family.clans[1].badge;
+
+      document.getElementById("warriors-badge").src =
+        family.clans[2].badge;
   
   }
 
