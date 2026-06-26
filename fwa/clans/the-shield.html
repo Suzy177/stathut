@@ -498,15 +498,16 @@
 
         <div class="clan-card">
           <div class="clan-info">
-            <h3>🏰 Recruiting</h3>
-            <p>TH13 - TH18</p>
+            <h3>📍 Location</h3>
+            <p id="clan-location">Loading...</p>
           </div>
         </div>
 
         <div class="clan-card">
           <div class="clan-info">
-            <h3>⚔ War Style</h3>
-            <p>FWA & Lazy CWL</p>
+            <h3>⚔ War Information</h3>
+            <p id="war-frequency">Loading...</p>
+            <p id="war-log">Loading...</p>
           </div>
         </div>
         
@@ -593,8 +594,14 @@
       document.getElementById("clan-description").textContent =
         clan.description;
 
-      document.getElementById("shield-badge").src =
-        shield.badge;
+      document.getElementById("clan-location").textContent =
+        clan.location;
+
+      document.getElementById("war-frequency").textContent =
+          `Frequency: ${clan.warFrequency}`;
+      
+      document.getElementById("war-log").textContent =
+          clan.publicWarLog ? "War Log: Public" : "War Log: Private";
 
   } catch (error) {
     console.error(error);
