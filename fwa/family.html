@@ -520,6 +520,43 @@
 
       const family =
           await response.json();
+    // THE SHIELD
+      document.getElementById("shield-name").textContent =
+          family.clans[0].name;
+      
+      document.getElementById("shield-members").textContent =
+          `👥 ${family.clans[0].members} / 50 Members`;
+      
+      document.getElementById("shield-level").textContent =
+          `⭐ Level ${family.clans[0].level}`;
+      
+      document.getElementById("shield-league").textContent =
+          `🏆 ${family.clans[0].league}`;
+    // INVIDIA BANDIT
+      document.getElementById("bandit-name").textContent =
+          family.clans[1].name;
+      
+      document.getElementById("bandit-members").textContent =
+          `👥 ${family.clans[1].members} / 50 Members`;
+      
+      document.getElementById("bandit-level").textContent =
+          `⭐ Level ${family.clans[1].level}`;
+      
+      document.getElementById("bandit-league").textContent =
+          `🏆 ${family.clans[1].league}`;
+    // VI11AGE WARRIORS
+      document.getElementById("warriors-name").textContent =
+          family.clans[2].name;
+      
+      document.getElementById("warriors-members").textContent =
+          `👥 ${family.clans[2].members} / 50 Members`;
+      
+      document.getElementById("warriors-level").textContent =
+          `⭐ Level ${family.clans[2].level}`;
+      
+      document.getElementById("warriors-league").textContent =
+          `🏆 ${family.clans[2].league}`;
+    
 
       document.getElementById("family-members").textContent =
           `${family.members} / ${family.capacity} Members`;
