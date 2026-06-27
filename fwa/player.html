@@ -277,6 +277,104 @@ h1{
 
 }
 
+    .heroes-section{
+
+        margin-top:40px;
+
+    }
+
+    .heroes-section h2{
+    
+        color:#1f3c88;
+    
+        margin-bottom:25px;
+    
+        font-size:32px;
+    
+    }
+
+    #heroes-grid{
+    
+        display:grid;
+    
+        grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    
+        gap:20px;
+    
+    }
+
+    .hero-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:22px;
+
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+
+    }
+    
+    .hero-card h3{
+    
+        color:#1f3c88;
+    
+        margin-bottom:8px;
+    
+    }
+    
+    .hero-card p{
+    
+        color:#6b7280;
+    
+        margin-bottom:14px;
+    
+    }
+    
+    .hero-bar{
+    
+        width:100%;
+    
+        height:10px;
+    
+        background:#ececec;
+    
+        border-radius:999px;
+    
+        overflow:hidden;
+    
+        margin-bottom:18px;
+    
+    }
+    
+    .hero-fill{
+    
+        height:100%;
+    
+        background:linear-gradient(
+            90deg,
+            #4CAF50,
+            #81C784
+        );
+    
+        transition:width .8s ease;
+    
+    }
+    
+    .equipment-list{
+    
+        margin:0;
+    
+        padding-left:18px;
+    
+    }
+    
+    .equipment-list li{
+    
+        margin-bottom:8px;
+    
+    }
+
 </style>
 
 <body>
@@ -318,6 +416,20 @@ h1{
         </p>
 
     </div>
+
+    <section
+        id="heroes-section"
+        class="heroes-section"
+        style="display:none;"
+    >
+
+        <h2>❤️ Heroes</h2>
+    
+        <div id="heroes-grid">
+    
+        </div>
+
+    </section>
 
     <div class="player-top-stats">
 
@@ -392,6 +504,61 @@ async function searchPlayer() {
         );
 
         const player = await response.json();
+
+        const heroesGrid =
+            document.getElementById("heroes-grid");
+    
+        heroesGrid.innerHTML = "";
+    
+        document.getElementById("heroes-section").style.display =
+            "block";
+        
+        document.getElementById("donations").textContent =
+            player.donations;
+        
+        player.heroes
+            .filter(hero => hero.village === "home")
+            .forEach(hero => {
+                
+                const percent =
+                    (hero.level / hero.maxLevel) * 100;
+
+                const equipment = hero.equipment
+                    ? hero.equipment.map(eq =>
+                        `<li>⚡ ${eq.name} <strong>Lv ${eq.level}</strong></li>`
+                      ).join("")
+                    : "";
+
+                heroesGrid.innerHTML += `
+
+                <div class="hero-card">
+                
+                    <h3>${hero.name}</h3>
+
+                    <p>
+                        Level ${hero.level} / ${hero.maxLevel}
+                    </p>
+
+                    <div class="hero-bar">
+
+                        <div
+                            class="hero-fill"
+                            style="width:${percent}%"
+                        ></div>
+
+                    </div>
+
+                    <ul class="equipment-list">
+                    
+                        ${equipment}
+
+                    </ul>
+
+                </div>
+
+                `;
+
+            });
 
         document.getElementById("player-card").style.display =
             "block";
