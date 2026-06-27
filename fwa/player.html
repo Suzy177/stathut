@@ -374,6 +374,28 @@ h1{
         margin-bottom:8px;
     
     }
+    
+    .hero-title{
+
+        display:flex;
+    
+        align-items:center;
+    
+        gap:10px;
+    
+        margin-bottom:10px;
+
+    }
+    
+    .hero-icon{
+    
+        width:42px;
+    
+        height:42px;
+    
+        object-fit:contain;
+    
+    }
 
 </style>
 
@@ -451,14 +473,6 @@ h1{
             <small>League</small>
         </div>
 
-    </div>
-        
-    <div class="hero-title">
-
-        <img src="${heroImages[hero.name]}">
-    
-        <h3>${hero.name}</h3>
-    
     </div>
 
     <div class="overview-grid">
@@ -555,13 +569,14 @@ async function searchPlayer() {
 
                 <div class="hero-card">
                 
-                   <h3>
-
-                        ${heroIcons[hero.name] ?? "❤️"}
-                    
-                        ${hero.name}
-                    
-                   </h3>
+                   <div class="hero-title">
+                       <img
+                           src="${heroImages[hero.name]}"
+                           class="hero-icon"
+                           alt="${hero.name}"
+                       >
+                       <h3>${hero.name}</h3>
+                   </div>    
 
                     <p>
                         Level ${hero.level} / ${hero.maxLevel}
