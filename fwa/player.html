@@ -516,6 +516,22 @@ async function searchPlayer() {
         document.getElementById("donations").textContent =
             player.donations;
         
+        const heroIcons = {
+            
+            "Barbarian King": "👑",
+
+            "Archer Queen": "🏹",
+        
+            "Grand Warden": "🧙",
+        
+            "Royal Champion": "🛡",
+        
+            "Minion Prince": "😈",
+        
+            "Dragon Duke": "🐉"
+        
+        };
+        
         player.heroes
             .filter(hero => hero.village === "home")
             .forEach(hero => {
@@ -533,7 +549,13 @@ async function searchPlayer() {
 
                 <div class="hero-card">
                 
-                    <h3>${hero.name}</h3>
+                   <h3>
+
+                        ${heroIcons[hero.name] ?? "❤️"}
+                    
+                        ${hero.name}
+                    
+                   </h3>
 
                     <p>
                         Level ${hero.level} / ${hero.maxLevel}
