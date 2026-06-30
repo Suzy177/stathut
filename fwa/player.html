@@ -370,10 +370,35 @@ h1{
             #4CAF50,
             #81C784
         );
+        position:relative;
+        
+        overflow:hidden;
     
         transition:width 1s ease;
     
     }
+
+    .hero-fill::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-40%;
+
+    top:0;
+
+    width:35%;
+
+    height:100%;
+
+    background:rgba(255,255,255,.35);
+
+    transform:skewX(-20deg);
+
+    animation:shine 2.5s infinite;
+
+}
     
     .equipment-list{
     
@@ -411,9 +436,9 @@ h1{
     
     .hero-icon{
     
-        width:56px;
+        width:68px;
     
-        height:56px;
+        height:68px;
     
         object-fit:contain;
 
@@ -456,7 +481,74 @@ h1{
         color:#2563eb;
     
     }
+
+    .hero-level{
+
+        display:flex;
     
+        justify-content:space-between;
+    
+        align-items:center;
+    
+        margin-bottom:15px;
+    
+        color:#6b7280;
+    
+    }
+
+    .hero-percent{
+    
+        background:#2563eb;
+    
+        color:white;
+    
+        padding:5px 12px;
+    
+        border-radius:999px;
+    
+        font-size:13px;
+    
+        font-weight:700;
+    
+    }
+
+    .hero-max{
+    
+        background:#16a34a;
+    
+        color:white;
+    
+        padding:5px 12px;
+    
+        border-radius:999px;
+    
+        font-size:13px;
+    
+        font-weight:700;
+    
+    }
+
+    .hero-card:hover .hero-icon{
+
+        transform:scale(1.15) rotate(-5deg);
+    
+    }
+
+    @keyframes shine{
+
+        0%{
+    
+            left:-40%;
+    
+        }
+    
+        100%{
+    
+            left:130%;
+    
+        }
+    
+    }
 
 </style>
 
@@ -619,6 +711,10 @@ async function searchPlayer() {
                 
                 const percent =
                     (hero.level / hero.maxLevel) * 100;
+                const heroStatus =
+                    hero.level === hero.maxLevel
+                        ? `<span class="hero-max">MAX</span>`
+                        : `<span class="hero-percent">${Math.round(percent)}%</span>`;
 
                 const equipment = hero.equipment
                     ? hero.equipment.map(eq =>
@@ -644,9 +740,13 @@ async function searchPlayer() {
                        <h3>${hero.name}</h3>
                    </div>    
 
-                    <p>
-                        Level ${hero.level} / ${hero.maxLevel}
-                    </p>
+                    <div class="hero-level">
+                        <span>
+                            Level ${hero.level} / ${hero.maxLevel}
+                        </span>
+                        ${heroStatus}
+                    </div>
+                    
 
                     <div class="hero-bar">
 
