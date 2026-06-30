@@ -732,6 +732,18 @@ h1{
 
     </section>
 
+    <section id="pets-section">
+
+        <h2 class="section-title">
+            🐾 Pets
+        </h2>
+    
+        <div id="pets-grid" class="heroes-grid">
+    
+        </div>
+    
+    </section>
+
     <div class="player-top-stats">
 
         <div class="top-stat">
@@ -816,6 +828,10 @@ async function searchPlayer() {
         
         document.getElementById("donations").textContent =
             player.donations;
+
+        document.getElementById("pets-grid").innerHTML = "";
+
+        document.getElementById("pets-section").style.display = "block";
         
         const heroImages = {
             "Barbarian King":
@@ -840,6 +856,32 @@ async function searchPlayer() {
             16: "/fwa/assets/th/th16.png",
         
             15: "/fwa/assets/th/th15.png"
+        
+        };
+
+        const petImages = {
+
+            "L.A.S.S.I": "/fwa/assets/pets/Icon_HV_Hero_Pets_LASSI.png",
+        
+            "Electro Owl": "/fwa/assets/pets/Icon_HV_Hero_Pets_Electro_Owl.png",
+        
+            "Mighty Yak": "/fwa/assets/pets/Icon_HV_Hero_Pets_Mighty_Yak.png",
+        
+            "Unicorn": "/fwa/assets/pets/Icon_HV_Hero_Pets_Unicorn.png",
+        
+            "Frosty": "/fwa/assets/pets/Icon_HV_Hero_Pets_Frosty.png",
+        
+            "Diggy": "/fwa/assets/pets/Icon_HV_Hero_Pets_Diggy.png",
+        
+            "Poison Lizard": "/fwa/assets/pets/Icon_HV_Hero_Pets_Poison_Lizard.png",
+        
+            "Phoenix": "/fwa/assets/pets/Icon_HV_Hero_Pets_Phoenix.png",
+        
+            "Spirit Fox": "/fwa/assets/pets/Icon_HV_Hero_Pets_Spirit_Fox.png",
+        
+            "Angry Jelly": "/fwa/assets/pets/Hero_Pet_HV_Angry_Jelly_05.png",
+        
+            "Sneezy": "/fwa/assets/pets/Icon_HV_Hero_Pets_Sneezy.png"
         
         };
         
@@ -906,6 +948,63 @@ async function searchPlayer() {
                 `;
 
             });
+
+        const petsGrid = document.getElementById("pets-grid");
+
+        petsGrid.innerHTML = "";
+        
+        player.pets.forEach(pet => {
+
+            const percent =
+                (pet.level / pet.maxLevel) * 100;
+        
+            const petStatus =
+                pet.level === pet.maxLevel
+                    ? `<span class="hero-max">MAX</span>`
+                    : `<span class="hero-percent">${Math.round(percent)}%</span>`;
+
+            petsGrid.innerHTML += `
+        
+                <div class="hero-card">
+        
+                    <div class="hero-title">
+        
+                        <img
+                            src="${petImages[pet.name]}"
+                            class="hero-icon"
+                            alt="${pet.name}"
+                        >
+        
+                        <h3>${pet.name}</h3>
+        
+                    </div>
+
+                    <div class="hero-level">
+        
+                        <span>
+        
+                            Level ${pet.level} / ${pet.maxLevel}
+        
+                        </span>
+        
+                        ${petStatus}
+        
+                    </div>
+
+                    <div class="hero-bar">
+        
+                        <div
+                            class="hero-fill"
+                            style="width:${percent}%"
+                        ></div>
+        
+                    </div>
+
+                </div>
+            
+            `;
+
+        });
 
         document.getElementById("player-card").style.display =
             "block";
