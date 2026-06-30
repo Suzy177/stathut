@@ -606,6 +606,34 @@ h1{
     
     }
 
+    .banner-stats{
+
+        display:flex;
+    
+        gap:18px;
+    
+        margin-top:24px;
+    
+    }
+
+    .banner-stat{
+    
+        background:rgba(255,255,255,.15);
+    
+        backdrop-filter:blur(8px);
+    
+        padding:10px 18px;
+    
+        border-radius:999px;
+    
+        color:white;
+    
+        font-weight:700;
+    
+        font-size:15px;
+    
+    }
+
 </style>
 
 <body>
@@ -661,6 +689,17 @@ h1{
             >
                 Clan
             </p>
+        </div>
+        <div class="banner-stats">
+            <div class="banner-stat">
+                🏰 TH<span id="banner-th">18</span>
+            </div>
+        <div class="banner-stat">
+            ⭐ XP<span id="banner-xp">253</span>
+        </div>
+        <div class="banner-stat">
+            🏆 <span id="banner-league">Unranked</span>
+        </div>
         </div>
     </div>
     </div>
@@ -866,10 +905,16 @@ async function searchPlayer() {
         document.getElementById("townhall").textContent =
             player.townHall;
 
+        document.getElementById("banner-th").textContent =
+            player.townHall;
+
         document.getElementById("th-banner").src =
             thImages[player.townHall];
 
         document.getElementById("exp").textContent =
+            player.expLevel;
+
+        document.getElementById("banner-xp").textContent =
             player.expLevel;
 
         document.getElementById("trophies").textContent =
@@ -877,6 +922,12 @@ async function searchPlayer() {
 
         document.getElementById("best").textContent =
             player.bestTrophies;
+
+        document.getElementById("league").textContent =
+            player.league ?? "Unranked";
+
+        document.getElementById("banner-league").textContent =
+            player.league ?? "Unranked";
 
         document.getElementById("warstars").textContent =
             player.warStars;
