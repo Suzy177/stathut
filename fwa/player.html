@@ -133,7 +133,7 @@ h1{
 
     position:relative;
 
-    height:260px;
+    height:300px;
 
     border-radius:24px;
 
@@ -148,6 +148,26 @@ h1{
     );
 
 }
+.player-banner::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+
+        rgba(15,23,42,.25),
+
+        rgba(15,23,42,.45)
+
+    );
+
+    z-index:1;
+
+}
+    
 
 .player-header h2{
 
@@ -165,11 +185,11 @@ h1{
 
     padding:8px 18px;
 
-    border-radius:999px;
+    border:1px solid rgba(255,255,255,.25);
 
-    background:#eef2ff;
+    background:rgba(255,255,255,.20);
 
-    color:#304a9c;
+    color:#FFFFFF;
 
     font-weight:700;
 
@@ -179,9 +199,11 @@ h1{
 
 .player-clan{
 
-    color:#6b7280;
+    color:rgba(255,255,255,.9);
 
-    font-size:18px;
+    font-size:20px;
+
+    font-weight:600;
 
 }
 
@@ -310,6 +332,9 @@ h1{
     color:white;
 
     font-size:48px;
+
+    text-shadow:
+        0 3px 12px rgba(0,0,0,.35);
 
 }
 
