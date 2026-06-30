@@ -663,45 +663,34 @@ h1{
     <div class="player-header">
 
     <div class="player-banner">
+        <img id="th-banner" class="th-banner">
 
         <div class="banner-overlay">
-
-            <img
-                id="th-banner"
-                class="th-banner"
-                src=""
-            >
 
             <h2 id="player-name">
                 Loading...
             </h2>
 
-            <div
-                id="player-tag-badge"
-                class="player-tag"
-            >
+           <div id="player-tag-badge" class="player-tag">
                 #TAG
-            </div>
-
-            <p
-                id="player-clan"
-                class="player-clan"
-            >
+           </div>
+            
+           <p id="player-clan" class="player-clan">
                 Clan
-            </p>
+           </p>
+            
+           <div class="banner-stats">
+               <div class="banner-stat">
+                   🏰 TH<span id="banner-th">18</span>
+               </div>
+               <div class="banner-stat">
+                   ⭐ XP<span id="banner-xp">253</span>
+               </div>
+               <div class="banner-stat">
+                   🏆 <span id="banner-league">Unranked</span>
+               </div>
+           </div>
         </div>
-        <div class="banner-stats">
-            <div class="banner-stat">
-                🏰 TH<span id="banner-th">18</span>
-            </div>
-        <div class="banner-stat">
-            ⭐ XP<span id="banner-xp">253</span>
-        </div>
-        <div class="banner-stat">
-            🏆 <span id="banner-league">Unranked</span>
-        </div>
-        </div>
-    </div>
     </div>
 
     <section
@@ -819,13 +808,13 @@ async function searchPlayer() {
         
         const thImages = {
 
-            18: "/fwa/assets/townhalls/th18.jpg",
+            18: "/fwa/assets/th/th18.png",
         
-            17: "/fwa/assets/townhalls/th17.jpg",
+            17: "/fwa/assets/th/th17.png",
         
-            16: "/fwa/assets/townhalls/th16.jpg",
+            16: "/fwa/assets/th/th16.png",
         
-            15: "/fwa/assets/townhalls/th15.jpg"
+            15: "/fwa/assets/th/th15.png"
         
         };
         
