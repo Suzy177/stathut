@@ -129,11 +129,23 @@ h1{
 
 }
 
-.player-header{
+.player-banner{
 
-    text-align:center;
+    position:relative;
+
+    height:260px;
+
+    border-radius:24px;
+
+    overflow:hidden;
 
     margin-bottom:35px;
+
+    background:linear-gradient(
+        135deg,
+        #1f3c88,
+        #3458b5
+    );
 
 }
 
@@ -254,6 +266,50 @@ h1{
     font-size:30px;
 
     font-weight:800;
+
+}
+
+.th-banner{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    opacity:.25;
+
+}
+
+.banner-overlay{
+
+    position:relative;
+
+    z-index:2;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+}
+
+.player-banner h2{
+
+    color:white;
+
+    font-size:48px;
 
 }
 
@@ -578,18 +634,35 @@ h1{
 
     <div class="player-header">
 
-        <h2 id="player-name">
-            Loading...
-        </h2>
+    <div class="player-banner">
 
-        <div id="player-tag" class="player-tag">
-            #TAG
+        <div class="banner-overlay">
+
+            <img
+                id="th-banner"
+                class="th-banner"
+                src=""
+            >
+
+            <h2 id="player-name">
+                Loading...
+            </h2>
+
+            <div
+                id="player-tag-badge"
+                class="player-tag"
+            >
+                #TAG
+            </div>
+
+            <p
+                id="player-clan"
+                class="player-clan"
+            >
+                Clan
+            </p>
         </div>
-
-        <p id="player-clan" class="player-clan">
-            Clan
-        </p>
-
+    </div>
     </div>
 
     <section
@@ -705,6 +778,18 @@ async function searchPlayer() {
             "Dragon Duke":
                 "/fwa/assets/heroes/DD_SoundOfClash_f10_4k.png"};
         
+        const thImages = {
+
+            18: "/fwa/assets/townhalls/th18.jpg",
+        
+            17: "/fwa/assets/townhalls/th17.jpg",
+        
+            16: "/fwa/assets/townhalls/th16.jpg",
+        
+            15: "/fwa/assets/townhalls/th15.jpg"
+        
+        };
+        
         player.heroes
             .filter(hero => hero.village === "home")
             .forEach(hero => {
@@ -780,6 +865,9 @@ async function searchPlayer() {
 
         document.getElementById("townhall").textContent =
             player.townHall;
+
+        document.getElementById("th-banner").src =
+            thImages[player.townHall];
 
         document.getElementById("exp").textContent =
             player.expLevel;
