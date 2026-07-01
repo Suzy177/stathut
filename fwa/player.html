@@ -1133,7 +1133,7 @@ async function searchPlayer() {
         document.getElementById("military-section")
             .style.display = "block";
         
-        showMilitary("troops");
+        showMilitary(null, "elixir troops");
 
         document.getElementById("player-card").style.display =
             "block";
@@ -1193,24 +1193,24 @@ async function searchPlayer() {
 }
     const troopImages = {
 
-        "Barbarian": "/fwa/assets/troops/Icons_by_Leonart93_FIverr_Mesa de trabajo 1.png",
-        "Archer": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-02.png",
-        "Goblin": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-03.png",
-        "Giant": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-04.png",
-        "Wall Breaker": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-05.png",
-        "Balloon": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-06.png",
-        "Wizard": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-07.png",
-        "Healer": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-08.png",
-        "Dragon": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-09.png",
-        "P.E.K.K.A": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-10.png",
-        "Baby Dragon": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-12.png",
-        "Miner": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-11.png",
-        "Electro Dragon": "/fwa/assets/troops/Avatar_Electro_Dragon.png",
-        "Dragon Rider": "/fwa/assets/troops/Avatar_Dragon_Rider.png",
-        "Electro Titan": "/fwa/assets/troops/Avatar_Electro_Dragon.png",
-        "Root Rider": "/fwa/assets/troops/Avatar_Root_Rider.png",
-        "Thrower": "/fwa/assets/troops/Avatar_Thrower.png",
-        "Yeti": "/fwa/assets/troops/Avatar_Yeti.png",    
+        "Barbarian": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr_Mesa de trabajo 1.png",
+        "Archer": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-02.png",
+        "Goblin": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-03.png",
+        "Giant": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-04.png",
+        "Wall Breaker": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-05.png",
+        "Balloon": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-06.png",
+        "Wizard": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-07.png",
+        "Healer": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-08.png",
+        "Dragon": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-09.png",
+        "P.E.K.K.A": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-10.png",
+        "Baby Dragon": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-12.png",
+        "Miner": "/fwa/assets/elixir troops/Icons_by_Leonart93_FIverr-11.png",
+        "Electro Dragon": "/fwa/assets/elixir troops/Avatar_Electro_Dragon.png",
+        "Dragon Rider": "/fwa/assets/elixir troops/Avatar_Dragon_Rider.png",
+        "Electro Titan": "/fwa/assets/elixir troops/Avatar_Electro_Dragon.png",
+        "Root Rider": "/fwa/assets/elixir troops/Avatar_Root_Rider.png",
+        "Thrower": "/fwa/assets/elixir troops/Avatar_Thrower.png",
+        "Yeti": "/fwa/assets/elixir troops/Avatar_Yeti.png",    
     };
 
     const superTroopImages = {
@@ -1256,7 +1256,9 @@ async function searchPlayer() {
             .querySelectorAll(".military-tab")
             .forEach(tab => tab.classList.remove("active"));
     
-        event.target.classList.add("active");
+        if (event) {
+            event.target.classList.add("active");
+        }
     
         let items = [];
         let images = {};
