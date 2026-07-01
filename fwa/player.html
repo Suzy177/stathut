@@ -659,6 +659,101 @@ h1{
     
     }
 
+    .military-tabs{
+
+        display:flex;
+    
+        gap:12px;
+    
+        margin:25px 0;
+    
+    }
+
+    .military-tab{
+    
+        border:none;
+    
+        padding:12px 22px;
+    
+        border-radius:12px;
+    
+        background:#eef2ff;
+    
+        cursor:pointer;
+    
+        font-weight:700;
+    
+        transition:.25s;
+    
+    }
+
+    .military-tab.active{
+    
+        background:#2563eb;
+    
+        color:white;
+    
+    }
+
+    #military-grid{
+    
+        display:grid;
+    
+        grid-template-columns:
+            repeat(auto-fit,minmax(180px,1fr));
+    
+        gap:18px;
+    
+    }
+
+    .military-card{
+
+        background:white;
+    
+        border-radius:18px;
+    
+        padding:18px;
+    
+        text-align:center;
+    
+        box-shadow:0 8px 20px rgba(0,0,0,.08);
+    
+        transition:.25s;
+    
+    }
+
+    .military-card:hover{
+    
+        transform:translateY(-5px);
+    
+    }
+
+    .military-card img{
+    
+        width:72px;
+    
+        height:72px;
+    
+        object-fit:contain;
+    
+        margin-bottom:12px;
+    
+    }
+
+    .military-card h4{
+    
+        color:#1f3c88;
+    
+        margin-bottom:10px;
+    
+    }
+
+    .military-card small{
+    
+        color:#6b7280;
+    
+    }
+
 </style>
 
 <body>
@@ -744,15 +839,30 @@ h1{
     
     </section>
 
-    <section id="troops-section">
+    <section id="military-section" style="display:none;">
 
-        <h2 class="section-title">
-            🪖 Troops
-        </h2>
+        <h2 class="section-title">⚔ Military</h2>
     
-        <div id="troops-grid" class="troops-grid">
+        <div class="military-tabs">
+    
+            <button class="military-tab active"
+                    onclick="showMilitary('troops')">
+                🪖 Troops
+            </button>
+    
+            <button class="military-tab"
+                    onclick="showMilitary('super')">
+                🔥 Super Troops
+            </button>
+    
+            <button class="military-tab"
+                    onclick="showMilitary('siege')">
+                🚪 Siege Machines
+            </button>
     
         </div>
+    
+        <div id="military-grid"></div>
     
     </section>
 
@@ -1018,6 +1128,13 @@ async function searchPlayer() {
 
         });
 
+        window.playerData = player;
+
+        document.getElementById("military-section")
+            .style.display = "block";
+        
+        showMilitary("troops");
+
         document.getElementById("player-card").style.display =
             "block";
 
@@ -1074,6 +1191,11 @@ async function searchPlayer() {
     }
 
 }
+    function showMilitary(type){
+
+        console.log(type);
+    
+    }
 
 </script>
 
