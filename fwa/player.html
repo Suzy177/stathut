@@ -846,17 +846,17 @@ h1{
         <div class="military-tabs">
     
             <button class="military-tab active"
-                    onclick="showMilitary('troops')">
+                    onclick="showMilitary(event,'troops')">
                 🪖 Troops
             </button>
     
             <button class="military-tab"
-                    onclick="showMilitary('super')">
+                    onclick="showMilitary(event,'super')">
                 🔥 Super Troops
             </button>
     
             <button class="military-tab"
-                    onclick="showMilitary('siege')">
+                    onclick="showMilitary(event,'siege')">
                 🚪 Siege Machines
             </button>
     
@@ -1191,9 +1191,133 @@ async function searchPlayer() {
     }
 
 }
-    function showMilitary(type){
+    const troopImages = {
 
-        console.log(type);
+        "Barbarian": "/fwa/assets/troops/Icons_by_Leonart93_FIverr_Mesa de trabajo 1.png",
+        "Archer": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-02.png",
+        "Goblin": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-03.png",
+        "Giant": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-04.png",
+        "Wall Breaker": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-05.png",
+        "Balloon": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-06.png",
+        "Wizard": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-07.png",
+        "Healer": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-08.png",
+        "Dragon": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-09.png",
+        "P.E.K.K.A": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-10.png",
+        "Baby Dragon": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-12.png",
+        "Miner": "/fwa/assets/troops/Icons_by_Leonart93_FIverr-11.png",
+        "Electro Dragon": "/fwa/assets/troops/Avatar_Electro_Dragon.png",
+        "Dragon Rider": "/fwa/assets/troops/Avatar_Dragon_Rider.png",
+        "Electro Titan": "/fwa/assets/troops/Avatar_Electro_Dragon.png",
+        "Root Rider": "/fwa/assets/troops/Avatar_Root_Rider.png",
+        "Thrower": "/fwa/assets/troops/Avatar_Thrower.png",
+        "Yeti": "/fwa/assets/troops/Avatar_Yeti.png",    
+    };
+
+    const superTroopImages = {
+
+        "Super Barbarian": "/fwa/assets/super troops/Super_Barb.PNG",
+        "Super Archer": "/fwa/assets/super troops/Super_Archer.PNG",
+        "Sneaky Goblin": "/fwa/assets/super troops/Super_Goblin.PNG",
+        "Inferno Dragon": "/fwa/assets/super troops/Super_Baby_Dragon.PNG",
+        "Super Bowler": "/fwa/assets/super troops/Super_Bowler.PNG",
+        "Super Dragon": "/fwa/assets/super troops/Super_Electro_Dragon.PNG",
+        "Super Giant": "/fwa/assets/super troops/Super_Giant.PNG",
+        "Super Hog Rider": "/fwa/assets/super troops/Super_Hogs.PNG",
+        "Super Miner": "/fwa/assets/super troops/Super_Miner.PNG",
+        "Super Minion": "/fwa/assets/super troops/Super_Minion.PNG",
+        "Super Valkyrie": "/fwa/assets/super troops/Super_Valk.PNG",
+        "Super Wall Breaker": "/fwa/assets/super troops/Super_Wall_breaker.PNG",
+        "Super Witch": "/fwa/assets/super troops/Super_Witch.PNG",
+        "Super Wizard": "/fwa/assets/super troops/Super_Wizard.PNG",
+        "Super Yeti": "/fwa/assets/super troops/Super_Yeti.PNG",
+    };
+
+    const siegeImages = {
+
+        "Wall Wrecker": "/fwa/assets/Siege machines/Icons_by_Leonart93_Fiverr-03.png",
+        "Battle Blimp": "/fwa/assets/Siege machines/Icons_by_Leonart93_Fiverr-02.png",
+        "Battle Drill": "/fwa/assets/Siege machines/Avatar_Battle_Drill.png",
+        "Flame Flinger": "/fwa/assets/Siege machines/Avatar_Flame_Flinger.png",
+        "Log Launcher": "/fwa/assets/Siege machines/Avatar_Log_Launcher.png",
+        "Siege Barracks": "/fwa/assets/Siege machines/Avatar_Siege_Barracks.png",
+        "Sky Wagon": "/fwa/assets/Siege machines/Avatar_Sky_Wagon.png",
+        "Troop Launcher": "/fwa/assets/Siege machines/Avatar_Troop_Launcher.png",
+        "Stone Slammer": "/fwa/assets/Siege machines/Icons_by_Leonart93_Fiverr-14.png",
+    };
+
+    function showMilitary(event, type){
+
+        const grid =
+            document.getElementById("military-grid");
+    
+        grid.innerHTML = "";
+    
+        document
+            .querySelectorAll(".military-tab")
+            .forEach(tab => tab.classList.remove("active"));
+    
+        event.target.classList.add("active");
+    
+        let items = [];
+        let images = {};
+    
+        if(type === "troops"){
+    
+            items = window.playerData.troops;
+            images = troopImages;
+    
+        }
+    
+        if(type === "super"){
+    
+            items = window.playerData.superTroops;
+            images = superTroopImages;
+    
+        }
+    
+        if(type === "siege"){
+    
+            items = window.playerData.siegeMachines;
+            images = siegeImages;
+    
+        }
+    
+        items.forEach(item=>{
+    
+            const percent =
+                (item.level/item.maxLevel)*100;
+    
+            grid.innerHTML += `
+    
+    <div class="military-card">
+    
+    <img
+    src="${images[item.name]}"
+    alt="${item.name}"
+    >
+    
+    <h4>${item.name}</h4>
+    
+    <small>
+    
+    Level ${item.level}/${item.maxLevel}
+    
+    </small>
+    
+    <div class="hero-bar">
+    
+    <div
+    class="hero-fill"
+    style="width:${percent}%"
+    ></div>
+    
+    </div>
+    
+    </div>
+    
+    `;
+    
+        });
     
     }
 
