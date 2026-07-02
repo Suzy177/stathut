@@ -1278,9 +1278,6 @@ async function searchPlayer() {
         document.getElementById("donations").textContent =
             player.donations;
 
-        document.getElementById("military-count")
-            .textContent = `(${items.length})`;
-
     }
 
     catch (error) {
@@ -1350,6 +1347,40 @@ async function searchPlayer() {
 
         const grid =
             document.getElementById("military-grid");
+        document
+            .querySelectorAll(".military-tab")
+            .forEach(tab => tab.classList.remove("active"));
+        
+        if (event) {
+            event.target.classList.add("active");
+        }
+        
+        let items = [];
+        let images = {};
+        
+        if(type === "troops"){
+        
+            items = window.playerData.troops;
+            images = troopImages;
+        
+        }
+        
+        else if(type === "super"){
+        
+            items = window.playerData.superTroops;
+            images = superTroopImages;
+        
+        }
+        
+        else if(type === "siege"){
+        
+            items = window.playerData.siegeMachines;
+            images = siegeImages;
+        
+        }
+        
+        document.getElementById("military-count").textContent =
+            `(${items.length})`;
         
         grid.classList.add("fade");
 
@@ -1398,6 +1429,8 @@ async function searchPlayer() {
         grid.classList.remove("fade");
     
     },200);
+
+    }
 
 </script>
 
