@@ -455,7 +455,7 @@ h1{
         
         overflow:hidden;
     
-        transition:width 1s ease;
+        transition:width .8s ease;
     
     }
 
@@ -698,6 +698,9 @@ h1{
         background:#2563eb;
     
         color:white;
+
+        box-shadow:
+            0 8px 18px rgba(37,99,235,.35);
     
     }
 
@@ -816,6 +819,30 @@ h1{
     
     }
 
+    @keyframes cardUp{
+
+        from{
+    
+            opacity:0;
+            transform:translateY(20px);
+    
+        }
+    
+        to{
+    
+            opacity:1;
+            transform:translateY(0);
+    
+        }
+    
+    }
+
+.military-card{
+
+    animation:cardUp .35s ease;
+
+}
+
 </style>
 
 <body>
@@ -907,6 +934,7 @@ h1{
 
             <h2 class="section-title">
                 ⚔ Military
+                <span id="military-count"></span>
             </h2>
         
             <div class="section-line"></div>
@@ -1250,6 +1278,9 @@ async function searchPlayer() {
         document.getElementById("donations").textContent =
             player.donations;
 
+        document.getElementById("military-count")
+            .textContent = `(${items.length})`;
+
     }
 
     catch (error) {
@@ -1319,80 +1350,54 @@ async function searchPlayer() {
 
         const grid =
             document.getElementById("military-grid");
+        
         grid.classList.add("fade");
-    
-        grid.innerHTML = "";
-    
-        document
-            .querySelectorAll(".military-tab")
-            .forEach(tab => tab.classList.remove("active"));
-    
-        if (event) {
-            event.target.classList.add("active");
-        }
-    
-        let items = [];
-        let images = {};
-    
-        if(type === "troops"){
-    
-            items = window.playerData.troops;
-            images = troopImages;
-    
-        }
-    
-        if(type === "super"){
-    
-            items = window.playerData.superTroops;
-            images = superTroopImages;
-    
-        }
-    
-        if(type === "siege"){
-    
-            items = window.playerData.siegeMachines;
-            images = siegeImages;
-    
-        }
-    
-        items.forEach(item=>{
-    
-            const percent =
-                (item.level/item.maxLevel)*100;
-    
+
+        setTimeout(() => {
+
+            grid.innerHTML = "";
+
+            items.forEach(item => {
+
+                const percent =
+                    (item.level / item.maxLevel) * 100;
+                const badge =
+                    item.level === item.maxLevel
+                        ? `<span class="max-badge">MAX</span>`
+                        : `<small>Lv ${item.level}/${item.maxLevel}</small>`;
+                
             grid.innerHTML += `
     
     <div class="military-card">
     
-    <img
-    src="${images[item.name]}"
-    alt="${item.name}"
-    >
+        <img
+            src="${images[item.name]}"
+            alt="${item.name}"
+            onerror="this.src='/fwa/assets/badges/default.png'"
+        >
+        
+        <h4>${item.name}</h4>
     
-    <h4>${item.name}</h4>
-    
-    <small>
-    
-    Level ${item.level}/${item.maxLevel}
-    
-    </small>
-    
-    <div class="hero-bar">
-    
-    <div
-    class="hero-fill"
-    style="width:${percent}%"
-    ></div>
-    
-    </div>
+         ${badge}
+        
+        <div class="hero-bar">
+        
+            <div
+                class="hero-fill"
+                style="width:${percent}%"
+            ></div>
+        
+        </div>
     
     </div>
     
     `;
     
         });
+
+        grid.classList.remove("fade");
     
-    }
+    },200);
 
 </script>
 
