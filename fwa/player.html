@@ -1394,20 +1394,6 @@ async function searchPlayer() {
     
     }
 
-    setTimeout(() => {
-
-        grid.innerHTML = "";
-    
-        // Render cards here
-    
-        grid.classList.remove("fade");
-    
-    },200);
-
-    const levelText = item.level === item.maxLevel
-    ? `<span class="max-badge">MAX</span>`
-    : `Lv ${item.level}/${item.maxLevel}`;
-
 </script>
 
 </body>
