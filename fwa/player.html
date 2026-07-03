@@ -837,11 +837,35 @@ h1{
     
     }
 
-.military-card{
+    .military-icon{
 
-    animation:cardUp .35s ease;
+        width:80px;
+        height:80px;
+    
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    
+        margin:0 auto 15px;
+    
+    }
 
-}
+    .military-icon img{
+    
+        width:64px;
+        height:64px;
+    
+        object-fit:contain;
+    
+        display:block;
+    
+    }
+    
+    .military-card{
+    
+        animation:cardUp .35s ease;
+    
+    }
 
 </style>
 
@@ -1399,38 +1423,41 @@ async function searchPlayer() {
                 
             grid.innerHTML += `
     
-    <div class="military-card">
-    
-        <img
-            src="${images[item.name]}"
-            alt="${item.name}"
-            onerror="this.src='/fwa/assets/badges/default.png'"
-        >
-        
-        <h4>${item.name}</h4>
-    
-         ${badge}
-        
-        <div class="hero-bar">
-        
-            <div
-                class="hero-fill"
-                style="width:${percent}%"
-            ></div>
-        
-        </div>
-    
-    </div>
-    
-    `;
-    
-        });
+            <div class="military-card">
+            
+                <div class="military-icon">
 
-        grid.classList.remove("fade");
-    
-    },200);
+                    <img
+                        src="${images[item.name]}"
+                        alt="${item.name}"
+                        onerror="this.src='/fwa/assets/badges/default.png'"
+                    >
+                </div>
 
-    }
+                <h4>${item.name}</h4>
+            
+                 ${badge}
+                
+                <div class="hero-bar">
+                
+                    <div
+                        class="hero-fill"
+                        style="width:${percent}%"
+                    ></div>
+                
+                </div>
+            
+            </div>
+            
+            `;
+            
+                });
+        
+                grid.classList.remove("fade");
+            
+            },200);
+        
+            }
 
 </script>
 
