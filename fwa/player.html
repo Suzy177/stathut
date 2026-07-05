@@ -1397,25 +1397,34 @@ async function searchPlayer() {
         
         if(type === "troops"){
         
-            items = window.playerData.troops;
-            images = troopImages;
+            items = window.playerData.troops.filter(item =>
+                !siegeNames.includes(item.name) &&
+                !superTroopNames.includes(item.name)
+            );
         
+            images = troopImages;
         }
         
         else if(type === "super"){
         
-            items = window.playerData.superTroops;
+            items = window.playerData.troops.filter(item =>
+                superTroopNames.includes(item.name)
+            );
+            
             images = superTroopImages;
-        
         }
+            
         
         else if(type === "siege"){
         
-            items = window.playerData.siegeMachines;
+            items = window.playerData.troops.filter(item =>
+                siegeNames.includes(item.name)
+            );
+        
             images = siegeImages;
-        
-        }
-        
+        }        
+
+    
         document.getElementById("military-count").textContent =
             `(${items.length})`;
         
