@@ -867,6 +867,123 @@ h1{
     
     }
 
+    /* =========================
+       SPELLS SECTION
+    ========================= */
+
+    #spells-section {
+        margin-top: 40px;
+    }
+    
+    .spells-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    
+    .spell-card {
+        background: white;
+        border-radius: 22px;
+        padding: 24px 18px;
+        min-height: 260px;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+    
+    .spell-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+    }
+    
+    .spell-icon {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+        margin-bottom: 16px;
+    }
+    
+    .spell-name {
+        color: #173f91;
+        font-size: 20px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 14px;
+    }
+    
+    .spell-level {
+        color: #6b7280;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .spell-progress {
+        width: 100%;
+        height: 10px;
+        background: #e8e8e8;
+        border-radius: 999px;
+        overflow: hidden;
+    }
+    
+    .spell-progress-bar {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(
+            90deg,
+            #49b457,
+            #86cf8e
+        );
+        border-radius: 999px;
+    
+        transition: width 0.8s ease;
+    }
+    
+    .spell-max {
+        display: inline-block;
+        background: #22b94b;
+        color: white;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 999px;
+        margin-bottom: 8px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1000px) {
+        .spells-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+    @media (max-width: 700px) {
+        .spells-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    
+        .spell-card {
+            min-height: 220px;
+            padding: 20px 14px;
+        }
+    
+        .spell-icon {
+            width: 72px;
+            height: 72px;
+        }
+    
+        .spell-name {
+            font-size: 17px;
+        }
+    }
+
 </style>
 
 <body>
@@ -985,6 +1102,20 @@ h1{
         </div>
     
         <div id="military-grid"></div>
+    
+    </section>
+
+    <section id="spells-section">
+    
+        <h2 class="section-title">
+            🧪 Spells
+            <span id="spells-count">(0)</span>
+        </h2>
+    
+        <div
+            id="spells-grid"
+            class="spells-grid">
+        </div>
     
     </section>
 
@@ -1263,6 +1394,7 @@ async function searchPlayer() {
             .style.display = "block";
         
         showMilitary(null, "troops");
+        showSpells(player.spells);
 
         document.getElementById("player-card").style.display =
             "block";
@@ -1419,6 +1551,28 @@ async function searchPlayer() {
         "Super Yeti"
     ];
 
+    const spellImages = {
+        "Lightning Spell": "/fwa/assets/spells/Lightning Spell.png",
+        "Rage Spell": "/fwa/assets/spells/Rage Spell.png",
+        "Healing Spell": "/fwa/assets/spells/Healing Spell.png",
+        "Jump Spell": "/fwa/assets/spells/Jump Spell.png",
+        "Freeze Spell": "/fwa/assets/spells/Freeze Spell.png",
+        "Clone Spell": "/fwa/assets/spells/Clone Spell_info.png",
+        "Invisibility Spell": "/fwa/assets/spells/Invisibility Spell.png",
+        "Recall Spell": "/fwa/assets/spells/Recall Spell.png",
+        "Revive Spell": "/fwa/assets/spells/Revive Spell.png",
+        "Totem Spell": "/fwa/assets/spells/Totem Spell.png",
+    
+        "Poison Spell": "/fwa/assets/spells/Poison Spell.png",
+        "Earthquake Spell": "/fwa/assets/spells/Earthquake Spell.png",
+        "Haste Spell": "/fwa/assets/spells/Haste Spell.png",
+        "Skeleton Spell": "/fwa/assets/spells/Skeleton Spell.png",
+        "Bat Spell": "/fwa/assets/spells/Bat Spell.png",
+        "Overgrowth Spell": "/fwa/assets/spells/Overgrowth Spell.png",
+        "Ice Block Spell": "/fwa/assets/spells/Ice Block Spell.png",
+        "Angry Spell": "/fwa/assets/spells/Angry Spell.png"
+    };
+
     function showMilitary(event, type){
 
         const grid =
@@ -1517,6 +1671,79 @@ async function searchPlayer() {
             
             },200);
         
+            }
+
+            function showSpells(spells) {
+                
+                const grid = document.getElementById("spells-grid");
+                const count = document.getElementById("spells-count");
+            
+                if (!grid || !count) return;
+            
+                grid.innerHTML = "";
+            
+                const items = (spells || []).filter(
+                    spell => spell.village === "home"
+                );
+            
+                count.textContent = `(${items.length})`;
+            
+                items.forEach(spell => {
+            
+                    const percent = Math.min(
+                        100,
+                        Math.round((spell.level / spell.maxLevel) * 100)
+                    );
+            
+                    const isMax = spell.level >= spell.maxLevel;
+                    const image = spellImages[spell.name];
+            
+                    const card = document.createElement("div");
+                    card.className = "spell-card";
+            
+                    card.innerHTML = `
+                        <img
+                            class="spell-icon"
+                            src="${image || ""}"
+                            alt="${spell.name}"
+                        >
+            
+                        <div class="spell-name">
+                            ${spell.name}
+                        </div>
+            
+                        ${
+                            isMax
+                            ? `<div class="spell-max">MAX</div>`
+                            : ""
+                        }
+            
+                        <div class="spell-level">
+                            Lv ${spell.level}/${spell.maxLevel}
+                        </div>
+            
+                        <div class="spell-progress">
+                            <div
+                                class="spell-progress-bar"
+                                data-percent="${percent}">
+                            </div>
+                        </div>
+                    `;
+            
+                    grid.appendChild(card);
+                });
+            
+                requestAnimationFrame(() => {
+            
+                    grid.querySelectorAll(".spell-progress-bar")
+                        .forEach(bar => {
+            
+                            bar.style.width =
+                                `${bar.dataset.percent}%`;
+            
+                        });
+            
+                });
             }
 
 </script>
