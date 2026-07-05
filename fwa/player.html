@@ -984,6 +984,76 @@ h1{
         }
     }
 
+    /* =========================
+       PLAYER STATS SECTION
+    ========================= */
+
+    #stats-section {
+        margin-top: 40px;
+    }
+    
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .stat-card {
+        background: white;
+        border-radius: 22px;
+        padding: 26px 20px;
+        text-align: center;
+    
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.13);
+    }
+    
+    .stat-icon {
+        display: block;
+        font-size: 38px;
+        margin-bottom: 12px;
+    
+        transition: transform 0.25s ease;
+    }
+    
+    .stat-card:hover .stat-icon {
+        transform: scale(1.15);
+    }
+    
+    .stat-card h3 {
+        color: #1f3c88;
+        font-size: 32px;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+    
+    .stat-card p {
+        color: #6b7280;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    
+    /* Responsive */
+    @media (max-width: 800px) {
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .stats-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
 </style>
 
 <body>
@@ -1118,6 +1188,60 @@ h1{
         </div>
     
     </section>
+        
+    <section id="stats-section">
+    
+        <div class="section-heading">
+    
+            <h2 class="section-title">
+                📊 Player Stats
+            </h2>
+    
+            <div class="section-line"></div>
+    
+        </div>
+    
+        <div id="stats-grid" class="stats-grid">
+    
+            <div class="stat-card">
+                <span class="stat-icon">⚔️</span>
+                <h3 id="stat-attack-wins">0</h3>
+                <p>Attack Wins</p>
+            </div>
+    
+            <div class="stat-card">
+                <span class="stat-icon">🛡️</span>
+                <h3 id="stat-defense-wins">0</h3>
+                <p>Defense Wins</p>
+            </div>
+    
+            <div class="stat-card">
+                <span class="stat-icon">⭐</span>
+                <h3 id="stat-war-stars">0</h3>
+                <p>War Stars</p>
+            </div>
+    
+            <div class="stat-card">
+                <span class="stat-icon">🤝</span>
+                <h3 id="stat-donated">0</h3>
+                <p>Donated</p>
+            </div>
+    
+            <div class="stat-card">
+                <span class="stat-icon">📥</span>
+                <h3 id="stat-received">0</h3>
+                <p>Received</p>
+            </div>
+    
+            <div class="stat-card">
+                <span class="stat-icon">🏆</span>
+                <h3 id="stat-best-trophies">0</h3>
+                <p>Best Trophies</p>
+            </div>
+    
+        </div>
+    
+    </section>
 
     <div class="player-top-stats">
 
@@ -1210,6 +1334,24 @@ async function searchPlayer() {
         
         document.getElementById("donations").textContent =
             player.donations;
+
+        document.getElementById("stat-attack-wins").textContent =
+            player.attackWins ?? 0;
+        
+        document.getElementById("stat-defense-wins").textContent =
+            player.defenseWins ?? 0;
+        
+        document.getElementById("stat-war-stars").textContent =
+            player.warStars ?? 0;
+        
+        document.getElementById("stat-donated").textContent =
+            player.donations ?? 0;
+        
+        document.getElementById("stat-received").textContent =
+            player.donationsReceived ?? 0;
+        
+        document.getElementById("stat-best-trophies").textContent =
+            player.bestTrophies ?? 0;
 
         document.getElementById("pets-grid").innerHTML = "";
 
