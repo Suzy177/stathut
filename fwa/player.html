@@ -2460,6 +2460,60 @@ async function searchPlayer() {
                 });
             
             });
+
+            // =========================
+            // ACTIVE SECTION ON SCROLL
+            // =========================
+
+            const dashboardSections = [
+                "overview-section",
+                "heroes-section",
+                "pets-section",
+                "military-section",
+                "spells-section",
+                "stats-section",
+                "builder-section",
+                "war-profile-section"
+            ];
+            
+            const navObserver = new IntersectionObserver(
+                (entries) => {
+            
+                    entries.forEach(entry => {
+            
+                        if (!entry.isIntersecting) return;
+            
+                        const activeId = entry.target.id;
+            
+                        dashboardNavButtons.forEach(button => {
+            
+                            button.classList.toggle(
+                                "active",
+                                button.dataset.target === activeId
+                            );
+            
+                        });
+            
+                    });
+            
+                },
+                {
+                    root: null,
+                    rootMargin: "-20% 0px -65% 0px",
+                    threshold: 0
+                }
+            );
+            
+            dashboardSections.forEach(sectionId => {
+            
+                const section =
+                    document.getElementById(sectionId);
+            
+                if (section) {
+                    navObserver.observe(section);
+                }
+            
+            });
     
 
 </script>
