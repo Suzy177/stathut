@@ -1261,6 +1261,106 @@ h1{
         }
     }
 
+    /* =========================
+       DASHBOARD NAVIGATION
+    ========================= */
+
+    .dashboard-nav {
+        position: sticky;
+        top: 14px;
+        z-index: 100;
+    
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    
+        width: 100%;
+        margin: 0 0 32px;
+        padding: 10px;
+    
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 18px;
+    
+        box-shadow:
+            0 10px 30px rgba(15, 23, 42, 0.10);
+    
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    
+    .dashboard-nav::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .dashboard-nav-btn {
+        flex: 0 0 auto;
+    
+        border: none;
+        background: transparent;
+        color: #64748b;
+    
+        padding: 11px 16px;
+        border-radius: 999px;
+    
+        font-size: 14px;
+        font-weight: 700;
+    
+        cursor: pointer;
+        white-space: nowrap;
+    
+        transition:
+            background 0.25s ease,
+            color 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+    
+    .dashboard-nav-btn:hover {
+        color: #1f3c88;
+        background: #eef2ff;
+        transform: translateY(-2px);
+    }
+    
+    .dashboard-nav-btn.active {
+        color: white;
+        background: #2563eb;
+    
+        box-shadow:
+            0 7px 18px rgba(37, 99, 235, 0.30);
+    }
+    
+    /* Smooth section landing */
+    #overview-section,
+    #heroes-section,
+    #pets-section,
+    #military-section,
+    #spells-section,
+    #stats-section,
+    #builder-section,
+    #war-profile-section {
+        scroll-margin-top: 110px;
+    }
+    
+    /* Mobile */
+    @media (max-width: 700px) {
+    
+        .dashboard-nav {
+            top: 8px;
+            gap: 7px;
+            padding: 8px;
+            border-radius: 16px;
+        }
+    
+        .dashboard-nav-btn {
+            padding: 10px 14px;
+            font-size: 13px;
+        }
+    }
+
 </style>
 
 <body>
@@ -1320,6 +1420,51 @@ h1{
         </div>
     </div>
 
+    <!-- DASHBOARD NAVIGATION -->
+    <nav id="dashboard-nav" class="dashboard-nav">
+    
+        <button class="dashboard-nav-btn active"
+                data-target="overview-section">
+            🏠 Overview
+        </button>
+    
+        <button class="dashboard-nav-btn"
+                data-target="heroes-section">
+            ❤️ Heroes
+        </button>
+    
+        <button class="dashboard-nav-btn"
+                data-target="pets-section">
+            🐾 Pets
+        </button>
+    
+        <button class="dashboard-nav-btn"
+                data-target="military-section">
+            ⚔️ Military
+        </button>
+    
+        <button class="dashboard-nav-btn"
+                data-target="spells-section">
+            🧪 Spells
+        </button>
+    
+        <button class="dashboard-nav-btn"
+                data-target="stats-section">
+            📊 Stats
+        </button>
+    
+        <button class="dashboard-nav-btn"
+                data-target="builder-section">
+            🏗️ Builder
+        </button>
+    
+        <button class="dashboard-nav-btn"
+                data-target="war-profile-section">
+            🛡️ War
+        </button>
+    
+    </nav>
+        
     <section
         id="heroes-section"
         class="heroes-section"
@@ -1533,7 +1678,7 @@ h1{
     
     </section>
 
-    <div class="player-top-stats">
+    <div id="overview-section" class="player-top-stats">
 
         <div class="top-stat">
             <span>🏰</span>
@@ -2283,6 +2428,39 @@ async function searchPlayer() {
             
                 });
             }
+
+            // =========================
+            // DASHBOARD NAVIGATION
+            // =========================
+
+            const dashboardNavButtons =
+                document.querySelectorAll(".dashboard-nav-btn");
+            
+            dashboardNavButtons.forEach(button => {
+            
+                button.addEventListener("click", () => {
+            
+                    const targetId = button.dataset.target;
+                    const targetSection =
+                        document.getElementById(targetId);
+            
+                    if (!targetSection) return;
+            
+                    targetSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+            
+                    dashboardNavButtons.forEach(btn =>
+                        btn.classList.remove("active")
+                    );
+            
+                    button.classList.add("active");
+            
+                });
+            
+            });
+    
 
 </script>
 
