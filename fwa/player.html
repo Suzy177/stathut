@@ -1361,13 +1361,332 @@ h1{
         }
     }
 
+    @media (max-width: 700px) {
+
+        .dashboard-nav {
+            top: 8px;
+            gap: 7px;
+            padding: 8px;
+            border-radius: 16px;
+        }
+    
+        .dashboard-nav-btn {
+            padding: 10px 14px;
+            font-size: 13px;
+        }
+    }
+
+    /* =========================
+       THEME VARIABLES
+    ========================= */
+
+    :root {
+        --page-bg-start: #dbeafe;
+        --page-bg-end: #eef2ff;
+    
+        --surface: #ffffff;
+        --surface-soft: #f8fbff;
+        --surface-muted: #f7f9fc;
+    
+        --text-primary: #1f3c88;
+        --text-secondary: #6b7280;
+        --text-normal: #111827;
+    
+        --border-soft: #e7ebf5;
+        --progress-track: #ececec;
+    
+        --nav-bg: rgba(255, 255, 255, 0.82);
+        --nav-border: rgba(255, 255, 255, 0.70);
+    
+        --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.08);
+        --shadow-large: 0 20px 45px rgba(0, 0, 0, 0.10);
+    }
+
+    /* =========================
+       DARK THEME VARIABLES
+    ========================= */
+
+    body.dark-theme {
+        --page-bg-start: #0f172a;
+        --page-bg-end: #111827;
+    
+        --surface: #182235;
+        --surface-soft: #202c40;
+        --surface-muted: #263449;
+    
+        --text-primary: #93c5fd;
+        --text-secondary: #cbd5e1;
+        --text-normal: #f8fafc;
+    
+        --border-soft: #334155;
+        --progress-track: #334155;
+    
+        --nav-bg: rgba(24, 34, 53, 0.88);
+        --nav-border: rgba(148, 163, 184, 0.18);
+    
+        --shadow-card:
+            0 10px 28px rgba(0, 0, 0, 0.28);
+    
+        --shadow-large:
+            0 20px 45px rgba(0, 0, 0, 0.38);
+    }
+
+    /* =========================
+       THEME WIRING
+    ========================= */
+
+    body {
+        background: linear-gradient(
+            135deg,
+            var(--page-bg-start),
+            var(--page-bg-end)
+        );
+    
+        color: var(--text-normal);
+    
+        transition:
+            background 0.35s ease,
+            color 0.35s ease;
+    }
+    
+    /* Main dashboard */
+    .player-card {
+        background: var(--surface);
+        box-shadow: var(--shadow-large);
+    }
+    
+    /* Overview cards */
+    .top-stat,
+    .overview-card {
+        background: var(--surface-soft);
+    }
+    
+    .top-stat h3,
+    .overview-card h4 {
+        color: var(--text-primary);
+    }
+    
+    .top-stat small {
+        color: var(--text-secondary);
+    }
+    
+    .overview-card p {
+        color: var(--text-normal);
+    }
+    
+    /* Heroes + Pets */
+    .hero-card {
+        background: var(--surface);
+        box-shadow: var(--shadow-card);
+    }
+    
+    .hero-card h3,
+    .hero-title h3 {
+        color: var(--text-primary);
+    }
+    
+    .hero-card p,
+    .hero-level {
+        color: var(--text-secondary);
+    }
+    
+    .equipment-pill {
+        background: var(--surface-muted);
+        color: var(--text-normal);
+    }
+    
+    /* Military */
+    .military-card {
+        background: var(--surface);
+        box-shadow: var(--shadow-card);
+    }
+    
+    .military-card h4 {
+        color: var(--text-primary);
+    }
+    
+    .military-card small {
+        color: var(--text-secondary);
+    }
+    
+    .military-tab {
+        background: var(--surface-muted);
+        color: var(--text-normal);
+    }
+    
+    /* Spells */
+    .spell-card {
+        background: var(--surface);
+        box-shadow: var(--shadow-card);
+    }
+    
+    .spell-name {
+        color: var(--text-primary);
+    }
+    
+    .spell-level {
+        color: var(--text-secondary);
+    }
+    
+    .spell-progress {
+        background: var(--progress-track);
+    }
+    
+    /* Player Stats */
+    .stat-card {
+        background: var(--surface);
+        box-shadow: var(--shadow-card);
+    }
+    
+    .stat-card h3 {
+        color: var(--text-primary);
+    }
+    
+    .stat-card p {
+        color: var(--text-secondary);
+    }
+    
+    /* Builder Base */
+    .builder-stat-card,
+    .builder-hero-card {
+        background: var(--surface);
+        box-shadow: var(--shadow-card);
+    }
+    
+    .builder-stat-card h3,
+    .builder-hero-title h3 {
+        color: var(--text-primary);
+    }
+    
+    .builder-stat-card p,
+    .builder-hero-level {
+        color: var(--text-secondary);
+    }
+    
+    /* War Profile */
+    .war-profile-card {
+        background: var(--surface);
+        box-shadow: var(--shadow-card);
+    }
+    
+    .war-profile-card h3 {
+        color: var(--text-primary);
+    }
+    
+    .war-profile-card p {
+        color: var(--text-secondary);
+    }
+    
+    /* Section headings */
+    .section-title,
+    .heroes-section h2 {
+        color: var(--text-primary);
+    }
+    
+    .section-line {
+        background: var(--border-soft);
+    }
+    
+    /* Progress tracks */
+    .hero-bar {
+        background: var(--progress-track);
+    }
+    
+    /* Sticky dashboard navigation */
+    .dashboard-nav {
+        background: var(--nav-bg);
+        border-color: var(--nav-border);
+    }
+    
+    .dashboard-nav-btn {
+        color: var(--text-secondary);
+    }
+    
+    .dashboard-nav-btn:hover {
+        color: var(--text-primary);
+        background: var(--surface-muted);
+    }
+    
+    /* Keep active controls blue */
+    .dashboard-nav-btn.active,
+    .military-tab.active {
+        color: white;
+        background: #2563eb;
+    }
+    
+    /* Page title */
+    h1 {
+        color: var(--text-primary);
+    }
+
+    /* =========================
+       THEME TOGGLE
+    ========================= */
+
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        margin: -20px 0 20px auto;
+    
+        border: none;
+        border-radius: 50%;
+    
+        background: #2563eb;
+        color: white;
+    
+        font-size: 20px;
+        cursor: pointer;
+    
+        box-shadow:
+            0 8px 20px rgba(37, 99, 235, 0.25);
+    
+        transition:
+            transform 0.25s ease,
+            background 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+    
+    .theme-toggle:hover {
+        transform: translateY(-2px) rotate(8deg);
+        background: #1d4ed8;
+    
+        box-shadow:
+            0 12px 26px rgba(37, 99, 235, 0.35);
+    }
+    
+    .theme-toggle:active {
+        transform: scale(0.94);
+    }
+    
 </style>
 
 <body>
 
 <div class="container">
 
+    <h1>🔍 PLAYER SEARCH </h1>
+
+    <div class="container">
+
     <h1>🔍 Player Search</h1>
+
+    <!-- THEME TOGGLE -->
+    <button
+        id="theme-toggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Switch to dark mode"
+        title="Switch theme"
+    >
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <div class="search-box">
 
     <div class="search-box">
 
@@ -2512,6 +2831,61 @@ async function searchPlayer() {
                 if (section) {
                     navObserver.observe(section);
                 }
+            
+            });
+
+            // =========================
+            // LIGHT / DARK THEME
+            // =========================
+
+            const themeToggle =
+                document.getElementById("theme-toggle");
+            
+            const themeIcon =
+                document.getElementById("theme-icon");
+            
+            function applyTheme(theme) {
+            
+                const isDark = theme === "dark";
+            
+                document.body.classList.toggle(
+                    "dark-theme",
+                    isDark
+                );
+            
+                themeIcon.textContent =
+                    isDark ? "☀️" : "🌙";
+            
+                themeToggle.setAttribute(
+                    "aria-label",
+                    isDark
+                        ? "Switch to light mode"
+                        : "Switch to dark mode"
+                );
+            }
+            
+            const savedTheme =
+                localStorage.getItem("stathut-theme");
+            
+            applyTheme(
+                savedTheme === "dark"
+                    ? "dark"
+                    : "light"
+            );
+            
+            themeToggle.addEventListener("click", () => {
+            
+                const nextTheme =
+                    document.body.classList.contains("dark-theme")
+                        ? "light"
+                        : "dark";
+            
+                localStorage.setItem(
+                    "stathut-theme",
+                    nextTheme
+                );
+            
+                applyTheme(nextTheme);
             
             });
     
