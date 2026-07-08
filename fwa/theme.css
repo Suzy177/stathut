@@ -96,3 +96,201 @@ html[data-theme="dark"] {
 .stathut-theme-toggle:active {
     transform: scale(0.94);
 }
+
+/* =========================================
+   PLAYER SEARCH PAGE - GLOBAL THEME WIRING
+========================================= */
+
+/* Page */
+html[data-theme="dark"] body {
+    background: linear-gradient(
+        135deg,
+        var(--sh-page-bg-start),
+        var(--sh-page-bg-end)
+    );
+    color: var(--sh-text-normal);
+}
+
+/* Main title */
+html[data-theme="dark"] body h1 {
+    color: var(--sh-text-primary);
+}
+
+/* Search input */
+html[data-theme="dark"] .search-box input {
+    background: var(--sh-surface);
+    color: var(--sh-text-normal);
+    box-shadow: var(--sh-shadow-card);
+}
+
+html[data-theme="dark"] .search-box input::placeholder {
+    color: var(--sh-text-secondary);
+}
+
+/* Main dashboard */
+html[data-theme="dark"] .player-card {
+    background: var(--sh-surface);
+    box-shadow: var(--sh-shadow-large);
+}
+
+/* Overview stats */
+html[data-theme="dark"] .top-stat,
+html[data-theme="dark"] .overview-card {
+    background: var(--sh-surface-soft);
+}
+
+html[data-theme="dark"] .top-stat h3,
+html[data-theme="dark"] .overview-card h4 {
+    color: var(--sh-text-primary);
+}
+
+html[data-theme="dark"] .top-stat small {
+    color: var(--sh-text-secondary);
+}
+
+html[data-theme="dark"] .overview-card p {
+    color: var(--sh-text-normal);
+}
+
+/* Section titles */
+html[data-theme="dark"] .heroes-section h2,
+html[data-theme="dark"] .section-title {
+    color: var(--sh-text-primary);
+}
+
+html[data-theme="dark"] .section-line {
+    background: var(--sh-border);
+}
+
+/* Heroes and Pets */
+html[data-theme="dark"] .hero-card {
+    background: var(--sh-surface);
+    box-shadow: var(--sh-shadow-card);
+}
+
+html[data-theme="dark"] .hero-card h3,
+html[data-theme="dark"] .hero-title h3 {
+    color: var(--sh-text-primary);
+}
+
+html[data-theme="dark"] .hero-card p,
+html[data-theme="dark"] .hero-level {
+    color: var(--sh-text-secondary);
+}
+
+html[data-theme="dark"] .equipment-pill {
+    background: var(--sh-surface-muted);
+    color: var(--sh-text-normal);
+}
+
+html[data-theme="dark"] .hero-bar {
+    background: var(--sh-border);
+}
+
+/* Military */
+html[data-theme="dark"] .military-tab {
+    background: var(--sh-surface-muted);
+    color: var(--sh-text-normal);
+}
+
+html[data-theme="dark"] .military-tab.active {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .military-card {
+    background: var(--sh-surface);
+    box-shadow: var(--sh-shadow-card);
+}
+
+html[data-theme="dark"] .military-card h4 {
+    color: var(--sh-text-primary);
+}
+
+html[data-theme="dark"] .military-card small {
+    color: var(--sh-text-secondary);
+}
+
+/* Spells */
+html[data-theme="dark"] .spell-card {
+    background: var(--sh-surface);
+    box-shadow: var(--sh-shadow-card);
+}
+
+html[data-theme="dark"] .spell-name {
+    color: var(--sh-text-primary);
+}
+
+html[data-theme="dark"] .spell-level {
+    color: var(--sh-text-secondary);
+}
+
+html[data-theme="dark"] .spell-progress {
+    background: var(--sh-border);
+}
+
+/* Player Stats */
+html[data-theme="dark"] .stat-card {
+    background: var(--sh-surface);
+    box-shadow: var(--sh-shadow-card);
+}
+
+html[data-theme="dark"] .stat-card h3 {
+    color: var(--sh-text-primary);
+}
+
+html[data-theme="dark"] .stat-card p {
+    color: var(--sh-text-secondary);
+}
+
+/* Builder Base */
+html[data-theme="dark"] .builder-stat-card,
+html[data-theme="dark"] .builder-hero-card {
+    background: var(--sh-surface);
+    box-shadow: var(--sh-shadow-card);
+}
+
+html[data-theme="dark"] .builder-stat-card h3,
+html[data-theme="dark"] .builder-hero-title h3 {
+    color: var(--sh-text-primary);
+}
+
+html[data-theme="dark"] .builder-stat-card p,
+html[data-theme="dark"] .builder-hero-level {
+    color: var(--sh-text-secondary);
+}
+
+/* War Profile */
+html[data-theme="dark"] .war-profile-card {
+    background: var(--sh-surface);
+    box-shadow: var(--sh-shadow-card);
+}
+
+html[data-theme="dark"] .war-profile-card h3 {
+    color: var(--sh-text-primary);
+}
+
+html[data-theme="dark"] .war-profile-card p {
+    color: var(--sh-text-secondary);
+}
+
+/* Dashboard navigation */
+html[data-theme="dark"] .dashboard-nav {
+    background: var(--sh-nav-bg);
+    border-color: var(--sh-nav-border);
+    box-shadow: var(--sh-shadow-card);
+}
+
+html[data-theme="dark"] .dashboard-nav-btn {
+    color: var(--sh-text-secondary);
+}
+
+html[data-theme="dark"] .dashboard-nav-btn:hover {
+    color: var(--sh-text-primary);
+    background: var(--sh-surface-muted);
+}
+
+html[data-theme="dark"] .dashboard-nav-btn.active {
+    color: #ffffff;
+    background: #2563eb;
+}
