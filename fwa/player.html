@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>PLAYER SEARCH | StatHut</title>
+<link rel="stylesheet" href="theme.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
@@ -1486,13 +1487,13 @@ h1{
 
     <!-- THEME TOGGLE -->
     <button
-        id="theme-toggle"
-        class="theme-toggle"
+        class="stathut-theme-toggle"
         type="button"
-        aria-label="Switch to dark mode"
+        data-stathut-theme-toggle
+        aria-label="Switch theme"
         title="Switch theme"
     >
-        <span id="theme-icon">🌙</span>
+        <span data-stathut-theme-icon>🌙</span>
     </button>
 
     <div class="search-box">
@@ -2640,64 +2641,11 @@ async function searchPlayer() {
                 }
             
             });
-
-            // =========================
-            // LIGHT / DARK THEME
-            // =========================
-
-            const themeToggle =
-                document.getElementById("theme-toggle");
-            
-            const themeIcon =
-                document.getElementById("theme-icon");
-            
-            function applyTheme(theme) {
-            
-                const isDark = theme === "dark";
-            
-                document.body.classList.toggle(
-                    "dark-theme",
-                    isDark
-                );
-            
-                themeIcon.textContent =
-                    isDark ? "☀️" : "🌙";
-            
-                themeToggle.setAttribute(
-                    "aria-label",
-                    isDark
-                        ? "Switch to light mode"
-                        : "Switch to dark mode"
-                );
-            }
-            
-            const savedTheme =
-                localStorage.getItem("stathut-theme");
-            
-            applyTheme(
-                savedTheme === "dark"
-                    ? "dark"
-                    : "light"
-            );
-            
-            themeToggle.addEventListener("click", () => {
-            
-                const nextTheme =
-                    document.body.classList.contains("dark-theme")
-                        ? "light"
-                        : "dark";
-            
-                localStorage.setItem(
-                    "stathut-theme",
-                    nextTheme
-                );
-            
-                applyTheme(nextTheme);
-            
-            });
     
 
 </script>
+
+<script src="theme.js"></script>
 
 </body>
 
