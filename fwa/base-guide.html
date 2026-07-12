@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>FWA Base Guide | StatHut</title>
+  <link rel="stylesheet" href="theme.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
@@ -91,6 +92,21 @@
 </head>
 
 <body>
+  <button
+      class="stathut-theme-toggle"
+      type="button"
+      data-stathut-theme-toggle
+      aria-label="Switch theme"
+      title="Switch theme"
+      style="
+          position: fixed;
+          top: 22px;
+          right: 22px;
+          z-index: 9999;
+      "
+  >
+    <span data-stathut-theme-icon>🌙</span>
+</button>
   <div class="page">
     <div class="card">
 
@@ -146,5 +162,6 @@
 
     </div>
   </div>
+  <script src="theme.js"></script>
 </body>
 </html>
