@@ -2056,40 +2056,50 @@ async function searchPlayer() {
         
         document.getElementById("donations").textContent =
             player.donations;
-
-        document.getElementById("stat-attack-wins").textContent =
-            player.attackWins ?? 0;
-        
-        document.getElementById("stat-defense-wins").textContent =
-            player.defenseWins ?? 0;
-        
-        document.getElementById("stat-war-stars").textContent =
-            player.warStars ?? 0;
-        
-        document.getElementById("stat-donated").textContent =
-            player.donations ?? 0;
-        
-        document.getElementById("stat-received").textContent =
-            player.donationsReceived ?? 0;
-        
-        document.getElementById("stat-best-trophies").textContent =
-            player.bestTrophies ?? 0;
-
-        document.getElementById("builder-hall-level").textContent =
-            player.builderHallLevel ?? 0;
-        
-        document.getElementById("builder-trophies").textContent =
-            player.builderBaseTrophies ?? 0;
-        
-        document.getElementById("builder-best-trophies").textContent =
-            player.bestBuilderBaseTrophies ?? 0;
+    animateValue(
+        document.getElementById("stat-attack-wins"),
+        player.attackWins ?? 0
+    );
+    animateValue(    
+        document.getElementById("stat-defense-wins"),
+        player.defenseWins ?? 0
+    );
+    animateValue(
+        document.getElementById("stat-war-stars"),
+        player.warStars ?? 0
+    );
+    animateValue(
+        document.getElementById("stat-donated"),
+        player.donations ?? 0
+    );
+    animateValue(    
+        document.getElementById("stat-received"),
+        player.donationsReceived ?? 0
+    );
+    animateValue(    
+        document.getElementById("stat-best-trophies"),
+        player.bestTrophies ?? 0
+    );
+    animateValue(
+        document.getElementById("builder-hall-level"),
+        player.builderHallLevel ?? 0
+    );
+    animateValue(    
+        document.getElementById("builder-trophies"),
+        player.builderBaseTrophies ?? 0
+    ); 
+    animateValue(    
+        document.getElementById("builder-best-trophies"),
+        player.bestBuilderBaseTrophies ?? 0
+    );
 
         // =========================
         // WAR PROFILE
         // =========================
-        
-        document.getElementById("war-profile-stars").textContent =
-            player.warStars ?? 0;
+    animateValue(
+        document.getElementById("war-profile-stars"),
+        player.warStars ?? 0
+    );
         
         const warPreferenceLabels = {
             in: "In War",
@@ -2112,9 +2122,10 @@ async function searchPlayer() {
             roleLabels[player.role] ??
             player.role ??
             "Unknown";
-        
-        document.getElementById("war-profile-capital").textContent =
-            player.clanCapitalContributions ?? 0;
+    animateValue(
+        document.getElementById("war-profile-capital"),
+        player.clanCapitalContributions ?? 0
+    );
 
         document.getElementById("pets-grid").innerHTML = "";
 
@@ -2379,39 +2390,49 @@ async function searchPlayer() {
 
         document.getElementById("player-clan").textContent =
             player.clan;
-
-        document.getElementById("townhall").textContent =
-            player.townHall;
+    animateValue(
+        document.getElementById("townhall"),
+        player.townHall
+    );
 
         document.getElementById("banner-th").textContent =
             player.townHall;
 
         document.getElementById("th-banner").src =
             thImages[player.townHall];
-
-        document.getElementById("exp").textContent =
-            player.expLevel;
+    animateValue(
+        document.getElementById("exp"),
+        layer.expLevel
+    );
 
         document.getElementById("banner-xp").textContent =
             player.expLevel;
-
-        document.getElementById("trophies").textContent =
-            player.trophies;
-
-        document.getElementById("best").textContent =
-            player.bestTrophies;
+        
+    animateValue(
+        document.getElementById("trophies"),
+        player.trophies
+    );
+        
+    animateValue(
+        document.getElementById("best"),
+        player.bestTrophies
+    );
 
         document.getElementById("league").textContent =
             player.league ?? "Unranked";
 
         document.getElementById("banner-league").textContent =
             player.league ?? "Unranked";
-
-        document.getElementById("warstars").textContent =
-            player.warStars;
-
-        document.getElementById("donations").textContent =
-            player.donations;
+        
+    animateValue(
+        document.getElementById("warstars"),
+        player.warStars
+    );
+        
+    animatevalue(
+        document.getElementById("donations"),
+        player.donations
+    ):
 
     }
 
@@ -2807,6 +2828,35 @@ async function searchPlayer() {
                 }
             
             });
+    
+    function animateValue(element, endValue, duration = 800) {
+        
+        if (!element) return;
+
+        const startValue = 0;
+        const startTime = performance.now();
+
+        function update(currentTime) {
+    
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+    
+            const eased = 1 - Math.pow(1 - progress, 3);
+    
+            element.textContent = Math.floor(
+                startValue + (endValue - startValue) * eased
+            ).toLocaleString();
+    
+            if (progress < 1) {
+    
+                requestAnimationFrame(update);
+    
+            }
+    
+        }
+    
+        requestAnimationFrame(update);
+    
+    }
     
 
 </script>
