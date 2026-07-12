@@ -360,3 +360,71 @@ html[data-theme="dark"] .fwa-nav a.active{
     color:#ffb44c;
 
 }
+
+/* =========================================
+   FWA CLANS PAGE
+========================================= */
+
+html[data-theme="dark"] .section-title{
+    color:#93c5fd;
+}
+
+html[data-theme="dark"] .section-desc{
+    color:#cbd5e1;
+}
+
+html[data-theme="dark"] .clan-card{
+
+    background:#1f2937;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.35);
+
+}
+
+html[data-theme="dark"] .clan-card h3{
+    color:#93c5fd;
+}
+
+html[data-theme="dark"] .clan-card p{
+    color:#d1d5db;
+}
+
+html[data-theme="dark"] .th-btn{
+
+    background:#2b3443;
+
+    color:#d1d5db;
+
+}
+
+html[data-theme="dark"] .th-btn:hover{
+
+    background:#374151;
+
+}
+
+html[data-theme="dark"] .th-btn.active{
+
+    background:rgba(197,106,0,.28);
+
+    color:#ffb44c;
+
+}
+
+html[data-theme="dark"] .back-link{
+
+    color:#93c5fd;
+
+}
+
+html[data-theme="dark"] .discord-cta{
+
+    background:
+        linear-gradient(
+            135deg,
+            #3849c7,
+            #4958d8
+        );
+
+}
