@@ -627,3 +627,59 @@ html[data-theme="dark"] .back-link{
     color:#93c5fd;
 
 }
+
+/* =========================================
+   FWA GUIDE PAGE
+========================================= */
+
+html[data-theme="dark"] body {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+html[data-theme="dark"] header {
+    background: #182235;
+    border-bottom-color: #334155;
+}
+
+html[data-theme="dark"] .logo {
+    color: #67e8f9;
+}
+
+html[data-theme="dark"] .logo span {
+    color: #94a3b8;
+}
+
+html[data-theme="dark"] nav a {
+    color: #d1d5db;
+}
+
+html[data-theme="dark"] nav a.active {
+    color: #93c5fd;
+}
+
+html[data-theme="dark"] .page-header h1,
+html[data-theme="dark"] .section h2 {
+    color: #93c5fd;
+}
+
+html[data-theme="dark"] .page-header p,
+html[data-theme="dark"] .section p,
+html[data-theme="dark"] .section li {
+    color: #d1d5db;
+}
+
+html[data-theme="dark"] .note {
+    background: #1f2937;
+    border-left-color: #06b6d4;
+    color: #e5e7eb;
+}
+
+html[data-theme="dark"] footer {
+    border-top-color: #334155;
+    color: #94a3b8;
+}
+
+html[data-theme="dark"] a {
+    color: #93c5fd;
+}
