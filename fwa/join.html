@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>StatHut | Join</title>
+  <link rel="stylesheet" href="theme.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -136,8 +137,21 @@
 </head>
 
 <body>
-
-<img src="/fwa/assets/badges/shield.png.png" style="width:50px;border:2px solid red;">
+  <button
+      class="stathut-theme-toggle"
+      type="button"
+      data-stathut-theme-toggle
+      aria-label="Switch theme"
+      title="Switch theme"
+      style="
+          position:fixed;
+          top:22px;
+          right:22px;
+          z-index:9999;
+      "
+  >
+    <span data-stathut-theme-icon>🌙</span>
+</button>
   
 <header>
   <div class="nav-container">
@@ -270,6 +284,7 @@
     joinBtn.style.display = "inline-block";
   });
 </script>
+<script src="theme.js"></script>
   
 </body>
 </html>
