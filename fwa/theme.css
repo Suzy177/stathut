@@ -768,3 +768,57 @@ html[data-theme="dark"] footer{
     color:#94a3b8;
 
 }
+
+/* =========================================
+   WAR STATUS PAGE
+========================================= */
+
+html[data-theme="dark"] .section-title{
+    color:#93c5fd;
+}
+
+html[data-theme="dark"] .section-desc{
+    color:#cbd5e1;
+}
+
+html[data-theme="dark"] .clan-card{
+
+    background:#1f2937;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.35);
+
+}
+
+html[data-theme="dark"] .clan-card h3{
+    color:#93c5fd;
+}
+
+html[data-theme="dark"] .clan-card p{
+    color:#d1d5db;
+}
+
+html[data-theme="dark"] .badge{
+
+    background:#1b4332;
+
+    color:#6ee7b7;
+
+}
+
+html[data-theme="dark"] .discord-cta{
+
+    background:
+        linear-gradient(
+            135deg,
+            #3849c7,
+            #4958d8
+        );
+
+}
+
+html[data-theme="dark"] .back-link{
+
+    color:#93c5fd;
+
+}
