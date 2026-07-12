@@ -428,3 +428,67 @@ html[data-theme="dark"] .discord-cta{
         );
 
 }
+
+/* =========================================
+   FWA RULES PAGE
+========================================= */
+
+html[data-theme="dark"] .header .logo{
+    color:#67e8f9;
+}
+
+html[data-theme="dark"] .header .logo span{
+    color:#94a3b8;
+}
+
+html[data-theme="dark"] .subtitle{
+    color:#cbd5e1;
+}
+
+html[data-theme="dark"] .page-header h1{
+    color:#93c5fd;
+}
+
+html[data-theme="dark"] .page-header p{
+    color:#cbd5e1;
+}
+
+html[data-theme="dark"] .nav a{
+    color:#d1d5db;
+}
+
+html[data-theme="dark"] .nav a:hover,
+html[data-theme="dark"] .nav a.active{
+
+    background:#2b3443;
+
+}
+
+html[data-theme="dark"] .section{
+
+    background:#1f2937;
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.25);
+
+}
+
+html[data-theme="dark"] .section h2{
+    color:#93c5fd;
+}
+
+html[data-theme="dark"] .section li{
+    color:#e5e7eb;
+}
+
+html[data-theme="dark"] .footer{
+
+    color:#cbd5e1;
+
+}
+
+html[data-theme="dark"] .card > p a{
+
+    color:#93c5fd;
+
+}
