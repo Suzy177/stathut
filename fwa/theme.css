@@ -822,3 +822,46 @@ html[data-theme="dark"] .back-link{
     color:#93c5fd;
 
 }
+
+/* =========================================
+   MAIN STATHUT HOME
+========================================= */
+
+html[data-theme="dark"] body{
+
+    background:linear-gradient(
+        120deg,
+        #08111f,
+        #101b31,
+        #172554,
+        #0f172a
+    );
+
+}
+
+html[data-theme="dark"] .card{
+
+    background:
+        linear-gradient(
+            145deg,
+            #1b2739,
+            #233247
+        );
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.03);
+
+}
+
+html[data-theme="dark"] .stathut-title{
+
+    color:#93c5fd;
+
+}
+
+html[data-theme="dark"] .subtitle{
+
+    color:#cbd5e1;
+
+}
