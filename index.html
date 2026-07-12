@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>StatHut</title>
+  <link rel="stylesheet" href="fwa/theme.css">
 
   <style>
   * {
@@ -124,6 +125,21 @@
 </head>
 
 <body>
+  <button
+      class="stathut-theme-toggle"
+      type="button"
+      data-stathut-theme-toggle
+      aria-label="Switch theme"
+      title="Switch theme"
+      style="
+          position:fixed;
+          top:22px;
+          right:22px;
+          z-index:9999;
+      "
+  >
+    <span data-stathut-theme-icon>🌙</span>
+</button>
   <div class="page">
     <div class="card">
       <h1 class="stathut-title">StatHut</h1>
@@ -136,7 +152,7 @@
       </div>
     </div>
   </div>
-  
+  <script src="fwa/theme.js"></script>
 </body>
 </html>
 
