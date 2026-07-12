@@ -492,3 +492,68 @@ html[data-theme="dark"] .card > p a{
     color:#93c5fd;
 
 }
+
+/* =========================================
+   FWA BASE GUIDE PAGE
+========================================= */
+
+html[data-theme="dark"] body {
+    background: #0f172a;
+}
+
+html[data-theme="dark"] .card{
+    background:#1e293b;
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+}
+
+html[data-theme="dark"] h1{
+    color:#93c5fd;
+}
+
+html[data-theme="dark"] h2{
+    color:#93c5fd;
+}
+
+html[data-theme="dark"] p{
+    color:#d1d5db;
+}
+
+html[data-theme="dark"] .alert{
+
+    background:#4a2d12;
+    border-left-color:#fb923c;
+    color:#fde68a;
+
+}
+
+html[data-theme="dark"] .warning{
+
+    background:#4a1717;
+    border-left-color:#ef4444;
+    color:#fecaca;
+
+}
+
+html[data-theme="dark"] .th-box{
+
+    background:#334155;
+
+}
+
+html[data-theme="dark"] .th-box a{
+
+    color:#f8fafc;
+
+}
+
+html[data-theme="dark"] .links li{
+
+    color:#d1d5db;
+
+}
+
+html[data-theme="dark"] .links a{
+
+    color:#93c5fd;
+
+}
