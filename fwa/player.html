@@ -1653,6 +1653,26 @@ h1{
     
     }
 
+    .player-tag{
+
+        cursor:pointer;
+    
+        transition:.25s;
+    
+    }
+    
+    .player-tag:hover{
+    
+        transform:translateY(-2px);
+    
+        background:rgba(255,255,255,.28);
+    
+    }
+
+    .player-tag:active(
+        transform:scale(.96);
+    )
+
 </style>
 
 <body>
@@ -1759,8 +1779,13 @@ h1{
                 Loading...
             </h2>
 
-           <div id="player-tag-badge" class="player-tag">
-                #TAG
+           <div id="player-tag-badge"
+                class="player-tag"
+                onclick="copyPlayerTag()"
+                title="Copy Player Tag">
+            
+              #TAG 📋
+            
            </div>
             
            <p id="player-clan" class="player-clan">
@@ -2471,8 +2496,8 @@ async function searchPlayer() {
         document.getElementById("player-name").textContent =
             player.name;
 
-        document.getElementById("player-tag-badge").textContent =
-            player.tag;
+        document.getElementById("player-tag-badge").innerHTML =
+            `${player.tag} 📋`;
 
         document.getElementById("player-clan").textContent =
             player.clan;
@@ -2999,6 +3024,19 @@ async function searchPlayer() {
 
     showToast("Toast System Working 🚀");
 
+    function copyPlayerTag(){
+
+        const tag =
+            document.getElementById("player-tag-badge")
+            .textContent
+            .replace("📋","")
+            .trim();
+    
+        navigator.clipboard.writeText(tag);
+    
+        showToast("Player Tag Copied","📋");
+    
+    }
 </script>
         
 <div id="toast" class="toast">
