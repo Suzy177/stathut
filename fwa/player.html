@@ -2053,9 +2053,10 @@ async function searchPlayer() {
     
         document.getElementById("heroes-section").style.display =
             "block";
-        
-        document.getElementById("donations").textContent =
-            player.donations;
+    animateValue(    
+        document.getElementById("donations"),
+        player.donations
+    );
     animateValue(
         document.getElementById("stat-attack-wins"),
         player.attackWins ?? 0
@@ -2402,7 +2403,7 @@ async function searchPlayer() {
             thImages[player.townHall];
     animateValue(
         document.getElementById("exp"),
-        layer.expLevel
+        player.expLevel
     );
 
         document.getElementById("banner-xp").textContent =
@@ -2429,7 +2430,7 @@ async function searchPlayer() {
         player.warStars
     );
         
-    animatevalue(
+    animateValue(
         document.getElementById("donations"),
         player.donations
     ):
