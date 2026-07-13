@@ -1595,6 +1595,64 @@ h1{
     
     }
 
+    /* ==========================
+       TOAST NOTIFICATIONS
+    ========================== */
+    
+    .toast{
+    
+        position:fixed;
+    
+        bottom:25px;
+    
+        right:25px;
+    
+        background:#1e293b;
+    
+        color:white;
+    
+        padding:14px 20px;
+    
+        border-radius:14px;
+    
+        display:flex;
+    
+        align-items:center;
+    
+        gap:10px;
+    
+        font-weight:600;
+    
+        box-shadow:0 12px 30px rgba(0,0,0,.25);
+    
+        opacity:0;
+    
+        transform:translateY(25px);
+    
+        pointer-events:none;
+    
+        transition:
+            opacity .35s ease,
+            transform .35s ease;
+    
+        z-index:99999;
+    
+    }
+    
+    .toast.show{
+    
+        opacity:1;
+    
+        transform:translateY(0);
+    
+    }
+    
+    #toast-icon{
+    
+        font-size:20px;
+    
+    }
+
 </style>
 
 <body>
@@ -2394,6 +2452,8 @@ async function searchPlayer() {
             `;
         });
 
+        showToast("Player Loaded Successfully");
+        
         window.playerData = player;
 
         document.getElementById("military-section")
@@ -2916,6 +2976,26 @@ async function searchPlayer() {
         });
     
     }
+
+    function showToast(message, icon = "✅") {
+
+        const toast = document.getElementById("toast");
+    
+        document.getElementById("toast-icon").textContent = icon;
+    
+        document.getElementById("toast-message").textContent = message;
+    
+        toast.classList.add("show");
+    
+        clearTimeout(toast.hideTimer);
+    
+        toast.hideTimer = setTimeout(() => {
+    
+            toast.classList.remove("show");
+    
+        },2500);
+    
+    }
     
 
 </script>
@@ -2923,5 +3003,9 @@ async function searchPlayer() {
 <script src="theme.js"></script>
 
 </body>
+        <div id="toast" class="toast">
+            <span id="toast-icon">✅</span>
+            <span id="toast-message">Done</span>
+        </div>
 
 </html>
