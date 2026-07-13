@@ -1746,6 +1746,20 @@ h1{
     
     </div>
 
+    <div id="error-state" class="empty-state" style="display:none;">
+
+        <div class="empty-icon">❌</div>
+    
+        <h2>Player Not Found</h2>
+    
+        <p id="error-message">
+    
+            Please check the player tag and try again.
+    
+        </p>
+    
+    </div>
+
     <div id="loading-state" class="loading-state" style="display:none;">
 
         <div class="skeleton-banner skeleton"></div>
@@ -2121,6 +2135,8 @@ async function searchPlayer() {
      document.getElementById("player-card").style.display="none";
         
      document.getElementById("empty-state").style.display="none";
+
+     document.getElementById("error-state").style.display="none";
 
 
     const tag = document
@@ -2554,6 +2570,11 @@ async function searchPlayer() {
         document.getElementById("loading-state").style.display="none";
 
         document.getElementById("empty-state").style.display="block";
+
+        document.getElementById("error-state").style.display="block";
+
+        document.getElementById("error-message").textContent =
+            error.message;
 
         showToast(error.message,"❌");
 
