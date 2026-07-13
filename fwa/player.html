@@ -1571,6 +1571,30 @@ h1{
     
     }
 
+    /* ==========================
+       SECTION REVEAL
+    ========================== */
+    
+    .reveal {
+    
+        opacity: 0;
+    
+        transform: translateY(24px);
+    
+        transition:
+            opacity .45s ease,
+            transform .45s ease;
+    
+    }
+    
+    .reveal.show {
+    
+        opacity: 1;
+    
+        transform: translateY(0);
+    
+    }
+
 </style>
 
 <body>
@@ -1668,7 +1692,7 @@ h1{
 
     <div class="player-header">
 
-    <div id="overview-section" class="player-banner">
+    <div id="overview-section" class="player-banner reveal">
         <img id="th-banner" class="th-banner">
 
         <div class="banner-overlay">
@@ -1746,7 +1770,7 @@ h1{
         
     <section
         id="heroes-section"
-        class="heroes-section"
+        class="heroes-section reveal"
         style="display:none;"
     >
 
@@ -1758,7 +1782,7 @@ h1{
 
     </section>
 
-    <section id="pets-section">
+    <section id="pets-section class="reveal">
 
         <h2 class="section-title">
             🐾 Pets
@@ -1770,7 +1794,7 @@ h1{
     
     </section>
 
-    <section id="military-section" style="display:none;">
+    <section id="military-section" class="reveal" style="display:none;">
 
         <div class="section-heading">
 
@@ -1806,7 +1830,7 @@ h1{
     
     </section>
 
-    <section id="spells-section">
+    <section id="spells-section" class="reveal">
     
         <h2 class="section-title">
             🧪 Spells
@@ -1815,12 +1839,12 @@ h1{
     
         <div
             id="spells-grid"
-            class="spells-grid">
+            class="spells-grid reveal">
         </div>
     
     </section>
         
-    <section id="stats-section">
+    <section id="stats-section" class="reveal">
     
         <div class="section-heading">
     
@@ -1875,7 +1899,7 @@ h1{
     </section>
 
     <!-- BUILDER BASE SECTION -->
-    <section id="builder-section">
+    <section id="builder-section" class="reveal">
     
         <div class="section-heading">
     
@@ -1915,7 +1939,7 @@ h1{
     </section>
 
     <!-- WAR PROFILE SECTION -->
-    <section id="war-profile-section">
+    <section id="war-profile-section" class="reveal">
     
         <div class="section-heading">
     
@@ -2380,6 +2404,7 @@ async function searchPlayer() {
 
         document.getElementById("player-card").style.display =
             "block";
+        revealSections();
 
         document.getElementById("empty-state").style.display = "none";
 
@@ -2856,6 +2881,39 @@ async function searchPlayer() {
         }
     
         requestAnimationFrame(update);
+    
+    }
+
+
+    function revealSections() {
+
+        const banner = document.getElementById("overview-section");
+
+        banner.classList.remove("show");
+        
+        setTimeout(() => {
+        
+            banner.classList.add("show");
+        
+        },50);
+
+        const sections = document.querySelectorAll("section.reveal");
+    
+        sections.forEach(section => {
+    
+            section.classList.remove("show");
+    
+        });
+
+        sections.forEach((section, index) => {
+    
+            setTimeout(() => {
+    
+                section.classList.add("show");
+    
+            }, index * 120);
+    
+        });
     
     }
     
