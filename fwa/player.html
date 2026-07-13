@@ -2106,7 +2106,7 @@ async function searchPlayer() {
 
     if (!tag) {
 
-        alert("Enter a Player Tag");
+        alert("Enter a Player Tag","⚠️");
 
         return;
 
@@ -2530,7 +2530,7 @@ async function searchPlayer() {
 
         document.getElementById("empty-state").style.display="block";
 
-        alert(`Error: ${error.message}`);
+        showToast(error.message,"❌");
 
     }
 
@@ -2996,16 +2996,18 @@ async function searchPlayer() {
         },2500);
     
     }
-    
+
+    showToast("Toast System Working 🚀");
 
 </script>
+        
+<div id="toast" class="toast">
+    <span id="toast-icon">✅</span>
+    <span id="toast-message">Done</span>
+</div>
 
 <script src="theme.js"></script>
 
 </body>
-        <div id="toast" class="toast">
-            <span id="toast-icon">✅</span>
-            <span id="toast-message">Done</span>
-        </div>
 
 </html>
