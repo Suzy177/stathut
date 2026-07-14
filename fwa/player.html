@@ -1673,6 +1673,26 @@ h1{
         transform:scale(.96);
     )
 
+    .history-card {
+
+        background: #1b1b1b;
+    
+        border-radius: 16px;
+    
+        padding: 20px;
+    
+        margin-top: 20px;
+    
+    }
+    
+    #trophyChart{
+    
+        width:100%;
+    
+        height:350px;
+    
+    }
+
 </style>
 
 <body>
@@ -2078,6 +2098,26 @@ h1{
     
     </section>
 
+    <section id="history-section">
+
+        <div class="section-heading">
+    
+            <h2 class="section-title">
+                📈 Trophy Progress
+            </h2>
+    
+            <div class="section-line"></div>
+    
+        </div>
+    
+        <div class="history-card">
+    
+            <canvas id="trophyChart"></canvas>
+    
+        </div>
+    
+    </section>
+
     <div class="player-top-stats">
 
         <div class="top-stat">
@@ -2166,6 +2206,66 @@ async function searchPlayer() {
         const player = await response.json();
 
         console.log("Player loaded:", player);
+
+        const historyResponse = await fetch(
+            `/api/history/${player.tag.replace("#","")}`
+        );
+
+        const history = await historyResponse.json();
+
+        const labels = history.map(
+            h => h.date
+        );
+        
+        const trophies = history.map(
+            h => h.trophies
+        );
+
+        new Chart(
+
+            document.getElementById("trophyChart"),
+        
+            {
+        
+                type: "line",
+        
+                data: {
+        
+                    labels: labels,
+        
+                    datasets: [
+        
+                        {
+        
+                            label: "Trophies",
+        
+                            data: trophies,
+        
+                            borderColor: "#ffcc00",
+        
+                            backgroundColor: "rgba(255,204,0,0.15)",
+        
+                            tension: 0.35,
+        
+                            fill: true
+        
+                        }
+        
+                    ]
+        
+                },
+        
+                options: {
+        
+                    responsive: true,
+        
+                    maintainAspectRatio: false
+        
+                }
+        
+            }
+        
+        );
 
         const heroesGrid =
             document.getElementById("heroes-grid");
@@ -3066,6 +3166,8 @@ async function searchPlayer() {
 </div>
 
 <script src="theme.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 
