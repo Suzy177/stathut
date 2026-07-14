@@ -1669,9 +1669,10 @@ h1{
     
     }
 
-    .player-tag:active(
+    .player-tag:active{
+        
         transform:scale(.96);
-    )
+    }
 
     .history-card {
 
@@ -2104,7 +2105,7 @@ h1{
     
     </section>
 
-    <section id="history-section">
+    <section id="history-section" class="reveal">
 
         <div class="section-heading">
     
@@ -2379,7 +2380,7 @@ async function searchPlayer() {
                     
                         }
                     
-                    }
+                    };
 
         const heroesGrid =
             document.getElementById("heroes-grid");
