@@ -2217,15 +2217,15 @@ async function searchPlayer() {
             `https://api.stathut.in/api/history/${player.tag.replace("#","")}`
         );
 
-        console.log(history);
-
         const history = await historyResponse.json();
 
-        const labels = history.map(
+        console.log(history);
+
+        const labels = historyData.map(
             h => h.date
         );
         
-        const trophies = history.map(
+        const trophies = historyData.map(
             h => h.trophies
         );
 
