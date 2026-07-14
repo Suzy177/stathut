@@ -1882,6 +1882,12 @@ h1{
                 data-target="war-profile-section">
             🛡️ War
         </button>
+
+        <button
+            class="dashboard-nav-btn"
+            data-target="history-section">
+            📈 Progress
+        </button>
     
     </nav>
         
@@ -2208,8 +2214,10 @@ async function searchPlayer() {
         console.log("Player loaded:", player);
 
         const historyResponse = await fetch(
-            `/api/history/${player.tag.replace("#","")}`
+            `https://api.stathut.in/api/history/${player.tag.replace("#","")}`
         );
+
+        console.log(history);
 
         const history = await historyResponse.json();
 
@@ -2221,7 +2229,11 @@ async function searchPlayer() {
             h => h.trophies
         );
 
-        new Chart(
+        if (window.trophyChart) {
+            window.trophyChart.destroy();
+        }
+
+        window.trophyChart = new Chart(
 
             document.getElementById("trophyChart"),
         
@@ -3019,7 +3031,8 @@ async function searchPlayer() {
                 "spells-section",
                 "stats-section",
                 "builder-section",
-                "war-profile-section"
+                "war-profile-section",
+                "history-section"
             ];
             
             const navObserver = new IntersectionObserver(
