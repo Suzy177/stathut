@@ -1889,6 +1889,14 @@ h1{
             data-target="history-section">
             📈 Progress
         </button>
+        
+        <button
+            class="dashboard-nav-btn"
+            data-target="hero-history-section">
+        
+            ⭐ Hero Progress
+        
+        </button>
     
     </nav>
         
@@ -2125,6 +2133,26 @@ h1{
     
     </section>
 
+    <section id="hero-history-section" class="reveal">
+
+        <div class="section-heading">
+    
+            <h2 class="section-title">
+                ⭐ Hero Progress
+            </h2>
+    
+            <div class="section-line"></div>
+    
+        </div>
+    
+        <div class="history-card">
+    
+            <canvas id="heroChart"></canvas>
+    
+        </div>
+    
+    </section>
+
     <div class="player-top-stats">
 
         <div class="top-stat">
@@ -2228,6 +2256,10 @@ async function searchPlayer() {
         
         const trophies = historyData.map(
             h => h.trophies
+        );
+
+        const heroScores = historyData.map(
+            h => h.heroScore
         );
 
         if (
@@ -2387,6 +2419,115 @@ async function searchPlayer() {
                     }
                 
                 );
+
+        if (
+            window.heroChart &&
+            typeof window.heroChart.destroy === "function"
+        ) {
+            window.heroChart.destroy();
+        }
+        
+        window.heroChart = new Chart(
+        
+            document.getElementById("heroChart"),
+        
+            {
+        
+                type: "line",
+        
+                data: {
+        
+                    labels: labels,
+        
+                    datasets: [
+        
+                        {
+        
+                            label: "⭐ Hero Score",
+        
+                            data: heroScores,
+        
+                            borderColor: "#4CAF50",
+        
+                            backgroundColor: "rgba(76,175,80,0.20)",
+        
+                            fill: true,
+        
+                            tension: 0.45,
+        
+                            borderWidth: 4,
+        
+                            pointRadius: 5,
+        
+                            pointHoverRadius: 8,
+        
+                            pointBackgroundColor: "#4CAF50"
+        
+                        }
+        
+                    ]
+        
+                },
+        
+                options: {
+        
+                    responsive: true,
+        
+                    maintainAspectRatio: false,
+        
+                    plugins: {
+        
+                        legend: {
+        
+                            display: false
+        
+                        }
+        
+                    },
+        
+                    scales: {
+        
+                        x: {
+        
+                            ticks: {
+        
+                                color: "#C8D0D8"
+        
+                            },
+        
+                            grid: {
+        
+                                display: false
+        
+                            }
+        
+                        },
+        
+                        y: {
+        
+                            beginAtZero: false,
+        
+                            ticks: {
+        
+                                color: "#C8D0D8"
+        
+                            },
+        
+                            grid: {
+        
+                                color: "rgba(255,255,255,0.08)"
+        
+                            }
+        
+                        }
+        
+                    }
+        
+                }
+        
+            }
+        
+        );
         const heroesGrid =
             document.getElementById("heroes-grid");
     
@@ -3140,7 +3281,8 @@ async function searchPlayer() {
                 "stats-section",
                 "builder-section",
                 "war-profile-section",
-                "history-section"
+                "history-section",
+                "hero-history-section"
             ];
             
             const navObserver = new IntersectionObserver(
