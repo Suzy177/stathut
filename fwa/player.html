@@ -2249,38 +2249,137 @@ async function searchPlayer() {
                     labels: labels,
         
                     datasets: [
-        
+
                         {
-        
-                            label: "Trophies",
-        
+                    
+                            label: "🏆 Trophies",
+                    
                             data: trophies,
-        
-                            borderColor: "#ffcc00",
-        
-                            backgroundColor: "rgba(255,204,0,0.15)",
-        
-                            tension: 0.35,
-        
-                            fill: true
-        
+                    
+                            borderColor: "#FFD700",
+                    
+                            backgroundColor: (context) => {
+                    
+                                const chart = context.chart;
+                    
+                                const {ctx, chartArea} = chart;
+                    
+                                if (!chartArea) return;
+                    
+                                const gradient = ctx.createLinearGradient(
+                                    0,
+                                    chartArea.top,
+                                    0,
+                                    chartArea.bottom
+                                );
+                    
+                                gradient.addColorStop(
+                                    0,
+                                    "rgba(255,215,0,0.45)"
+                                );
+                    
+                                gradient.addColorStop(
+                                    1,
+                                    "rgba(255,215,0,0)"
+                                );
+                    
+                                return gradient;
+                    
+                            },
+                    
+                            fill: true,
+                    
+                            borderWidth: 4,
+                    
+                            pointRadius: 5,
+                    
+                            pointHoverRadius: 8,
+                    
+                            pointBackgroundColor: "#FFD700",
+                    
+                            tension: 0.45
+                    
                         }
-        
-                    ]
-        
-                },
-        
-                options: {
-        
-                    responsive: true,
-        
-                    maintainAspectRatio: false
-        
-                }
-        
-            }
-        
-        );
+                    
+                    ],
+
+                    options: {
+
+                        responsive: true,
+                    
+                        maintainAspectRatio: false,
+                    
+                        interaction: {
+                    
+                            mode: "index",
+                    
+                            intersect: false
+                    
+                        },
+                    
+                        plugins: {
+                    
+                            legend: {
+                    
+                                display: false
+                    
+                            },
+                    
+                            tooltip: {
+                    
+                                backgroundColor: "#181818",
+                    
+                                titleColor: "#FFD700",
+                    
+                                bodyColor: "#ffffff",
+                    
+                                borderColor: "#FFD700",
+                    
+                                borderWidth: 1
+                    
+                            }
+                    
+                        },
+                    
+                        scales: {
+                    
+                            x: {
+                    
+                                ticks: {
+                    
+                                    color: "#C8D0D8"
+                    
+                                },
+                    
+                                grid: {
+                    
+                                    display: false
+                    
+                                }
+                    
+                            },
+                    
+                            y: {
+                                
+                                beginAtZero: false,
+                    
+                                ticks: {
+                    
+                                    color: "#C8D0D8"
+                    
+                                },
+                    
+                                grid: {
+                    
+                                    color: "rgba(255,255,255,0.08)"
+                    
+                                }
+                    
+                            }
+                    
+                        }
+                    
+                    }
 
         const heroesGrid =
             document.getElementById("heroes-grid");
