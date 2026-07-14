@@ -2217,9 +2217,9 @@ async function searchPlayer() {
             `https://api.stathut.in/api/history/${player.tag.replace("#","")}`
         );
 
-        const history = await historyResponse.json();
+        const historyData = await historyResponse.json();
 
-        console.log(history);
+        console.log(historyData);
 
         const labels = historyData.map(
             h => h.date
