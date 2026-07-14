@@ -2229,7 +2229,10 @@ async function searchPlayer() {
             h => h.trophies
         );
 
-        if (window.trophyChart) {
+        if (
+            window.trophyChart &&
+            typeof window.trophyChart.destroy === "function"
+        ) {
             window.trophyChart.destroy();
         }
 
