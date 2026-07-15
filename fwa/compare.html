@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Player Comparison | StatHut</title>
+
+    <link
+        rel="stylesheet"
+        href="compare.css">
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Hero -->
+
+        <section class="hero">
+
+            <h1>
+
+                ⚔️ Player Comparison
+
+            </h1>
+
+            <p>
+
+                Compare any two Clash of Clans players with
+                live analytics and history.
+
+            </p>
+
+        </section>
+
+        <!-- Search -->
+
+        <section class="compare-search">
+
+            <div class="player-input">
+
+                <label>
+
+                    Player One
+
+                </label>
+
+                <input
+                    id="player1-tag"
+                    placeholder="#R2RGPCG">
+
+            </div>
+
+            <div class="vs">
+
+                VS
+
+            </div>
+
+            <div class="player-input">
+
+                <label>
+
+                    Player Two
+
+                </label>
+
+                <input
+                    id="player2-tag"
+                    placeholder="#ABC123">
+
+            </div>
+
+        </section>
+
+        <div class="button-area">
+
+            <button
+                onclick="comparePlayers()">
+
+                Compare Players
+
+            </button>
+
+        </div>
+
+        <section
+            id="comparison-results">
+
+        </section>
+
+    </div>
+
+    <script src="compare.js"></script>
+
+</body>
+
+</html>
