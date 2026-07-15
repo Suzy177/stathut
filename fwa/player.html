@@ -1897,6 +1897,14 @@ h1{
             ⭐ Hero Progress
         
         </button>
+
+        <button
+            class="dashboard-nav-btn"
+            data-target="builder-history-section">
+        
+            🛠️ Builder
+        
+        </button>
     
     </nav>
         
@@ -2153,6 +2161,26 @@ h1{
     
     </section>
 
+    <section id="builder-history-section" class="reveal">
+
+        <div class="section-heading">
+    
+            <h2 class="section-title">
+                🛠️ Builder Progress
+            </h2>
+    
+            <div class="section-line"></div>
+    
+        </div>
+    
+        <div class="history-card">
+    
+            <canvas id="builderChart"></canvas>
+    
+        </div>
+    
+    </section>
+
     <div class="player-top-stats">
 
         <div class="top-stat">
@@ -2262,6 +2290,9 @@ async function searchPlayer() {
             h => h.heroScore
         );
 
+       const builderTrophies = historyData.map(
+            h => h.builderTrophies
+        );
         if (
             window.trophyChart &&
             typeof window.trophyChart.destroy === "function"
@@ -2419,7 +2450,7 @@ async function searchPlayer() {
                     }
                 
                 );
-
+        
         if (
             window.heroChart &&
             typeof window.heroChart.destroy === "function"
@@ -2462,6 +2493,115 @@ async function searchPlayer() {
                             pointHoverRadius: 8,
         
                             pointBackgroundColor: "#4CAF50"
+        
+                        }
+        
+                    ]
+        
+                },
+        
+                options: {
+        
+                    responsive: true,
+        
+                    maintainAspectRatio: false,
+        
+                    plugins: {
+        
+                        legend: {
+        
+                            display: false
+        
+                        }
+        
+                    },
+        
+                    scales: {
+        
+                        x: {
+        
+                            ticks: {
+        
+                                color: "#C8D0D8"
+        
+                            },
+        
+                            grid: {
+        
+                                display: false
+        
+                            }
+        
+                        },
+        
+                        y: {
+        
+                            beginAtZero: false,
+        
+                            ticks: {
+        
+                                color: "#C8D0D8"
+        
+                            },
+        
+                            grid: {
+        
+                                color: "rgba(255,255,255,0.08)"
+        
+                            }
+        
+                        }
+        
+                    }
+        
+                }
+        
+            }
+        
+        );
+
+        if (
+            window.builderChart &&
+            typeof window.builderChart.destroy === "function"
+        ) {
+            window.builderChart.destroy();
+        }
+        
+        window.builderChart = new Chart(
+        
+            document.getElementById("builderChart"),
+        
+            {
+        
+                type: "line",
+        
+                data: {
+        
+                    labels: labels,
+        
+                    datasets: [
+        
+                        {
+        
+                            label: "🛠️ Builder Trophies",
+        
+                            data: builderTrophies,
+        
+                            borderColor: "#42A5F5",
+        
+                            backgroundColor: "rgba(66,165,245,0.20)",
+        
+                            fill: true,
+        
+                            tension: 0.45,
+        
+                            borderWidth: 4,
+        
+                            pointRadius: 5,
+        
+                            pointHoverRadius: 8,
+        
+                            pointBackgroundColor: "#42A5F5"
         
                         }
         
@@ -3282,7 +3422,8 @@ async function searchPlayer() {
                 "builder-section",
                 "war-profile-section",
                 "history-section",
-                "hero-history-section"
+                "hero-history-section",
+                "builder-history-section",
             ];
             
             const navObserver = new IntersectionObserver(
