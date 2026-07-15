@@ -1913,6 +1913,14 @@ h1{
             🎁 Donations
         
         </button>
+
+        <button
+            class="dashboard-nav-btn"
+            data-target="war-history-section">
+        
+            ⚔️ War
+        
+        </button>
     
     </nav>
         
@@ -2209,6 +2217,26 @@ h1{
     
     </section>
 
+    <section id="war-history-section" class="reveal">
+
+        <div class="section-heading">
+    
+            <h2 class="section-title">
+                ⚔️ War Progress
+            </h2>
+    
+            <div class="section-line"></div>
+    
+        </div>
+    
+        <div class="history-card">
+    
+            <canvas id="warChart"></canvas>
+    
+        </div>
+    
+    </section>
+
     <div class="player-top-stats">
 
         <div class="top-stat">
@@ -2328,6 +2356,10 @@ async function searchPlayer() {
         
         const received = historyData.map(
             h => h.received
+        );
+
+        const warStars = historyData.map(
+            h => h.warStars
         );
 
         if (
@@ -2836,6 +2868,117 @@ async function searchPlayer() {
             }
         
         );
+        
+        if (
+            window.warChart &&
+            typeof window.warChart.destroy === "function"
+        ) {
+            window.warChart.destroy();
+        }
+        
+        window.warChart = new Chart(
+        
+            document.getElementById("warChart"),
+        
+            {
+        
+                type: "line",
+        
+                data: {
+        
+                    labels: labels,
+        
+                    datasets: [
+        
+                        {
+        
+                            label: "⚔️ War Stars",
+        
+                            data: warStars,
+        
+                            borderColor: "#EF5350",
+        
+                            backgroundColor: "rgba(239,83,80,0.20)",
+        
+                            fill: true,
+        
+                            tension: 0.45,
+        
+                            borderWidth: 4,
+        
+                            pointRadius: 5,
+        
+                            pointHoverRadius: 8,
+        
+                            pointBackgroundColor: "#EF5350"
+        
+                        }
+        
+                    ]
+        
+                },
+        
+                options: {
+        
+                    responsive: true,
+        
+                    maintainAspectRatio: false,
+        
+                    plugins: {
+        
+                        legend: {
+        
+                            display: false
+        
+                        }
+        
+                    },
+        
+                    scales: {
+        
+                        x: {
+        
+                            ticks: {
+        
+                                color: "#C8D0D8"
+        
+                            },
+        
+                            grid: {
+        
+                                display: false
+        
+                            }
+        
+                        },
+        
+                        y: {
+        
+                            beginAtZero: false,
+        
+                            ticks: {
+        
+                                color: "#C8D0D8"
+        
+                            },
+        
+                            grid: {
+        
+                                color: "rgba(255,255,255,0.08)"
+        
+                            }
+        
+                        }
+        
+                    }
+        
+                }
+        
+            }
+        
+        );
+
+        
         const heroesGrid =
             document.getElementById("heroes-grid");
     
@@ -3593,6 +3736,7 @@ async function searchPlayer() {
                 "hero-history-section",
                 "builder-history-section",
                 "donation-history-section",
+                "war-history-section",
             ];
             
             const navObserver = new IntersectionObserver(
