@@ -1,0 +1,131 @@
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#0f172a;
+
+    color:white;
+
+    font-family:Inter,sans-serif;
+
+}
+
+.container{
+
+    width:min(1400px,95%);
+
+    margin:auto;
+
+    padding:40px;
+
+}
+
+.hero{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.hero h1{
+
+    font-size:52px;
+
+    color:#60A5FA;
+
+}
+
+.hero p{
+
+    margin-top:18px;
+
+    color:#CBD5E1;
+
+}
+
+.compare-search{
+
+    display:grid;
+
+    grid-template-columns:1fr 120px 1fr;
+
+    gap:30px;
+
+    align-items:end;
+
+}
+
+.player-input{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.player-input input{
+
+    padding:18px;
+
+    border-radius:14px;
+
+    border:none;
+
+    font-size:18px;
+
+}
+
+.vs{
+
+    text-align:center;
+
+    font-size:38px;
+
+    font-weight:bold;
+
+    color:#FFD700;
+
+}
+
+.button-area{
+
+    text-align:center;
+
+    margin:40px;
+
+}
+
+.button-area button{
+
+    background:#3B82F6;
+
+    color:white;
+
+    border:none;
+
+    padding:18px 45px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+}
+
+#comparison-results{
+
+    margin-top:60px;
+
+}
