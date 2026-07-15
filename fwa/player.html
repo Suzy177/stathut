@@ -1905,6 +1905,14 @@ h1{
             🛠️ Builder
         
         </button>
+
+        <button
+            class="dashboard-nav-btn"
+            data-target="donation-history-section">
+        
+            🎁 Donations
+        
+        </button>
     
     </nav>
         
@@ -2181,6 +2189,26 @@ h1{
     
     </section>
 
+    <section id="donation-history-section" class="reveal">
+
+        <div class="section-heading">
+    
+            <h2 class="section-title">
+                🎁 Donation Trends
+            </h2>
+    
+            <div class="section-line"></div>
+    
+        </div>
+    
+        <div class="history-card">
+    
+            <canvas id="donationChart"></canvas>
+    
+        </div>
+    
+    </section>
+
     <div class="player-top-stats">
 
         <div class="top-stat">
@@ -2293,6 +2321,15 @@ async function searchPlayer() {
        const builderTrophies = historyData.map(
             h => h.builderTrophies
         );
+
+        const donated = historyData.map(
+            h => h.donations
+        );
+        
+        const received = historyData.map(
+            h => h.received
+        );
+
         if (
             window.trophyChart &&
             typeof window.trophyChart.destroy === "function"
@@ -2646,6 +2683,137 @@ async function searchPlayer() {
                         y: {
         
                             beginAtZero: false,
+        
+                            ticks: {
+        
+                                color: "#C8D0D8"
+        
+                            },
+        
+                            grid: {
+        
+                                color: "rgba(255,255,255,0.08)"
+        
+                            }
+        
+                        }
+        
+                    }
+        
+                }
+        
+            }
+        
+        );
+
+        if (
+            window.donationChart &&
+            typeof window.donationChart.destroy === "function"
+        ) {
+            window.donationChart.destroy();
+        }
+        
+        window.donationChart = new Chart(
+        
+            document.getElementById("donationChart"),
+        
+            {
+        
+                type: "line",
+        
+                data: {
+        
+                    labels: labels,
+        
+                    datasets: [
+        
+                        {
+        
+                            label: "🎁 Donated",
+        
+                            data: donated,
+        
+                            borderColor: "#FFD700",
+        
+                            backgroundColor: "rgba(255,215,0,0.15)",
+        
+                            fill: false,
+        
+                            tension: 0.45,
+        
+                            borderWidth: 4,
+        
+                            pointRadius: 5
+        
+                        },
+        
+                        {
+        
+                            label: "📦 Received",
+        
+                            data: received,
+        
+                            borderColor: "#42A5F5",
+        
+                            backgroundColor: "rgba(66,165,245,0.15)",
+        
+                            fill: false,
+        
+                            tension: 0.45,
+        
+                            borderWidth: 4,
+        
+                            pointRadius: 5
+        
+                        }
+        
+                    ]
+        
+                },
+        
+                options: {
+        
+                    responsive: true,
+        
+                    maintainAspectRatio: false,
+        
+                    plugins: {
+        
+                        legend: {
+        
+                            display: true,
+        
+                            labels: {
+        
+                                color: "#ffffff"
+        
+                            }
+        
+                        }
+        
+                    },
+        
+                    scales: {
+        
+                        x: {
+        
+                            ticks: {
+        
+                                color: "#C8D0D8"
+        
+                            },
+        
+                            grid: {
+        
+                                display: false
+        
+                            }
+        
+                        },
+        
+                        y: {
+        
+                            beginAtZero: true,
         
                             ticks: {
         
@@ -3424,6 +3592,7 @@ async function searchPlayer() {
                 "history-section",
                 "hero-history-section",
                 "builder-history-section",
+                "donation-history-section",
             ];
             
             const navObserver = new IntersectionObserver(
