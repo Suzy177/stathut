@@ -308,11 +308,9 @@ color2
 
 ){
 
-    const canvas = document.getElementById(
+    const canvas = document.getElementById(canvasId);
 
-        canvasId
-
-    );
+    console.log(canvasId, canvas);
 
     if(!canvas) return;
 
