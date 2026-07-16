@@ -380,6 +380,62 @@ color2
 
 }
 
+function renderCharts(history1, history2, player1, player2) {
+
+    const labels = history1.map(h => h.date);
+
+    createComparisonChart(
+        "trophyChart",
+        labels,
+        history1.map(h => h.trophies),
+        history2.map(h => h.trophies),
+        "Trophies",
+        "#3B82F6",
+        "#22C55E"
+    );
+
+    createComparisonChart(
+        "heroChart",
+        labels,
+        history1.map(h => h.heroScore),
+        history2.map(h => h.heroScore),
+        "Hero Score",
+        "#F59E0B",
+        "#EF4444"
+    );
+
+    createComparisonChart(
+        "builderChart",
+        labels,
+        history1.map(h => h.builderTrophies),
+        history2.map(h => h.builderTrophies),
+        "Builder",
+        "#8B5CF6",
+        "#10B981"
+    );
+
+    createComparisonChart(
+        "donationChart",
+        labels,
+        history1.map(h => h.donations),
+        history2.map(h => h.donations),
+        "Donations",
+        "#F97316",
+        "#06B6D4"
+    );
+
+    createComparisonChart(
+        "warChart",
+        labels,
+        history1.map(h => h.warStars),
+        history2.map(h => h.warStars),
+        "War Stars",
+        "#EC4899",
+        "#6366F1"
+    );
+
+}
+
 
 
     
