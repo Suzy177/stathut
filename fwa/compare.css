@@ -356,4 +356,39 @@ body{
 
 }
 
+#comparison-charts{
+
+    margin-top:60px;
+
+    display:grid;
+
+    gap:35px;
+
+}
+
+.chart-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+
+}
+
+.chart-card h2{
+
+    color:#1f3c88;
+
+    margin-bottom:25px;
+
+}
+
+.chart-card canvas{
+
+    height:350px !important;
+
+}
 
