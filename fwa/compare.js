@@ -37,32 +37,6 @@ async function comparePlayers() {
         player2
         
         );
-        
-        renderCharts(
-        
-        history1,
-        
-        history2,
-        
-        player1,
-        
-        player2
-        
-        );
-        
-        fetchPlayer()
-
-        async function fetchHistory(tag){
-
-            const response = await fetch(
-        
-                `https://api.stathut.in/api/history/${tag}`
-        
-            );
-        
-            return await response.json();
-        
-        }
 
     }
 
@@ -81,6 +55,18 @@ async function fetchPlayer(tag) {
     const response = await fetch(
 
         `https://api.stathut.in/api/player/${tag}`
+
+    );
+
+    return await response.json();
+
+}
+
+async function fetchHistory(tag) {
+
+    const response = await fetch(
+
+        `https://api.stathut.in/api/history/${tag}`
 
     );
 
