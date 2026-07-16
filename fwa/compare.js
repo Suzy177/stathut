@@ -54,15 +54,46 @@ async function fetchPlayer(tag) {
 
 function renderComparison(player1, player2) {
 
-    const results = document.getElementById(
-    
-        "comparison-results"
-    
-    );
-    
+    const results = document.getElementById("comparison-results");
+
     results.style.display = "block";
-    
+
     results.innerHTML = `
+
+    <div class="comparison-header">
+
+        <div class="player-preview">
+
+            <h2>${player1.name}</h2>
+
+            <p>🏰 TH${player1.townHallLevel}</p>
+
+            <p>🏆 ${player1.trophies}</p>
+
+            <p>${player1.clan?.name || "No Clan"}</p>
+
+        </div>
+
+        <div class="vs-big">
+
+            VS
+
+        </div>
+
+        <div class="player-preview">
+
+            <h2>${player2.name}</h2>
+
+            <p>🏰 TH${player2.townHallLevel}</p>
+
+            <p>🏆 ${player2.trophies}</p>
+
+            <p>${player2.clan?.name || "No Clan"}</p>
+
+        </div>
+
+    </div>
+
     `;
 
 }
