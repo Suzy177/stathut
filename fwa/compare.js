@@ -54,15 +54,17 @@ async function fetchPlayer(tag) {
 
 function renderComparison(player1, player2) {
 
+    const results = document.getElementById(
+    
+        "comparison-results"
+    
+    );
+    
+    results.style.display = "block";
+    
+    results.innerHTML = `
+    `;
+
 }
 
-const results = document.getElementById(
-
-    "comparison-results"
-
-);
-
-results.style.display = "block";
-
-results.innerHTML = `
-`;
+    
