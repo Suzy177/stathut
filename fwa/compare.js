@@ -110,8 +110,164 @@ function renderComparison(player1, player2) {
 
     </div>
 
+    <div class="comparison-overview">
+
+        <h2>
+    
+            📊 Overview Comparison
+    
+        </h2>
+    
+        <div id="overview-bars">
+    
+        </div>
+    
+    </div>
+
+    `;
+
+    renderOverviewBars(
+
+        player1,
+    
+        player2
+    
+    );
+
+}
+
+function renderOverviewBars(player1, player2){
+
+    const overview = document.getElementById(
+
+        "overview-bars"
+
+    );
+
+    overview.innerHTML = `
+
+        ${comparisonBar(
+
+            "🏆 Trophies",
+
+            player1.trophies,
+
+            player2.trophies
+
+        )}
+
+        ${comparisonBar(
+
+            "⚔ War Stars",
+
+            player1.warStars,
+
+            player2.warStars
+
+        )}
+
+        ${comparisonBar(
+
+            "🎁 Donations",
+
+            player1.donations,
+
+            player2.donations
+
+        )}
+
+        ${comparisonBar(
+
+            "⭐ XP",
+
+            player1.expLevel,
+
+            player2.expLevel
+
+        )}
+
+        ${comparisonBar(
+
+            "🛠 Builder",
+
+            player1.builderBaseTrophies,
+
+            player2.builderBaseTrophies
+
+        )}
+
     `;
 
 }
+
+function comparisonBar(
+
+    title,
+
+    value1,
+
+    value2
+
+){
+
+    const max = Math.max(
+
+        value1,
+
+        value2,
+
+        1
+
+    );
+
+    return `
+
+        <div class="stat-card">
+
+            <h3>${title}</h3>
+
+            <div class="bar-row">
+
+                <span>${value1}</span>
+
+                <div class="bar">
+
+                    <div
+
+                        class="fill blue"
+
+                        style="width:${(value1/max)*100}%">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="bar-row">
+
+                <span>${value2}</span>
+
+                <div class="bar">
+
+                    <div
+
+                        class="fill green"
+
+                        style="width:${(value2/max)*100}%">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
 
     
