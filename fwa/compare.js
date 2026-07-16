@@ -70,11 +70,17 @@ function renderComparison(player1, player2) {
 
             <h2>${player1.name}</h2>
 
-            <p>🏰 TH${player1.townHallLevel}</p>
+            <p>🏰 TH${player1.townHall}</p>
 
             <p>🏆 ${player1.trophies}</p>
 
-            <p>${player1.clan?.name || "No Clan"}</p>
+            <p>${player1.clan}</p>
+
+            <p>⭐ XP ${player1.expLevel}</p>
+
+            <p>⚔️ ${player1.warStars} War Stars</p>
+    
+            <p>🎁 ${player1.donations} Donations</p>
 
         </div>
 
@@ -88,11 +94,17 @@ function renderComparison(player1, player2) {
 
             <h2>${player2.name}</h2>
 
-            <p>🏰 TH${player2.townHallLevel}</p>
+            <p>🏰 TH${player2.townHall}</p>
 
             <p>🏆 ${player2.trophies}</p>
 
-            <p>${player2.clan?.name || "No Clan"}</p>
+            <p>${player2.clan}</p>
+
+            <p>⭐ XP ${player2.expLevel}</p>
+
+            <p>⚔️ ${player2.warStars} War Stars</p>
+    
+            <p>🎁 ${player2.donations} Donations</p>
 
         </div>
 
