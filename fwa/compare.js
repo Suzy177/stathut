@@ -54,6 +54,10 @@ async function fetchPlayer(tag) {
 
 function renderComparison(player1, player2) {
 
+    console.log(player1);
+
+    console.log(player2);
+
     const results = document.getElementById("comparison-results");
 
     results.style.display = "block";
