@@ -32,9 +32,21 @@ async function comparePlayers() {
 
         renderComparison(
 
-        player1,
+            player1,
+            
+            player2
         
-        player2
+        );
+
+        renderCharts(
+
+            history1,
+        
+            history2,
+        
+            player1,
+        
+            player2
         
         );
 
