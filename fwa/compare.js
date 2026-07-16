@@ -26,7 +26,43 @@ async function comparePlayers() {
 
         const player2 = await fetchPlayer(tag2);
 
-        renderComparison(player1, player2);
+        const history1 = await fetchHistory(tag1);
+
+        const history2 = await fetchHistory(tag2);
+
+        renderComparison(
+
+        player1,
+        
+        player2
+        
+        );
+        
+        renderCharts(
+        
+        history1,
+        
+        history2,
+        
+        player1,
+        
+        player2
+        
+        );
+        
+        fetchPlayer()
+
+        async function fetchHistory(tag){
+
+            const response = await fetch(
+        
+                `https://api.stathut.in/api/history/${tag}`
+        
+            );
+        
+            return await response.json();
+        
+        }
 
     }
 
@@ -265,6 +301,98 @@ function comparisonBar(
         </div>
 
     `;
+
+}
+
+function createComparisonChart(
+
+canvasId,
+
+labels,
+
+data1,
+
+data2,
+
+title,
+
+color1,
+
+color2
+
+){
+
+    const canvas = document.getElementById(
+
+        canvasId
+
+    );
+
+    if(!canvas) return;
+
+    if(canvas.chart){
+
+        canvas.chart.destroy();
+
+    }
+
+    canvas.chart = new Chart(
+
+        canvas,
+
+        {
+
+            type:"line",
+
+            data:{
+
+                labels,
+
+                datasets:[
+
+                    {
+
+                        label:title,
+
+                        data:data1,
+
+                        borderColor:color1,
+
+                        tension:.4,
+
+                        fill:false
+
+                    },
+
+                    {
+
+                        label:title,
+
+                        data:data2,
+
+                        borderColor:color2,
+
+                        tension:.4,
+
+                        fill:false
+
+                    }
+
+                ]
+
+            },
+
+            options:{
+
+                responsive:true,
+
+                maintainAspectRatio:false
+
+            }
+
+        }
+
+    );
 
 }
 
