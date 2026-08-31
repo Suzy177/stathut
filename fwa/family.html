@@ -329,6 +329,109 @@
         padding: 32px 24px;
       }
     }
+
+    /* ---- Skeleton loading state ---- */
+    .skeleton {
+      position: relative;
+      overflow: hidden;
+      background: #e5e7eb;
+      border-radius: 8px;
+      color: transparent !important;
+    }
+
+    .skeleton::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+      animation: skeletonShimmer 1.4s infinite;
+    }
+
+    @keyframes skeletonShimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .skeleton-text {
+      display: inline-block;
+      height: 14px;
+      width: 80%;
+    }
+
+    .skeleton-badge {
+      border-radius: 50%;
+    }
+
+    /* ---- Member progress bar ---- */
+    .member-progress {
+      width: 100%;
+      height: 8px;
+      background: #ececec;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 10px 0 6px;
+    }
+
+    .member-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #4CAF50, #81C784);
+      border-radius: 999px;
+      transition: width .8s ease;
+    }
+
+    /* ---- Extra stats (war wins / type) ---- */
+    .clan-extra-stats {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .clan-extra-stats span {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4338ca;
+    }
+
+    /* ---- Dashboard meta row (last updated + refresh) ---- */
+    .dashboard-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: -12px 0 24px;
+      flex-wrap: wrap;
+    }
+
+    .dashboard-meta span {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .refresh-btn {
+      border: none;
+      background: #eef2ff;
+      color: #4338ca;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+
+    .refresh-btn:hover {
+      background: #e0e7ff;
+    }
+
+    .refresh-btn:disabled {
+      opacity: .6;
+      cursor: default;
+    }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
@@ -378,19 +481,24 @@
         United FWA clans, recruitment, family progress and community growth.
       </p>
 
+      <div class="dashboard-meta">
+        <span id="lastUpdatedText">Loading live data…</span>
+        <button class="refresh-btn" id="refreshBtn" onclick="loadFamily()">↻ Refresh</button>
+      </div>
+
       <div class="clans-grid">
         
         <div class="clan-card">
           <div class="clan-info">
             <h3>🏆 Family Points</h3>
-            <p id="family-points">Loading...</p>
+            <p id="family-points" class="skeleton skeleton-text">Loading...</p>
           </div>
         </div>
         
         <div class="clan-card">
           <div class="clan-info">
             <h3>👥 Family Members</h3>
-            <p id="family-members">Loading...</p>
+            <p id="family-members" class="skeleton skeleton-text">Loading...</p>
           </div>
         </div>
         
@@ -409,15 +517,20 @@
             <div class="clan-header">
             <img
                 id="shield-badge"
-                class="clan-badge"
+                class="clan-badge skeleton skeleton-badge"
                 alt="#THE SHIELD# Badge"
             >
               <div class="clan-info">
-                <h3 id="shield-name">Loading...</h3>
-                <p id="shield-members">Loading...</p>
-                <p id="shield-level">Loading...</p>
-                <p id="shield-league">Loading...</p>
+                <h3 id="shield-name" class="skeleton skeleton-text">Loading...</h3>
+                <p id="shield-members" class="skeleton skeleton-text">Loading...</p>
+                <p id="shield-level" class="skeleton skeleton-text">Loading...</p>
+                <p id="shield-league" class="skeleton skeleton-text">Loading...</p>
               </div>
+            </div>
+            <div class="member-progress"><div id="shield-fill" class="member-fill"></div></div>
+            <div class="clan-extra-stats">
+              <span id="shield-warwins">⚔ — Wars Won</span>
+              <span id="shield-type">— Type</span>
             </div>
             <span
                 id="shield-status"
@@ -432,15 +545,20 @@
             <div class="clan-header">
             <img
                 id="bandit-badge"
-                class="clan-badge"
+                class="clan-badge skeleton skeleton-badge"
                 alt="InvidiaBandit Badge"
             >
               <div class="clan-info">
-                <h3 id="bandit-name">Loading...</h3>
-                <p id="bandit-members">Loading...</p>
-                <p id="bandit-level">Loading...</p>
-                <p id="bandit-league">Loading...</p>
+                <h3 id="bandit-name" class="skeleton skeleton-text">Loading...</h3>
+                <p id="bandit-members" class="skeleton skeleton-text">Loading...</p>
+                <p id="bandit-level" class="skeleton skeleton-text">Loading...</p>
+                <p id="bandit-league" class="skeleton skeleton-text">Loading...</p>
               </div>
+            </div>
+            <div class="member-progress"><div id="bandit-fill" class="member-fill"></div></div>
+            <div class="clan-extra-stats">
+              <span id="bandit-warwins">⚔ — Wars Won</span>
+              <span id="bandit-type">— Type</span>
             </div>
             <span
                 id="bandit-status"
@@ -455,15 +573,20 @@
             <div class="clan-header">
             <img
                 id="warriors-badge"
-                class="clan-badge"
+                class="clan-badge skeleton skeleton-badge"
                 alt="Vi11ageWarriors Badge"
             >
               <div class="clan-info">
-                <h3 id="warriors-name">Loading...</h3>
-                <p id="warriors-members">Loading...</p>
-                <p id="warriors-level">Loading...</p>
-                <p id="warriors-league">Loading...</p>
+                <h3 id="warriors-name" class="skeleton skeleton-text">Loading...</h3>
+                <p id="warriors-members" class="skeleton skeleton-text">Loading...</p>
+                <p id="warriors-level" class="skeleton skeleton-text">Loading...</p>
+                <p id="warriors-league" class="skeleton skeleton-text">Loading...</p>
               </div>
+            </div>
+            <div class="member-progress"><div id="warriors-fill" class="member-fill"></div></div>
+            <div class="clan-extra-stats">
+              <span id="warriors-warwins">⚔ — Wars Won</span>
+              <span id="warriors-type">— Type</span>
             </div>
             <span
                 id="warriors-status"
@@ -565,7 +688,43 @@
     </div>
   </div>
   <script>
+
+  const CLAN_SLUGS = ["the-shield", "invidia-bandit", "village-warriors"];
+  const CLAN_PREFIXES = ["shield", "bandit", "warriors"];
+  // Note: the family API's own "endpoint" field is wrong for VillageWarriors
+  // (it 404s) — these slugs are the ones the clan detail pages already use
+  // successfully, so we hardcode them rather than trusting that field.
+
+  function updateStatus(id, status) {
+    const badge = document.getElementById(id);
+    if (!badge) return;
+
+    badge.textContent = status;
+    badge.classList.remove("recruiting", "almost-full", "full", "closed");
+
+    if (status === "Recruiting") {
+      badge.classList.add("recruiting");
+    } else if (status === "Almost Full") {
+      badge.classList.add("almost-full");
+    } else if (status === "Unavailable") {
+      badge.classList.add("closed");
+    } else {
+      badge.classList.add("full");
+    }
+  }
+
+  function clearSkeleton(...ids) {
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove("skeleton", "skeleton-text", "skeleton-badge");
+    });
+  }
+
   async function loadFamily(){
+    const refreshBtn = document.getElementById("refreshBtn");
+    const lastUpdatedText = document.getElementById("lastUpdatedText");
+    if (refreshBtn) refreshBtn.disabled = true;
+
     try {
 
       const controller = new AbortController();
@@ -582,86 +741,74 @@
         throw new Error(`API returned ${response.status}`);
       }
 
-      const family =
-          await response.json();
-    // THE SHIELD
-      document.getElementById("shield-name").textContent =
-          family.clans[0].name;
-      
-      document.getElementById("shield-members").textContent =
-          `👥 ${family.clans[0].members} / 50 Members`;
-      
-      document.getElementById("shield-level").textContent =
-          `⭐ Level ${family.clans[0].level}`;
-      
-      document.getElementById("shield-league").textContent =
-          `🏆 ${family.clans[0].league}`;
-    // INVIDIA BANDIT
-      document.getElementById("bandit-name").textContent =
-          family.clans[1].name;
-      
-      document.getElementById("bandit-members").textContent =
-          `👥 ${family.clans[1].members} / 50 Members`;
-      
-      document.getElementById("bandit-level").textContent =
-          `⭐ Level ${family.clans[1].level}`;
-      
-      document.getElementById("bandit-league").textContent =
-          `🏆 ${family.clans[1].league}`;
-    // VI11AGE WARRIORS
-      document.getElementById("warriors-name").textContent =
-          family.clans[2].name;
-      
-      document.getElementById("warriors-members").textContent =
-          `👥 ${family.clans[2].members} / 50 Members`;
-      
-      document.getElementById("warriors-level").textContent =
-          `⭐ Level ${family.clans[2].level}`;
-      
-      document.getElementById("warriors-league").textContent =
-          `🏆 ${family.clans[2].league}`;
-    
+      const family = await response.json();
+
+      // Fetch each clan's own detail endpoint in parallel for the extra
+      // stats (war wins, open/invite-only). allSettled so one clan's
+      // failure doesn't take down the whole dashboard.
+      const clanDetails = await Promise.allSettled(
+        CLAN_SLUGS.map(slug =>
+          fetch(`https://api.stathut.in/api/clan/${slug}`)
+            .then(r => (r.ok ? r.json() : null))
+        )
+      );
+
+      family.clans.forEach((clan, i) => {
+        const p = CLAN_PREFIXES[i];
+        if (!p) return;
+
+        document.getElementById(`${p}-name`).textContent = clan.name;
+        document.getElementById(`${p}-members`).textContent =
+          `👥 ${clan.members} / 50 Members`;
+        document.getElementById(`${p}-level`).textContent =
+          `⭐ Level ${clan.level}`;
+        document.getElementById(`${p}-league`).textContent =
+          `🏆 ${clan.league}`;
+        document.getElementById(`${p}-badge`).src = clan.badge;
+
+        const fill = document.getElementById(`${p}-fill`);
+        if (fill) {
+          const pct = Math.max(0, Math.min(100, (clan.members / 50) * 100));
+          fill.style.width = `${pct}%`;
+        }
+
+        const settled = clanDetails[i];
+        const detail = settled && settled.status === "fulfilled" ? settled.value : null;
+
+        const warWinsEl = document.getElementById(`${p}-warwins`);
+        const typeEl = document.getElementById(`${p}-type`);
+
+        if (detail) {
+          if (warWinsEl) {
+            warWinsEl.textContent =
+              typeof detail.warWins === "number"
+                ? `⚔ ${detail.warWins} Wars Won`
+                : "⚔ Wars Won: —";
+          }
+          if (typeEl) {
+            typeEl.textContent =
+              detail.type === "inviteOnly" ? "🔒 Invite Only" : "🔓 Open";
+          }
+        } else {
+          if (warWinsEl) warWinsEl.textContent = "⚔ Wars Won unavailable";
+          if (typeEl) typeEl.textContent = "";
+        }
+
+        updateStatus(`${p}-status`, clan.status);
+
+        clearSkeleton(`${p}-name`, `${p}-members`, `${p}-level`, `${p}-league`, `${p}-badge`);
+      });
 
       document.getElementById("family-members").textContent =
-          `${family.members} / ${family.capacity} Members`;
-  
+        `${family.members} / ${family.capacity} Members`;
       document.getElementById("family-points").textContent =
-          `${family.familyPoints} Points`;
-    
-      document.getElementById("shield-badge").src =
-        family.clans[0].badge;
+        `${family.familyPoints} Points`;
+      clearSkeleton("family-members", "family-points");
 
-      document.getElementById("bandit-badge").src =
-        family.clans[1].badge;
-
-      document.getElementById("warriors-badge").src =
-        family.clans[2].badge;
-
-    function updateStatus(id, status) {
-
-    const badge = document.getElementById(id);
-
-    badge.textContent = status;
-
-    badge.classList.remove(
-        "recruiting",
-        "almost-full",
-        "full"
-    );
-
-    if (status === "Recruiting") {
-        badge.classList.add("recruiting");
-    }
-    else if (status === "Almost Full") {
-        badge.classList.add("almost-full");
-    }
-    else {
-        badge.classList.add("full");
-    }
-}
-    updateStatus("shield-status", family.clans[0].status);
-    updateStatus("bandit-status", family.clans[1].status);
-    updateStatus("warriors-status", family.clans[2].status);
+      if (lastUpdatedText) {
+        lastUpdatedText.textContent =
+          `Last updated ${new Date().toLocaleTimeString()} · auto-refreshing every 60s`;
+      }
 
     } catch (error) {
 
@@ -678,19 +825,23 @@
         const el = document.getElementById(id);
         if (el) el.textContent = "Unavailable";
       });
+      clearSkeleton(...unavailableIds, "shield-badge", "bandit-badge", "warriors-badge");
 
       ["shield-status", "bandit-status", "warriors-status"].forEach(id => {
-        const badge = document.getElementById(id);
-        if (!badge) return;
-        badge.textContent = "Unavailable";
-        badge.classList.remove("recruiting", "almost-full", "full");
-        badge.classList.add("closed");
+        updateStatus(id, "Unavailable");
       });
 
+      if (lastUpdatedText) {
+        lastUpdatedText.textContent = "Live data unavailable right now — showing fallback state";
+      }
+
+    } finally {
+      if (refreshBtn) refreshBtn.disabled = false;
     }
   }
 
   loadFamily();
+  setInterval(loadFamily, 60000);
 
   </script>
   <script src="theme.js"></script>

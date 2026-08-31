@@ -926,3 +926,38 @@ h1, h2, h3, h4 {
     font-family: "Orbitron", "Segoe UI", system-ui, -apple-system, sans-serif;
     letter-spacing: .3px;
 }
+
+/* =========================================
+   FAMILY DASHBOARD — skeleton loading,
+   progress bars, extra stats, refresh meta
+========================================= */
+
+html[data-theme="dark"] .skeleton {
+    background: #1a2338;
+}
+
+html[data-theme="dark"] .skeleton::after {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+}
+
+html[data-theme="dark"] .member-progress {
+    background: #263449;
+}
+
+html[data-theme="dark"] .clan-extra-stats span {
+    background: rgba(96, 165, 250, .14);
+    color: #93c5fd;
+}
+
+html[data-theme="dark"] .dashboard-meta span {
+    color: #94a3b8;
+}
+
+html[data-theme="dark"] .refresh-btn {
+    background: #1a2338;
+    color: #93c5fd;
+}
+
+html[data-theme="dark"] .refresh-btn:hover {
+    background: #232e47;
+}
