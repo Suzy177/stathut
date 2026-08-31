@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="/fwa/theme.css">
   <title> Vi11ageWarriors | FWA | StatHut</title>
   
  <style>
@@ -441,6 +442,21 @@
 </head>
 
 <body>
+  <button
+      class="stathut-theme-toggle"
+      type="button"
+      data-stathut-theme-toggle
+      aria-label="Switch theme"
+      title="Switch theme"
+      style="
+          position:fixed;
+          top:22px;
+          right:22px;
+          z-index:9999;
+      "
+  >
+    <span data-stathut-theme-icon>🌙</span>
+</button>
   <div class="page">
     <div class="card">
     <div class="hero">
@@ -609,5 +625,6 @@
 
 loadClanData();
 </script>
+<script src="/fwa/theme.js"></script>
 </body>
 </html>

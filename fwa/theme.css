@@ -35,27 +35,28 @@
 html[data-theme="dark"] {
     color-scheme: dark;
 
-    --sh-page-bg-start: #0f172a;
-    --sh-page-bg-end: #111827;
+    /* Matched 1:1 to stathut-v2.css's palette */
+    --sh-page-bg-start: #0a0e1a;
+    --sh-page-bg-end: #0f1524;
 
-    --sh-surface: #182235;
-    --sh-surface-soft: #202c40;
-    --sh-surface-muted: #263449;
+    --sh-surface: #131a2b;
+    --sh-surface-soft: #161d30;
+    --sh-surface-muted: #1a2338;
 
-    --sh-text-primary: #93c5fd;
-    --sh-text-normal: #f8fafc;
-    --sh-text-secondary: #cbd5e1;
+    --sh-text-primary: #60a5fa;
+    --sh-text-normal: #f1f5f9;
+    --sh-text-secondary: #94a3b8;
 
-    --sh-border: #334155;
+    --sh-border: rgba(148, 163, 184, .14);
 
-    --sh-nav-bg: rgba(24, 34, 53, 0.88);
+    --sh-nav-bg: rgba(10, 14, 26, 0.75);
     --sh-nav-border: rgba(148, 163, 184, 0.18);
 
     --sh-shadow-card:
-        0 10px 28px rgba(0, 0, 0, 0.28);
+        0 10px 28px rgba(0, 0, 0, 0.35);
 
     --sh-shadow-large:
-        0 20px 45px rgba(0, 0, 0, 0.38);
+        0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
 /* =========================
@@ -194,7 +195,7 @@ html[data-theme="dark"] .military-tab {
 }
 
 html[data-theme="dark"] .military-tab.active {
-    background: #2563eb;
+    background: #60a5fa;
     color: #ffffff;
 }
 
@@ -292,7 +293,7 @@ html[data-theme="dark"] .dashboard-nav-btn:hover {
 
 html[data-theme="dark"] .dashboard-nav-btn.active {
     color: #ffffff;
-    background: #2563eb;
+    background: #60a5fa;
 }
 
 /* =========================================
@@ -302,10 +303,10 @@ html[data-theme="dark"] .dashboard-nav-btn.active {
 html[data-theme="dark"] body {
     background: linear-gradient(
         120deg,
-        #08111f,
-        #101b31,
-        #172554,
-        #0f172a
+        #0a0e1a,
+        #0f1524,
+        #131a2b,
+        #0a0e1a
     );
 }
 
@@ -313,8 +314,8 @@ html[data-theme="dark"] .card {
 
     background: linear-gradient(
         145deg,
-        #1b2739,
-        #233247
+        #131a2b,
+        #1a2338
     );
 
     box-shadow:
@@ -324,40 +325,40 @@ html[data-theme="dark"] .card {
 }
 
 html[data-theme="dark"] .stathut-title{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .subtitle{
-    color:#cbd5e1;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .card p{
-    color:#e5e7eb;
+    color:#f1f5f9;
 }
 
 html[data-theme="dark"] .card a{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .fwa-nav a{
 
-    color:#d1d5db;
+    color:#94a3b8;
 
 }
 
 html[data-theme="dark"] .fwa-nav a:hover{
 
-    background:rgba(197,106,0,.18);
+    background:rgba(255,156,42,.18);
 
-    color:#ffb44c;
+    color:#ff9c2a;
 
 }
 
 html[data-theme="dark"] .fwa-nav a.active{
 
-    background:rgba(197,106,0,.25);
+    background:rgba(255,156,42,.25);
 
-    color:#ffb44c;
+    color:#ff9c2a;
 
 }
 
@@ -366,16 +367,16 @@ html[data-theme="dark"] .fwa-nav a.active{
 ========================================= */
 
 html[data-theme="dark"] .section-title{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .section-desc{
-    color:#cbd5e1;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .clan-card{
 
-    background:#1f2937;
+    background:#131a2b;
 
     box-shadow:
         0 12px 28px rgba(0,0,0,.35);
@@ -383,38 +384,38 @@ html[data-theme="dark"] .clan-card{
 }
 
 html[data-theme="dark"] .clan-card h3{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .clan-card p{
-    color:#d1d5db;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .th-btn{
 
-    background:#2b3443;
+    background:#1a2338;
 
-    color:#d1d5db;
+    color:#94a3b8;
 
 }
 
 html[data-theme="dark"] .th-btn:hover{
 
-    background:#374151;
+    background:#232e47;
 
 }
 
 html[data-theme="dark"] .th-btn.active{
 
-    background:rgba(197,106,0,.28);
+    background:rgba(255,156,42,.28);
 
-    color:#ffb44c;
+    color:#ff9c2a;
 
 }
 
 html[data-theme="dark"] .back-link{
 
-    color:#93c5fd;
+    color:#60a5fa;
 
 }
 
@@ -434,7 +435,7 @@ html[data-theme="dark"] .discord-cta{
 ========================================= */
 
 html[data-theme="dark"] .header .logo{
-    color:#67e8f9;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .header .logo span{
@@ -442,31 +443,31 @@ html[data-theme="dark"] .header .logo span{
 }
 
 html[data-theme="dark"] .subtitle{
-    color:#cbd5e1;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .page-header h1{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .page-header p{
-    color:#cbd5e1;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .nav a{
-    color:#d1d5db;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .nav a:hover,
 html[data-theme="dark"] .nav a.active{
 
-    background:#2b3443;
+    background:#1a2338;
 
 }
 
 html[data-theme="dark"] .section{
 
-    background:#1f2937;
+    background:#131a2b;
 
     box-shadow:
         0 10px 28px rgba(0,0,0,.25);
@@ -474,22 +475,22 @@ html[data-theme="dark"] .section{
 }
 
 html[data-theme="dark"] .section h2{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .section li{
-    color:#e5e7eb;
+    color:#f1f5f9;
 }
 
 html[data-theme="dark"] .footer{
 
-    color:#cbd5e1;
+    color:#94a3b8;
 
 }
 
 html[data-theme="dark"] .card > p a{
 
-    color:#93c5fd;
+    color:#60a5fa;
 
 }
 
@@ -498,24 +499,24 @@ html[data-theme="dark"] .card > p a{
 ========================================= */
 
 html[data-theme="dark"] body {
-    background: #0f172a;
+    background: #0a0e1a;
 }
 
 html[data-theme="dark"] .card{
-    background:#1e293b;
+    background:#131a2b;
     box-shadow:0 20px 45px rgba(0,0,0,.35);
 }
 
 html[data-theme="dark"] h1{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] h2{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] p{
-    color:#d1d5db;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .alert{
@@ -536,25 +537,25 @@ html[data-theme="dark"] .warning{
 
 html[data-theme="dark"] .th-box{
 
-    background:#334155;
+    background:#1a2338;
 
 }
 
 html[data-theme="dark"] .th-box a{
 
-    color:#f8fafc;
+    color:#f1f5f9;
 
 }
 
 html[data-theme="dark"] .links li{
 
-    color:#d1d5db;
+    color:#94a3b8;
 
 }
 
 html[data-theme="dark"] .links a{
 
-    color:#93c5fd;
+    color:#60a5fa;
 
 }
 
@@ -563,16 +564,16 @@ html[data-theme="dark"] .links a{
 ========================================= */
 
 html[data-theme="dark"] .section-title{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .section-desc{
-    color:#cbd5e1;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .clan-card{
 
-    background:#1f2937;
+    background:#131a2b;
 
     box-shadow:
         0 12px 28px rgba(0,0,0,.35);
@@ -580,11 +581,11 @@ html[data-theme="dark"] .clan-card{
 }
 
 html[data-theme="dark"] .clan-card h3{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .clan-card p{
-    color:#d1d5db;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .badge.recruiting{
@@ -624,7 +625,7 @@ html[data-theme="dark"] .discord-cta{
 
 html[data-theme="dark"] .back-link{
 
-    color:#93c5fd;
+    color:#60a5fa;
 
 }
 
@@ -633,17 +634,17 @@ html[data-theme="dark"] .back-link{
 ========================================= */
 
 html[data-theme="dark"] body {
-    background: #0f172a;
-    color: #e5e7eb;
+    background: #0a0e1a;
+    color: #f1f5f9;
 }
 
 html[data-theme="dark"] header {
-    background: #182235;
-    border-bottom-color: #334155;
+    background: #131a2b;
+    border-bottom-color: rgba(148,163,184,.14);
 }
 
 html[data-theme="dark"] .logo {
-    color: #67e8f9;
+    color: #60a5fa;
 }
 
 html[data-theme="dark"] .logo span {
@@ -651,37 +652,37 @@ html[data-theme="dark"] .logo span {
 }
 
 html[data-theme="dark"] nav a {
-    color: #d1d5db;
+    color: #94a3b8;
 }
 
 html[data-theme="dark"] nav a.active {
-    color: #93c5fd;
+    color: #60a5fa;
 }
 
 html[data-theme="dark"] .page-header h1,
 html[data-theme="dark"] .section h2 {
-    color: #93c5fd;
+    color: #60a5fa;
 }
 
 html[data-theme="dark"] .page-header p,
 html[data-theme="dark"] .section p,
 html[data-theme="dark"] .section li {
-    color: #d1d5db;
+    color: #94a3b8;
 }
 
 html[data-theme="dark"] .note {
-    background: #1f2937;
-    border-left-color: #06b6d4;
-    color: #e5e7eb;
+    background: #131a2b;
+    border-left-color: #60a5fa;
+    color: #f1f5f9;
 }
 
 html[data-theme="dark"] footer {
-    border-top-color: #334155;
+    border-top-color: rgba(148,163,184,.14);
     color: #94a3b8;
 }
 
 html[data-theme="dark"] a {
-    color: #93c5fd;
+    color: #60a5fa;
 }
 
 /* =========================================
@@ -689,17 +690,17 @@ html[data-theme="dark"] a {
 ========================================= */
 
 html[data-theme="dark"] body{
-    background:#0f172a;
-    color:#e5e7eb;
+    background:#0a0e1a;
+    color:#f1f5f9;
 }
 
 html[data-theme="dark"] header{
-    background:#182235;
-    border-bottom-color:#334155;
+    background:#131a2b;
+    border-bottom-color:rgba(148,163,184,.14);
 }
 
 html[data-theme="dark"] .logo{
-    color:#67e8f9;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .logo span{
@@ -707,64 +708,64 @@ html[data-theme="dark"] .logo span{
 }
 
 html[data-theme="dark"] nav a{
-    color:#d1d5db;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] nav a.active{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .page-header h2{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .page-header p{
-    color:#cbd5e1;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] label{
-    color:#e5e7eb;
+    color:#f1f5f9;
 }
 
 html[data-theme="dark"] select{
 
-    background:#1f2937;
-    color:#f8fafc;
-    border:1px solid #475569;
+    background:#131a2b;
+    color:#f1f5f9;
+    border:1px solid rgba(148,163,184,.24);
 
 }
 
 html[data-theme="dark"] .recommendation{
 
-    background:#1f2937;
-    border-left-color:#06b6d4;
-    color:#e5e7eb;
+    background:#131a2b;
+    border-left-color:#60a5fa;
+    color:#f1f5f9;
 
 }
 
 html[data-theme="dark"] .recommendation li{
 
-    color:#e5e7eb;
+    color:#f1f5f9;
 
 }
 
 html[data-theme="dark"] .btn{
 
-    border-color:#67e8f9;
-    color:#67e8f9;
+    border-color:#60a5fa;
+    color:#60a5fa;
 
 }
 
 html[data-theme="dark"] .btn:hover{
 
-    background:#06b6d4;
+    background:#60a5fa;
     color:#ffffff;
 
 }
 
 html[data-theme="dark"] footer{
 
-    border-top-color:#334155;
+    border-top-color:rgba(148,163,184,.14);
     color:#94a3b8;
 
 }
@@ -774,16 +775,16 @@ html[data-theme="dark"] footer{
 ========================================= */
 
 html[data-theme="dark"] .section-title{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .section-desc{
-    color:#cbd5e1;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .clan-card{
 
-    background:#1f2937;
+    background:#131a2b;
 
     box-shadow:
         0 12px 28px rgba(0,0,0,.35);
@@ -791,11 +792,11 @@ html[data-theme="dark"] .clan-card{
 }
 
 html[data-theme="dark"] .clan-card h3{
-    color:#93c5fd;
+    color:#60a5fa;
 }
 
 html[data-theme="dark"] .clan-card p{
-    color:#d1d5db;
+    color:#94a3b8;
 }
 
 html[data-theme="dark"] .badge{
@@ -819,7 +820,7 @@ html[data-theme="dark"] .discord-cta{
 
 html[data-theme="dark"] .back-link{
 
-    color:#93c5fd;
+    color:#60a5fa;
 
 }
 
@@ -831,10 +832,10 @@ html[data-theme="dark"] body{
 
     background:linear-gradient(
         120deg,
-        #08111f,
-        #101b31,
-        #172554,
-        #0f172a
+        #0a0e1a,
+        #0f1524,
+        #131a2b,
+        #0a0e1a
     );
 
 }
@@ -844,8 +845,8 @@ html[data-theme="dark"] .card{
     background:
         linear-gradient(
             145deg,
-            #1b2739,
-            #233247
+            #131a2b,
+            #1a2338
         );
 
     box-shadow:
@@ -856,12 +857,49 @@ html[data-theme="dark"] .card{
 
 html[data-theme="dark"] .stathut-title{
 
-    color:#93c5fd;
+    color:#60a5fa;
 
 }
 
 html[data-theme="dark"] .subtitle{
 
-    color:#cbd5e1;
+    color:#94a3b8;
 
+}
+
+/* =========================================
+   CLAN DETAIL PAGES (the-shield / invidia-bandit / village-warriors)
+========================================= */
+
+html[data-theme="dark"] .tag-badge {
+    background: rgba(96, 165, 250, .16);
+    color: #60a5fa;
+}
+
+html[data-theme="dark"] .hero-stats span {
+    background: var(--sh-surface-muted, #263449);
+    color: #60a5fa;
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+html[data-theme="dark"] .member-progress {
+    background: #1a2338;
+}
+
+html[data-theme="dark"] .hero-divider {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #263449,
+        transparent
+    );
+}
+
+html[data-theme="dark"] .clan-info h3 {
+    color: #60a5fa;
+}
+
+html[data-theme="dark"] #clan-description,
+html[data-theme="dark"] .clan-info p {
+    color: #94a3b8;
 }

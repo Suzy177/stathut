@@ -31,15 +31,10 @@
             return savedTheme;
         }
 
-        const prefersDark =
-            window.matchMedia &&
-            window.matchMedia(
-                "(prefers-color-scheme: dark)"
-            ).matches;
-
-        return prefersDark
-            ? "dark"
-            : "light";
+        // StatHut now defaults to the dark "esports" theme
+        // for every visitor unless they explicitly switch to
+        // light mode via the toggle (which is then remembered).
+        return "dark";
     }
 
     function applyTheme(theme) {

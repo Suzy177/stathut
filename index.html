@@ -2,163 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>StatHut</title>
-  <link rel="stylesheet" href="fwa/theme.css">
-
-  <style>
-  * {
-    box-sizing: border-box;
-    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  }
-
-  body {
-  margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(
-    120deg,
-    #dbeafe,
-    #e0e7ff,
-    #f0e7ff,
-    #e6f4ff
-  );
-  background-size: 300% 300%;
-  animation: gradientShift 12s ease infinite;
-  color: #111827;
-}
-
-  .page {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-  }
-
-  .card {
-    background: linear-gradient(145deg, #eef3f9, #ffffff);
-    border-radius: 22px;
-    padding: 42px 60px;
-    box-shadow:
-      0 20px 40px rgba(0,0,0,0.08),
-      inset 0 1px 0 rgba(255,255,255,0.6);
-    text-align: center;
-    max-width: 720px;
-    width: 100%;
-  }
-
-  .stathut-title {
-    font-size: 46px;
-    font-weight: 800;
-    color: #1f3c88;
-    margin-bottom: 10px;
-  }
-
-  .subtitle {
-    font-size: 16px;
-    color: #6b7280;
-    margin-bottom: 34px;
-  }
-
-  .panel {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .circle {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: 800;
-    color: #fff;
-    text-decoration: none;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .circle::after {
-    content: "";
-    position: absolute;
-    inset: 6px;
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,0.35);
-  }
-
-  .circle:hover {
-    transform: translateY(-8px) scale(1.06);
-    box-shadow: 0 18px 35px rgba(0,0,0,0.35);
-  }
-
-  .fwa { background: linear-gradient(135deg, #c56a00, #e28b28); }
-  .eyg { background: linear-gradient(135deg, #0aa6b5, #38c6d3); }
-  .mwl { background: linear-gradient(135deg, #7a2e8e, #a855c1); }
-
-  @media (max-width: 768px) {
-    .card {
-      padding: 32px 24px;
-    }
-    .circle {
-      width: 115px;
-      height: 115px;
-      font-size: 24px;
-    }
-  }
-    @keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-</style>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>StatHut — Clash of Clans Community Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stathut-v2.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GJLXJW3G7H');
+  </script>
 </head>
+<body class="sh2">
 
-<body>
-  <button
-      class="stathut-theme-toggle"
-      type="button"
-      data-stathut-theme-toggle
-      aria-label="Switch theme"
-      title="Switch theme"
-      style="
-          position:fixed;
-          top:22px;
-          right:22px;
-          z-index:9999;
-      "
-  >
-    <span data-stathut-theme-icon>🌙</span>
-</button>
-  <div class="page">
-    <div class="card">
-      <h1 class="stathut-title">StatHut</h1>
-      <p class="subtitle">Choose a league to continue</p>
+  <header class="sh2-topbar">
+    <a href="/" class="sh2-logo"><span class="dot"></span>StatHut</a>
+    <nav class="sh2-nav">
+      <a href="/fwa/">FWA</a>
+      <a href="/mwl/">MWL</a>
+      <a href="/general/">General</a>
+    </nav>
+  </header>
 
-      <div class="panel">
-        <a href="/fwa/" class="circle fwa">FWA</a>
-        <a href="/eyg/" class="circle eyg">EYG</a>
-        <a href="/mwl/" class="circle mwl">MWL</a>
-      </div>
-    </div>
+  <section class="sh2-hero">
+    <span class="sh2-eyebrow">Clash of Clans Community Hub</span>
+    <h1>STATHUT</h1>
+    <p>Rules, rosters, and reference material for every clan family in one place. Pick a section to get started.</p>
+  </section>
+
+  <div class="sh2-grid">
+
+    <a href="/fwa/" class="sh2-card fwa">
+      <div class="badge">FWA</div>
+      <span class="sh2-tag live">● Live</span>
+      <h3>Farm War Alliance</h3>
+      <p>Clan directory, rules, base guides, war status and player lookup for the FWA family.</p>
+    </a>
+
+    <a href="/mwl/" class="sh2-card mwl">
+      <div class="badge">MWL</div>
+      <span class="sh2-tag maint">🛠 Under Maintenance</span>
+      <h3>Mythical War League</h3>
+      <p>This section is being rebuilt. Check back soon for MWL clan info and stats.</p>
+    </a>
+
+    <a href="/general/" class="sh2-card gen">
+      <div class="badge">GEN</div>
+      <span class="sh2-tag live">● Live</span>
+      <h3>General</h3>
+      <p>Troop, hero, spell &amp; pet references, Town Hall guides, and strategy — for any Clash of Clans player.</p>
+    </a>
+
   </div>
-  <script src="fwa/theme.js"></script>
+
+  <footer class="sh2-footer">
+    StatHut · a fan-made Clash of Clans community resource
+  </footer>
+
 </body>
 </html>
-
-
-
-
-
-
-
