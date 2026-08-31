@@ -564,9 +564,21 @@
   </div>
   <script>
   async function loadFamily(){
-    
+    try {
+
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
+
       const response =
-          await fetch("https://api.stathut.in/api/family");
+          await fetch("https://api.stathut.in/api/family", {
+            signal: controller.signal
+          });
+
+      clearTimeout(timeout);
+
+      if (!response.ok) {
+        throw new Error(`API returned ${response.status}`);
+      }
 
       const family =
           await response.json();
@@ -648,7 +660,32 @@
     updateStatus("shield-status", family.clans[0].status);
     updateStatus("bandit-status", family.clans[1].status);
     updateStatus("warriors-status", family.clans[2].status);
-  
+
+    } catch (error) {
+
+      console.error("StatHut: failed to load family data:", error);
+
+      const unavailableIds = [
+        "family-points", "family-members",
+        "shield-name", "shield-members", "shield-level", "shield-league",
+        "bandit-name", "bandit-members", "bandit-level", "bandit-league",
+        "warriors-name", "warriors-members", "warriors-level", "warriors-league"
+      ];
+
+      unavailableIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = "Unavailable";
+      });
+
+      ["shield-status", "bandit-status", "warriors-status"].forEach(id => {
+        const badge = document.getElementById(id);
+        if (!badge) return;
+        badge.textContent = "Unavailable";
+        badge.classList.remove("recruiting", "almost-full", "full");
+        badge.classList.add("closed");
+      });
+
+    }
   }
 
   loadFamily();

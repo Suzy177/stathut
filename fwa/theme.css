@@ -612,6 +612,14 @@ html[data-theme="dark"] .badge.full{
 
 }
 
+html[data-theme="dark"] .badge.closed{
+
+    background:#4c1d1d;
+
+    color:#fecaca;
+
+}
+
 html[data-theme="dark"] .discord-cta{
 
     background:
