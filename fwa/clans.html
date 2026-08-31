@@ -352,21 +352,21 @@
       </p>
 
       <!-- TH FILTER -->
-      <div class="th-filter">
-        <button class="th-btn active">All</button>
-        <button class="th-btn">TH12</button>
-        <button class="th-btn">TH13</button>
-        <button class="th-btn">TH14</button>
-        <button class="th-btn">TH15</button>
-        <button class="th-btn">TH16</button>
-        <button class="th-btn">TH17</button>
-        <button class="th-btn">TH18</button>
+      <div class="th-filter" id="thFilterGroup">
+        <button class="th-btn active" data-th="all">All</button>
+        <button class="th-btn" data-th="12">TH12</button>
+        <button class="th-btn" data-th="13">TH13</button>
+        <button class="th-btn" data-th="14">TH14</button>
+        <button class="th-btn" data-th="15">TH15</button>
+        <button class="th-btn" data-th="16">TH16</button>
+        <button class="th-btn" data-th="17">TH17</button>
+        <button class="th-btn" data-th="18">TH18</button>
       </div>
-      
-      <div class="clans-grid">
+
+      <div class="clans-grid" id="clansGrid">
 
         <a href="/fwa/clans/the-shield.html" class="clan-link">
-          <div class="clan-card">
+          <div class="clan-card" data-min-th="13" data-max-th="18">
             <div class="clan-header">
               <div class="clan-avatar shield">TS</div>
             <img
@@ -382,12 +382,9 @@
             <span class="badge recruiting">Active • Recruiting</span>
           </div>
         </a>
-      </div>
-
-      <div class="clans-grid">
 
         <a href="/fwa/clans/invidia-bandit.html" class="clan-link">
-          <div class="clan-card">
+          <div class="clan-card" data-min-th="13" data-max-th="18">
             <div class="clan-header">
               <div class="clan-avatar bandit">IB</div>
               <div class="clan-info">
@@ -398,12 +395,9 @@
             <span class="badge recruiting">Active • Recruiting</span>
           </div>
         </a>
-      </div>
-
-      <div class="clans-grid">
 
         <a href="/fwa/clans/village-warriors.html" class="clan-link">
-          <div class="clan-card">
+          <div class="clan-card" data-min-th="13" data-max-th="18">
             <div class="clan-header">
               <div class="clan-avatar warriors">VW</div>
               <div class="clan-info">
@@ -414,7 +408,12 @@
             <span class="badge recruiting">Active • Recruiting</span>
           </div>
         </a>
+
       </div>
+
+      <p id="noClansMessage" style="display:none; color:#6b7280; margin-top:-10px;">
+        No FWA clans currently recruit that Town Hall level — try "All" or check back later.
+      </p>
 
       <!-- DISCORD CTA -->
       <div class="discord-cta">
@@ -436,6 +435,40 @@
 
     </div>
   </div>
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll("#thFilterGroup .th-btn");
+      const cards = document.querySelectorAll("#clansGrid .clan-link");
+      const noClansMessage = document.getElementById("noClansMessage");
+
+      function applyFilter(thValue) {
+        let visibleCount = 0;
+
+        cards.forEach(link => {
+          const card = link.querySelector(".clan-card");
+          const min = parseInt(card.dataset.minTh, 10);
+          const max = parseInt(card.dataset.maxTh, 10);
+
+          const matches =
+            thValue === "all" ||
+            (parseInt(thValue, 10) >= min && parseInt(thValue, 10) <= max);
+
+          link.style.display = matches ? "" : "none";
+          if (matches) visibleCount++;
+        });
+
+        noClansMessage.style.display = visibleCount === 0 ? "block" : "none";
+      }
+
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          buttons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          applyFilter(btn.dataset.th);
+        });
+      });
+    })();
+  </script>
   <script src="theme.js"></script>
 </body>
 </html>
