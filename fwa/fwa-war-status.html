@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Family Dashboard | StatHut</title>
+  <title>FWA War Status | StatHut</title>
   <link rel="stylesheet" href="theme.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
@@ -194,7 +194,7 @@
       background: rgba(239, 68, 68, 0.18);
       color: #b91c1c;
     }
-    
+
     .back-link {
       display: inline-block;
       margin-top: 36px;
@@ -233,35 +233,6 @@
       align-items: flex-start;
     }
 
-    /* TH Filter */
-    .th-filter {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 10px 0 30px;
-    }
-
-    .th-btn {
-      border: none;
-      background: #f3f4f6;
-      color: #374151;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
-    }
-
-    .th-btn:hover {
-      background: #e5e7eb;
-    }
-
-    .th-btn.active {
-      background: rgba(197, 106, 0, 0.18);
-      color: #c56a00;
-    }
     .discord-cta {
       margin: 48px auto 32px;
       padding: 28px 24px;
@@ -307,6 +278,76 @@
         padding: 32px 24px;
       }
     }
+
+    /* ---- Skeleton loading state ---- */
+    .skeleton {
+      position: relative;
+      overflow: hidden;
+      background: #e5e7eb;
+      border-radius: 8px;
+      color: transparent !important;
+    }
+
+    .skeleton::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+      animation: skeletonShimmer 1.4s infinite;
+    }
+
+    @keyframes skeletonShimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .skeleton-text {
+      display: inline-block;
+      height: 14px;
+      width: 80%;
+    }
+
+    /* ---- Dashboard meta row (last updated + refresh) ---- */
+    .dashboard-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: -12px 0 24px;
+      flex-wrap: wrap;
+    }
+
+    .dashboard-meta span {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .refresh-btn {
+      border: none;
+      background: #eef2ff;
+      color: #4338ca;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+
+    .refresh-btn:hover {
+      background: #e0e7ff;
+    }
+
+    .refresh-btn:disabled {
+      opacity: .6;
+      cursor: default;
+    }
+
+    .api-note {
+      font-size: 12.5px;
+      color: #9ca3af;
+      margin: 8px 0 0;
+    }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
@@ -314,7 +355,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-  
+
     gtag('config', 'G-GJLXJW3G7H');
   </script>
 </head>
@@ -339,7 +380,7 @@
     <div class="card">
 
       <h1 class="stathut-title">FWA War Status</h1>
-      <p class="subtitle">Live war tracking for the FWA Evolution family</p>
+      <p class="subtitle">Verified war record for the FWA Evolution family</p>
 
       <nav class="fwa-nav">
         <a href="/fwa/">Home</a>
@@ -349,35 +390,40 @@
         <a href="/fwa/join.html">Join</a>
       </nav>
 
-      <h2 class="section-title">Current Family Wars</h2>
+      <h2 class="section-title">Family War Record</h2>
       <p class="section-desc">
-        Current war status across the StatHut FWA family.
+        Live, API-verified war stats across the StatHut FWA family.
       </p>
 
+      <div class="dashboard-meta">
+        <span id="lastUpdatedText">Loading live data…</span>
+        <button class="refresh-btn" id="refreshBtn" onclick="loadWarStatus()">↻ Refresh</button>
+      </div>
+
       <div class="clans-grid">
-        
+
         <div class="clan-card">
           <div class="clan-info">
-            <h3>⚔️ Active Wars</h3>
-            <p>3 Wars</p>
+            <h3>⚔️ Total Wars Won</h3>
+            <p id="total-warwins" class="skeleton skeleton-text">Loading...</p>
           </div>
         </div>
-        
+
         <div class="clan-card">
           <div class="clan-info">
-            <h3>🔥 War Day</h3>
+            <h3>🏰 Family Clans</h3>
             <p>3 Clans</p>
           </div>
         </div>
-        
+
         <div class="clan-card">
           <div class="clan-info">
-            <h3>📅 Preparation Day</h3>
-            <p>0 Clans</p>
+            <h3>🎯 War Style</h3>
+            <p>FWA (scripted wars)</p>
           </div>
         </div>
       </div>
-      
+
       <div class="clans-grid">
 
         <a href="/fwa/clans/the-shield.html" class="clan-link">
@@ -385,15 +431,13 @@
             <div class="clan-header">
               <div class="clan-avatar shield">TS</div>
               <div class="clan-info">
-                <h3>The Shield</h3>
-                <p><strong>vs Farm X</strong></p>
-                <p>
-                ⭐ 79 - 84 Stars<br>
-                💥 94.1% - 96.7%
-                </p>
+                <h3 id="shield-name">The Shield</h3>
+                <p id="shield-warwins" class="skeleton skeleton-text">Loading...</p>
+                <p id="shield-league" class="skeleton skeleton-text">Loading...</p>
+                <p id="shield-freq" class="skeleton skeleton-text">Loading...</p>
               </div>
             </div>
-            <span class="badge recruiting">⏱ Ends in 12h</span>
+            <span id="shield-type-badge" class="badge active">Loading...</span>
           </div>
         </a>
 
@@ -402,36 +446,38 @@
             <div class="clan-header">
               <div class="clan-avatar bandit">IB</div>
               <div class="clan-info">
-                <h3>InvidiaBandit</h3>
-                <p><strong>vs Dark Knights</strong></p>
-                <p>
-                ⭐ 84 - 81 Stars<br>
-                💥 96.7% - 93.2%
-                </p>
+                <h3 id="bandit-name">InvidiaBandit</h3>
+                <p id="bandit-warwins" class="skeleton skeleton-text">Loading...</p>
+                <p id="bandit-league" class="skeleton skeleton-text">Loading...</p>
+                <p id="bandit-freq" class="skeleton skeleton-text">Loading...</p>
               </div>
             </div>
-            <span class="badge recruiting">⏱ Ends in 12h</span>
+            <span id="bandit-type-badge" class="badge active">Loading...</span>
           </div>
         </a>
-        
+
         <a href="/fwa/clans/village-warriors.html" class="clan-link">
           <div class="clan-card">
             <div class="clan-header">
               <div class="clan-avatar warriors">VW</div>
               <div class="clan-info">
-                <h3>VillageWarriors</h3>
-                <p><strong>vs War Legends</strong></p>
-                <p>
-                ⭐ 92 - 77 Stars<br>
-                💥 99.1% - 88.4%
-                </p>
+                <h3 id="warriors-name">VillageWarriors</h3>
+                <p id="warriors-warwins" class="skeleton skeleton-text">Loading...</p>
+                <p id="warriors-league" class="skeleton skeleton-text">Loading...</p>
+                <p id="warriors-freq" class="skeleton skeleton-text">Loading...</p>
               </div>
             </div>
-            <span class="badge recruiting">⏱ Ends in 12h</span>
+            <span id="warriors-type-badge" class="badge active">Loading...</span>
           </div>
         </a>
       </div>
-  
+
+      <p class="api-note">
+        Note: StatHut's API doesn't currently expose a live "in-progress war" feed,
+        so these are each clan's verified war record (total wars won, war league,
+        war frequency) pulled straight from the Clash of Clans API — not a fabricated matchup.
+      </p>
+
       <!-- DISCORD CTA -->
       <div class="discord-cta">
         <h3>Recruitment happens on Discord</h3>
@@ -452,6 +498,137 @@
 
     </div>
   </div>
+  <script>
+
+  const CLAN_SLUGS = ["the-shield", "invidia-bandit", "village-warriors"];
+  const CLAN_PREFIXES = ["shield", "bandit", "warriors"];
+  // Note: the family API's own "endpoint" field is wrong for VillageWarriors
+  // (it 404s) — these slugs are the ones the clan detail pages already use
+  // successfully, so we hardcode them rather than trusting that field.
+
+  function clearSkeleton(...ids) {
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove("skeleton", "skeleton-text");
+    });
+  }
+
+  function setTypeBadge(id, type) {
+    const badge = document.getElementById(id);
+    if (!badge) return;
+    if (type === "inviteOnly") {
+      badge.textContent = "🔒 Invite Only";
+      badge.className = "badge closed";
+    } else if (type === "open") {
+      badge.textContent = "🔓 Open";
+      badge.className = "badge active";
+    } else {
+      badge.textContent = "Unavailable";
+      badge.className = "badge closed";
+    }
+  }
+
+  async function loadWarStatus(){
+    const refreshBtn = document.getElementById("refreshBtn");
+    const lastUpdatedText = document.getElementById("lastUpdatedText");
+    if (refreshBtn) refreshBtn.disabled = true;
+
+    try {
+
+      const results = await Promise.allSettled(
+        CLAN_SLUGS.map(slug => {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 8000);
+          return fetch(`https://api.stathut.in/api/clan/${slug}`, { signal: controller.signal })
+            .then(r => {
+              clearTimeout(timeout);
+              if (!r.ok) throw new Error(`API returned ${r.status}`);
+              return r.json();
+            });
+        })
+      );
+
+      let totalWarWins = 0;
+      let anySucceeded = false;
+
+      results.forEach((settled, i) => {
+        const p = CLAN_PREFIXES[i];
+        const nameId = `${p}-name`;
+        const warwinsId = `${p}-warwins`;
+        const leagueId = `${p}-league`;
+        const freqId = `${p}-freq`;
+        const typeBadgeId = `${p}-type-badge`;
+
+        if (settled.status === "fulfilled") {
+          const clan = settled.value;
+          anySucceeded = true;
+
+          if (typeof clan.warWins === "number") {
+            totalWarWins += clan.warWins;
+          }
+
+          document.getElementById(nameId).textContent = clan.name || document.getElementById(nameId).textContent;
+          document.getElementById(warwinsId).textContent =
+            typeof clan.warWins === "number" ? `⚔ ${clan.warWins} Wars Won` : "⚔ Wars Won: —";
+          document.getElementById(leagueId).textContent =
+            clan.warLeague ? `🏆 ${clan.warLeague}` : "🏆 War League: —";
+          document.getElementById(freqId).textContent =
+            clan.warFrequency ? `📅 ${clan.warFrequency}` : "📅 Frequency: —";
+
+          setTypeBadge(typeBadgeId, clan.type);
+        } else {
+          document.getElementById(warwinsId).textContent = "Unavailable";
+          document.getElementById(leagueId).textContent = "Unavailable";
+          document.getElementById(freqId).textContent = "Unavailable";
+          setTypeBadge(typeBadgeId, null);
+        }
+
+        clearSkeleton(warwinsId, leagueId, freqId);
+      });
+
+      const totalEl = document.getElementById("total-warwins");
+      if (anySucceeded) {
+        totalEl.textContent = `${totalWarWins} Wars Won`;
+      } else {
+        totalEl.textContent = "Unavailable";
+      }
+      clearSkeleton("total-warwins");
+
+      if (lastUpdatedText) {
+        lastUpdatedText.textContent = anySucceeded
+          ? `Last updated ${new Date().toLocaleTimeString()} · auto-refreshing every 60s`
+          : "Live data unavailable right now — showing fallback state";
+      }
+
+    } catch (error) {
+      console.error("StatHut: failed to load war status data:", error);
+
+      const unavailableIds = [
+        "total-warwins",
+        "shield-warwins", "shield-league", "shield-freq",
+        "bandit-warwins", "bandit-league", "bandit-freq",
+        "warriors-warwins", "warriors-league", "warriors-freq"
+      ];
+      unavailableIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = "Unavailable";
+      });
+      clearSkeleton(...unavailableIds);
+
+      ["shield-type-badge", "bandit-type-badge", "warriors-type-badge"].forEach(id => setTypeBadge(id, null));
+
+      if (lastUpdatedText) {
+        lastUpdatedText.textContent = "Live data unavailable right now — showing fallback state";
+      }
+    } finally {
+      if (refreshBtn) refreshBtn.disabled = false;
+    }
+  }
+
+  loadWarStatus();
+  setInterval(loadWarStatus, 60000);
+
+  </script>
   <script src="theme.js"></script>
 </body>
 </html>
