@@ -911,3 +911,18 @@ html[data-theme="dark"] #clan-description,
 html[data-theme="dark"] .clan-info p {
     color: #94a3b8;
 }
+
+/* =========================================
+   TYPOGRAPHY — match the Orbitron display
+   font used on Home / FWA Hub / MWL / General
+   across every older FWA page's headings.
+   (Brand wordmarks like ".logo" are DIVs, not
+   heading tags, so they're untouched here —
+   consistent with how the hub/home pages treat
+   their own topbar logo.)
+========================================= */
+
+h1, h2, h3, h4 {
+    font-family: "Orbitron", "Segoe UI", system-ui, -apple-system, sans-serif;
+    letter-spacing: .3px;
+}
