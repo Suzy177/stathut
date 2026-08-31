@@ -961,3 +961,8 @@ html[data-theme="dark"] .refresh-btn {
 html[data-theme="dark"] .refresh-btn:hover {
     background: #232e47;
 }
+
+/* War Status page's data-source disclosure note */
+html[data-theme="dark"] .api-note {
+    color: #64748b;
+}
