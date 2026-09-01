@@ -195,6 +195,11 @@
       color: #b91c1c;
     }
 
+    .badge.neutral {
+      background: rgba(107, 114, 128, 0.15);
+      color: #4b5563;
+    }
+
     .back-link {
       display: inline-block;
       margin-top: 36px;
@@ -380,7 +385,7 @@
     <div class="card">
 
       <h1 class="stathut-title">FWA War Status</h1>
-      <p class="subtitle">Verified war record for the FWA Evolution family</p>
+      <p class="subtitle">Live war tracking for the FWA Evolution family</p>
 
       <nav class="fwa-nav">
         <a href="/fwa/">Home</a>
@@ -390,9 +395,9 @@
         <a href="/fwa/join.html">Join</a>
       </nav>
 
-      <h2 class="section-title">Family War Record</h2>
+      <h2 class="section-title">Current Family Wars</h2>
       <p class="section-desc">
-        Live, API-verified war stats across the StatHut FWA family.
+        Current war status across the StatHut FWA family.
       </p>
 
       <div class="dashboard-meta">
@@ -404,22 +409,22 @@
 
         <div class="clan-card">
           <div class="clan-info">
-            <h3>⚔️ Total Wars Won</h3>
-            <p id="total-warwins" class="skeleton skeleton-text">Loading...</p>
+            <h3>⚔️ Active Wars</h3>
+            <p id="active-wars" class="skeleton skeleton-text">Loading...</p>
           </div>
         </div>
 
         <div class="clan-card">
           <div class="clan-info">
-            <h3>🏰 Family Clans</h3>
-            <p>3 Clans</p>
+            <h3>🔥 Battle Day</h3>
+            <p id="battle-day-count" class="skeleton skeleton-text">Loading...</p>
           </div>
         </div>
 
         <div class="clan-card">
           <div class="clan-info">
-            <h3>🎯 War Style</h3>
-            <p>FWA (scripted wars)</p>
+            <h3>📅 Preparation Day</h3>
+            <p id="prep-day-count" class="skeleton skeleton-text">Loading...</p>
           </div>
         </div>
       </div>
@@ -432,12 +437,11 @@
               <div class="clan-avatar shield">TS</div>
               <div class="clan-info">
                 <h3 id="shield-name">The Shield</h3>
-                <p id="shield-warwins" class="skeleton skeleton-text">Loading...</p>
-                <p id="shield-league" class="skeleton skeleton-text">Loading...</p>
-                <p id="shield-freq" class="skeleton skeleton-text">Loading...</p>
+                <p id="shield-opponent" class="skeleton skeleton-text">Loading...</p>
+                <p id="shield-score" class="skeleton skeleton-text">Loading...</p>
               </div>
             </div>
-            <span id="shield-type-badge" class="badge active">Loading...</span>
+            <span id="shield-status" class="badge neutral">Loading...</span>
           </div>
         </a>
 
@@ -447,12 +451,11 @@
               <div class="clan-avatar bandit">IB</div>
               <div class="clan-info">
                 <h3 id="bandit-name">InvidiaBandit</h3>
-                <p id="bandit-warwins" class="skeleton skeleton-text">Loading...</p>
-                <p id="bandit-league" class="skeleton skeleton-text">Loading...</p>
-                <p id="bandit-freq" class="skeleton skeleton-text">Loading...</p>
+                <p id="bandit-opponent" class="skeleton skeleton-text">Loading...</p>
+                <p id="bandit-score" class="skeleton skeleton-text">Loading...</p>
               </div>
             </div>
-            <span id="bandit-type-badge" class="badge active">Loading...</span>
+            <span id="bandit-status" class="badge neutral">Loading...</span>
           </div>
         </a>
 
@@ -462,20 +465,19 @@
               <div class="clan-avatar warriors">VW</div>
               <div class="clan-info">
                 <h3 id="warriors-name">VillageWarriors</h3>
-                <p id="warriors-warwins" class="skeleton skeleton-text">Loading...</p>
-                <p id="warriors-league" class="skeleton skeleton-text">Loading...</p>
-                <p id="warriors-freq" class="skeleton skeleton-text">Loading...</p>
+                <p id="warriors-opponent" class="skeleton skeleton-text">Loading...</p>
+                <p id="warriors-score" class="skeleton skeleton-text">Loading...</p>
               </div>
             </div>
-            <span id="warriors-type-badge" class="badge active">Loading...</span>
+            <span id="warriors-status" class="badge neutral">Loading...</span>
           </div>
         </a>
       </div>
 
       <p class="api-note">
-        Note: StatHut's API doesn't currently expose a live "in-progress war" feed,
-        so these are each clan's verified war record (total wars won, war league,
-        war frequency) pulled straight from the Clash of Clans API — not a fabricated matchup.
+        Live matchups pulled straight from the Clash of Clans API. If a clan's war log
+        is set to private, or it isn't currently in a war, that card shows the actual
+        state instead of a matchup.
       </p>
 
       <!-- DISCORD CTA -->
@@ -502,9 +504,6 @@
 
   const CLAN_SLUGS = ["the-shield", "invidia-bandit", "village-warriors"];
   const CLAN_PREFIXES = ["shield", "bandit", "warriors"];
-  // Note: the family API's own "endpoint" field is wrong for VillageWarriors
-  // (it 404s) — these slugs are the ones the clan detail pages already use
-  // successfully, so we hardcode them rather than trusting that field.
 
   function clearSkeleton(...ids) {
     ids.forEach(id => {
@@ -513,19 +512,57 @@
     });
   }
 
-  function setTypeBadge(id, type) {
+  function setStatusBadge(id, text, kind) {
     const badge = document.getElementById(id);
     if (!badge) return;
-    if (type === "inviteOnly") {
-      badge.textContent = "🔒 Invite Only";
-      badge.className = "badge closed";
-    } else if (type === "open") {
-      badge.textContent = "🔓 Open";
-      badge.className = "badge active";
-    } else {
-      badge.textContent = "Unavailable";
-      badge.className = "badge closed";
+    badge.textContent = text;
+    badge.className = `badge ${kind}`;
+  }
+
+  function renderWarCard(prefix, war) {
+    const opponentEl = document.getElementById(`${prefix}-opponent`);
+    const scoreEl = document.getElementById(`${prefix}-score`);
+    const statusId = `${prefix}-status`;
+
+    if (!war || war.state === "unavailable") {
+      opponentEl.textContent = "War data unavailable";
+      scoreEl.textContent = "API error or private war log";
+      setStatusBadge(statusId, "Unavailable", "closed");
+      return { inWar: false, isBattleDay: false, isPrepDay: false };
     }
+
+    if (war.state === "notInWar") {
+      opponentEl.textContent = "Not currently in war";
+      scoreEl.textContent = "—";
+      setStatusBadge(statusId, "Not In War", "neutral");
+      return { inWar: false, isBattleDay: false, isPrepDay: false };
+    }
+
+    const clan = war.clan || {};
+    const opponent = war.opponent || {};
+
+    opponentEl.textContent = `vs ${opponent.name || "Unknown"}`;
+    scoreEl.textContent =
+      `⭐ ${clan.stars ?? 0} - ${opponent.stars ?? 0} Stars  ·  ` +
+      `💥 ${clan.destructionPercentage ?? 0}% - ${opponent.destructionPercentage ?? 0}%`;
+
+    if (war.state === "preparation") {
+      setStatusBadge(statusId, "🟡 Preparation Day", "recruiting");
+      return { inWar: true, isBattleDay: false, isPrepDay: true };
+    }
+
+    if (war.state === "inWar") {
+      setStatusBadge(statusId, "🔵 Battle Day", "active");
+      return { inWar: true, isBattleDay: true, isPrepDay: false };
+    }
+
+    if (war.state === "warEnded") {
+      setStatusBadge(statusId, "War Ended", "neutral");
+      return { inWar: false, isBattleDay: false, isPrepDay: false };
+    }
+
+    setStatusBadge(statusId, "Unknown", "neutral");
+    return { inWar: false, isBattleDay: false, isPrepDay: false };
   }
 
   async function loadWarStatus(){
@@ -539,7 +576,7 @@
         CLAN_SLUGS.map(slug => {
           const controller = new AbortController();
           const timeout = setTimeout(() => controller.abort(), 8000);
-          return fetch(`https://api.stathut.in/api/clan/${slug}`, { signal: controller.signal })
+          return fetch(`https://api.stathut.in/api/clan/${slug}/currentwar`, { signal: controller.signal })
             .then(r => {
               clearTimeout(timeout);
               if (!r.ok) throw new Error(`API returned ${r.status}`);
@@ -548,51 +585,29 @@
         })
       );
 
-      let totalWarWins = 0;
+      let activeWars = 0;
+      let battleDay = 0;
+      let prepDay = 0;
       let anySucceeded = false;
 
       results.forEach((settled, i) => {
-        const p = CLAN_PREFIXES[i];
-        const nameId = `${p}-name`;
-        const warwinsId = `${p}-warwins`;
-        const leagueId = `${p}-league`;
-        const freqId = `${p}-freq`;
-        const typeBadgeId = `${p}-type-badge`;
+        const prefix = CLAN_PREFIXES[i];
+        const war = settled.status === "fulfilled" ? settled.value : null;
 
-        if (settled.status === "fulfilled") {
-          const clan = settled.value;
-          anySucceeded = true;
+        if (settled.status === "fulfilled") anySucceeded = true;
 
-          if (typeof clan.warWins === "number") {
-            totalWarWins += clan.warWins;
-          }
+        const { inWar, isBattleDay, isPrepDay } = renderWarCard(prefix, war);
+        if (inWar) activeWars++;
+        if (isBattleDay) battleDay++;
+        if (isPrepDay) prepDay++;
 
-          document.getElementById(nameId).textContent = clan.name || document.getElementById(nameId).textContent;
-          document.getElementById(warwinsId).textContent =
-            typeof clan.warWins === "number" ? `⚔ ${clan.warWins} Wars Won` : "⚔ Wars Won: —";
-          document.getElementById(leagueId).textContent =
-            clan.warLeague ? `🏆 ${clan.warLeague}` : "🏆 War League: —";
-          document.getElementById(freqId).textContent =
-            clan.warFrequency ? `📅 ${clan.warFrequency}` : "📅 Frequency: —";
-
-          setTypeBadge(typeBadgeId, clan.type);
-        } else {
-          document.getElementById(warwinsId).textContent = "Unavailable";
-          document.getElementById(leagueId).textContent = "Unavailable";
-          document.getElementById(freqId).textContent = "Unavailable";
-          setTypeBadge(typeBadgeId, null);
-        }
-
-        clearSkeleton(warwinsId, leagueId, freqId);
+        clearSkeleton(`${prefix}-opponent`, `${prefix}-score`);
       });
 
-      const totalEl = document.getElementById("total-warwins");
-      if (anySucceeded) {
-        totalEl.textContent = `${totalWarWins} Wars Won`;
-      } else {
-        totalEl.textContent = "Unavailable";
-      }
-      clearSkeleton("total-warwins");
+      document.getElementById("active-wars").textContent = `${activeWars} Wars`;
+      document.getElementById("battle-day-count").textContent = `${battleDay} Clans`;
+      document.getElementById("prep-day-count").textContent = `${prepDay} Clans`;
+      clearSkeleton("active-wars", "battle-day-count", "prep-day-count");
 
       if (lastUpdatedText) {
         lastUpdatedText.textContent = anySucceeded
@@ -603,19 +618,17 @@
     } catch (error) {
       console.error("StatHut: failed to load war status data:", error);
 
-      const unavailableIds = [
-        "total-warwins",
-        "shield-warwins", "shield-league", "shield-freq",
-        "bandit-warwins", "bandit-league", "bandit-freq",
-        "warriors-warwins", "warriors-league", "warriors-freq"
-      ];
-      unavailableIds.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.textContent = "Unavailable";
+      ["shield", "bandit", "warriors"].forEach(prefix => {
+        document.getElementById(`${prefix}-opponent`).textContent = "Unavailable";
+        document.getElementById(`${prefix}-score`).textContent = "Unavailable";
+        setStatusBadge(`${prefix}-status`, "Unavailable", "closed");
+        clearSkeleton(`${prefix}-opponent`, `${prefix}-score`);
       });
-      clearSkeleton(...unavailableIds);
 
-      ["shield-type-badge", "bandit-type-badge", "warriors-type-badge"].forEach(id => setTypeBadge(id, null));
+      ["active-wars", "battle-day-count", "prep-day-count"].forEach(id => {
+        document.getElementById(id).textContent = "Unavailable";
+      });
+      clearSkeleton("active-wars", "battle-day-count", "prep-day-count");
 
       if (lastUpdatedText) {
         lastUpdatedText.textContent = "Live data unavailable right now — showing fallback state";
