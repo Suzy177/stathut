@@ -7,6 +7,55 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stathut-v2.css">
+  <style>
+    .mwl-div-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .mwl-div-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .mwl-div-card h4 {
+      font-family: "Orbitron", sans-serif;
+      margin: 0 0 8px;
+      font-size: 15px;
+      color: var(--accent-mwl);
+    }
+    .mwl-div-card p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .mwl-div-card .stat-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .mwl-div-card .stat-pill {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .mwl-section-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 16px;
+      margin: 0 0 14px;
+      color: var(--text);
+    }
+  </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
   <script>
@@ -28,9 +77,9 @@
   </header>
 
   <section class="sh2-hero" style="padding-bottom:10px;">
-    <span class="sh2-eyebrow">MWL</span>
+    <span class="sh2-eyebrow">MWL &middot; Season 9</span>
     <h1 style="font-size:38px;">Rules</h1>
-    <p>How scoring, seasons and eligibility work in the Mythical War League.</p>
+    <p>Season 9 rules and regulations &mdash; league structure, roster limits, scheduling and penalties.</p>
   </section>
 
   <div class="sh2-section" style="padding-top:0;">
@@ -43,42 +92,62 @@
       <a href="/mwl/join.html" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Join</a>
     </nav>
 
+    <h2 class="mwl-section-title">League Structure</h2>
+    <p style="color:var(--text-dim); font-size:13.5px; margin:-6px 0 16px;">Three divisions, split by Town Hall composition and team size.</p>
+
+    <div class="mwl-div-grid">
+      <div class="mwl-div-card">
+        <div class="stat-row">
+          <span class="stat-pill">10v10</span>
+          <span class="stat-pill">Hard mode</span>
+        </div>
+        <h4>Basilisk</h4>
+        <p>TH18-only division. Any clan level is welcome to field a roster.</p>
+      </div>
+      <div class="mwl-div-card">
+        <div class="stat-row">
+          <span class="stat-pill">15v15</span>
+          <span class="stat-pill">5 / 5 / 5</span>
+        </div>
+        <h4>Sphinx</h4>
+        <p>Mixed division: TH18 / TH17 / TH16, split 5/5/5. No dipping, no scouting.</p>
+      </div>
+      <div class="mwl-div-card">
+        <div class="stat-row">
+          <span class="stat-pill">20v20</span>
+          <span class="stat-pill">6 / 4 / 5 / 5</span>
+        </div>
+        <h4>Chimera</h4>
+        <p>Mixed division: TH18 / TH17 / TH16 / TH15, split 6/4/5/5. Same restrictions as Sphinx.</p>
+      </div>
+    </div>
+
     <div class="sh2-info-grid">
 
       <div class="sh2-info-card">
-        <h4>🗓️ Season Length</h4>
-        <p>Each MWL season runs for a fixed number of war cycles. War days and prep days follow the same rhythm as a regular Clan War — the difference is that results feed into the season standings instead of standing alone.</p>
+        <h4>🧾 Roster Management</h4>
+        <p>Master roster caps: 30 accounts (Basilisk), 45 (Sphinx), 60 (Chimera). A player can only appear on one roster per division. Additions are allowed only during regular season play; deletions are allowed any time as long as the clan stays above the minimum account requirement.</p>
       </div>
 
       <div class="sh2-info-card">
-        <h4>🏆 Scoring</h4>
-        <p>A win is worth 3 points, a draw 1 point, and a loss 0 points. Standings are ranked by total points first, then by total stars and destruction percentage as tiebreakers.</p>
+        <h4>🗓️ Match Scheduling & Disputes</h4>
+        <p>Each clan names two representatives to negotiate war timing in the designated Discord channels. Wars run between Tuesday 17:00 UTC and Monday 17:00 UTC. If the two sides can't agree on a time, it defaults to Sunday 17:00 UTC.</p>
       </div>
 
       <div class="sh2-info-card">
-        <h4>✅ Eligibility</h4>
-        <p>Any clan can apply to join a season during the signup window (see the Join page). Clans are grouped so that matchups stay competitive rather than lopsided.</p>
+        <h4>⚠️ Penalties for Violations</h4>
+        <p>Fielding an unrostered player freezes that player's attacks. Failing to send or accept a challenge within the given window results in a forfeit. Streaming the war to the opponent costs a 3-star deduction. Using a banned account carries a minimum 3-month suspension.</p>
       </div>
 
       <div class="sh2-info-card">
-        <h4>⚖️ Fair Play</h4>
-        <p>No sniping teammates, no intentional sandbagging, and no smurf/rented accounts fielded just for a war. Clans found breaking these standards can be removed from the season and lose their standing.</p>
-      </div>
-
-      <div class="sh2-info-card">
-        <h4>🔁 Promotion & Relegation</h4>
-        <p>Where multiple divisions are running, the top clans in a division move up next season and the bottom clans move down — keeping each division's competition level roughly even over time.</p>
-      </div>
-
-      <div class="sh2-info-card">
-        <h4>📣 Disputes</h4>
-        <p>Any scoring or conduct dispute should be raised in the MWL Discord channel before the next war cycle starts, with screenshots/replay evidence where possible.</p>
+        <h4>⚖️ Fair Play Standards</h4>
+        <p>Modding, base stealing and spying are all prohibited and can result in a permanent ban from the league.</p>
       </div>
 
     </div>
 
     <p style="color:var(--text-dim); font-size:12.5px; margin-top:28px;">
-      Note: these rules describe how MWL is designed to run. Exact details may be adjusted before Season 1 officially opens — check back or watch the Discord for the finalized ruleset.
+      This is a summary of the Season 9 ruleset. For the full, word-for-word rules document, check the MWL Discord.
     </p>
 
   </div>
