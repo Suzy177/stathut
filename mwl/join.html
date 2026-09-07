@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join | MWL | StatHut</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stathut-v2.css">
+  <style>
+    .mwl-discord-cta {
+      margin: 32px auto 0;
+      padding: 28px 24px;
+      max-width: 520px;
+      text-align: center;
+      background: linear-gradient(135deg, #5865f2, #7289da);
+      border-radius: 20px;
+      color: #ffffff;
+      box-shadow: 0 20px 40px rgba(88, 101, 242, 0.25);
+    }
+    .mwl-discord-cta h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      font-weight: 800;
+      font-family: "Orbitron", sans-serif;
+    }
+    .mwl-discord-cta p {
+      margin: 0 0 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+    .mwl-discord-btn {
+      display: inline-block;
+      padding: 12px 22px;
+      background: #ffffff;
+      color: #5865f2;
+      font-weight: 800;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .mwl-discord-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    .mwl-checklist {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .mwl-checklist li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 13.5px;
+      color: var(--text-dim);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .mwl-checklist li span.chk {
+      color: var(--accent-mwl);
+      font-weight: 900;
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GJLXJW3G7H');
+  </script>
+</head>
+<body class="sh2">
+
+  <header class="sh2-topbar">
+    <a href="/" class="sh2-logo"><span class="dot"></span>StatHut</a>
+    <nav class="sh2-nav">
+      <a href="/fwa/">FWA</a>
+      <a href="/mwl/" class="active">MWL</a>
+      <a href="/general/">General</a>
+    </nav>
+  </header>
+
+  <section class="sh2-hero" style="padding-bottom:10px;">
+    <span class="sh2-eyebrow">MWL</span>
+    <h1 style="font-size:38px;">Join</h1>
+    <p>Get your clan on the list for the next MWL season signup window.</p>
+  </section>
+
+  <div class="sh2-section" style="padding-top:0;">
+
+    <nav style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;">
+      <a href="/mwl/" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Home</a>
+      <a href="/mwl/standings.html" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Standings</a>
+      <a href="/mwl/rules.html" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Rules</a>
+      <a href="/mwl/guide.html" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Guide</a>
+      <a href="/mwl/join.html" style="color:var(--text); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2); border:1px solid var(--accent-mwl);">Join</a>
+    </nav>
+
+    <div class="sh2-info-card" style="margin-bottom:24px; border-top:4px solid var(--accent-mwl);">
+      <h4 style="color:var(--accent-mwl);">Season 1 signups aren't open yet</h4>
+      <p>We're still finalizing the format. Join the Discord and watch the MWL channel — that's where the signup window will be announced first.</p>
+    </div>
+
+    <h2 style="font-family:'Orbitron', sans-serif; font-size:18px; margin:0 0 14px;">What we'll ask for when signups open</h2>
+    <ul class="mwl-checklist">
+      <li><span class="chk">✓</span> Your clan tag and current name</li>
+      <li><span class="chk">✓</span> Approximate average Town Hall level of your active roster</li>
+      <li><span class="chk">✓</span> A contact person (leader or co-leader) reachable on Discord</li>
+      <li><span class="chk">✓</span> Confirmation your clan can commit to the full season's war schedule</li>
+    </ul>
+
+    <div class="mwl-discord-cta">
+      <h3>Get notified when signups open</h3>
+      <p>Join the StatHut Discord and turn on notifications for the MWL channel — that's where Season 1 will be announced.</p>
+      <a href="https://discord.gg/Svp5BxT" target="_blank" class="mwl-discord-btn">Join StatHut Discord</a>
+    </div>
+
+  </div>
+
+  <footer class="sh2-footer">
+    <a href="/mwl/">← Back to MWL Home</a>
+  </footer>
+
+</body>
+</html>

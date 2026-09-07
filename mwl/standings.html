@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Standings | MWL | StatHut</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stathut-v2.css">
+  <style>
+    .mwl-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    table.mwl-standings {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      min-width: 560px;
+    }
+    table.mwl-standings th, table.mwl-standings td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    table.mwl-standings th {
+      color: var(--text-dim);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      font-weight: 800;
+    }
+    table.mwl-standings tr:last-child td { border-bottom: none; }
+    .mwl-empty-row td {
+      color: var(--text-dim);
+      text-align: center;
+      padding: 32px 16px;
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GJLXJW3G7H');
+  </script>
+</head>
+<body class="sh2">
+
+  <header class="sh2-topbar">
+    <a href="/" class="sh2-logo"><span class="dot"></span>StatHut</a>
+    <nav class="sh2-nav">
+      <a href="/fwa/">FWA</a>
+      <a href="/mwl/" class="active">MWL</a>
+      <a href="/general/">General</a>
+    </nav>
+  </header>
+
+  <section class="sh2-hero" style="padding-bottom:10px;">
+    <span class="sh2-eyebrow">MWL · Season 1</span>
+    <h1 style="font-size:38px;">Standings</h1>
+    <p>Points table for the current MWL season. Updates once a season is underway.</p>
+  </section>
+
+  <div class="sh2-section" style="padding-top:0;">
+
+    <nav style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px;">
+      <a href="/mwl/" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Home</a>
+      <a href="/mwl/standings.html" style="color:var(--text); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2); border:1px solid var(--accent-mwl);">Standings</a>
+      <a href="/mwl/rules.html" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Rules</a>
+      <a href="/mwl/guide.html" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Guide</a>
+      <a href="/mwl/join.html" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Join</a>
+    </nav>
+
+    <div class="mwl-table-wrap">
+      <table class="mwl-standings">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Clan</th>
+            <th>Played</th>
+            <th>Won</th>
+            <th>Drawn</th>
+            <th>Lost</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="mwl-empty-row">
+            <td colspan="7">Season 1 hasn't started yet — standings will populate here once clans are locked in and the season begins.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <footer class="sh2-footer">
+    <a href="/mwl/">← Back to MWL Home</a>
+  </footer>
+
+</body>
+</html>
