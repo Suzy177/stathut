@@ -25,6 +25,8 @@
       margin: 0 0 8px;
       font-size: 15px;
       color: var(--accent-mwl);
+      display: flex;
+      align-items: center;
     }
     .mwl-div-card p {
       margin: 0;
@@ -93,13 +95,13 @@
     </nav>
 
     <h2 class="mwl-section-title">League Structure</h2>
-    <p style="color:var(--text-dim); font-size:13.5px; margin:-6px 0 16px;">Three divisions, split by Town Hall composition and team size.</p>
+    <p style="color:var(--text-dim); font-size:13.5px; margin:-6px 0 16px;">Nine divisions, split by Town Hall composition and team size.</p>
 
     <div class="mwl-div-grid">
       <div class="mwl-div-card">
         <div class="stat-row">
           <span class="stat-pill">10v10</span>
-          <span class="stat-pill">Hard mode</span>
+          <span class="stat-pill">Cap 30</span>
         </div>
         <h4><img src="/mwl/assets/mwl-basilisk.png" alt="" style="width:20px; height:20px; vertical-align:-4px; margin-right:6px; border-radius:50%;">Basilisk</h4>
         <p>TH18-only division. Any clan level is welcome to field a roster.</p>
@@ -107,7 +109,7 @@
       <div class="mwl-div-card">
         <div class="stat-row">
           <span class="stat-pill">15v15</span>
-          <span class="stat-pill">5 / 5 / 5</span>
+          <span class="stat-pill">Cap 45</span>
         </div>
         <h4><img src="/mwl/assets/mwl-sphinx.png" alt="" style="width:20px; height:20px; vertical-align:-4px; margin-right:6px; border-radius:50%;">Sphinx</h4>
         <p>Mixed division: TH18 / TH17 / TH16, split 5/5/5. No dipping, no scouting.</p>
@@ -115,10 +117,58 @@
       <div class="mwl-div-card">
         <div class="stat-row">
           <span class="stat-pill">20v20</span>
-          <span class="stat-pill">6 / 4 / 5 / 5</span>
+          <span class="stat-pill">Cap 60</span>
         </div>
         <h4><img src="/mwl/assets/mwl-chimera.png" alt="" style="width:20px; height:20px; vertical-align:-4px; margin-right:6px; border-radius:50%;">Chimera</h4>
         <p>Mixed division: TH18 / TH17 / TH16 / TH15, split 6/4/5/5. Same restrictions as Sphinx.</p>
+      </div>
+      <div class="mwl-div-card">
+        <div class="stat-row">
+          <span class="stat-pill">20v20</span>
+          <span class="stat-pill">Cap 60</span>
+        </div>
+        <h4><img src="/mwl/assets/mwl-serpent.png" alt="" style="width:20px; height:20px; vertical-align:-4px; margin-right:6px; border-radius:50%;">Serpent</h4>
+        <p>TH9-only division. Every account rostered must be Town Hall 9.</p>
+      </div>
+      <div class="mwl-div-card">
+        <div class="stat-row">
+          <span class="stat-pill">15v15</span>
+          <span class="stat-pill">Cap 45</span>
+        </div>
+        <h4><img src="/mwl/assets/mwl-cerberus.png" alt="" style="width:20px; height:20px; vertical-align:-4px; margin-right:6px; border-radius:50%;">Cerberus</h4>
+        <p>TH11-only division. Every account rostered must be Town Hall 11.</p>
+      </div>
+      <div class="mwl-div-card">
+        <div class="stat-row">
+          <span class="stat-pill">15v15</span>
+          <span class="stat-pill">Cap 45</span>
+        </div>
+        <h4><img src="/mwl/assets/mwl-minotaur.png" alt="" style="width:20px; height:20px; vertical-align:-4px; margin-right:6px; border-radius:50%;">Minotaur</h4>
+        <p>TH10-only division. Every account rostered must be Town Hall 10.</p>
+      </div>
+      <div class="mwl-div-card">
+        <div class="stat-row">
+          <span class="stat-pill">25v25</span>
+          <span class="stat-pill">Cap 75</span>
+        </div>
+        <h4><img src="/mwl/assets/mwl-redcap.png" alt="" style="width:20px; height:20px; vertical-align:-4px; margin-right:6px; border-radius:50%;">Redcap</h4>
+        <p>Mixed Town Hall division &mdash; the league's largest war format at 25v25.</p>
+      </div>
+      <div class="mwl-div-card">
+        <div class="stat-row">
+          <span class="stat-pill">20v20</span>
+          <span class="stat-pill">Cap 60</span>
+        </div>
+        <h4><img src="/mwl/assets/mwl-griffin.png" alt="" style="width:20px; height:20px; vertical-align:-4px; margin-right:6px; border-radius:50%;">Griffin</h4>
+        <p>TH18 division built around large base designs, with two attacks per member each war.</p>
+      </div>
+      <div class="mwl-div-card">
+        <div class="stat-row">
+          <span class="stat-pill">5v5</span>
+          <span class="stat-pill">Cap 7</span>
+        </div>
+        <h4><img src="/mwl/assets/mwl-hydra.png" alt="" style="width:20px; height:20px; vertical-align:-4px; margin-right:6px; border-radius:50%;">Hydra</h4>
+        <p>TH18 eSports division &mdash; a tight, highly competitive 5v5 format.</p>
       </div>
     </div>
 
@@ -126,7 +176,7 @@
 
       <div class="sh2-info-card">
         <h4>🧾 Roster Management</h4>
-        <p>Master roster caps: 30 accounts (Basilisk), 45 (Sphinx), 60 (Chimera). A player can only appear on one roster per division. Additions are allowed only during regular season play; deletions are allowed any time as long as the clan stays above the minimum account requirement.</p>
+        <p>Each division has its own master roster cap (see above). A player can only appear on one roster per division. Additions are allowed only during regular season play; deletions are allowed any time as long as the clan stays above the minimum account requirement.</p>
       </div>
 
       <div class="sh2-info-card">
