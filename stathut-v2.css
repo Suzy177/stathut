@@ -74,6 +74,12 @@ body.sh2 {
   box-shadow: 0 0 12px var(--accent-brand);
 }
 
+.sh2-logo img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
 .sh2-nav {
   display: flex;
   gap: 4px;
