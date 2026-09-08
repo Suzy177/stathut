@@ -39,58 +39,121 @@
       text-align: center;
       padding: 32px 16px;
     }
-    .mwl-div-tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 18px;
+
+    /* division picker cards */
+    .mwl-div-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 26px;
     }
-    .mwl-div-tabs button {
-      display: inline-flex;
+    .mwl-div-card-btn {
+      display: flex;
       align-items: center;
+      gap: 14px;
+      text-align: left;
       font-family: inherit;
       cursor: pointer;
-      font-size: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      color: var(--text);
+      transition: border-color .15s ease, background .15s ease;
+    }
+    .mwl-div-card-btn img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .mwl-div-card-btn h4 {
+      font-family: "Orbitron", sans-serif;
+      margin: 0 0 4px;
+      font-size: 15px;
+    }
+    .mwl-div-card-btn p {
+      margin: 0;
+      font-size: 12.5px;
+      color: var(--text-dim);
+    }
+    .mwl-div-card-btn:hover {
+      border-color: var(--accent-mwl);
+    }
+    .mwl-div-card-btn.active {
+      border-color: var(--accent-mwl);
+      background: rgba(255,39,64,.08);
+    }
+    .mwl-div-card-btn.active h4 {
+      color: var(--accent-mwl);
+    }
+
+    /* detail panel */
+    .mwl-div-detail {
+      border-top: 3px solid var(--accent-mwl);
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .mwl-detail-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+    .mwl-detail-tabs button {
+      font-family: inherit;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 12.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .4px;
-      padding: 7px 16px;
+      padding: 14px 20px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+    }
+    .mwl-detail-tabs button:hover {
+      color: var(--text);
+    }
+    .mwl-detail-tabs button.active {
+      color: var(--accent-mwl);
+      border-bottom-color: var(--accent-mwl);
+    }
+    .mwl-detail-body {
+      padding: 24px;
+    }
+    .mwl-division-content { display: none; }
+    .mwl-division-content.active { display: block; }
+    .mwl-tab-panel { display: none; }
+    .mwl-tab-panel.active { display: block; }
+
+    .mwl-info-stats {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .mwl-info-stats span {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      padding: 4px 10px;
       border-radius: 999px;
       background: var(--surface-2);
+      color: var(--text);
       border: 1px solid var(--border);
+    }
+    .mwl-detail-body p {
       color: var(--text-dim);
-      transition: border-color .15s ease, color .15s ease;
+      font-size: 13.5px;
+      line-height: 1.7;
+      margin: 0 0 12px;
     }
-    .mwl-div-tabs button img {
-      width: 16px;
-      height: 16px;
-      margin-right: 6px;
-      border-radius: 50%;
-    }
-    .mwl-div-tabs button:hover {
-      color: var(--text);
-    }
-    .mwl-div-tabs button.active {
-      color: var(--text);
-      border-color: var(--accent-mwl);
-      background: rgba(255,39,64,.10);
-    }
-    .mwl-div-panel { display: none; }
-    .mwl-div-panel.active { display: block; }
-    .mwl-div-caption {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-      color: var(--text-dim);
-      font-size: 13px;
-    }
-    .mwl-div-caption img {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-    }
-    .mwl-div-caption strong { color: var(--text); }
+    .mwl-detail-body p:last-child { margin-bottom: 0; }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
@@ -115,7 +178,7 @@
   <section class="sh2-hero" style="padding-bottom:10px;">
     <span class="sh2-eyebrow">MWL &middot; Season 9</span>
     <h1 style="font-size:38px;">Standings</h1>
-    <p>Points table for Season 9. Registration opens September 10 &mdash; standings populate once clans are locked in and wars begin.</p>
+    <p>Pick a division to see its info, schedule, standings and hit rates. Registration opens September 10 &mdash; live data populates once clans are locked in and wars begin.</p>
   </section>
 
   <div class="sh2-section" style="padding-top:0;">
@@ -128,51 +191,144 @@
       <a href="/mwl/join.html" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Join</a>
     </nav>
 
-    <div class="mwl-div-tabs" role="tablist">
-      <button type="button" class="active" data-div="basilisk"><img src="/mwl/assets/mwl-basilisk.png" alt="">Basilisk</button>
-      <button type="button" data-div="sphinx"><img src="/mwl/assets/mwl-sphinx.png" alt="">Sphinx</button>
-      <button type="button" data-div="chimera"><img src="/mwl/assets/mwl-chimera.png" alt="">Chimera</button>
+    <!-- Division picker cards -->
+    <div class="mwl-div-cards" role="tablist">
+      <button type="button" class="mwl-div-card-btn active" data-div="basilisk">
+        <img src="/mwl/assets/mwl-basilisk.png" alt="">
+        <span>
+          <h4>Basilisk</h4>
+          <p>10v10 &middot; TH18-only</p>
+        </span>
+      </button>
+      <button type="button" class="mwl-div-card-btn" data-div="sphinx">
+        <img src="/mwl/assets/mwl-sphinx.png" alt="">
+        <span>
+          <h4>Sphinx</h4>
+          <p>15v15 &middot; TH18/17/16</p>
+        </span>
+      </button>
+      <button type="button" class="mwl-div-card-btn" data-div="chimera">
+        <img src="/mwl/assets/mwl-chimera.png" alt="">
+        <span>
+          <h4>Chimera</h4>
+          <p>20v20 &middot; TH18/17/16/15</p>
+        </span>
+      </button>
     </div>
 
-    <div class="mwl-div-panel active" data-panel="basilisk">
-      <div class="mwl-div-caption"><img src="/mwl/assets/mwl-basilisk.png" alt=""><span><strong>Basilisk</strong> &middot; 10v10 &middot; TH18-only</span></div>
-      <div class="mwl-table-wrap">
-        <table class="mwl-standings">
-          <thead>
-            <tr><th>#</th><th>Clan</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr>
-          </thead>
-          <tbody>
-            <tr class="mwl-empty-row"><td colspan="7">Registration for Season 9 opens September 10 &mdash; Basilisk standings will populate here once clans are locked in and wars begin.</td></tr>
-          </tbody>
-        </table>
+    <!-- Detail panel: Info / Schedule / Standings / Hit Rates -->
+    <div class="mwl-div-detail">
+      <div class="mwl-detail-tabs" role="tablist">
+        <button type="button" class="active" data-tab="info">Info</button>
+        <button type="button" data-tab="schedule">Schedule</button>
+        <button type="button" data-tab="standings">Standings</button>
+        <button type="button" data-tab="hitrates">Hit Rates</button>
       </div>
-    </div>
 
-    <div class="mwl-div-panel" data-panel="sphinx">
-      <div class="mwl-div-caption"><img src="/mwl/assets/mwl-sphinx.png" alt=""><span><strong>Sphinx</strong> &middot; 15v15 &middot; TH18 / TH17 / TH16 (5/5/5)</span></div>
-      <div class="mwl-table-wrap">
-        <table class="mwl-standings">
-          <thead>
-            <tr><th>#</th><th>Clan</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr>
-          </thead>
-          <tbody>
-            <tr class="mwl-empty-row"><td colspan="7">Registration for Season 9 opens September 10 &mdash; Sphinx standings will populate here once clans are locked in and wars begin.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+      <div class="mwl-detail-body">
 
-    <div class="mwl-div-panel" data-panel="chimera">
-      <div class="mwl-div-caption"><img src="/mwl/assets/mwl-chimera.png" alt=""><span><strong>Chimera</strong> &middot; 20v20 &middot; TH18 / TH17 / TH16 / TH15 (6/4/5/5)</span></div>
-      <div class="mwl-table-wrap">
-        <table class="mwl-standings">
-          <thead>
-            <tr><th>#</th><th>Clan</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr>
-          </thead>
-          <tbody>
-            <tr class="mwl-empty-row"><td colspan="7">Registration for Season 9 opens September 10 &mdash; Chimera standings will populate here once clans are locked in and wars begin.</td></tr>
-          </tbody>
-        </table>
+        <!-- Basilisk -->
+        <div class="mwl-division-content active" data-division="basilisk">
+          <div class="mwl-tab-panel active" data-tab-panel="info">
+            <div class="mwl-info-stats"><span>10v10</span><span>Hard mode</span><span>Roster cap: 30</span></div>
+            <p>TH18-only division. Any clan level is welcome to field a roster, as long as every account rostered is Town Hall 18.</p>
+            <p>Master roster caps at 30 accounts. A player can only appear on one roster per division. Additions are allowed only during regular season play; deletions are allowed any time as long as the clan stays above the minimum account requirement.</p>
+          </div>
+          <div class="mwl-tab-panel" data-tab-panel="schedule">
+            <p>Each clan names two representatives to negotiate war timing in the designated Discord channels. Wars run between Tuesday 17:00 UTC and Monday 17:00 UTC. If the two sides can't agree on a time, it defaults to Sunday 17:00 UTC.</p>
+            <div class="mwl-table-wrap">
+              <table class="mwl-standings">
+                <thead><tr><th>Week</th><th>Opponent</th><th>War Day</th><th>Result</th></tr></thead>
+                <tbody><tr class="mwl-empty-row"><td colspan="4">Fixtures for Basilisk will appear here once Season 9 rosters are locked in.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mwl-tab-panel" data-tab-panel="standings">
+            <div class="mwl-table-wrap">
+              <table class="mwl-standings">
+                <thead><tr><th>#</th><th>Clan</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr></thead>
+                <tbody><tr class="mwl-empty-row"><td colspan="7">Registration for Season 9 opens September 10 &mdash; Basilisk standings will populate here once clans are locked in and wars begin.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mwl-tab-panel" data-tab-panel="hitrates">
+            <div class="mwl-table-wrap">
+              <table class="mwl-standings">
+                <thead><tr><th>#</th><th>Clan</th><th>Wars</th><th>Avg Stars</th><th>Avg Destruction</th></tr></thead>
+                <tbody><tr class="mwl-empty-row"><td colspan="5">Hit rate stats for Basilisk populate once wars begin.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sphinx -->
+        <div class="mwl-division-content" data-division="sphinx">
+          <div class="mwl-tab-panel active" data-tab-panel="info">
+            <div class="mwl-info-stats"><span>15v15</span><span>5 / 5 / 5</span><span>Roster cap: 45</span></div>
+            <p>Mixed division: TH18 / TH17 / TH16, split 5/5/5. No dipping, no scouting.</p>
+            <p>Master roster caps at 45 accounts. A player can only appear on one roster per division. Additions are allowed only during regular season play; deletions are allowed any time as long as the clan stays above the minimum account requirement.</p>
+          </div>
+          <div class="mwl-tab-panel" data-tab-panel="schedule">
+            <p>Each clan names two representatives to negotiate war timing in the designated Discord channels. Wars run between Tuesday 17:00 UTC and Monday 17:00 UTC. If the two sides can't agree on a time, it defaults to Sunday 17:00 UTC.</p>
+            <div class="mwl-table-wrap">
+              <table class="mwl-standings">
+                <thead><tr><th>Week</th><th>Opponent</th><th>War Day</th><th>Result</th></tr></thead>
+                <tbody><tr class="mwl-empty-row"><td colspan="4">Fixtures for Sphinx will appear here once Season 9 rosters are locked in.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mwl-tab-panel" data-tab-panel="standings">
+            <div class="mwl-table-wrap">
+              <table class="mwl-standings">
+                <thead><tr><th>#</th><th>Clan</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr></thead>
+                <tbody><tr class="mwl-empty-row"><td colspan="7">Registration for Season 9 opens September 10 &mdash; Sphinx standings will populate here once clans are locked in and wars begin.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mwl-tab-panel" data-tab-panel="hitrates">
+            <div class="mwl-table-wrap">
+              <table class="mwl-standings">
+                <thead><tr><th>#</th><th>Clan</th><th>Wars</th><th>Avg Stars</th><th>Avg Destruction</th></tr></thead>
+                <tbody><tr class="mwl-empty-row"><td colspan="5">Hit rate stats for Sphinx populate once wars begin.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chimera -->
+        <div class="mwl-division-content" data-division="chimera">
+          <div class="mwl-tab-panel active" data-tab-panel="info">
+            <div class="mwl-info-stats"><span>20v20</span><span>6 / 4 / 5 / 5</span><span>Roster cap: 60</span></div>
+            <p>Mixed division: TH18 / TH17 / TH16 / TH15, split 6/4/5/5. Same restrictions as Sphinx &mdash; no dipping, no scouting.</p>
+            <p>Master roster caps at 60 accounts. A player can only appear on one roster per division. Additions are allowed only during regular season play; deletions are allowed any time as long as the clan stays above the minimum account requirement.</p>
+          </div>
+          <div class="mwl-tab-panel" data-tab-panel="schedule">
+            <p>Each clan names two representatives to negotiate war timing in the designated Discord channels. Wars run between Tuesday 17:00 UTC and Monday 17:00 UTC. If the two sides can't agree on a time, it defaults to Sunday 17:00 UTC.</p>
+            <div class="mwl-table-wrap">
+              <table class="mwl-standings">
+                <thead><tr><th>Week</th><th>Opponent</th><th>War Day</th><th>Result</th></tr></thead>
+                <tbody><tr class="mwl-empty-row"><td colspan="4">Fixtures for Chimera will appear here once Season 9 rosters are locked in.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mwl-tab-panel" data-tab-panel="standings">
+            <div class="mwl-table-wrap">
+              <table class="mwl-standings">
+                <thead><tr><th>#</th><th>Clan</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr></thead>
+                <tbody><tr class="mwl-empty-row"><td colspan="7">Registration for Season 9 opens September 10 &mdash; Chimera standings will populate here once clans are locked in and wars begin.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="mwl-tab-panel" data-tab-panel="hitrates">
+            <div class="mwl-table-wrap">
+              <table class="mwl-standings">
+                <thead><tr><th>#</th><th>Clan</th><th>Wars</th><th>Avg Stars</th><th>Avg Destruction</th></tr></thead>
+                <tbody><tr class="mwl-empty-row"><td colspan="5">Hit rate stats for Chimera populate once wars begin.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -183,17 +339,34 @@
   </footer>
 
   <script>
-    document.querySelectorAll('.mwl-div-tabs button').forEach(function (btn) {
+    var activeTab = 'info';
+
+    document.querySelectorAll('.mwl-div-card-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var div = btn.getAttribute('data-div');
-        document.querySelectorAll('.mwl-div-tabs button').forEach(function (b) {
+        document.querySelectorAll('.mwl-div-card-btn').forEach(function (b) {
           b.classList.toggle('active', b === btn);
         });
-        document.querySelectorAll('.mwl-div-panel').forEach(function (p) {
-          p.classList.toggle('active', p.getAttribute('data-panel') === div);
+        document.querySelectorAll('.mwl-division-content').forEach(function (c) {
+          c.classList.toggle('active', c.getAttribute('data-division') === div);
+        });
+      });
+    });
+
+    document.querySelectorAll('.mwl-detail-tabs button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activeTab = btn.getAttribute('data-tab');
+        document.querySelectorAll('.mwl-detail-tabs button').forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+        });
+        document.querySelectorAll('.mwl-division-content').forEach(function (content) {
+          content.querySelectorAll('.mwl-tab-panel').forEach(function (panel) {
+            panel.classList.toggle('active', panel.getAttribute('data-tab-panel') === activeTab);
+          });
         });
       });
     });
   </script>
+
 </body>
 </html>
