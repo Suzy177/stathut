@@ -589,13 +589,13 @@
         clan.name;
       
       document.getElementById("clan-badge").src =
-        clan.badge;
+        clan.badgeUrls ? clan.badgeUrls.large : clan.badge;
 
       document.getElementById("clan-level").textContent =
         `⭐ Level ${clan.clanLevel}`;
 
       document.getElementById("war-league").textContent =
-        `🏆 ${clan.warLeague}`;
+        `🏆 ${clan.warLeague ? clan.warLeague.name : 'Unranked'}`;
 
       document.getElementById("clan-tag").textContent =
         clan.tag;
@@ -609,13 +609,22 @@
         clan.description;
 
       document.getElementById("clan-location").textContent =
-        clan.location;
+        clan.location ? clan.location.name : "Unknown";
+
+      const warFrequencyLabels = {
+        always: "Always",
+        moreThanOncePerWeek: "More Than Once/Week",
+        oncePerWeek: "Once/Week",
+        lessThanOncePerWeek: "Less Than Once/Week",
+        never: "Never",
+        unknown: "Unknown"
+      };
 
       document.getElementById("war-frequency").textContent =
-          `Frequency: ${clan.warFrequency}`;
+          `Frequency: ${warFrequencyLabels[clan.warFrequency] || "Unknown"}`;
       
       document.getElementById("war-log").textContent =
-          clan.publicWarLog ? "War Log: Public" : "War Log: Private";
+          clan.isWarLogPublic ? "War Log: Public" : "War Log: Private";
 
   } catch (error) {
     console.error(error);
