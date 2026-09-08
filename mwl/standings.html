@@ -45,17 +45,52 @@
       flex-wrap: wrap;
       margin-bottom: 18px;
     }
-    .mwl-div-tabs span {
+    .mwl-div-tabs button {
+      display: inline-flex;
+      align-items: center;
+      font-family: inherit;
+      cursor: pointer;
       font-size: 12px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: .4px;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 999px;
       background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text-dim);
+      transition: border-color .15s ease, color .15s ease;
     }
+    .mwl-div-tabs button img {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+      border-radius: 50%;
+    }
+    .mwl-div-tabs button:hover {
+      color: var(--text);
+    }
+    .mwl-div-tabs button.active {
+      color: var(--text);
+      border-color: var(--accent-mwl);
+      background: rgba(255,39,64,.10);
+    }
+    .mwl-div-panel { display: none; }
+    .mwl-div-panel.active { display: block; }
+    .mwl-div-caption {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      color: var(--text-dim);
+      font-size: 13px;
+    }
+    .mwl-div-caption img {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+    }
+    .mwl-div-caption strong { color: var(--text); }
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
@@ -93,31 +128,52 @@
       <a href="/mwl/join.html" style="color:var(--text-dim); text-decoration:none; font-size:13.5px; padding:6px 12px; border-radius:999px; background:var(--surface-2);">Join</a>
     </nav>
 
-    <div class="mwl-div-tabs">
-      <span><img src="/mwl/assets/mwl-basilisk.png" alt="" style="width:16px; height:16px; vertical-align:-3px; margin-right:5px; border-radius:50%;">Basilisk</span>
-      <span><img src="/mwl/assets/mwl-sphinx.png" alt="" style="width:16px; height:16px; vertical-align:-3px; margin-right:5px; border-radius:50%;">Sphinx</span>
-      <span><img src="/mwl/assets/mwl-chimera.png" alt="" style="width:16px; height:16px; vertical-align:-3px; margin-right:5px; border-radius:50%;">Chimera</span>
+    <div class="mwl-div-tabs" role="tablist">
+      <button type="button" class="active" data-div="basilisk"><img src="/mwl/assets/mwl-basilisk.png" alt="">Basilisk</button>
+      <button type="button" data-div="sphinx"><img src="/mwl/assets/mwl-sphinx.png" alt="">Sphinx</button>
+      <button type="button" data-div="chimera"><img src="/mwl/assets/mwl-chimera.png" alt="">Chimera</button>
     </div>
 
-    <div class="mwl-table-wrap">
-      <table class="mwl-standings">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Clan</th>
-            <th>Played</th>
-            <th>Won</th>
-            <th>Drawn</th>
-            <th>Lost</th>
-            <th>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="mwl-empty-row">
-            <td colspan="7">Registration for Season 9 opens September 10 &mdash; standings will populate here once clans are locked in and wars begin.</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="mwl-div-panel active" data-panel="basilisk">
+      <div class="mwl-div-caption"><img src="/mwl/assets/mwl-basilisk.png" alt=""><span><strong>Basilisk</strong> &middot; 10v10 &middot; TH18-only</span></div>
+      <div class="mwl-table-wrap">
+        <table class="mwl-standings">
+          <thead>
+            <tr><th>#</th><th>Clan</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr>
+          </thead>
+          <tbody>
+            <tr class="mwl-empty-row"><td colspan="7">Registration for Season 9 opens September 10 &mdash; Basilisk standings will populate here once clans are locked in and wars begin.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mwl-div-panel" data-panel="sphinx">
+      <div class="mwl-div-caption"><img src="/mwl/assets/mwl-sphinx.png" alt=""><span><strong>Sphinx</strong> &middot; 15v15 &middot; TH18 / TH17 / TH16 (5/5/5)</span></div>
+      <div class="mwl-table-wrap">
+        <table class="mwl-standings">
+          <thead>
+            <tr><th>#</th><th>Clan</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr>
+          </thead>
+          <tbody>
+            <tr class="mwl-empty-row"><td colspan="7">Registration for Season 9 opens September 10 &mdash; Sphinx standings will populate here once clans are locked in and wars begin.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mwl-div-panel" data-panel="chimera">
+      <div class="mwl-div-caption"><img src="/mwl/assets/mwl-chimera.png" alt=""><span><strong>Chimera</strong> &middot; 20v20 &middot; TH18 / TH17 / TH16 / TH15 (6/4/5/5)</span></div>
+      <div class="mwl-table-wrap">
+        <table class="mwl-standings">
+          <thead>
+            <tr><th>#</th><th>Clan</th><th>Played</th><th>Won</th><th>Drawn</th><th>Lost</th><th>Points</th></tr>
+          </thead>
+          <tbody>
+            <tr class="mwl-empty-row"><td colspan="7">Registration for Season 9 opens September 10 &mdash; Chimera standings will populate here once clans are locked in and wars begin.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
   </div>
@@ -126,5 +182,18 @@
     <a href="/mwl/">← Back to MWL Home</a>
   </footer>
 
+  <script>
+    document.querySelectorAll('.mwl-div-tabs button').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var div = btn.getAttribute('data-div');
+        document.querySelectorAll('.mwl-div-tabs button').forEach(function (b) {
+          b.classList.toggle('active', b === btn);
+        });
+        document.querySelectorAll('.mwl-div-panel').forEach(function (p) {
+          p.classList.toggle('active', p.getAttribute('data-panel') === div);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
