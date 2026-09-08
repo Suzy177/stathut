@@ -609,7 +609,7 @@
         clan.description;
 
       document.getElementById("clan-location").textContent =
-        clan.location ? clan.location.name : "Unknown";
+        clan.location || "Unknown";
 
       const warFrequencyLabels = {
         always: "Always",
