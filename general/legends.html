@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Legend Tracker | StatHut</title>
+  <meta name="description" content="Live Legend League tracker: today's offense, defense and net trophies for the top Clash of Clans players worldwide and in India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/stathut-v2.css">
+  <link rel="icon" type="image/png" href="/assets/stathut-logo.png">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GJLXJW3G7H');
+  </script>
+  <style>
+    .lt-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
+
+    .lt-bar {
+      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+      justify-content: space-between; margin-bottom: 16px;
+    }
+    .lt-tabs { display: flex; gap: 6px; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 4px; }
+    .lt-tab {
+      border: 0; background: transparent; color: var(--text-dim); font: inherit; font-weight: 700;
+      font-size: 13.5px; padding: 8px 16px; border-radius: 999px; cursor: pointer;
+    }
+    .lt-tab.active { background: linear-gradient(135deg, var(--accent-gen), var(--accent-gen-2)); color: #0a0e1a; }
+    .lt-search {
+      flex: 1 1 220px; max-width: 320px; background: var(--surface); border: 1px solid var(--border);
+      color: var(--text); border-radius: 999px; padding: 10px 16px; font: inherit; font-size: 14px;
+    }
+    .lt-search:focus { outline: 2px solid rgba(45,212,191,.5); outline-offset: 1px; }
+
+    .lt-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+
+    .lt-table-card {
+      background: linear-gradient(160deg, var(--surface), var(--surface-2));
+      border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
+    }
+    .lt-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .lt-table th {
+      text-align: left; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--text-dim); font-weight: 800; padding: 12px 14px; border-bottom: 1px solid var(--border);
+      background: rgba(10,14,26,.35); white-space: nowrap;
+    }
+    .lt-table td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .lt-table tbody tr { cursor: pointer; transition: background .15s; }
+    .lt-table tbody tr:hover { background: rgba(45,212,191,.06); }
+    .lt-table tbody tr:last-child td { border-bottom: 0; }
+    .lt-num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    th.lt-num { text-align: right; }
+    .lt-pos { width: 44px; color: var(--text-dim); font-weight: 800; font-variant-numeric: tabular-nums; }
+    .lt-name { font-weight: 700; }
+    .lt-clan { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+    .lt-trophy { font-weight: 800; }
+    .lt-sub { font-size: 11.5px; color: var(--text-dim); font-weight: 600; margin-left: 3px; }
+    .pos { color: #34d399; font-weight: 800; }
+    .neg { color: #f87171; font-weight: 800; }
+    .zero { color: var(--text-dim); font-weight: 700; }
+    .lt-show-sm { display: none; }
+
+    .lt-state { padding: 40px 20px; text-align: center; color: var(--text-dim); }
+    .lt-note { font-size: 12.5px; color: var(--text-dim); margin-top: 14px; line-height: 1.6; }
+
+    /* player day panel */
+    .lt-overlay {
+      position: fixed; inset: 0; background: rgba(5,8,16,.7); backdrop-filter: blur(4px);
+      display: none; align-items: flex-start; justify-content: center; z-index: 100; padding: 60px 16px; overflow-y: auto;
+    }
+    .lt-overlay.open { display: flex; }
+    .lt-panel {
+      width: 100%; max-width: 520px; background: linear-gradient(160deg, var(--surface), var(--surface-2));
+      border: 1px solid var(--border); border-top: 4px solid var(--accent-gen); border-radius: var(--radius);
+      box-shadow: var(--shadow); padding: 22px;
+    }
+    .lt-panel-head { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+    .lt-panel h3 { font-family: "Orbitron", sans-serif; font-size: 18px; margin: 0 0 4px; word-break: break-word; }
+    .lt-close {
+      border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px;
+      width: 34px; height: 34px; font-size: 18px; cursor: pointer; flex-shrink: 0;
+    }
+    .lt-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0; }
+    .lt-stat { background: rgba(10,14,26,.4); border: 1px solid var(--border); border-radius: 12px; padding: 12px; text-align: center; }
+    .lt-stat .k { font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim); font-weight: 800; }
+    .lt-stat .v { font-size: 20px; margin-top: 4px; }
+    .lt-events { list-style: none; margin: 0; padding: 0; }
+    .lt-events li {
+      display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px;
+    }
+    .lt-events li:last-child { border-bottom: 0; }
+    .lt-ev-icon { width: 30px; height: 30px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .lt-ev-icon.att { background: rgba(52,211,153,.14); }
+    .lt-ev-icon.def { background: rgba(248,113,113,.14); }
+    .lt-ev-main { flex: 1; min-width: 0; }
+    .lt-ev-time { font-size: 12px; color: var(--text-dim); }
+    .lt-ev-after { font-size: 12px; color: var(--text-dim); text-align: right; white-space: nowrap; }
+
+    @media (max-width: 700px) {
+      .lt-wrap { padding: 0 16px 50px; }
+      .lt-hide-sm { display: none; }
+      .lt-show-sm { display: block; margin-top: 2px; }
+      .lt-table td, .lt-table th { padding: 10px 8px; }
+      .lt-table { font-size: 13px; }
+      .lt-search { max-width: none; }
+    }
+  </style>
+</head>
+<body class="sh2">
+
+  <header class="sh2-topbar">
+    <a href="/" class="sh2-logo"><img src="/assets/stathut-logo.png" alt="StatHut">StatHut</a>
+    <nav class="sh2-nav">
+      <a href="/general/">General</a>
+      <a href="/general/legends.html" class="active">Legend Tracker</a>
+    </nav>
+  </header>
+
+  <section class="sh2-hero" style="padding-bottom:24px;">
+    <span class="sh2-eyebrow">Legend League · Live</span>
+    <h1>LEGEND TRACKER</h1>
+    <p>Today's attacks, defenses and net trophies for the top Legend players, updated every 5 minutes.</p>
+  </section>
+
+  <main class="lt-wrap">
+    <div class="lt-bar">
+      <div class="lt-tabs" role="tablist">
+        <button class="lt-tab active" data-loc="global" role="tab">🌍 Global</button>
+        <button class="lt-tab" data-loc="32000113" role="tab">🇮🇳 India</button>
+      </div>
+      <input class="lt-search" id="ltSearch" type="search" placeholder="Search player, clan or tag…" autocomplete="off">
+    </div>
+
+    <div class="lt-meta" id="ltMeta"></div>
+
+    <div class="lt-table-card">
+      <table class="lt-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Player</th>
+            <th class="lt-num">Trophies</th>
+            <th class="lt-num lt-hide-sm">Offense</th>
+            <th class="lt-num lt-hide-sm">Defense</th>
+            <th class="lt-num">Net</th>
+          </tr>
+        </thead>
+        <tbody id="ltBody">
+          <tr><td colspan="6" class="lt-state">Loading leaderboard…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="lt-note">
+      The legend day resets at 10:30 AM IST (5:00 UTC). Supercell's API sometimes reports several attacks at once,
+      so attacks can appear grouped; trophy totals are still accurate. Tap a player to see their day.
+    </p>
+  </main>
+
+  <div class="lt-overlay" id="ltOverlay" aria-hidden="true">
+    <div class="lt-panel" role="dialog" aria-modal="true">
+      <div class="lt-panel-head">
+        <div>
+          <h3 id="ltPName">—</h3>
+          <div class="lt-clan" id="ltPSub"></div>
+        </div>
+        <button class="lt-close" id="ltClose" aria-label="Close">×</button>
+      </div>
+      <div class="lt-stats">
+        <div class="lt-stat"><div class="k">Offense</div><div class="v" id="ltPOff">—</div></div>
+        <div class="lt-stat"><div class="k">Defense</div><div class="v" id="ltPDef">—</div></div>
+        <div class="lt-stat"><div class="k">Net</div><div class="v" id="ltPNet">—</div></div>
+      </div>
+      <ul class="lt-events" id="ltPEvents"></ul>
+    </div>
+  </div>
+
+  <footer class="sh2-footer">
+    StatHut · a fan-made Clash of Clans community resource
+    <div class="sh2-visitor-stat" id="sh2VisitorStat"></div>
+  </footer>
+
+  <script>
+  (function () {
+    const API = "https://app.stathut.in";
+    const REFRESH_MS = 60000;
+    let currentLoc = "global";
+    let players = [];
+    let legendDay = "";
+    let lastUpdated = null;
+
+    const $ = (id) => document.getElementById(id);
+
+    function esc(s) {
+      return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    function signed(n) {
+      n = Number(n) || 0;
+      const cls = n > 0 ? "pos" : n < 0 ? "neg" : "zero";
+      const txt = n > 0 ? "+" + n : n < 0 ? "−" + Math.abs(n) : "0";
+      return `<span class="${cls}">${txt}</span>`;
+    }
+    function fmtTime(iso) {
+      const d = new Date(iso);
+      return d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    }
+
+    async function fetchJSON(url) {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 8000);
+      try {
+        const r = await fetch(url, { signal: ctrl.signal });
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return await r.json();
+      } finally {
+        clearTimeout(t);
+      }
+    }
+
+    function renderMeta() {
+      const totalAtt = players.reduce((s, p) => s + (p.attacks || 0), 0);
+      const totalDef = players.reduce((s, p) => s + (p.defenses || 0), 0);
+      const upd = lastUpdated ? lastUpdated.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }) : "—";
+      $("ltMeta").innerHTML = `
+        <span class="sh2-warbar-chip hot">● Legend day ${esc(legendDay)}</span>
+        <span class="sh2-warbar-chip">${players.length} players</span>
+        <span class="sh2-warbar-chip">⚔️ ${totalAtt} attacks</span>
+        <span class="sh2-warbar-chip">🛡️ ${totalDef} defenses</span>
+        <span class="sh2-warbar-chip">Updated ${esc(upd)}</span>`;
+    }
+
+    function renderTable() {
+      const q = $("ltSearch").value.trim().toLowerCase();
+      const rows = players
+        .map((p, i) => ({ ...p, pos: i + 1 }))
+        .filter(p => !q || (p.name || "").toLowerCase().includes(q) || (p.clan_name || "").toLowerCase().includes(q) || (p.tag || "").toLowerCase().includes(q));
+
+      if (!rows.length) {
+        $("ltBody").innerHTML = `<tr><td colspan="6" class="lt-state">${q ? "No players match your search." : "No players tracked yet."}</td></tr>`;
+        return;
+      }
+      $("ltBody").innerHTML = rows.map(p => `
+        <tr data-tag="${esc(p.tag)}">
+          <td class="lt-pos">${p.pos}</td>
+          <td>
+            <div class="lt-name">${esc(p.name)}</div>
+            <div class="lt-clan">${esc(p.clan_name || "No clan")}</div>
+          </td>
+          <td class="lt-num lt-trophy">🏆 ${p.trophies}</td>
+          <td class="lt-num lt-hide-sm">${signed(p.offense)}<span class="lt-sub">/${p.attacks}</span></td>
+          <td class="lt-num lt-hide-sm">${signed(p.defense)}<span class="lt-sub">/${p.defenses}</span></td>
+          <td class="lt-num">${signed(p.net)}<div class="lt-show-sm lt-sub">${p.attacks}⚔️ ${p.defenses}🛡️</div></td>
+        </tr>`).join("");
+    }
+
+    async function loadLeaderboard(showLoading) {
+      if (showLoading) $("ltBody").innerHTML = `<tr><td colspan="6" class="lt-state">Loading leaderboard…</td></tr>`;
+      try {
+        const data = await fetchJSON(`${API}/legends/leaderboard?location=${encodeURIComponent(currentLoc)}`);
+        players = data.players || [];
+        legendDay = data.legend_day || "";
+        lastUpdated = new Date();
+        renderMeta();
+        renderTable();
+      } catch (e) {
+        if (!players.length) {
+          $("ltBody").innerHTML = `<tr><td colspan="6" class="lt-state">Couldn't load the leaderboard right now. It will retry automatically.</td></tr>`;
+        }
+      }
+    }
+
+    async function openPlayer(tag) {
+      $("ltOverlay").classList.add("open");
+      $("ltOverlay").setAttribute("aria-hidden", "false");
+      $("ltPName").textContent = "Loading…";
+      $("ltPSub").textContent = "";
+      $("ltPOff").innerHTML = $("ltPDef").innerHTML = $("ltPNet").innerHTML = "—";
+      $("ltPEvents").innerHTML = "";
+      try {
+        const d = await fetchJSON(`${API}/legends/${encodeURIComponent(tag.replace("#", ""))}/day`);
+        const p = d.player || {};
+        $("ltPName").textContent = p.name || tag;
+        $("ltPSub").textContent = `${p.tag || tag} · ${p.clan_name || "No clan"} · 🏆 ${p.trophies ?? "—"}`;
+        $("ltPOff").innerHTML = signed(d.offense);
+        $("ltPDef").innerHTML = signed(d.defense);
+        $("ltPNet").innerHTML = signed(d.net);
+        const ev = (d.events || []).slice().reverse();
+        if (!ev.length) {
+          $("ltPEvents").innerHTML = `<li><span class="lt-ev-time">No attacks or defenses recorded yet today.</span></li>`;
+          return;
+        }
+        $("ltPEvents").innerHTML = ev.map(e => {
+          const att = e.event_type === "attack";
+          const n = e.attack_count || 1;
+          const label = att ? (n > 1 ? `${n} attacks` : "Attack") : "Defense";
+          return `<li>
+            <div class="lt-ev-icon ${att ? "att" : "def"}">${att ? "⚔️" : "🛡️"}</div>
+            <div class="lt-ev-main">
+              <div>${signed(e.trophy_change)} <span class="lt-sub">${label}</span></div>
+              <div class="lt-ev-time">${esc(fmtTime(e.timestamp))}</div>
+            </div>
+            <div class="lt-ev-after">🏆 ${e.trophies_after}</div>
+          </li>`;
+        }).join("");
+      } catch (e) {
+        $("ltPName").textContent = "Couldn't load this player";
+        $("ltPSub").textContent = "Please try again in a moment.";
+      }
+    }
+
+    function closePlayer() {
+      $("ltOverlay").classList.remove("open");
+      $("ltOverlay").setAttribute("aria-hidden", "true");
+    }
+
+    document.querySelectorAll(".lt-tab").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (btn.dataset.loc === currentLoc) return;
+        document.querySelectorAll(".lt-tab").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentLoc = btn.dataset.loc;
+        players = [];
+        loadLeaderboard(true);
+      });
+    });
+    $("ltSearch").addEventListener("input", renderTable);
+    $("ltBody").addEventListener("click", (e) => {
+      const tr = e.target.closest("tr[data-tag]");
+      if (tr) openPlayer(tr.dataset.tag);
+    });
+    $("ltClose").addEventListener("click", closePlayer);
+    $("ltOverlay").addEventListener("click", (e) => { if (e.target.id === "ltOverlay") closePlayer(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePlayer(); });
+
+    loadLeaderboard(true);
+    setInterval(() => { if (!document.hidden) loadLeaderboard(false); }, REFRESH_MS);
+  })();
+  </script>
+  <script src="/visitor-counter.js" defer></script>
+</body>
+</html>
