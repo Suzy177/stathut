@@ -109,6 +109,29 @@
     .lt-ev-main { flex: 1; min-width: 0; }
     .lt-ev-time { font-size: 12px; color: var(--text-dim); }
     .lt-ev-after { font-size: 12px; color: var(--text-dim); text-align: right; white-space: nowrap; }
+    .lt-sec { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin: 18px 0 6px; }
+    .lt-sec-title { font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dim); font-weight: 800; }
+    .lt-sec-sum { font-size: 12px; color: var(--text-dim); }
+    .lt-battles { list-style: none; margin: 0; padding: 0; }
+    .lt-b { border-bottom: 1px solid var(--border); }
+    .lt-b:last-child { border-bottom: 0; }
+    .lt-b-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; cursor: pointer; font-size: 14px; width: 100%;
+      background: none; border: 0; color: inherit; font: inherit; text-align: left; }
+    .lt-b-row:focus-visible { outline: 2px solid rgba(45,212,191,.5); border-radius: 8px; }
+    .lt-b-stars { letter-spacing: -1px; white-space: nowrap; font-size: 13px; }
+    .lt-b-pct { font-weight: 800; min-width: 42px; }
+    .lt-b-opp { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .lt-b-time { font-size: 12px; color: var(--text-dim); white-space: nowrap; }
+    .lt-b-chev { color: var(--text-dim); font-size: 12px; transition: transform .15s; }
+    .lt-b.open .lt-b-chev { transform: rotate(90deg); }
+    .lt-army { display: none; padding: 2px 0 14px 40px; font-size: 13px; line-height: 1.6; }
+    .lt-b.open .lt-army { display: block; }
+    .lt-army-k { font-size: 10.5px; letter-spacing: .8px; text-transform: uppercase; color: var(--text-dim); font-weight: 800; margin-top: 8px; }
+    .lt-army-h b { font-weight: 700; }
+    .lt-army-h span { color: var(--text-dim); }
+    .lt-copy { display: inline-block; margin-top: 10px; padding: 7px 14px; border-radius: 999px; font-weight: 700; font-size: 12.5px;
+      color: #0a0e1a; background: linear-gradient(135deg, var(--accent-gen), var(--accent-gen-2)); text-decoration: none; }
+    @media (max-width: 700px) { .lt-army { padding-left: 0; } .lt-b-time { display: none; } }
 
     /* season graph */
     .lt-season { margin: 4px 0 18px; padding: 14px 14px 10px; background: rgba(10,14,26,.4); border: 1px solid var(--border); border-radius: 12px; }
@@ -234,6 +257,9 @@
         </div>
         <div class="lt-chart" id="ltChart"></div>
       </div>
+      <div class="lt-sec"><span class="lt-sec-title">Battles</span><span class="lt-sec-sum" id="ltBSum"></span></div>
+      <ul class="lt-battles" id="ltBattles"></ul>
+      <div class="lt-sec"><span class="lt-sec-title">Trophy changes</span></div>
       <ul class="lt-events" id="ltPEvents"></ul>
     </div>
   </div>
@@ -343,6 +369,7 @@
       $("ltChart").innerHTML = "";
       $("ltSeasonSum").textContent = "";
       loadSeason(tag);
+      loadBattles(tag);
       try {
         const d = await fetchJSON(`${API}/legends/${encodeURIComponent(tag.replace("#", ""))}/day`);
         const p = d.player || {};
@@ -375,6 +402,55 @@
       }
     }
 
+    function starsHtml(n) {
+      n = Number(n) || 0;
+      return "⭐".repeat(n) + `<span style="opacity:.35">${"⭐".repeat(3 - n)}</span>`;
+    }
+    function armyList(items) {
+      return (items || []).slice().sort((a, b) => b.count - a.count).map(t => `${esc(t.name)} ×${t.count}`).join(", ");
+    }
+    async function loadBattles(tag) {
+      const want = tag;
+      $("ltBattles").innerHTML = `<li class="lt-ev-time" style="padding:8px 0">Loading battles…</li>`;
+      $("ltBSum").textContent = "";
+      try {
+        const d = await fetchJSON(`${API}/legends/${encodeURIComponent(tag.replace("#", ""))}/battles`);
+        if (openTag !== want) return;
+        const battles = (d.battles || []).slice().reverse();
+        if (!battles.length) {
+          $("ltBattles").innerHTML = `<li class="lt-ev-time" style="padding:8px 0">No battle details yet today. They sync every 20 minutes.</li>`;
+          return;
+        }
+        const s = d.summary || {};
+        $("ltBSum").textContent = `⚔️ ${s.triples}/${s.attacks} triples · 🛡️ ${s.defenses - s.triples_conceded}/${s.defenses} held`;
+        $("ltBattles").innerHTML = battles.map((b, i) => {
+          const a = b.army || {}, o = b.opponent || {};
+          const heroes = (a.heroes || []).map(h => `<div class="lt-army-h"><b>${esc(h.name)}</b>${h.pet ? ` <span>· ${esc(h.pet)}</span>` : ""}${h.equipment && h.equipment.length ? ` <span>· ${h.equipment.map(esc).join(", ")}</span>` : ""}</div>`).join("");
+          const cc = armyList((a.cc_troops || []).concat(a.cc_spells || []));
+          return `<li class="lt-b">
+            <button class="lt-b-row" aria-expanded="false">
+              <span class="lt-ev-icon ${b.attack ? "att" : "def"}">${b.attack ? "⚔️" : "🛡️"}</span>
+              <span class="lt-b-stars">${starsHtml(b.stars)}</span>
+              <span class="lt-b-pct">${b.destruction}%</span>
+              <span class="lt-b-opp">${esc(o.name || o.tag)} <span class="lt-sub">TH${o.town_hall || "?"}</span></span>
+              <span class="lt-b-time">${esc(fmtTime(b.timestamp))}</span>
+              <span class="lt-b-chev">▶</span>
+            </button>
+            <div class="lt-army">
+              <div class="lt-army-k">${b.attack ? "Army used" : "Army used against them"}</div>
+              ${heroes}
+              ${a.troops && a.troops.length ? `<div class="lt-army-k">Troops</div><div>${armyList(a.troops)}</div>` : ""}
+              ${a.spells && a.spells.length ? `<div class="lt-army-k">Spells</div><div>${armyList(a.spells)}</div>` : ""}
+              ${cc ? `<div class="lt-army-k">Clan Castle</div><div>${cc}</div>` : ""}
+              ${a.copy_link ? `<a class="lt-copy" href="${esc(a.copy_link)}" target="_blank" rel="noopener">Copy army in Clash</a>` : ""}
+            </div>
+          </li>`;
+        }).join("");
+      } catch (e) {
+        if (openTag === want) $("ltBattles").innerHTML = `<li class="lt-ev-time" style="padding:8px 0">Battle details unavailable right now.</li>`;
+      }
+    }
+
     function fmtDay(iso) {
       const d = new Date(iso + "T12:00:00Z");
       return d.toLocaleDateString([], { month: "short", day: "numeric" });
@@ -393,6 +469,12 @@
     }
 
     function renderSeason(days) {
+      // keep only the current season: cut at the last reset (a jump of more than 320 between days)
+      let cut = 0;
+      for (let i = 1; i < days.length; i++) {
+        if (days[i - 1].end != null && days[i].start != null && Math.abs(days[i].start - days[i - 1].end) > 320) cut = i;
+      }
+      days = days.slice(cut);
       if (!days.length) {
         $("ltChart").innerHTML = `<div class="lt-season-empty">No days recorded yet. The graph grows by one point each legend day.</div>`;
         return;
@@ -508,6 +590,13 @@
       if (tr) openPlayer(tr.dataset.tag);
     });
     $("ltClose").addEventListener("click", closePlayer);
+    $("ltBattles").addEventListener("click", (e) => {
+      const row = e.target.closest(".lt-b-row");
+      if (!row) return;
+      const li = row.parentElement;
+      li.classList.toggle("open");
+      row.setAttribute("aria-expanded", li.classList.contains("open"));
+    });
     $("ltOverlay").addEventListener("click", (e) => { if (e.target.id === "ltOverlay") closePlayer(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePlayer(); });
 
