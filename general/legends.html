@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Legend Tracker | StatHut</title>
-  <meta name="description" content="Live Legend League tracker: today's offense, defense and net trophies for the top Clash of Clans players worldwide and in India.">
+  <meta name="description" content="Live Legend League tracker: today's offense, defense and net trophies for the top Clash of Clans players worldwide and in 17 countries.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/stathut-v2.css">
@@ -30,6 +30,16 @@
       font-size: 13.5px; padding: 8px 16px; border-radius: 999px; cursor: pointer;
     }
     .lt-tab.active { background: linear-gradient(135deg, var(--accent-gen), var(--accent-gen-2)); color: #0a0e1a; }
+    .lt-pick { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .lt-country {
+      appearance: none; -webkit-appearance: none; background: var(--surface); border: 1px solid var(--border); color: var(--text);
+      border-radius: 999px; padding: 10px 34px 10px 14px; font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer;
+      background-image: linear-gradient(45deg, transparent 50%, var(--text-dim) 50%), linear-gradient(135deg, var(--text-dim) 50%, transparent 50%);
+      background-position: right 16px center, right 11px center; background-size: 5px 5px; background-repeat: no-repeat;
+    }
+    .lt-country.active { border-color: var(--accent-gen); box-shadow: 0 0 0 1px var(--accent-gen) inset; }
+    .lt-country:focus { outline: 2px solid rgba(45,212,191,.5); outline-offset: 1px; }
+    .lt-country option { background: #131a2b; color: var(--text); }
     .lt-search {
       flex: 1 1 220px; max-width: 320px; background: var(--surface); border: 1px solid var(--border);
       color: var(--text); border-radius: 999px; padding: 10px 16px; font: inherit; font-size: 14px;
@@ -149,9 +159,30 @@
 
   <main class="lt-wrap">
     <div class="lt-bar">
-      <div class="lt-tabs" role="tablist">
-        <button class="lt-tab active" data-loc="global" role="tab">🌍 Global</button>
-        <button class="lt-tab" data-loc="32000113" role="tab">🇮🇳 India</button>
+      <div class="lt-pick">
+        <div class="lt-tabs" role="tablist">
+          <button class="lt-tab active" data-loc="global" role="tab">🌍 Global</button>
+          <button class="lt-tab" data-loc="32000113" role="tab">🇮🇳 India</button>
+        </div>
+        <select class="lt-country" id="ltCountry" aria-label="More countries">
+          <option value="">More countries…</option>
+          <option value="32000026">🇧🇩 Bangladesh</option>
+          <option value="32000056">🇨🇳 China</option>
+          <option value="32000094">🇩🇪 Germany</option>
+          <option value="32000114">🇮🇩 Indonesia</option>
+          <option value="32000116">🇮🇶 Iraq</option>
+          <option value="32000122">🇯🇵 Japan</option>
+          <option value="32000144">🇲🇾 Malaysia</option>
+          <option value="32000185">🇵🇭 Philippines</option>
+          <option value="32000193">🇷🇺 Russia</option>
+          <option value="32000204">🇸🇦 Saudi Arabia</option>
+          <option value="32000216">🇰🇷 South Korea</option>
+          <option value="32000228">🇹🇼 Taiwan</option>
+          <option value="32000239">🇹🇷 Türkiye</option>
+          <option value="32000248">🇬🇧 United Kingdom</option>
+          <option value="32000249">🇺🇸 United States</option>
+          <option value="32000255">🇻🇳 Vietnam</option>
+        </select>
       </div>
       <input class="lt-search" id="ltSearch" type="search" placeholder="Search player, clan or tag…" autocomplete="off">
     </div>
@@ -454,16 +485,23 @@
       $("ltOverlay").setAttribute("aria-hidden", "true");
     }
 
+    function setLocation(loc, fromSelect) {
+      if (loc === currentLoc) return;
+      currentLoc = loc;
+      document.querySelectorAll(".lt-tab").forEach(b => b.classList.toggle("active", b.dataset.loc === loc));
+      const sel = $("ltCountry");
+      const inSelect = [...sel.options].some(o => o.value === loc && o.value);
+      sel.classList.toggle("active", inSelect);
+      if (!inSelect) sel.value = "";
+      else if (!fromSelect) sel.value = loc;
+      try { localStorage.setItem("ltLocation", loc); } catch (e) {}
+      players = [];
+      loadLeaderboard(true);
+    }
     document.querySelectorAll(".lt-tab").forEach(btn => {
-      btn.addEventListener("click", () => {
-        if (btn.dataset.loc === currentLoc) return;
-        document.querySelectorAll(".lt-tab").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentLoc = btn.dataset.loc;
-        players = [];
-        loadLeaderboard(true);
-      });
+      btn.addEventListener("click", () => setLocation(btn.dataset.loc, false));
     });
+    $("ltCountry").addEventListener("change", (e) => { if (e.target.value) setLocation(e.target.value, true); });
     $("ltSearch").addEventListener("input", renderTable);
     $("ltBody").addEventListener("click", (e) => {
       const tr = e.target.closest("tr[data-tag]");
@@ -473,7 +511,13 @@
     $("ltOverlay").addEventListener("click", (e) => { if (e.target.id === "ltOverlay") closePlayer(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePlayer(); });
 
-    loadLeaderboard(true);
+    let saved = null;
+    try { saved = localStorage.getItem("ltLocation"); } catch (e) {}
+    if (saved && saved !== "global" && document.querySelector(`[data-loc="${saved}"], #ltCountry option[value="${saved}"]`)) {
+      setLocation(saved, false);
+    } else {
+      loadLeaderboard(true);
+    }
     setInterval(() => { if (!document.hidden) loadLeaderboard(false); }, REFRESH_MS);
   })();
   </script>
