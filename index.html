@@ -4,9 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>StatHut — Clash of Clans Community Hub</title>
+  <meta name="description" content="StatHut: player search, Legend League tracker, CWL tools, Town Hall progression, troop, hero, spell and pet references, and strategy for any Clash of Clans player.">
+  <meta name="theme-color" content="#070B18">
+  <meta property="og:title" content="StatHut — Enter the World of Clash">
+  <meta property="og:description" content="Your ultimate destination for clans, strategies, competitive gaming and community.">
+  <meta property="og:image" content="https://stathut.in/assets/stathut-logo.png">
+  <meta property="og:url" content="https://stathut.in/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/stathut-v2.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/home-v3.css">
   <link rel="icon" type="image/png" href="/assets/stathut-logo.png">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJLXJW3G7H"></script>
@@ -17,43 +24,296 @@
     gtag('config', 'G-GJLXJW3G7H');
   </script>
 </head>
-<body class="sh2">
+<body class="sh3">
 
-  <header class="sh2-topbar">
-    <a href="/" class="sh2-logo"><img src="/assets/stathut-logo.png" alt="StatHut">StatHut</a>
-    <nav class="sh2-nav">
-      <a href="/general/">General</a>
-    </nav>
+  <!-- ================= NAV ================= -->
+  <header class="sh3-top">
+    <div class="sh3-top-inner">
+      <a href="/" class="sh3-logo" aria-label="StatHut home">
+        <img src="/assets/stathut-logo.png" alt="" width="40" height="40">
+        <span>STATHUT</span>
+      </a>
+      <nav class="sh3-nav" id="sh3Nav" aria-label="Main">
+        <a href="/" class="active" aria-current="page">Home</a>
+        <a href="/general/#tools">Tools</a>
+        <a href="/general/legends.html">Legends</a>
+        <a href="/general/#townhalls">Town Halls</a>
+        <a href="/general/#troops">Troops</a>
+        <a href="/general/#heroes">Heroes</a>
+        <a href="/general/#strategy">Strategy</a>
+      </nav>
+      <div class="sh3-actions">
+        <a href="/general/player.html" class="sh3-btn sh3-btn-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          Search player
+        </a>
+        <button class="sh3-burger" type="button" aria-label="Open menu" aria-controls="sh3Nav" aria-expanded="false"><span></span></button>
+      </div>
+    </div>
   </header>
 
-  <section class="sh2-hero">
-    <img src="/assets/stathut-logo.png" alt="StatHut" style="display:block; width:96px; height:96px; margin:0 auto 14px; object-fit:contain;">
-    <span class="sh2-eyebrow">Clash of Clans Community Hub</span>
-    <h1>STATHUT</h1>
-    <p>Troop, hero, spell &amp; pet references, Town Hall guides, and strategy for any Clash of Clans player.</p>
-  </section>
+  <main>
+  <!-- ================= HERO ================= -->
+  <section class="sh3-hero" aria-label="Welcome">
 
-  <div class="sh2-grid">
-    <a href="/general/" class="sh2-card gen">
-      <div class="badge">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 6C10.5 4.8 8.4 4 6 4C4.9 4 4 4.3 4 4.3V17.3C4 17.3 4.9 17 6 17C8.4 17 10.5 17.8 12 19" stroke="#0a0e1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12 6C13.5 4.8 15.6 4 18 4C19.1 4 20 4.3 20 4.3V17.3C20 17.3 19.1 17 18 17C15.6 17 13.5 17.8 12 19" stroke="#0a0e1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M12 6V19" stroke="#0a0e1a" stroke-width="1.6" stroke-linecap="round"/>
+    <div class="sh3-layer sh3-stars" aria-hidden="true"></div>
+    <div class="sh3-sun" aria-hidden="true"></div>
+    <svg class="sh3-rays" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="shRay" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFE3A3" stop-opacity=".22"/>
+          <stop offset="1" stop-color="#FFE3A3" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <polygon points="1080,0 1160,0 900,900 640,900" fill="url(#shRay)"/>
+      <polygon points="1180,0 1230,0 1120,900 980,900" fill="url(#shRay)"/>
+      <polygon points="980,0 1020,0 560,900 420,900" fill="url(#shRay)" opacity=".6"/>
+    </svg>
+
+    <!-- far layer: clouds + distant rocks -->
+    <div class="sh3-layer" data-depth="far" aria-hidden="true">
+      <div class="sh3-cloud far"></div>
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+        <defs>
+          <linearGradient id="shFarRock" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2B3A66"/>
+            <stop offset="1" stop-color="#0D1430" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g class="sh3-bob2">
+          <path d="M150 360 Q205 345 260 360 L235 400 L215 450 L195 400 Z" fill="url(#shFarRock)"/>
+          <ellipse cx="205" cy="358" rx="56" ry="9" fill="#24504A" opacity=".8"/>
+        </g>
+        <g class="sh3-bob">
+          <path d="M1240 250 Q1280 240 1320 250 L1300 280 L1285 320 L1270 280 Z" fill="url(#shFarRock)"/>
+          <ellipse cx="1280" cy="249" rx="40" ry="6" fill="#24504A" opacity=".8"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- birds -->
+    <svg class="sh3-birds" viewBox="0 0 120 40" aria-hidden="true">
+      <path d="M10 20 Q18 12 26 20 Q34 12 42 20" stroke="#0A0F22" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M58 10 Q64 4 70 10 Q76 4 82 10" stroke="#0A0F22" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M70 30 Q75 25 80 30 Q85 25 90 30" stroke="#0A0F22" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    </svg>
+
+    <!-- mid layer: the floating island -->
+    <div class="sh3-island" aria-hidden="true">
+      <div class="sh3-island-move" data-depth="mid">
+        <svg viewBox="0 0 800 680">
+          <defs>
+            <linearGradient id="shRock" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A4570"/><stop offset=".45" stop-color="#1D2547"/><stop offset="1" stop-color="#0A0F24"/></linearGradient>
+            <linearGradient id="shRockLit" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#E8B54A" stop-opacity=".35"/><stop offset=".4" stop-color="#E8B54A" stop-opacity="0"/></linearGradient>
+            <linearGradient id="shGrass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3D7A5E"/><stop offset="1" stop-color="#1B3F3C"/></linearGradient>
+            <linearGradient id="shWall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1A2242"/><stop offset=".7" stop-color="#2A3664"/><stop offset="1" stop-color="#5A5A6E"/></linearGradient>
+            <linearGradient id="shRoof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE29A"/><stop offset=".5" stop-color="#E8B54A"/><stop offset="1" stop-color="#7A5216"/></linearGradient>
+            <linearGradient id="shWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#BFE6FF" stop-opacity=".95"/><stop offset="1" stop-color="#4FB4FF" stop-opacity="0"/></linearGradient>
+            <filter id="shGlowF" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="shSoft"><feGaussianBlur stdDeviation="14"/></filter>
+            <radialGradient id="shUnder" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#4FB4FF" stop-opacity=".55"/><stop offset="1" stop-color="#4FB4FF" stop-opacity="0"/></radialGradient>
+          </defs>
+          <g class="sh3-bob">
+            <ellipse cx="400" cy="560" rx="200" ry="90" fill="url(#shUnder)" class="sh3-glow"/>
+            <path d="M110 330 C170 360 270 372 400 372 C540 372 630 360 690 330 L640 390 L610 450 L560 500 L520 560 L470 590 L430 660 L400 610 L360 580 L320 530 L270 490 L220 440 L170 390 Z" fill="url(#shRock)"/>
+            <path d="M110 330 C170 360 270 372 400 372 C540 372 630 360 690 330 L640 390 L610 450 L560 500 L520 560 L470 590 L430 660 L400 610 L360 580 L320 530 L270 490 L220 440 L170 390 Z" fill="url(#shRockLit)"/>
+            <path d="M200 400 L300 420 L380 410 M260 470 L350 480 L440 470 L520 450 M340 540 L420 545 L480 530" stroke="#4A5788" stroke-width="2" fill="none" opacity=".5"/>
+            <path d="M560 380 L600 430 M480 400 L500 470 M300 390 L320 440" stroke="#0A0F24" stroke-width="3" fill="none" opacity=".6"/>
+            <path d="M250 380 q-6 40 4 70 M330 395 q6 30 -2 60 M540 390 q-4 40 6 64" stroke="#2A5A48" stroke-width="2.5" fill="none" opacity=".7"/>
+            <path d="M640 334 C660 360 664 420 668 680" stroke="url(#shWater)" stroke-width="22" fill="none" opacity=".55"/>
+            <path class="sh3-fall" d="M640 334 C660 360 664 420 668 680" stroke="#FFFFFF" stroke-width="5" fill="none" stroke-dasharray="18 22" opacity=".55"/>
+            <path class="sh3-fall" d="M632 336 C650 370 652 430 656 640" stroke="#BFE6FF" stroke-width="3" fill="none" stroke-dasharray="10 30" opacity=".6"/>
+            <ellipse cx="664" cy="640" rx="40" ry="16" fill="#BFE6FF" opacity=".25" filter="url(#shSoft)"/>
+            <ellipse cx="400" cy="330" rx="292" ry="50" fill="url(#shGrass)"/>
+            <path d="M108 330 C170 362 270 374 400 374 C540 374 630 362 692 330" stroke="#E8B54A" stroke-width="2" fill="none" opacity=".45"/>
+            <path d="M470 318 C540 322 590 318 640 334" stroke="#7FD0FF" stroke-width="7" fill="none" opacity=".7" stroke-linecap="round"/>
+            <g fill="#16352F">
+              <path d="M150 330 l14 -42 l14 42 Z"/><path d="M175 336 l11 -32 l11 32 Z"/>
+              <path d="M610 322 l13 -40 l13 40 Z"/><path d="M636 328 l10 -30 l10 30 Z"/>
+              <path d="M210 340 l9 -28 l9 28 Z"/><path d="M560 340 l10 -30 l10 30 Z"/>
+            </g>
+            <g fill="#2E6A55" opacity=".8"><path d="M158 330 l6 -42 l14 42 Z"/><path d="M618 322 l5 -40 l13 40 Z"/></g>
+            <!-- castle -->
+            <rect x="268" y="232" width="264" height="92" fill="url(#shWall)"/>
+            <g fill="url(#shWall)">
+              <rect x="268" y="222" width="16" height="12"/><rect x="296" y="222" width="16" height="12"/><rect x="324" y="222" width="16" height="12"/>
+              <rect x="460" y="222" width="16" height="12"/><rect x="488" y="222" width="16" height="12"/><rect x="516" y="222" width="16" height="12"/>
+            </g>
+            <rect x="246" y="168" width="46" height="158" fill="url(#shWall)"/>
+            <rect x="508" y="168" width="46" height="158" fill="url(#shWall)"/>
+            <polygon points="240,170 269,96 298,170" fill="url(#shRoof)"/>
+            <polygon points="502,170 531,96 560,170" fill="url(#shRoof)"/>
+            <rect x="352" y="140" width="96" height="186" fill="url(#shWall)"/>
+            <rect x="336" y="200" width="20" height="126" fill="url(#shWall)"/>
+            <rect x="444" y="200" width="20" height="126" fill="url(#shWall)"/>
+            <polygon points="344,142 400,40 456,142" fill="url(#shRoof)"/>
+            <polygon points="330,202 346,164 362,202" fill="url(#shRoof)"/>
+            <polygon points="438,202 454,164 470,202" fill="url(#shRoof)"/>
+            <line x1="400" y1="40" x2="400" y2="6" stroke="#E8B54A" stroke-width="2.5"/>
+            <path d="M401 7 L432 14 L401 22 Z" fill="#4FB4FF"/>
+            <g fill="#8FD8FF" filter="url(#shGlowF)" class="sh3-glow">
+              <rect x="386" y="168" width="10" height="18" rx="5"/><rect x="404" y="168" width="10" height="18" rx="5"/>
+              <rect x="394" y="210" width="12" height="20" rx="6"/>
+              <rect x="263" y="196" width="10" height="16" rx="5"/><rect x="525" y="196" width="10" height="16" rx="5"/>
+              <rect x="263" y="246" width="10" height="16" rx="5"/><rect x="525" y="246" width="10" height="16" rx="5"/>
+            </g>
+            <path d="M380 326 L380 284 Q400 260 420 284 L420 326 Z" fill="#0A0F24"/>
+            <path d="M380 326 L380 284 Q400 260 420 284 L420 326" stroke="#E8B54A" stroke-width="2.5" fill="none"/>
+            <path d="M385 326 L385 288 Q400 270 415 288 L415 326 Z" fill="#E8B54A" opacity=".35" filter="url(#shGlowF)"/>
+            <rect x="550" y="168" width="4" height="158" fill="#E8B54A" opacity=".5"/>
+            <rect x="444" y="140" width="4" height="186" fill="#E8B54A" opacity=".4"/>
+          </g>
         </svg>
       </div>
-      <span class="sh2-tag live">● Live</span>
-      <h3>General</h3>
-      <p>Troop, hero, spell &amp; pet references, Town Hall guides, and strategy — for any Clash of Clans player.</p>
-    </a>
+    </div>
 
-  </div>
+    <!-- near layer: rock fragments + low clouds -->
+    <div class="sh3-layer" data-depth="near" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%">
+        <g class="sh3-bob2"><path d="M700 640 L760 630 L745 690 L720 715 Z" fill="#232C52"/><path d="M700 640 L760 630 L752 646 L706 652 Z" fill="#2F6050"/></g>
+        <g class="sh3-bob"><path d="M1330 560 L1380 552 L1368 600 L1346 618 Z" fill="#232C52"/><path d="M1330 560 L1380 552 L1374 566 L1334 572 Z" fill="#2F6050"/></g>
+        <g class="sh3-bob2"><path d="M640 180 L668 176 L660 204 L648 212 Z" fill="#232C52" opacity=".8"/></g>
+      </svg>
+      <div class="sh3-cloud near"></div>
+    </div>
 
-  <footer class="sh2-footer">
-    StatHut · a fan-made Clash of Clans community resource
+    <div class="sh3-layer sh3-embers" aria-hidden="true"></div>
+    <div class="sh3-fade" aria-hidden="true"></div>
+
+    <div class="sh3-wrap sh3-hero-copy">
+      <div class="sh3-hero-copy-inner">
+        <span class="sh3-eyebrow sh3-in d1"><i></i>Clash of Clans community hub</span>
+        <h1 class="sh3-in d2">ENTER THE WORLD OF <span class="sh3-goldtext">CLASH.</span></h1>
+        <p class="sh3-hero-sub sh3-in d3">Your ultimate destination for clans, strategies, competitive gaming and community.</p>
+        <div class="sh3-ctas sh3-in d4">
+          <a href="#explore" class="sh3-btn sh3-btn-gold sh3-btn-lg">
+            EXPLORE STATHUT
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="/general/legends.html" class="sh3-btn sh3-btn-ghost sh3-btn-lg">LEGEND TRACKER</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#explore" class="sh3-scroll" aria-label="Scroll to explore">SCROLL</a>
+  </section>
+
+  <!-- ================= EXPLORE ================= -->
+  <section class="sh3-section" id="explore">
+    <div class="sh3-wrap">
+      <div class="sh3-head sh3-reveal">
+        <div>
+          <div class="sh3-kicker">The hub</div>
+          <h2 class="sh3-h2">Everything in one village</h2>
+        </div>
+        <p class="sh3-lead">Tools and references for any Clash of Clans player, no clan family required.</p>
+      </div>
+
+      <div class="sh3-grid">
+        <a href="/general/player.html" class="sh3-card sh3-reveal">
+          <div class="sh3-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></div>
+          <div><h3>Player Search</h3><p>Look up any player by tag to see their stats.</p></div>
+          <span class="sh3-card-cta">Search players <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a href="/general/legends.html" class="sh3-card blue sh3-reveal">
+          <span class="sh3-live">Live</span>
+          <div class="sh3-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4"/><path d="M7 4h10v5a5 5 0 01-10 0z"/><path d="M17 5h3v2a3 3 0 01-3 3M7 5H4v2a3 3 0 003 3"/></svg></div>
+          <div><h3>Legend Tracker</h3><p>Live Legend League offense, defense and net trophies for the top players, globally and by country.</p></div>
+          <span class="sh3-card-cta">Open tracker <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a href="/general/compare.html" class="sh3-card sh3-reveal">
+          <div class="sh3-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <div><h3>Compare Players</h3><p>Put two players side by side to compare stats.</p></div>
+          <span class="sh3-card-cta">Compare now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a href="/general/cwl-bonus.html" class="sh3-card blue sh3-reveal">
+          <div class="sh3-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></div>
+          <div><h3>CWL Bonus Decider</h3><p>Look up any clan's live CWL performance and rank members with adjustable weighted scoring.</p></div>
+          <span class="sh3-card-cta">Decide bonuses <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a href="/general/#troops" class="sh3-card sh3-reveal">
+          <div class="sh3-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 17.5L3 6V3h3l11.5 11.5"/><path d="M13 19l6-6"/><path d="M16 16l4 4"/><path d="M19 21l2-2"/></svg></div>
+          <div><h3>Troops, Heroes &amp; More</h3><p>Troop, hero, spell and pet references in one place.</p></div>
+          <span class="sh3-card-cta">Browse the army <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a href="/general/#strategy" class="sh3-card blue sh3-reveal">
+          <div class="sh3-card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5h7a3 3 0 013 3v13a2 2 0 00-2-2H2z"/><path d="M22 5h-7a3 3 0 00-3 3v13a2 2 0 012-2h8z"/></svg></div>
+          <div><h3>Strategy</h3><p>Strategy and tips for any Clash of Clans player.</p></div>
+          <span class="sh3-card-cta">Read strategy <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TOWN HALL EXPLORER ================= -->
+  <section class="sh3-section sh3-th" id="townhalls">
+    <div class="sh3-wrap sh3-th-row">
+      <div class="sh3-th-copy sh3-reveal">
+        <div class="sh3-kicker blue">Town Hall explorer</div>
+        <h2 class="sh3-h2">Choose your Town Hall</h2>
+        <p class="sh3-lead">TH9 through TH18 at a glance. Pick a level, then dive into the full progression guide.</p>
+        <div class="sh3-th-pills" role="group" aria-label="Town Hall level">
+          <button type="button" class="sh3-th-pill" data-th="9" aria-pressed="false">TH9</button>
+          <button type="button" class="sh3-th-pill" data-th="10" aria-pressed="false">TH10</button>
+          <button type="button" class="sh3-th-pill" data-th="11" aria-pressed="false">TH11</button>
+          <button type="button" class="sh3-th-pill" data-th="12" aria-pressed="false">TH12</button>
+          <button type="button" class="sh3-th-pill" data-th="13" aria-pressed="false">TH13</button>
+          <button type="button" class="sh3-th-pill" data-th="14" aria-pressed="false">TH14</button>
+          <button type="button" class="sh3-th-pill" data-th="15" aria-pressed="false">TH15</button>
+          <button type="button" class="sh3-th-pill" data-th="16" aria-pressed="false">TH16</button>
+          <button type="button" class="sh3-th-pill" data-th="17" aria-pressed="false">TH17</button>
+          <button type="button" class="sh3-th-pill" data-th="18" aria-pressed="true">TH18</button>
+        </div>
+        <div style="margin-top:30px">
+          <a href="/general/#townhalls" class="sh3-btn sh3-btn-ghost">See Town Hall progression</a>
+        </div>
+      </div>
+      <div class="sh3-th-stage sh3-reveal">
+        <div class="sh3-th-halo" aria-hidden="true"></div>
+        <div class="sh3-th-ring" aria-hidden="true"></div>
+        <div class="sh3-th-card">
+          <img id="sh3ThImg" class="sh3-th-img" src="/fwa/assets/th/th18.png" alt="Town Hall 18" width="220" height="220" loading="lazy">
+          <div class="sh3-th-label" aria-live="polite">TH<span id="sh3ThNum">18</span><small>TOWN HALL</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PLAYER SEARCH ================= -->
+  <section class="sh3-section sh3-search">
+    <div class="sh3-wrap sh3-reveal">
+      <h2 class="sh3-h2">Find any player in seconds</h2>
+      <p class="sh3-lead">Enter a player tag to jump straight to their profile.</p>
+      <form class="sh3-search-form" action="/general/player.html" method="get">
+        <label for="sh3Tag" class="sh3-sr">Player tag</label>
+        <input id="sh3Tag" name="tag" type="text" placeholder="#PLAYERTAG" autocomplete="off" autocapitalize="characters" spellcheck="false" required>
+        <button type="submit" class="sh3-btn sh3-btn-gold sh3-btn-lg">SEARCH</button>
+      </form>
+    </div>
+  </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="sh3-footer">
+    <div class="sh3-wrap">
+      <div class="sh3-footer-row">
+        <span>StatHut · a fan-made Clash of Clans community resource. Not affiliated with Supercell.</span>
+        <nav aria-label="Footer">
+          <a href="/general/">General</a>
+          <a href="/general/legends.html">Legends</a>
+          <a href="/general/player.html">Player Search</a>
+        </nav>
+      </div>
       <div class="sh2-visitor-stat" id="sh2VisitorStat"></div>
+    </div>
   </footer>
 
+  <script src="/home-v3.js" defer></script>
   <script src="/visitor-counter.js" defer></script>
 </body>
 </html>

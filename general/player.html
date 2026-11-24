@@ -3888,6 +3888,18 @@ async function searchPlayer() {
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<script>
+// Auto-search when opened from the homepage: /general/player.html?tag=ABC123
+window.addEventListener("load", function () {
+  var tag = new URLSearchParams(location.search).get("tag");
+  var input = document.getElementById("player-tag");
+  if (tag && input && typeof searchPlayer === "function") {
+    input.value = tag.trim();
+    searchPlayer();
+  }
+});
+</script>
+
 </body>
 
 </html>
