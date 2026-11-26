@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upgrade Tracker | StatHut</title>
+<meta name="description" content="Track your Clash of Clans builders, lab and what's left to max. Paste your in-game village export.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1026; --bg2:#121a3a; --card:#151f45; --card2:#1b2756;
+    --line:rgba(255,215,128,.16); --gold:#f5c451; --gold2:#ffdf8a;
+    --text:#e8ecff; --muted:#9aa5d1; --green:#4ade80; --red:#f87171; --blue:#60a5fa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);
+    background:radial-gradient(1200px 600px at 50% -10%,#1d2a66 0%,var(--bg) 60%) fixed;min-height:100vh}
+  a{color:var(--gold2)}
+  .wrap{max-width:1000px;margin:0 auto;padding:24px 16px 60px}
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+  header.top a.home{font-family:Cinzel,serif;font-weight:800;color:var(--gold);text-decoration:none;font-size:20px;letter-spacing:.5px}
+  h1{font-family:Cinzel,serif;font-weight:800;font-size:clamp(28px,5vw,44px);margin:18px 0 6px;
+    background:linear-gradient(180deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);margin:0 0 22px}
+  .card{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .tabs{display:flex;gap:8px;margin-bottom:14px}
+  .tab{flex:1;padding:10px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--muted);font-weight:600;cursor:pointer}
+  .tab.on{background:var(--card2);color:var(--gold2);border-color:var(--gold)}
+  textarea,input{width:100%;background:#0d1433;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:12px;font:inherit}
+  textarea{min-height:110px;font-family:ui-monospace,monospace;font-size:12px;resize:vertical}
+  .row{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+  .btn{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#2a1d00;border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
+  .btn.ghost{background:transparent;color:var(--gold2);border:1px solid var(--gold)}
+  .btn:disabled{opacity:.6;cursor:wait}
+  .help{color:var(--muted);font-size:13px;margin-top:10px;line-height:1.5}
+  .msg{margin-top:10px;font-size:14px}
+  .msg.err{color:var(--red)} .msg.ok{color:var(--green)}
+  .hidden{display:none}
+
+  .hero{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center}
+  .th{width:72px;height:72px;border-radius:16px;background:var(--card2);border:1px solid var(--gold);display:grid;place-items:center;font-family:Cinzel,serif;font-weight:800;color:var(--gold);font-size:22px}
+  .hero h2{margin:0;font-size:22px}
+  .hero .meta{color:var(--muted);font-size:13px;margin-top:4px}
+  .ring{--p:0;width:86px;height:86px;border-radius:50%;display:grid;place-items:center;
+    background:conic-gradient(var(--gold) calc(var(--p)*1%),#26315f 0)}
+  .ring span{width:68px;height:68px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-weight:700;font-size:15px}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:16px}
+  .stat{background:#0f1738;border:1px solid var(--line);border-radius:12px;padding:12px}
+  .stat b{display:block;font-size:18px}
+  .stat small{color:var(--muted)}
+
+  h3{font-family:Cinzel,serif;color:var(--gold2);margin:0 0 12px;font-size:18px}
+  .act{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;border-radius:12px;background:#0f1738;border:1px solid var(--line);margin-bottom:8px}
+  .act .nm{font-weight:600}
+  .act .lv{color:var(--muted);font-size:13px}
+  .tag{font-size:11px;padding:2px 8px;border-radius:99px;background:#26315f;color:var(--muted);margin-left:6px;text-transform:uppercase;letter-spacing:.5px}
+  .tag.app{background:rgba(96,165,250,.15);color:var(--blue)}
+  .cd{font-variant-numeric:tabular-nums;font-weight:700;color:var(--gold2);white-space:nowrap}
+  .cd.done{color:var(--green)}
+  .free{color:var(--green);font-weight:600}
+
+  details{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;background:#0f1738;overflow:hidden}
+  summary{cursor:pointer;padding:12px 14px;font-weight:600;display:flex;justify-content:space-between;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary .c{color:var(--muted);font-weight:500;font-size:13px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:8px 12px;text-align:left;border-top:1px solid var(--line)}
+  th{color:var(--muted);font-weight:500}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tblwrap{overflow-x:auto}
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:30px}
+  @media(max-width:560px){.hero{grid-template-columns:auto 1fr}.ring{grid-column:span 2;justify-self:start}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="home" href="/">⛏ StatHut</a>
+    <a href="/" style="font-size:14px">← Home</a>
+  </header>
+
+  <h1>Upgrade Tracker</h1>
+  <p class="sub">See what your builders and lab are doing, and everything left to max for your Town Hall.</p>
+
+  <div class="card">
+    <div class="tabs">
+      <button class="tab on" data-tab="import">Paste my export</button>
+      <button class="tab" data-tab="lookup">Look up a tag</button>
+    </div>
+
+    <div id="pane-import">
+      <textarea id="exportBox" placeholder='{"tag":"#XXXXXXX","timestamp":...}'></textarea>
+      <div class="row">
+        <button class="btn" id="importBtn">Track my village</button>
+        <button class="btn ghost" id="pasteBtn">Paste from clipboard</button>
+      </div>
+      <div class="help">
+        In Clash of Clans: <b>Settings → More Settings → Data Export → Copy</b>, then paste it here.<br>
+        It only has your village levels and timers. No login details are in it.
+      </div>
+    </div>
+
+    <div id="pane-lookup" class="hidden">
+      <input id="tagBox" placeholder="#R2RGPCG">
+      <div class="row"><button class="btn" id="lookupBtn">Show progress</button></div>
+      <div class="help">Works for any player who has imported their export here before.</div>
+    </div>
+
+    <div id="msg" class="msg"></div>
+  </div>
+
+  <div id="result" class="hidden">
+    <div class="card">
+      <div class="hero">
+        <div class="th" id="thBadge">TH</div>
+        <div>
+          <h2 id="pTag">#TAG</h2>
+          <div class="meta" id="pMeta"></div>
+          <div class="row" style="margin-top:8px"><button class="btn ghost" id="shareBtn" style="padding:6px 12px;font-size:13px">Copy share link</button></div>
+        </div>
+        <div class="ring" id="ring"><span id="ringTxt">0%</span></div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </div>
+
+    <div class="card">
+      <h3>Upgrading now</h3>
+      <div id="active"></div>
+    </div>
+
+    <div class="card">
+      <h3>Left to max</h3>
+      <div id="left"></div>
+    </div>
+  </div>
+
+  <footer>Not affiliated with Supercell. Game data: ClashKing.</footer>
+</div>
+
+<script>
+const API = "https://app.stathut.in";
+const $ = id => document.getElementById(id);
+let timers = [];
+
+// ---------- helpers ----------
+function fmtTime(s){
+  s = Math.max(0, Math.floor(s));
+  const d = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60), sec = s%60;
+  if (d) return `${d}d ${h}h ${m}m`;
+  if (h) return `${h}h ${m}m ${sec}s`;
+  return `${m}m ${sec}s`;
+}
+function fmtNum(n){
+  if (n >= 1e9) return (n/1e9).toFixed(2).replace(/\.?0+$/,"") + "B";
+  if (n >= 1e6) return (n/1e6).toFixed(2).replace(/\.?0+$/,"") + "M";
+  if (n >= 1e3) return (n/1e3).toFixed(1).replace(/\.0$/,"") + "K";
+  return String(n);
+}
+const RES_NAMES = {shiny_ore:"Shiny Ore", glowy_ore:"Glowy Ore", starry_ore:"Starry Ore"};
+function fmtCost(c){
+  return Object.entries(c||{}).map(([k,v]) => `${fmtNum(v)} ${RES_NAMES[k]||k}`).join(" · ") || "-";
+}
+function esc(s){ return String(s).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch])); }
+function setMsg(text, kind){ $("msg").textContent = text; $("msg").className = "msg " + (kind||""); }
+
+// ---------- tabs ----------
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === t));
+  $("pane-import").classList.toggle("hidden", t.dataset.tab !== "import");
+  $("pane-lookup").classList.toggle("hidden", t.dataset.tab !== "lookup");
+  setMsg("");
+});
+
+$("pasteBtn").onclick = async () => {
+  try { $("exportBox").value = await navigator.clipboard.readText(); }
+  catch { setMsg("Couldn't read the clipboard. Long-press the box and paste instead.", "err"); }
+};
+
+// ---------- API calls ----------
+async function call(url, opts){
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 12000);
+  try {
+    const r = await fetch(url, {...opts, signal: ctrl.signal});
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.detail || `Error ${r.status}`);
+    return j;
+  } finally { clearTimeout(t); }
+}
+
+$("importBtn").onclick = async () => {
+  const text = $("exportBox").value.trim();
+  if (!text) return setMsg("Paste your export first.", "err");
+  try { JSON.parse(text); } catch { return setMsg("That doesn't look like the full export. Copy it again from the game.", "err"); }
+  $("importBtn").disabled = true; setMsg("Reading your village…");
+  try {
+    const data = await call(`${API}/upgrades/import`, {method:"POST", headers:{"Content-Type":"application/json"}, body:text});
+    setMsg("Saved! Bookmark or share the link to check back any time.", "ok");
+    render(data);
+  } catch(e){ setMsg(e.name === "AbortError" ? "Server took too long. Try again." : e.message, "err"); }
+  $("importBtn").disabled = false;
+};
+
+async function lookup(tag){
+  tag = tag.trim().toUpperCase().replace(/^#/, "");
+  if (!tag) return setMsg("Enter a player tag.", "err");
+  $("lookupBtn").disabled = true; setMsg("Loading…");
+  try {
+    const data = await call(`${API}/upgrades/${encodeURIComponent(tag)}`);
+    setMsg("");
+    render(data);
+  } catch(e){ setMsg(e.name === "AbortError" ? "Server took too long. Try again." : e.message, "err"); }
+  $("lookupBtn").disabled = false;
+}
+$("lookupBtn").onclick = () => lookup($("tagBox").value);
+$("tagBox").addEventListener("keydown", e => { if (e.key === "Enter") lookup($("tagBox").value); });
+
+// ---------- render ----------
+function render(d){
+  $("result").classList.remove("hidden");
+  $("thBadge").textContent = "TH" + d.town_hall;
+  $("pTag").textContent = d.tag;
+  const age = Math.floor((d.server_time - d.exported_at));
+  $("pMeta").textContent = `Export from ${fmtTime(age)} ago`;
+  $("ring").style.setProperty("--p", d.progress_percent);
+  $("ringTxt").textContent = d.progress_percent + "%";
+  history.replaceState(null, "", "?tag=" + encodeURIComponent(d.tag.replace("#","")));
+
+  const t = d.totals, tc = t.cost || {};
+  const freeB = d.builders - d.busy_builders;
+  const stats = [
+    [`${d.busy_builders}/${d.builders}`, "Builders busy" + (freeB > 0 ? ` · <span class="free">${freeB} free</span>` : "")],
+    [fmtNum(tc.Gold||0), "Gold left"],
+    [fmtNum(tc.Elixir||0), "Elixir left"],
+    [fmtNum(tc["Dark Elixir"]||0), "Dark Elixir left"],
+    [fmtTime(t.builder_time_per_builder).split(" ").slice(0,2).join(" "), "Builder time (each)"],
+    [fmtTime(t.time_seconds.lab).split(" ").slice(0,2).join(" "), "Lab time"],
+  ];
+  if (t.walls_cost && Object.keys(t.walls_cost).length)
+    stats.push([fmtCost(t.walls_cost).split(" · ")[0], "Walls (gold or elixir)"]);
+  $("stats").innerHTML = stats.map(([b,s]) => `<div class="stat"><b>${b}</b><small>${s}</small></div>`).join("");
+
+  // active upgrades with live countdown
+  timers.forEach(clearInterval); timers = [];
+  const loadedAt = Date.now();
+  const act = d.active || [];
+  const idle = [];
+  if (!act.some(a => a.worker === "lab")) idle.push("Laboratory");
+  if (!act.some(a => a.worker === "pet_house")) idle.push("Pet House");
+  $("active").innerHTML = (act.length ? act.map((a,i) => `
+    <div class="act">
+      <div>
+        <div class="nm">${esc(a.name)}
+          <span class="tag">${a.village === "builder" ? "Builder Base" : a.worker.replace("_"," ")}</span>
+          ${a.apprentice ? '<span class="tag app">Apprentice</span>' : ""}
+        </div>
+        <div class="lv">Level ${a.from_level} → ${a.to_level}</div>
+      </div>
+      <div class="cd" id="cd${i}"></div>
+    </div>`).join("") : `<div class="help">Nothing upgrading right now.</div>`)
+    + (idle.length ? `<div class="help free">Idle: ${idle.join(", ")}</div>` : "");
+
+  function tick(){
+    const passed = (Date.now() - loadedAt) / 1000;
+    act.forEach((a,i) => {
+      const el = $("cd"+i); if (!el) return;
+      const left = a.seconds_left - passed;
+      el.textContent = left > 0 ? fmtTime(left) : "Done ✓";
+      el.classList.toggle("done", left <= 0);
+    });
+  }
+  tick(); timers.push(setInterval(tick, 1000));
+
+  // left to max
+  const groups = Object.entries(d.left_to_max || {});
+  $("left").innerHTML = groups.length ? groups.map(([g, rows]) => `
+    <details>
+      <summary><span>${esc(g)}</span><span class="c">${rows.length} item${rows.length>1?"s":""} · ${rows.reduce((s,r)=>s+r.levels_left,0)} levels</span></summary>
+      <div class="tblwrap"><table>
+        <tr><th>Name</th><th>Now → Max</th><th>Levels left</th><th>Cost</th><th>Time</th></tr>
+        ${rows.map(r => `<tr>
+          <td>${esc(r.name)}${r.count > 1 ? ` <span class="c" style="color:var(--muted)">×${r.count}</span>` : ""}</td>
+          <td class="num">${r.levels.join(", ")} → ${r.max_level}</td>
+          <td class="num">${r.levels_left}</td>
+          <td class="num">${fmtCost(r.cost)}</td>
+          <td class="num">${r.time_seconds ? fmtTime(r.time_seconds).split(" ").slice(0,2).join(" ") : "-"}</td>
+        </tr>`).join("")}
+      </table></div>
+    </details>`).join("") : `<div class="help free">Fully maxed for your Town Hall! 🎉</div>`;
+
+  $("result").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+$("shareBtn").onclick = async () => {
+  try { await navigator.clipboard.writeText(location.href); $("shareBtn").textContent = "Link copied ✓"; }
+  catch { prompt("Copy this link:", location.href); }
+  setTimeout(() => $("shareBtn").textContent = "Copy share link", 2000);
+};
+
+// open ?tag=XXXX directly
+const qTag = new URLSearchParams(location.search).get("tag");
+if (qTag){
+  document.querySelector('[data-tab="lookup"]').click();
+  $("tagBox").value = "#" + qTag;
+  lookup(qTag);
+}
+</script>
+</body>
+</html>
